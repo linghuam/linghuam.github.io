@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>editorconfig配置文件详解 | 华仔的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="EditorConfig可以帮助开发者在不同的编辑器和IDE之间定义和维护一致的代码风格。 官方网站： http://editorconfig.org/">
+<meta name="keywords" content="config">
+<meta property="og:type" content="article">
+<meta property="og:title" content="editorconfig配置文件详解">
+<meta property="og:url" content="http://linghuam.github.io/2017/12/28/editorconfig配置文件详解/index.html">
+<meta property="og:site_name" content="华仔的博客">
+<meta property="og:description" content="EditorConfig可以帮助开发者在不同的编辑器和IDE之间定义和维护一致的代码风格。 官方网站： http://editorconfig.org/">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-01-03T06:44:11.807Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="editorconfig配置文件详解">
+<meta name="twitter:description" content="EditorConfig可以帮助开发者在不同的编辑器和IDE之间定义和维护一致的代码风格。 官方网站： http://editorconfig.org/">
+  
+    <link rel="alternate" href="/atom.xml" title="华仔的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://linghuam.github.io"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/projectdemo">项目展示</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">华仔的博客</a>
+      </h1>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-editorconfig配置文件详解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/28/editorconfig配置文件详解/" class="article-date">
+  <time datetime="2017-12-28T05:46:18.000Z" itemprop="datePublished">2017-12-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/config/">config</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      editorconfig配置文件详解
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>EditorConfig可以帮助开发者在不同的编辑器和IDE之间定义和维护一致的代码风格。</p>
+<p>官方网站： <a href="http://editorconfig.org/" target="_blank" rel="noopener">http://editorconfig.org/</a><br><a id="more"></a></p>
+<h1 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h1><p><strong>step1：</strong> 在项目根目录下创建一个<code>.editorconfig</code>文件</p>
+<p><strong>step2：</strong> 安装对应编辑器的<a href="http://editorconfig.org/#download" target="_blank" rel="noopener">插件</a></p>
+<p><strong>step3：</strong> 填写配置文件</p>
+<p><strong>规则如下:</strong></p>
+<table>
+<thead>
+<tr>
+<th>通配符</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*</td>
+<td>匹配除/之外的任意字符串</td>
+</tr>
+<tr>
+<td>**</td>
+<td>匹配任意字符串</td>
+</tr>
+<tr>
+<td>?</td>
+<td>匹配任意单个字符</td>
+</tr>
+<tr>
+<td>[name]</td>
+<td>匹配name字符</td>
+</tr>
+<tr>
+<td>[!name]</td>
+<td>匹配非name字符</td>
+</tr>
+<tr>
+<td>{s1,s3,s3}</td>
+<td>匹配任意给定的字符串（0.11.0起支持）</td>
+</tr>
+<tr>
+<td>{num1..num2}</td>
+<td>匹配任意在 num1 与 num2 之间的整数</td>
+</tr>
+</tbody>
+</table>
+<p>特殊字符可以用\转义，以使其不被认为是通配符。</p>
+<p><strong>支持属性：</strong></p>
+<p>注：不是所有属性插件都支持，完整版见<a href="https://github.com/editorconfig/editorconfig/wiki/EditorConfig-Properties" target="_blank" rel="noopener">complete list of properties</a></p>
+<ul>
+<li><strong>root：</strong> 设置为 “true” ,编辑器根据此属性停止查找。</li>
+<li><strong>charset：</strong> 一般设置为 “utf-8” , 可选值有 latin1, utf-8, utf-8-bom, utf-16be or utf-16le。</li>
+<li><strong>indent_style：</strong>缩进类型 , “space” 或 “tab”</li>
+<li><strong>indent_size：</strong>缩进数量 , 一般 “2” 或 “4”, 可选 “tab”</li>
+<li><strong>tab_width：</strong>设置整数用于指定替代tab的列数。默认值就是indent_size的值，一般无需指定。</li>
+<li><strong>end_of_line：</strong>定义换行符，支持lf、cr和crlf。</li>
+<li><strong>trim_trailing_whitespace：</strong>是否删除行尾的空格， “true” or “false”</li>
+<li><strong>insert_final_newline：</strong>是否在文件的最后插入一个空行，”true” or “false”</li>
+</ul>
+<h1 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h1><p>以下是一个文件示例，用于设置Python和JavaScript代码格式。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"># EditorConfig is awesome: http://EditorConfig.org</span><br><span class="line"></span><br><span class="line"># top-most EditorConfig file</span><br><span class="line">root = true</span><br><span class="line"></span><br><span class="line"># Unix-style newlines with a newline ending every file</span><br><span class="line">[*]</span><br><span class="line">end_of_line = lf</span><br><span class="line">insert_final_newline = true</span><br><span class="line"></span><br><span class="line"># Matches multiple files with brace expansion notation</span><br><span class="line"># Set default charset</span><br><span class="line">[*.&#123;js,py&#125;]</span><br><span class="line">charset = utf-8</span><br><span class="line"></span><br><span class="line"># 4 space indentation</span><br><span class="line">[*.py]</span><br><span class="line">indent_style = space</span><br><span class="line">indent_size = 4</span><br><span class="line"></span><br><span class="line"># Tab indentation (no size specified)</span><br><span class="line">[Makefile]</span><br><span class="line">indent_style = tab</span><br><span class="line"></span><br><span class="line"># Indentation override for all JS under lib directory</span><br><span class="line">[lib/**.js]</span><br><span class="line">indent_style = space</span><br><span class="line">indent_size = 2</span><br><span class="line"></span><br><span class="line"># Matches the exact files either package.json or .travis.yml</span><br><span class="line">[&#123;package.json,.travis.yml&#125;]</span><br><span class="line">indent_style = space</span><br><span class="line">indent_size = 2</span><br></pre></td></tr></table></figure></p>
+<h1 id="My-Config"><a href="#My-Config" class="headerlink" title="My Config"></a>My Config</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">root = true</span><br><span class="line"></span><br><span class="line">[*]</span><br><span class="line">charset = utf-8s</span><br><span class="line">indent_style = space</span><br><span class="line">indent_size = 2</span><br><span class="line">end_of_line = lf</span><br><span class="line">insert_final_newline = true</span><br><span class="line">trim_trailing_whitespace = true</span><br></pre></td></tr></table></figure>
+<h1 id="Recommend"><a href="#Recommend" class="headerlink" title="Recommend"></a>Recommend</h1><ul>
+<li><a href="http://www.jianshu.com/p/712cea0ef70e" target="_blank" rel="noopener">EditorConfig介绍1</a></li>
+<li><a href="http://blog.csdn.net/cengjingcanghai123/article/details/43953307" target="_blank" rel="noopener">EditorConfig介绍2</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://linghuam.github.io/2017/12/28/editorconfig配置文件详解/" data-id="cjc0lll2j000bkqbx9abl1jld" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/config/">config</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+ <script src="/jquery/jquery.min.js"></script>
+  <div id="random_posts">
+    <h2>推荐文章</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =3
+          var site = {BASE_URI:'/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+    <a href="/2017/12/28/了解移动端开发/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          了解移动端开发
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/12/28/参考文档/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">常用参考文档</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+       
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+       
+      
+      
+           <div id="gitment_comments"></div>
+    
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Usage"><span class="toc-number">1.</span> <span class="toc-text">Usage</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Example"><span class="toc-number">2.</span> <span class="toc-text">Example</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#My-Config"><span class="toc-number">3.</span> <span class="toc-text">My Config</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Recommend"><span class="toc-number">4.</span> <span class="toc-text">Recommend</span></a></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+    <!--微信公众号二维码-->
+
+
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2018 Linghuam&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;linghuam2016@gmail.com
+    </div>
+  </div>
+</footer>
+ <script src="/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/projectdemo" class="mobile-nav-link">项目展示</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+  
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "e2fb4051c49842688ce669e634bc983f",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+    
+
+  
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script> 
+  <script>
+  var gitment = new Gitment({
+    // id: '页面 ID', // 可选。默认为 location.href
+    owner: 'linghuam',
+    repo: 'linghuam.github.io',
+    oauth: {
+    client_id: '17ad04af6a057fbb5072',
+    client_secret: '5bb953d9587f8f1bde7c956bda62db16779dab4c',
+    }
+  })
+  gitment.render(document.getElementById("gitment_comments"))
+</script>
+
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ <script src="/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/elevator.js"></script>
+  </div>
+</body>
+</html>
