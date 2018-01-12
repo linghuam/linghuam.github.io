@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="华仔的博客">
 <meta property="og:description" content="DDA 是数字微分分析式（digital differential analyzer）的缩写。DDA算法是一种基于直线的微分方程来生成直线的方法。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-12T06:57:56.445Z">
+<meta property="og:updated_time" content="2018-01-12T07:00:08.690Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="直线生成算法-直线的DDA算法">
 <meta name="twitter:description" content="DDA 是数字微分分析式（digital differential analyzer）的缩写。DDA算法是一种基于直线的微分方程来生成直线的方法。">
@@ -100,11 +100,13 @@
         <!-- Table of Contents -->
         
         <p>DDA 是数字微分分析式（digital differential analyzer）的缩写。DDA算法是一种基于直线的微分方程来生成直线的方法。<br><a id="more"></a></p>
-<h2 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h2><p>设直线的起点为（x1, y1），终点为（x2, y2），则直线的斜率为：<br>$$ m = \frac{y2-y1}{x2-x1} = \frac{dy}{dx} $$</p>
-<p>直线中每一点坐标都可由前一点坐标变化一个增量得到，即表现为递归式：<br>$$ x_{i+1} = x_i + Dx $$</p>
+<h2 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h2><p>设直线的起点为（x1, y1），终点为（x2, y2），则直线的斜率为：</p>
+<p>$$ m = \frac{y2-y1}{x2-x1} = \frac{dy}{dx} $$</p>
+<p>直线中每一点坐标都可由前一点坐标变化一个增量得到，即表现为递归式：</p>
+<p>$$ x_{i+1} = x_i + Dx $$</p>
 <p>$$ y_{i+1} = y_i + Dy $$</p>
 <p>又有 $Dy = m * Dx$<br>递归式初值为起点 $(x_1, y_1)$，这样就可以用<code>加法</code>来生成一条直线。</p>
-<p>具体步骤为：</p>
+<p><strong>具体步骤为：</strong></p>
 <ol>
 <li>按直线起点到终点的方向不同，将直角坐标系分成8个象限。</li>
 <li>分析发现，当 $ |dx| &gt; |dy| $ 时，$ |Dx| = 1, |Dy| = m $；否则，$ |Dx| = \frac{1}{m}, |Dy| = 1 $。</li>
