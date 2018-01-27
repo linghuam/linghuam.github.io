@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>计算机图形学-圆生成算法 | 华仔的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="由于圆是经常使用的几何图形，大多数图形库中都包含绘制圆和圆弧的方法。下面内容主要阐述它们背后的实现思想。">
+<meta name="keywords" content="圆生成算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机图形学-圆生成算法">
+<meta property="og:url" content="http://linghuam.github.io/2018/01/27/计算机图形学-圆生成算法/index.html">
+<meta property="og:site_name" content="华仔的博客">
+<meta property="og:description" content="由于圆是经常使用的几何图形，大多数图形库中都包含绘制圆和圆弧的方法。下面内容主要阐述它们背后的实现思想。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-01-27T15:00:32.783Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机图形学-圆生成算法">
+<meta name="twitter:description" content="由于圆是经常使用的几何图形，大多数图形库中都包含绘制圆和圆弧的方法。下面内容主要阐述它们背后的实现思想。">
+  
+    <link rel="alternate" href="/atom.xml" title="华仔的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://linghuam.github.io"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="https://linghuam.github.io/project-gallery/dist/#/">项目展示</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">华仔的博客</a>
+      </h1>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-计算机图形学-圆生成算法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/27/计算机图形学-圆生成算法/" class="article-date">
+  <time datetime="2018-01-27T13:07:31.000Z" itemprop="datePublished">2018-01-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/计算机图形学/">计算机图形学</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      计算机图形学-圆生成算法
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>由于圆是经常使用的几何图形，大多数图形库中都包含绘制圆和圆弧的方法。<br>下面内容主要阐述它们背后的实现思想。</p>
+<a id="more"></a>
+<h2 id="圆的定义"><a href="#圆的定义" class="headerlink" title="圆的定义"></a>圆的定义</h2><p>圆可以定义为距中心点 $(x_c,y_c)$ 距离为给定值 r 的点集。</p>
+<h2 id="笛卡尔坐标系的勾股方程法"><a href="#笛卡尔坐标系的勾股方程法" class="headerlink" title="笛卡尔坐标系的勾股方程法"></a>笛卡尔坐标系的勾股方程法</h2><p>在笛卡尔坐标系中，由勾股定理圆的方程可以表示为：</p>
+<p>$$ (x - x_c)^2 + (y - y_c)^2 = r^2 $$</p>
+<p>利用这个方程，可以沿 x 轴，从 $x_c - r$ 到 $ x_c + r$ 按单位步长计算 y 坐标，从而<br>得到：<br>$$ y = y_c \pm \sqrt{r^2 - (x - x_c)^2}$$</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>易于理解和实现</p>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>计算复杂</li>
+<li>生成的像素点间隔不一致</li>
+</ul>
+<h2 id="极坐标系的参数方程法"><a href="#极坐标系的参数方程法" class="headerlink" title="极坐标系的参数方程法"></a>极坐标系的参数方程法</h2><p>以极坐标参数方程来表示圆：<br>$$ x = x_c + rcos\theta；y = y_c + rsin\theta  $$</p>
+<p>以固定角度为步长，可以利用沿圆周的等距点来绘制出圆。</p>
+<p>为了减少计算量，可以取较大的角度作为步长并用直线段来连接相邻两点来逼近圆的路径。<br>一般取角度步长值为 $ 1/r $ (为什么？因为 <code>弧长/半径 = 弧度</code>，取弧长为1即可)<br>可以获得较连续的边界，并且像素间隔大约为一个单位。</p>
+<h3 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h3><p>解决了笛卡尔算法像素间隔不等问题</p>
+<h3 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h3><p>三角函数的计算非常耗时</p>
+<h2 id="中点画圆算法"><a href="#中点画圆算法" class="headerlink" title="中点画圆算法"></a>中点画圆算法</h2><p>该算法主要利用了圆的<strong>对称性</strong>，假设知道了圆1/8部分的点集，其它部分的点集就可以根据对称性计算出来，<br>并且不需要做任何运算，只需要变化x,y坐标顺序或符号。</p>
+<p>给定圆的圆心不一定在原点处，为了简化运算，假设圆的圆心在原点处进行计算，然后只需对计算后的点作<br><strong>平移</strong>就可以得出实际的点。</p>
+<p>所以问题简化为考虑1/8圆，并且圆心在坐标原点，半径为 r 的圆。</p>
+<p>计算方法仍然模拟光栅画线算法。基本思想是检验两待选像素间的中间位置以确定该中点是在圆内还是在圆外。</p>
+<p>假设取第一象限上半部1/8圆，设置绘制起点坐标为$(0,r)$。<br>引入判别方程：<br>$$ f(x,y) = x^2 + y^2 - r^2 $$</p>
+<ul>
+<li>若 f(x,y) &gt; 0，则 (x,y) 在圆外；</li>
+<li>若 f(x,y) = 0，则 (x,y) 在圆上；</li>
+<li>若 f(x,y) &lt; 0，则 (x,y) 在圆内；</li>
+</ul>
+<p>假设在$(x_k,y_k)$处画了一个像素，下一步就是要确定是位置$(x_k + 1,y_k)$还是$(x_k + 1,y_k-1)$<br>更逼近圆。计算方法是取 $y_k$ 和 $y_k-1$ 的中点 $ y_k - {\frac 12}$计算其位置：<br>$$ p_k = f(x_k+1,y_k-{\frac 12}) = (x_k+1)^2 + (y_k-{\frac 12})^2 -r^2 $$</p>
+<ul>
+<li>若 p_k &gt; 0，则中点在圆外，下一个点应取 $(x_k + 1,y_k-1)$</li>
+<li>若 p_k = 0，则中点在圆上，下一个点理论上都能取，这里定为$(x_k + 1,y_k-1)$</li>
+<li>若 p_k &lt; 0，则中点在圆内，下一个点应取 $(x_k + 1,y_k)$</li>
+</ul>
+<p>算法过程可归纳为以下几步：</p>
+<ol>
+<li>假设圆的圆心为$(x_c,y_c)$，半径为r，确定第一个点<code>(0,r)</code></li>
+<li>令 <code>0 + 1</code>，计算判别式$p_0$的值，得到第二个点 <code>(1,r)</code> 或 <code>(1,r-1)</code></li>
+<li>计算其他七个八分圆坐标</li>
+<li>将以原点为圆心的坐标平移到以$(x_c,y_c)$为圆心的坐标</li>
+<li>绘制坐标点</li>
+<li>重复2、3、4、5步</li>
+</ol>
+<h3 id="优点-2"><a href="#优点-2" class="headerlink" title="优点"></a>优点</h3><p>整数运算，效率高，生成的圆与原图逼真度高。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://linghuam.github.io/2018/01/27/计算机图形学-圆生成算法/" data-id="cjcxdwh2u000wksbxz56m943h" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/圆生成算法/">圆生成算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+ <script src="/jquery/jquery.min.js"></script>
+  <div id="random_posts">
+    <h2>推荐文章</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =3
+          var site = {BASE_URI:'/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/01/24/前端面试/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">前端面试题汇总</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+       
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+       
+      
+      
+           <div id="gitment_comments"></div>
+    
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#圆的定义"><span class="toc-number">1.</span> <span class="toc-text">圆的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#笛卡尔坐标系的勾股方程法"><span class="toc-number">2.</span> <span class="toc-text">笛卡尔坐标系的勾股方程法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#优点"><span class="toc-number">2.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺点"><span class="toc-number">2.2.</span> <span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#极坐标系的参数方程法"><span class="toc-number">3.</span> <span class="toc-text">极坐标系的参数方程法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#优点-1"><span class="toc-number">3.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺点-1"><span class="toc-number">3.2.</span> <span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#中点画圆算法"><span class="toc-number">4.</span> <span class="toc-text">中点画圆算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#优点-2"><span class="toc-number">4.1.</span> <span class="toc-text">优点</span></a></li></ol></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+    
+  
+    <!--微信公众号二维码-->
+
+
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2018 Linghuam&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;linghuam2016@gmail.com
+    </div>
+  </div>
+</footer>
+ <script src="/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="https://linghuam.github.io/project-gallery/dist/#/" class="mobile-nav-link">项目展示</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+  
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "e2fb4051c49842688ce669e634bc983f",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+    
+
+  
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script> 
+  <script>
+  var gitment = new Gitment({
+    // id: '页面 ID', // 可选。默认为 location.href
+    owner: 'linghuam',
+    repo: 'linghuam.github.io',
+    oauth: {
+    client_id: '17ad04af6a057fbb5072',
+    client_secret: '5bb953d9587f8f1bde7c956bda62db16779dab4c',
+    }
+  })
+  gitment.render(document.getElementById("gitment_comments"))
+</script>
+
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ <script src="/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/elevator.js"></script>
+  </div>
+</body>
+</html>
