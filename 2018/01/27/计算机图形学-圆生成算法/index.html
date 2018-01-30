@@ -125,7 +125,7 @@
 <li>若 f(x,y) = 0，则 (x,y) 在圆上；</li>
 <li>若 f(x,y) &lt; 0，则 (x,y) 在圆内；</li>
 </ul>
-<p>假设在$(x_k,y_k)$处画了一个像素，下一步就是要确定是位置$(x_k + 1,y_k)$还是$(x_k + 1,y_k-1)$<br>更逼近圆。计算方法是取 $y_k$ 和 $y_k-1$ 的中点 $ y_k - {\frac 12}$计算其位置：<br>$$ p_k = f(x_k+1,y_k-{\frac 12}) = (x_k+1)^2 + (y_k-{\frac 12})^2 -r^2 $$</p>
+<p>假设在$(x_k,y_k)$处画了一个像素，下一步就是要确定是位置$(x_k + 1,y_k)$还是$(x_k + 1,y_k-1)$<br>更逼近圆。计算方法是取 $y_k$ 和 $y_k-1$ 的中点 $ y_k - {\\frac 12}$计算其位置：<br>$$ p_k = f(x_k+1,y_k-{\frac 12}) = (x_k+1)^2 + (y_k-{\frac 12})^2 -r^2 $$</p>
 <ul>
 <li>若 p_k &gt; 0，则中点在圆外，下一个点应取 $(x_k + 1,y_k-1)$</li>
 <li>若 p_k = 0，则中点在圆上，下一个点理论上都能取，这里定为$(x_k + 1,y_k-1)$</li>
@@ -145,7 +145,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linghuam.github.io/2018/01/27/计算机图形学-圆生成算法/" data-id="cjcxdwh2u000wksbxz56m943h" class="article-share-link">分享</a>
+      <a data-url="http://linghuam.github.io/2018/01/27/计算机图形学-圆生成算法/" data-id="cjd1rquab0013qxbxep8lglzy" class="article-share-link">分享</a>
       
       
       
@@ -198,6 +198,15 @@
 
     
 <nav id="article-nav">
+  
+    <a href="/2018/01/27/计算机图形学-名词集锦/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          计算机图形学-名词集锦
+        
+      </div>
+    </a>
   
   
     <a href="/2018/01/24/前端面试/" id="article-nav-older" class="article-nav-link-wrap">
@@ -351,7 +360,8 @@ window.onload = function() {
     <script type="text/x-mathjax-config">
       MathJax.Hub.Config({
         tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          inlineMath: [ ['$','$'] ],
+          displayMath: [ ["$$","$$"] ], //段内公式选择$$
           processEscapes: true,
           skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
         }
@@ -366,7 +376,7 @@ window.onload = function() {
         }
       })
     </script>
-    <script type="text/javascript" src="https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
