@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>前端面试-浏览器 | 华仔的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="浏览器">
+<meta name="keywords" content="浏览器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端面试-浏览器">
+<meta property="og:url" content="http://linghuam.github.io/2018/01/30/前端面试-浏览器/index.html">
+<meta property="og:site_name" content="华仔的博客">
+<meta property="og:description" content="浏览器">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-01-31T18:21:25.133Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端面试-浏览器">
+<meta name="twitter:description" content="浏览器">
+  
+    <link rel="alternate" href="/atom.xml" title="华仔的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://linghuam.github.io"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="https://linghuam.github.io/project-gallery/dist/#/">项目展示</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">华仔的博客</a>
+      </h1>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-前端面试-浏览器" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/30/前端面试-浏览器/" class="article-date">
+  <time datetime="2018-01-30T15:41:20.000Z" itemprop="datePublished">2018-01-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/前端面试/">前端面试</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      前端面试-浏览器
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h2><a id="more"></a>
+<h3 id="浏览器渲染原理"><a href="#浏览器渲染原理" class="headerlink" title="浏览器渲染原理?"></a>浏览器渲染原理?</h3><p><strong>过程：</strong>解析 HTML 构建 DOM 树、解析 CSS 构建 Render 树 -&gt; Layout -&gt; Paint -&gt; Composite。</p>
+<p>期间可引起重绘和重排。</p>
+<p><strong>减少重绘和重排方法：</strong></p>
+<ul>
+<li>不要频繁操作 DOM，应该合并处理；</li>
+<li>position 设为 fixed 或 absolute；</li>
+<li>不要用 table 布局；</li>
+<li>尽量使用 css 动画。</li>
+</ul>
+<h3 id="HTML页面加载和解析流程"><a href="#HTML页面加载和解析流程" class="headerlink" title="HTML页面加载和解析流程?"></a>HTML页面加载和解析流程?</h3><ol>
+<li>用户输入网址（假设是个html页面，并且是第一次访问），浏览器向服务器发出请求，服务器返回html文件；</li>
+<li>浏览器开始载入html代码，发现＜head＞标签内有一个＜link＞标签引用外部CSS文件；</li>
+<li>浏览器又发出CSS文件的请求，服务器返回这个CSS文件；</li>
+<li>浏览器继续载入html中＜body＞部分的代码，并且CSS文件已经拿到手了，可以开始渲染页面了；</li>
+<li>浏览器在代码中发现一个＜img＞标签引用了一张图片，向服务器发出请求。此时浏览器不会等到图片下载完，而是继续渲染后面的代码；</li>
+<li>服务器返回图片文件，由于图片占用了一定面积，影响了后面段落的排布，因此浏览器需要回过头来重新渲染这部分代码；</li>
+<li>浏览器发现了一个包含一行Javascript代码的＜script＞标签，赶快运行它；</li>
+<li>Javascript脚本执行了这条语句，它命令浏览器隐藏掉代码中的某个＜div＞ （style.display=”none”）。突然少了这么一个元素，浏览器不得不重新渲染这部分代码；</li>
+<li>终于等到了＜/html＞的到来，浏览器泪流满面……</li>
+<li>等等，还没完，用户点了一下界面中的“换肤”按钮，Javascript让浏览器换了一下＜link＞标签的CSS路径；</li>
+<li>浏览器召集了在座的各位＜div＞＜span＞＜ul＞＜li＞们，“大伙儿收拾收拾行李，咱得重新来过……”，浏览器向服务器请求了新的CSS文件，重新渲染页面。</li>
+</ol>
+<h3 id="session、cookie、sessionStorage、localStorage等区别"><a href="#session、cookie、sessionStorage、localStorage等区别" class="headerlink" title="session、cookie、sessionStorage、localStorage等区别?"></a>session、cookie、sessionStorage、localStorage等区别?</h3><p>详见：<a href="http://www.jb51.net/article/122101.htm" target="_blank" rel="noopener">http://www.jb51.net/article/122101.htm</a></p>
+<p>cookie存储在客户端，session存储在服务端，通过 session id 来识别客户端， session id存储在cookie中或url中。</p>
+<p>当客户端第一次请求session对象时，服务端生成一个id并发送给客户端，客户端在下次请求时，再将这个id发送给服务端。</p>
+<p>cookie安全性不好，session安全，但服务端压力大。</p>
+<h3 id="http？详解"><a href="#http？详解" class="headerlink" title="http？详解"></a>http？<a href="https://www.jianshu.com/p/6aa2fda4d4a1" target="_blank" rel="noopener">详解</a></h3><p><strong>协议分层：</strong> http应用层 ——&gt; TCP传输层 ——&gt; IP网络层 ——&gt; 链路层（网络接口）——&gt; 物理层（网卡）</p>
+<p><strong>封装：</strong>发送端在层与层传输数据时，每经过一层必定会打上改成所属的首部信息；接收端在层与层传输数据<br>时，每经过一层会把对应的首部消去。</p>
+<p>三次握手策略：</p>
+<h3 id="http-请求方法？"><a href="#http-请求方法？" class="headerlink" title="http 请求方法？"></a>http 请求方法？</h3><p>HTTP1.0定义了三种请求方法：GET, POST 和 HEAD方法。</p>
+<p>HTTP1.1新增了五种请求方法：PUT, DELETE, OPTIONS, TRACE 和 CONNECT 方法。</p>
+<ol>
+<li>| GET | 请求指定的页面信息，并返回实体主体。</li>
+<li>| HEAD | 类似于get请求，只不过返回的响应中没有具体的内容，用于获取报头。</li>
+<li>| POST | 向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中。POST请求可能会导致新的资源的建立和/或已有资源的修改。</li>
+<li>| PUT | 从客户端向服务器传送的数据取代指定的文档的内容。</li>
+<li>| DELETE |     请求服务器删除指定的页面。</li>
+<li>| CONNECT | HTTP/1.1协议中预留给能够将连接改为管道方式的代理服务器。</li>
+<li>| OPTIONS | 询问的请求，如CORS的预检请求。允许客户端查看服务器的性能。</li>
+<li>| TRACE | 回显服务器收到的请求，主要用于测试或诊断。</li>
+</ol>
+<h3 id="https？"><a href="#https？" class="headerlink" title="https？"></a>https？</h3><p>加密处理防止窃听。可通过SSL（Secure Socket Layer，安全套接层）或TLS（Transport Layer Security，安全传输协议）的组合使用，加密通信。与SSL组合使用的HTTP叫HTTPS。</p>
+<h3 id="从输入网址到看到页面的过程？"><a href="#从输入网址到看到页面的过程？" class="headerlink" title="从输入网址到看到页面的过程？"></a>从输入网址到看到页面的过程？</h3><h3 id="post、get区别？"><a href="#post、get区别？" class="headerlink" title="post、get区别？"></a>post、get区别？</h3><ol>
+<li>本质都是 TCP 连接，并无区别，只是贴上不同的标签，便于处理；</li>
+<li>get 只产生一个 TCP 数据包， post 产生两个 TCP数据包；</li>
+<li>get 在一次请求中将 header 和 data 发送给服务器，服务器返回 200；</li>
+<li>post 先发送 header 再 发送 data；</li>
+</ol>
+<h3 id="缓存？"><a href="#缓存？" class="headerlink" title="缓存？"></a>缓存？</h3><ul>
+<li>200 ok ：当浏览器没有缓存，或用户强制刷新，浏览器直接获取最新数据。</li>
+<li>304：由 last-modified/etag 控制。先发送请求到服务器，如果没有变化，返回304。</li>
+<li>200 from cache：由 expires/cache-control 控制。</li>
+</ul>
+<p>策略：<a href="http://www.cnblogs.com/skynet/archive/2012/11/28/2792503.html" target="_blank" rel="noopener">详情</a></p>
+<ul>
+<li>Expires 缺点:绝对时间</li>
+<li>Cache-Control 相对时间 max-age 控制缓存在时间</li>
+<li>Last-Modified/If-Modified-Since</li>
+<li>Etag/If-None-Match</li>
+</ul>
+<h3 id="http常见状态码？"><a href="#http常见状态码？" class="headerlink" title="http常见状态码？"></a>http常见状态码？</h3><ul>
+<li>2开头 （请求成功）表示成功处理了请求的状态代码。</li>
+<li>3开头 （请求被重定向）表示要完成请求，需要进一步操作。 通常，这些状态代码用来重定向。</li>
+<li>4开头 （请求错误）这些状态代码表示请求可能出错，妨碍了服务器的处理。</li>
+<li>5开头（服务器错误）这些状态代码表示服务器在尝试处理请求时发生内部错误。 这些错误可能是服务器本身的错误，而不是请求出错。</li>
+</ul>
+<h3 id="http请求头和响应头？"><a href="#http请求头和响应头？" class="headerlink" title="http请求头和响应头？"></a>http请求头和响应头？</h3><ol>
+<li><p>HTTP请求头</p>
+<p>accept：浏览器通过这个头告诉服务器，它所支持的数据类型。如：text/html, image/jpeg。</p>
+<p>accept-Charset：浏览器通过这个头告诉服务器，它支持哪种字符集。</p>
+<p>accept-encoding：浏览器通过这个头告诉服务器，它支持哪种压缩格式。</p>
+<p>accept-language：浏览器通过这个头告诉服务器，它的语言环境。</p>
+<p>host：浏览器通过这个头告诉服务器，它想访问哪台主机。</p>
+<p>if-modified-since：浏览器通过这个头告诉服务器，缓存数据的时间。</p>
+<p>referer：浏览器通过这个头告诉服</p>
+</li>
+<li><p>HTTP响应头</p>
+<p>location：服务器通过这个头告诉浏览器跳到哪里。</p>
+<p>server：服务器通过这个头告诉浏览器服务器的型号。</p>
+<p>content-encoding：服务器通过这个头告诉浏览器数据的压缩格式。</p>
+<p>content-length：服务器通过这个头告诉浏览器回送数据的长度。</p>
+<p>content-language：服务器通过这个头告诉浏览器语言环境。</p>
+<p>content-type：服务器通过这个头告诉浏览器回送数据的类型。</p>
+<p>refresh：服务器通过这个头告诉浏览器定时刷新。</p>
+<p>content-disposition：服务器通过这个头告诉浏览器以下载方式打开数据。</p>
+<p>transfer-encoding：服务器通过这个头告诉浏览器数据是以分块方式回送的务器，客户机是哪个页面来的(防盗链)。</p>
+<p>Connection：浏览器通过这个头告诉服务器，请求完后是断开链接还是维持链接。</p>
+</li>
+<li><p>HTTP响应头<br>location：服务器通过这个头告诉浏览器跳到哪里。<br>server：服务器通过这个头告诉浏览器服务器的型号。<br>content-encoding：服务器通过这个头告诉浏览器数据的压缩格式。<br>content-length：服务器通过这个头告诉浏览器回送数据的长度。<br>content-language：服务器通过这个头告诉浏览器语言环境。<br>content-type：服务器通过这个头告诉浏览器回送数据的类型。<br>refresh：服务器通过这个头告诉浏览器定时刷新。<br>content-disposition：服务器通过这个头告诉浏览器以下载方式打开数据。<br>transfer-encoding：服务器通过这个头告诉浏览器数据是以分块方式回送的</p>
+<h3 id="前端优化一般都做哪些？"><a href="#前端优化一般都做哪些？" class="headerlink" title="前端优化一般都做哪些？"></a>前端优化一般都做哪些？</h3></li>
+</ol>
+<p><a href="https://www.zhihu.com/question/21658448" target="_blank" rel="noopener">详情地址</a></p>
+<h3 id="浏览器内核？常见兼容性问题？常用hack技巧？"><a href="#浏览器内核？常见兼容性问题？常用hack技巧？" class="headerlink" title="浏览器内核？常见兼容性问题？常用hack技巧？"></a>浏览器内核？常见兼容性问题？常用hack技巧？</h3><p><a href="https://zhuanlan.zhihu.com/p/27447843" target="_blank" rel="noopener">详情</a></p>
+<p>IE：Trident</p>
+<p>Mozilla: Gecko</p>
+<p>Goole: webkit</p>
+<p>Opera: Presto</p>
+<p>浏览器默认margin、padding不同。解决办法是加一个全局的。</p>
+<h3 id="gzip压缩？"><a href="#gzip压缩？" class="headerlink" title="gzip压缩？"></a>gzip压缩？</h3><p>GZIP，即网页压缩，是由WEB服务器和浏览器之间共同遵守的协议，也就是说WEB服务器和浏览器都必须支持该技术，而现在主流的浏览器都是支持的，包括IE、FireFox、谷歌浏览器、Opera 等。常见的WEB服务器有Apache 和IIS 等。双方的协商过程如下：</p>
+<p>1、首先浏览器请求某个URL 地址，并在请求的头 (head) 中设置属性accept-encoding值为gzip、deflate，表明浏览器支持gzip和deflate这两种压缩方式。</p>
+<p>（注：gzip是一种数据压缩格式，默认且目前仅使用deflate算法压缩data部分；deflate是一种压缩算法,是huffman编码的一种加强。）</p>
+<p>2、WEB服务器接收到请求后判断浏览器是否支持压缩，如果支持就传送压缩后的响应内容，否则传送不经过压缩的内容；</p>
+<p>3、浏览器获取响应内容后，判断内容是否被压缩，如果是则解压缩，然后显示响应页面的内容。（IE5.5以上才支持gzip）</p>
+<p>GZIP压缩的比率往往在3到10倍，也就是本来90k大小的页面，采用压缩后实际传输的内容大小只有28至30K大小，这可以大大节省服务器的网络带宽，同时如果应用程序的响应足够快时，网站的速度瓶颈就转到了网络的传输速度上，因此内容压缩后就可以大大的提升页面的浏览速度。</p>
+<p><strong>web服务器处理http压缩的过程：</strong></p>
+<ol>
+<li><p>Web服务器接收到浏览器的HTTP请求后，检查浏览器是否支持HTTP压缩（Accept-Encoding 信息）；</p>
+</li>
+<li><p>如果浏览器支持HTTP压缩，Web服务器检查请求文件的后缀名；</p>
+</li>
+<li><p>如果请求文件是HTML、CSS等静态文件，Web服务器到压缩缓冲目录中检查是否已经存在请求文件的最新压缩文件；</p>
+</li>
+<li><p>如果请求文件的压缩文件不存在，Web服务器向浏览器返回未压缩的请求文件，并在压缩缓冲目录中存放请求文件的压缩文件；</p>
+</li>
+<li><p>如果请求文件的最新压缩文件已经存在，则直接返回请求文件的压缩文件；</p>
+</li>
+<li><p>如果请求文件是动态文件，Web服务器动态压缩内容并返回浏览器，压缩内容不存放到压缩缓存目录中。</p>
+</li>
+</ol>
+<p>在HTTP1.1开始，Web客户端可以通过<strong>Acceppt-Encoding</strong>请求头来标识对压缩的支持。服务端响应头标识<strong>content-encoding:gzip</strong>采用的压缩方法。</p>
+<h3 id="如何提高数据传输性能？"><a href="#如何提高数据传输性能？" class="headerlink" title="如何提高数据传输性能？"></a>如何提高数据传输性能？</h3><ul>
+<li>采用 gzip 压缩</li>
+<li>简化数据结构和字段长度</li>
+<li>对某些数据编码</li>
+</ul>
+<h3 id="XSS是什么，攻击原理，怎么预防？"><a href="#XSS是什么，攻击原理，怎么预防？" class="headerlink" title="XSS是什么，攻击原理，怎么预防？"></a>XSS是什么，攻击原理，怎么预防？</h3><p><a href="http://blog.csdn.net/qq_21956483/article/details/54377947" target="_blank" rel="noopener">http://blog.csdn.net/qq_21956483/article/details/54377947</a></p>
+<p><strong>定义：</strong></p>
+<p>XSS攻击是Web攻击中最常见的攻击方法之一，它是通过对网页注入可执行代码且成功地被浏览器<br>执行，达到攻击的目的，形成了一次有效XSS攻击，一旦攻击成功，它可以获取用户的联系人列<br>表，然后向联系人发送虚假诈骗信息，可以删除用户的日志等等，有时候还和其他攻击方式同时实<br>施比如SQL注入攻击服务器和数据库、Click劫持、相对链接劫持等实施钓鱼，它带来的危害是巨<br>大的，是web安全的头号大敌。</p>
+<p><strong>攻击条件：</strong></p>
+<ol>
+<li>向web页面注入恶意代码；</li>
+<li>这些恶意代码能够被浏览器成功的执行。</li>
+</ol>
+<p><strong>攻击类型：</strong></p>
+<ol>
+<li>XSS<strong>反射型</strong>攻击，恶意代码并没有保存在目标网站，通过引诱用户点击一个链接到目标网站的恶意链接来实施攻击的。</li>
+<li>XSS<strong>存储型</strong>攻击，恶意代码被保存到目标网站的服务器中，这种攻击具有较强的稳定性和持久性，比较常见场景是在博客，论坛等社交网站上，但OA系统，和CRM系统上也能看到它身影，比如：某CRM系统的客户投诉功能上存在XSS存储型漏洞，黑客提交了恶意攻击代码，当系统管理员查看投诉信息时恶意代码执行，窃取了客户的资料，然而管理员毫不知情，这就是典型的XSS存储型攻击。</li>
+</ol>
+<p><strong>解决办法：</strong></p>
+<ol>
+<li>在表单提交或url参数传递前对参数进行过滤。如：过滤html字符，过滤非法js和css，url参数编码等</li>
+<li>过滤用户输入的字符，检查用户输入的内容中是否有非法内容。如&lt;&gt;（尖括号）、”（引号）、 ‘（单引号）、%（百分比符号）、;（分号）、()（括号）、&amp;（&amp; 符号）、+（加号）等。严格控制输出。</li>
+<li>不要进入不安全的网站、不要提交敏感信息。</li>
+</ol>
+<h3 id="CRSF-跨站请求伪造？"><a href="#CRSF-跨站请求伪造？" class="headerlink" title="CRSF:跨站请求伪造？"></a>CRSF:跨站请求伪造？</h3><p><strong>定义：</strong><br>CSRF（Cross-site request forgery）跨站请求伪造，也被称为“One Click Attack”或者Session Riding，通常缩写为CSRF或者XSRF，是一种对网站的恶意利用。尽管听起来像跨站脚本（XSS），但它与XSS非常不同，XSS利用站点内的信任用户，而CSRF则通过伪装来自受信任用户的请求来利用受信任的网站。与XSS攻击相比，CSRF攻击往往不大流行（因此对其进行防范的资源也相当稀少）和难以防范，所以被认为比XSS更具危险性。</p>
+<p><strong>CSRF的常见特性：</strong></p>
+<ul>
+<li>依靠用户标识危害网站</li>
+<li>利用网站对用户标识的信任</li>
+<li>欺骗用户的浏览器发送HTTP请求给目标站点</li>
+<li>另外可以通过IMG标签会触发一个GET请求，可以利用它来实现CSRF攻击。</li>
+</ul>
+<p><strong>CSRF攻击依赖下面的假定：</strong></p>
+<ul>
+<li>攻击者了解受害者所在的站点</li>
+<li>攻击者的目标站点具有持久化授权cookie或者受害者具有当前会话cookie</li>
+<li>目标站点没有对用户在网站行为的第二授权</li>
+</ul>
+<p><strong>解决办法：</strong><br>利用Token。</p>
+<p>Token，就是令牌，最大的特点就是随机性，不可预测。一般黑客或软件无法猜测出来。</p>
+<p>Token一般用在两个地方:</p>
+<p>1)防止表单重复提交、</p>
+<p>2)anti csrf攻击（跨站点请求伪造）。</p>
+<p>两者在原理上都是通过session token来实现的。当客户端请求页面时，服务器会生成一个随机数Token，并且将Token放置到session当中，然后将Token发给客户端（一般通过构造hidden表单）。下次客户端提交请求时，Token会随着表单一起提交到服务器端。</p>
+<p>然后，如果应用于“anti csrf攻击”，则服务器端会对Token值进行验证，判断是否和session中的Token值相等，若相等，则可以证明请求有效，不是伪造的。</p>
+<p>不过，如果应用于“防止表单重复提交”，服务器端第一次验证相同过后，会将session中的Token值更新下，若用户重复提交，第二次的验证判断将失败，因为用户提交的表单中的Token没变，但服务器端session中Token已经改变了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://linghuam.github.io/2018/01/30/前端面试-浏览器/" data-id="cjd1tsyml001azgbxvt88t6u2" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/浏览器/">浏览器</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+ <script src="/jquery/jquery.min.js"></script>
+  <div id="random_posts">
+    <h2>推荐文章</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =3
+          var site = {BASE_URI:'/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+    <a href="/2018/01/30/前端面试-移动端/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          前端面试-移动端
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/01/30/前端面试-图形库/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">前端面试-图形库</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+       
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+       
+      
+      
+           <div id="gitment_comments"></div>
+    
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#浏览器"><span class="toc-number">1.</span> <span class="toc-text">浏览器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#浏览器渲染原理"><span class="toc-number">1.1.</span> <span class="toc-text">浏览器渲染原理?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML页面加载和解析流程"><span class="toc-number">1.2.</span> <span class="toc-text">HTML页面加载和解析流程?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#session、cookie、sessionStorage、localStorage等区别"><span class="toc-number">1.3.</span> <span class="toc-text">session、cookie、sessionStorage、localStorage等区别?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#http？详解"><span class="toc-number">1.4.</span> <span class="toc-text">http？详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#http-请求方法？"><span class="toc-number">1.5.</span> <span class="toc-text">http 请求方法？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#https？"><span class="toc-number">1.6.</span> <span class="toc-text">https？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#从输入网址到看到页面的过程？"><span class="toc-number">1.7.</span> <span class="toc-text">从输入网址到看到页面的过程？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#post、get区别？"><span class="toc-number">1.8.</span> <span class="toc-text">post、get区别？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缓存？"><span class="toc-number">1.9.</span> <span class="toc-text">缓存？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#http常见状态码？"><span class="toc-number">1.10.</span> <span class="toc-text">http常见状态码？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#http请求头和响应头？"><span class="toc-number">1.11.</span> <span class="toc-text">http请求头和响应头？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#前端优化一般都做哪些？"><span class="toc-number">1.12.</span> <span class="toc-text">前端优化一般都做哪些？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#浏览器内核？常见兼容性问题？常用hack技巧？"><span class="toc-number">1.13.</span> <span class="toc-text">浏览器内核？常见兼容性问题？常用hack技巧？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gzip压缩？"><span class="toc-number">1.14.</span> <span class="toc-text">gzip压缩？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何提高数据传输性能？"><span class="toc-number">1.15.</span> <span class="toc-text">如何提高数据传输性能？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#XSS是什么，攻击原理，怎么预防？"><span class="toc-number">1.16.</span> <span class="toc-text">XSS是什么，攻击原理，怎么预防？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CRSF-跨站请求伪造？"><span class="toc-number">1.17.</span> <span class="toc-text">CRSF:跨站请求伪造？</span></a></li></ol></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+    
+  
+    <!--微信公众号二维码-->
+
+
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2018 Linghuam&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;linghuam2016@gmail.com
+    </div>
+  </div>
+</footer>
+ <script src="/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="https://linghuam.github.io/project-gallery/dist/#/" class="mobile-nav-link">项目展示</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+  
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "e2fb4051c49842688ce669e634bc983f",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+    
+
+  
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script> 
+  <script>
+  var gitment = new Gitment({
+    // id: '页面 ID', // 可选。默认为 location.href
+    owner: 'linghuam',
+    repo: 'linghuam.github.io',
+    oauth: {
+    client_id: '17ad04af6a057fbb5072',
+    client_secret: '5bb953d9587f8f1bde7c956bda62db16779dab4c',
+    }
+  })
+  gitment.render(document.getElementById("gitment_comments"))
+</script>
+
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'] ],
+          displayMath: [ ["$$","$$"] ], //段内公式选择$$
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ <script src="/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/elevator.js"></script>
+  </div>
+</body>
+</html>
