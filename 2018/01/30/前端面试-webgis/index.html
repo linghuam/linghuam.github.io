@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="华仔的博客">
 <meta property="og:description" content="leaflet、mapbox、webGIS">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-02-01T08:22:21.283Z">
+<meta property="og:updated_time" content="2018-02-02T02:42:57.419Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端面试-webgis">
 <meta name="twitter:description" content="leaflet、mapbox、webGIS">
@@ -112,7 +112,16 @@
 </li>
 </ul>
 <p><a href="https://www.cnblogs.com/naaoveGIS/p/3930603.html" target="_blank" rel="noopener">https://www.cnblogs.com/naaoveGIS/p/3930603.html</a><br><a href="https://www.jianshu.com/p/b5dbdbd5cd8c" target="_blank" rel="noopener">https://www.jianshu.com/p/b5dbdbd5cd8c</a><br><a href="http://blog.csdn.net/yht_roy/article/details/39346235" target="_blank" rel="noopener">http://blog.csdn.net/yht_roy/article/details/39346235</a></p>
-<h3 id="插值算法实现原理？"><a href="#插值算法实现原理？" class="headerlink" title="插值算法实现原理？"></a>插值算法实现原理？</h3><p><a href="http://www.cnblogs.com/naaoveGIS/p/6142226.html" target="_blank" rel="noopener">http://www.cnblogs.com/naaoveGIS/p/6142226.html</a><br><a href="https://en.wikipedia.org/wiki/Bilinear_interpolation" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Bilinear_interpolation</a></p>
+<h3 id="插值算法实现原理？"><a href="#插值算法实现原理？" class="headerlink" title="插值算法实现原理？"></a>插值算法实现原理？</h3><ul>
+<li>已知条件：一系列离散点；要插的值序列，如：[3,5,7,9]</li>
+<li>网格化。采用 IDW 算法将离散点网格化。</li>
+<li>取一个待插值数 p0，将每个网格的顶点数值与之相减，结果大于零则标记为’+’，结果小于零则标记为’-‘</li>
+<li>这样就得到一个顶点要么是正，要么是负的网格。</li>
+<li>逐一的处理每个网格，取网格各个边的中点，然后找到将正负分开的连线将中点相连接</li>
+<li>重复上诉过程，插另一个值</li>
+</ul>
+<p><a href="http://blog.csdn.net/silangquan/article/details/47054309" target="_blank" rel="noopener">http://blog.csdn.net/silangquan/article/details/47054309</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Marching_squares" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Marching_squares</a></p>
 
       
     </div>
