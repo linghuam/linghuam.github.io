@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="华仔的博客">
 <meta property="og:description" content="JavaScript">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-02-01T13:41:21.697Z">
+<meta property="og:updated_time" content="2018-02-26T14:06:00.650Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端面试-JavaScript">
 <meta name="twitter:description" content="JavaScript">
@@ -100,10 +100,10 @@
         <!-- Table of Contents -->
         
         <h2 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h2><a id="more"></a>
-<h3 id="JavaScript-数据类型分哪些？"><a href="#JavaScript-数据类型分哪些？" class="headerlink" title="JavaScript 数据类型分哪些？"></a>JavaScript 数据类型分哪些？</h3><p><strong>基本类型：</strong> Number、String、Boolean、Undefined、Null、Object</p>
+<h3 id="JavaScript-数据类型分哪些？"><a href="#JavaScript-数据类型分哪些？" class="headerlink" title="JavaScript 数据类型分哪些？"></a>JavaScript 数据类型分哪些？</h3><p><strong>基本类型：</strong> Number、String、Boolean、Undefined、Null、Symbol(ES6)、Object</p>
 <p><strong>派生类型：</strong> Function、Array、Map、Set</p>
 <h3 id="JavaScript-内置对象？"><a href="#JavaScript-内置对象？" class="headerlink" title="JavaScript 内置对象？"></a>JavaScript 内置对象？</h3><p>Date、Array、Math、Number、Boolean、String、RegExp、Function、Map、Set、WeakMap、WeakSet</p>
-<h3 id="typeof-操作符结果？"><a href="#typeof-操作符结果？" class="headerlink" title="typeof 操作符结果？"></a>typeof 操作符结果？</h3><p><strong>可能的值：</strong>“undefined” | “boolean” | “string” | “number” | “object” | “function” | “symbol”</p>
+<h3 id="typeof-操作符结果？"><a href="#typeof-操作符结果？" class="headerlink" title="typeof 操作符结果？"></a>typeof 操作符结果？</h3><p><strong>可能的值：</strong> “undefined” | “boolean” | “string” | “number” | “object” | “function” | “symbol”</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> <span class="literal">null</span> === <span class="string">'object'</span>；</span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> <span class="built_in">Array</span> === <span class="string">'object'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> &#123;&#125; === <span class="string">'object'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> <span class="keyword">new</span> Person() === <span class="string">'object'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> <span class="keyword">new</span> <span class="built_in">Function</span>() ==== <span class="string">'function'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> <span class="built_in">Object</span> === <span class="string">'function'</span>；</span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> <span class="built_in">Function</span> === <span class="string">'function'</span>；</span><br></pre></td></tr></table></figure>
 <h3 id="原型和原型链"><a href="#原型和原型链" class="headerlink" title="原型和原型链?"></a>原型和原型链?</h3><p>js中一切皆对象，分为普通对象和函数对象。</p>
 <p>js中每个对象（函数、数组、数字…）都有 <code>__proto__</code> 属性，但只有函数对象才有 <code>prototype</code> 属性。</p>
@@ -111,24 +111,41 @@
 <p>js创建(new)对象时，将 <code>person.__proto__ = Person.prototype</code>。</p>
 <p>原型和原型链是JS实现继承的一种模型。</p>
 <p>原型链的形成是真正是靠<code>__proto__</code>而非 <code>prototype</code>。</p>
-<h3 id="闭包及常用的场景、作用域、单例模式"><a href="#闭包及常用的场景、作用域、单例模式" class="headerlink" title="闭包及常用的场景、作用域、单例模式?"></a>闭包及常用的场景、作用域、单例模式?</h3><p>局部变量不能共享和长久保存，全局变量会造成全局污染，而闭包避免了这两个问题。</p>
-<p>js 作用域是函数作用域。</p>
-<p>闭包就是一个函数引用另外一个函数的变量。</p>
-<p>当多个方法共享一个变量时，可用闭包实现；</p>
-<p>在面向对象中，可用闭包实现私有变量；</p>
-<p>因为变量被引用，所以不会被垃圾回收，闭包占用内存、消耗性能，使用要小心。</p>
-<h3 id="js-异步的理解？"><a href="#js-异步的理解？" class="headerlink" title="js 异步的理解？"></a>js 异步的理解？</h3><p>js是单线程的。</p>
+<h3 id="闭包及常用的场景、作用域、单例模式"><a href="#闭包及常用的场景、作用域、单例模式" class="headerlink" title="闭包及常用的场景、作用域、单例模式?"></a>闭包及常用的场景、作用域、单例模式?</h3><ul>
+<li>背景<ul>
+<li>局部变量不能共享和长久保存，全局变量会造成全局污染，而闭包避免了这两个问题。</li>
+<li>js 作用域是函数作用域。</li>
+<li>闭包就是一个函数引用另外一个函数的变量。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>使用场景 <a href="http://blog.csdn.net/yanghua_kobe/article/details/6780181" target="_blank" rel="noopener">http://blog.csdn.net/yanghua_kobe/article/details/6780181</a><ul>
+<li>setTimeout 调用。setTimeout 的第一个参数为函数，如果要向这个函数传参数，可以定义一个有参数函数并<br>返回一个无参函数。</li>
+<li>将函数关联到对象的实例方法，一个 javascript 对象被封装用来参与一个特定 DOM 元素的交互，将对象和方法名作为<br>参数传递给一个函数，它返回一个函数，在这个函数内部执行并返回对象的该方法，其实就是事件绑定。</li>
+<li>封装相关的功能集，多个函数共享一个变量，为了避免全局污染，可用闭包声明一个自执行函数。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>注意事项<br>因为变量被引用，所以不会被垃圾回收，闭包占用内存、消耗性能，使用要小心。</li>
+</ul>
+<h3 id="js-异步的理解？"><a href="#js-异步的理解？" class="headerlink" title="js 异步的理解？"></a>js 异步的理解？</h3><p>js异步编程的4种方法：<a href="http://www.ruanyifeng.com/blog/2012/12/asynchronous%EF%BC%BFjavascript.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2012/12/asynchronous%EF%BC%BFjavascript.html</a></p>
+<p>js异步的理解：<a href="http://blog.csdn.net/ebay/article/details/50952294" target="_blank" rel="noopener">http://blog.csdn.net/ebay/article/details/50952294</a></p>
+<p>js运行是采用单线程的。决定JavaScript 是否多线程执⾏行是Runtime。JavaScript 的Runtime 有如chrome 中V8、Node.js 等。</p>
+<p>为什么会单线程执行，有些理由还是很有道理的：设计GUI 框架，多线程的方式抢占资源是很容易造成死锁的，特别是在操作DOM 上，如果两个线程同时执行，一个执行删除元素，一个执行添加元素，页面就会造成混乱，作为和人直接接触的图形界面，如果出现这种现象，基本上就算是反常识了。</p>
+<p>JavaScript 的 Runtime 将不耗时的计算指令在指定的一个主线程中不间断执行，其它耗时的任务，Runtime 会利用回调交给浏览器，由浏览器另行开辟线程来执行，最后将结果集返回给主线程就可以了。</p>
 <p>js通过<strong>事件循环</strong>和<strong>消息队列</strong>来执行异步操作的。</p>
-<p>js只有一个线程，成为主线程，只有当主线程执行完成后才会将异步操作放到主线程继续执行。</p>
 <p>js中常用的异步有：</p>
 <ul>
-<li>回调函数</li>
-<li>事件监听</li>
-<li>发布/订阅</li>
+<li>凡是带有回调函数作为参数的 API 都是异步的，如 DOM事件、 setTimeOut、Ajax请求等</li>
+<li>发布/订阅模式</li>
 <li>promise</li>
 <li>generator（ES6）</li>
 <li>async/await(ES7)</li>
 </ul>
+<p><strong>回调和异步不等价</strong>，没有回调，JavaScript 仍然可以是异步，有回调，也可能是同步的！以promise为证，promise 本质是为了解决回调嵌套的问题，优化代码结构，若它本身没有继承并实例化一个异步API，它并不会异步执行。</p>
+<p>JavaScript 实现非阻塞运行的方式是异步，异步则使用到浏览器的线程来执行比较耗时的API，而JavaScript 本身仍是单线程。</p>
 <h3 id="JS继承的实现方式"><a href="#JS继承的实现方式" class="headerlink" title="JS继承的实现方式?"></a>JS继承的实现方式?</h3><ul>
 <li>构造函数继承、原型继承、拷贝继承、组合继承…</li>
 <li><p>寄生组合继承：通过寄生方式，砍掉父类的实例属性，这样，在两次调用父类构造的时候，不会构造两次，避免了组合继承的问题</p>
@@ -143,7 +160,26 @@
 <p><strong>函数防抖</strong>是指频繁触发的情况下，只有足够的空闲时间，才执行代码一次。比如生活中的坐公交，就是一定时间内，如果有人陆续刷卡上车，司机就不会开车。只有别人没刷卡了，司机才开车。</p>
 <p> 对于频繁的事件、频繁的ajax请求通过设置 setTimeout 来实现节流和防抖。</p>
 <h3 id="JavaScript的事件"><a href="#JavaScript的事件" class="headerlink" title="JavaScript的事件?"></a>JavaScript的事件?</h3><p>js 是通过消息队列来处理事件的。</p>
-<p><strong>DOM2事件流：</strong>捕获阶段 -&gt; 目标阶段 -&gt; 冒泡阶段。事件先从 document 往下流，在冒泡时触发目标事件，然后事件继续冒泡到跟节点。</p>
+<p><strong>事件类型：</strong> 捕获型事件、冒泡型事件、DOM事件流（同时支持前两种事件模型，默认冒泡，通过设置第三个参数为true设置捕获型）。</p>
+<p><strong>DOM2事件流：</strong> 捕获阶段 -&gt; 目标阶段 -&gt; 冒泡阶段。事件先从 document 往下流，在冒泡时触发目标事件，然后事件继续冒泡到跟节点。</p>
+<p><strong>事件处理程序：</strong></p>
+<ul>
+<li>DOM0 级事件处理程序</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"ok"</span> <span class="attr">onclick</span>=<span class="string">"alert('clicked！')"</span>&gt;</span><span class="tag">&lt;/<span class="name">input</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>或</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">'btn'</span>);</span><br><span class="line">btn.onclick = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>)</span>&#123;</span><br><span class="line">  alert(<span class="keyword">this</span>.id);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>DOM2 级事件处理程序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DOM2级事件定义了两个方法用于处理制定和删除事件处理程序的操作：addEventListener 和 removeEventListener。</span><br><span class="line">所有的DOM节点都包含这两个方法，并且都接收三个参数：事件类名、事件处理方法、一个布尔值。</span><br><span class="line">布尔参数true表示在捕获阶段调用事件处理程序；false表示在事件冒泡阶段处理。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>IE 事件处理程序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">实现了 DOM 两个类似的方法 attachEvent 和 detachEvent，这两个方法都接收两个相同的参数，事件处理程序名称和事件处理程序方法。</span><br><span class="line">由于 IE 只支持事件冒泡，所以添加的程序会被添加到冒泡阶段。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>跨浏览器的事件处理程序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">跨浏览器的事件处理程序就是创建一个对象，存放用于添加、删除事件处理程序的方法。</span><br><span class="line">方法接收三个参数：要操作的元素、事件名称、事件处理程序函数。</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 <p><strong>事件对象：</strong><code>event.stopPropagation</code>阻止事件传播；<code>event.preventDefault</code>阻止默认行为；<code>event.target</code> 事件源;<br><code>event.currentTarget</code> 当前绑定事件的元素。</p>
 <p><strong>事件委托：</strong> 将子元素的事件绑定到父元素上。优点：减少事件注册，节省内存；动态增加和修改子元素；</p>
 <h3 id="ajax请求方式"><a href="#ajax请求方式" class="headerlink" title="ajax请求方式?"></a>ajax请求方式?</h3><ol>
@@ -210,7 +246,7 @@
 </li>
 <li><p>WebSocket</p>
 </li>
-<li>iframe</li>
+<li>document.domain + iframe</li>
 <li>代理服务器</li>
 </ul>
 <h3 id="浅拷贝与深拷贝？"><a href="#浅拷贝与深拷贝？" class="headerlink" title="浅拷贝与深拷贝？"></a>浅拷贝与深拷贝？</h3><p>浅拷贝是改变引用，深拷贝递归进行，改变内存。</p>
@@ -301,6 +337,21 @@
 <li>arr.every(callback[,thisArg])：检测是否<strong>所有元素</strong>满足条件，返回 true or false。</li>
 <li>arr.some(callback[,thisArg])：检测<strong>至少有一个</strong>满足条件，返回 true or false。</li>
 </ul>
+<p><strong>字符串方法：</strong></p>
+<ul>
+<li>str.charAt(index): 得到索引为 index 处的字符。index 默认为零，范围 0 到 len -1，超出返回空。</li>
+<li>str.charCodeAt(index): 返回指定位置的字符的 Unicode 编码。这个返回值是 0 - 65535 之间的整数。</li>
+<li>str.concat(string2[, string3, …, stringN]): 连接字符串，返回连接后的新字符串。</li>
+<li>str.includes(searchString[, position]): 字符串是否包含某个子串，返回 true or false。</li>
+<li>str.indexOf(searchValue[, fromIndex]): 返回字符串中某个子串的位置，从前往后找，无则返回 -1。</li>
+<li>str.lastIndexOf(searchValue[, fromIndex]): 返回字符串中某个子串的位置，从后往前找，无则返回 -1。</li>
+<li>str.replace(regexp|substr, newSubstr|function): 字符串替换。</li>
+<li>str.slice(beginIndex[, endIndex]): 字符串切片。</li>
+<li>str.split([separator[, limit]]): 字符串分割。</li>
+<li>str.substr(start[, length]): 子串。</li>
+<li>str.substring(indexStart[, indexEnd]): 子串。</li>
+<li>str.trim(): 去除字符串首尾空格。</li>
+</ul>
 <p><strong>对象方法：</strong></p>
 <p><strong>对象属性描述符：</strong></p>
 <ul>
@@ -375,10 +426,10 @@
 </ol>
 <h3 id="JS模块化Commonjs-UMD-CMD规范的了解，以及ES6的模块化跟其他几种的区别，以及出现的意义？"><a href="#JS模块化Commonjs-UMD-CMD规范的了解，以及ES6的模块化跟其他几种的区别，以及出现的意义？" class="headerlink" title="JS模块化Commonjs,UMD,CMD规范的了解，以及ES6的模块化跟其他几种的区别，以及出现的意义？"></a>JS模块化Commonjs,UMD,CMD规范的了解，以及ES6的模块化跟其他几种的区别，以及出现的意义？</h3><ul>
 <li>CommonJS：服务端加载，同步，Nodejs</li>
-<li>AMD：前端加载，RequireJs，异步加载，预加载</li>
-<li>CMD：前端加载，Seajs，懒加载</li>
+<li>AMD：前端加载，RequireJs，异步加载，预加载（加载与执行同时发生）</li>
+<li>CMD：前端加载，Seajs，懒加载（先加载，需要时执行）</li>
 <li>UMD：AMD 和 CommonJS的糅合，解决跨平台；运行时</li>
-<li>ES6 Import、Export：通用；静态确定关系；</li>
+<li>ES6 Import、Export：通用；静态确定关系；（一个模块只加载一次，只执行一次，下次需要就从内存取，一个模块就是一个单例）</li>
 </ul>
 <h3 id="函数柯里化？以及说一下JS的API有哪些应用到了函数柯里化的实现？"><a href="#函数柯里化？以及说一下JS的API有哪些应用到了函数柯里化的实现？" class="headerlink" title="函数柯里化？以及说一下JS的API有哪些应用到了函数柯里化的实现？"></a>函数柯里化？以及说一下JS的API有哪些应用到了函数柯里化的实现？</h3><p>这个我就说了一下函数柯里化一些了解，以及在函数式编程的应用，最后说了一下JS中bind函数和数组的reduce方法用到了函数柯里化。</p>
 <h3 id="js-将数组排序并筛选出满足条件的元素组成新数组？"><a href="#js-将数组排序并筛选出满足条件的元素组成新数组？" class="headerlink" title="js 将数组排序并筛选出满足条件的元素组成新数组？"></a>js 将数组排序并筛选出满足条件的元素组成新数组？</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>];</span><br><span class="line"><span class="keyword">var</span> newarr = arr.sort(<span class="function">(<span class="params">a,b</span>) =&gt;</span> a-b).filter(<span class="function">(<span class="params">value</span>) =&gt;</span> value % <span class="number">2</span> === <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
@@ -386,7 +437,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linghuam.github.io/2018/01/30/前端面试-JavaScript/" data-id="cjd1tsymy0023zgbx6zghv5vh" class="article-share-link">分享</a>
+      <a data-url="http://linghuam.github.io/2018/01/30/前端面试-JavaScript/" data-id="cje5jhh5t000s8tgwisi3nvpc" class="article-share-link">分享</a>
       
       
       

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>前端面试-写代码 | 华仔的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="CSS 各种布局实现代码？js 实现深拷贝与浅拷贝？js 实现通用事件侦听函数？12345678910111213141516171819202122232425262728293031323334353637383940var EventUtil = &amp;#123;&amp;#125;;EventUtil.addEvent = function (element, type, fn)&amp;#123;  if">
+<meta name="keywords" content="写代码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端面试-写代码">
+<meta property="og:url" content="http://linghuam.github.io/2018/02/22/前端面试-写代码/index.html">
+<meta property="og:site_name" content="华仔的博客">
+<meta property="og:description" content="CSS 各种布局实现代码？js 实现深拷贝与浅拷贝？js 实现通用事件侦听函数？12345678910111213141516171819202122232425262728293031323334353637383940var EventUtil = &amp;#123;&amp;#125;;EventUtil.addEvent = function (element, type, fn)&amp;#123;  if">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-02-26T13:08:23.072Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端面试-写代码">
+<meta name="twitter:description" content="CSS 各种布局实现代码？js 实现深拷贝与浅拷贝？js 实现通用事件侦听函数？12345678910111213141516171819202122232425262728293031323334353637383940var EventUtil = &amp;#123;&amp;#125;;EventUtil.addEvent = function (element, type, fn)&amp;#123;  if">
+  
+    <link rel="alternate" href="/atom.xml" title="华仔的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://linghuam.github.io"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="https://linghuam.github.io/project-gallery/dist/#/">项目展示</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">华仔的博客</a>
+      </h1>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-前端面试-写代码" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/22/前端面试-写代码/" class="article-date">
+  <time datetime="2018-02-22T14:58:47.000Z" itemprop="datePublished">2018-02-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/前端面试/">前端面试</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      前端面试-写代码
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="CSS-各种布局实现代码？"><a href="#CSS-各种布局实现代码？" class="headerlink" title="CSS 各种布局实现代码？"></a>CSS 各种布局实现代码？</h2><h2 id="js-实现深拷贝与浅拷贝？"><a href="#js-实现深拷贝与浅拷贝？" class="headerlink" title="js 实现深拷贝与浅拷贝？"></a>js 实现深拷贝与浅拷贝？</h2><h2 id="js-实现通用事件侦听函数？"><a href="#js-实现通用事件侦听函数？" class="headerlink" title="js 实现通用事件侦听函数？"></a>js 实现通用事件侦听函数？</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> EventUtil = &#123;&#125;;</span><br><span class="line">EventUtil.addEvent = <span class="function"><span class="keyword">function</span> (<span class="params">element, type, fn</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (element.addEventListener)&#123; <span class="comment">// DOM2</span></span><br><span class="line">    element.addEventListener(type, fn, <span class="literal">false</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (element.attachEvent)&#123; <span class="comment">// IE</span></span><br><span class="line">    element.attachEvent(<span class="string">"on"</span> + type, fn);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123; <span class="comment">// DOM0</span></span><br><span class="line">    element[<span class="string">"on"</span> + type] = fn;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">EventUtil.removeEvent = <span class="function"><span class="keyword">function</span> (<span class="params">element, type, fn</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (element.removeEventListener)&#123; <span class="comment">// DOM2</span></span><br><span class="line">    element.removeEventListener(type, fn, <span class="literal">false</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (element.detachEvent)&#123; <span class="comment">// IE</span></span><br><span class="line">    element.detachEvent(<span class="string">"on"</span> + type, fn);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123; <span class="comment">// DOM0</span></span><br><span class="line">    element[<span class="string">"on"</span> + type] = <span class="literal">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">EventUtil.getEvent = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>)</span>&#123;</span><br><span class="line">  <span class="comment">// DOM 或 IE</span></span><br><span class="line">  <span class="keyword">return</span> e ? e : <span class="built_in">window</span>.event;</span><br><span class="line">&#125;;</span><br><span class="line">EventUtil.getTarget = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> e.target || e.srcElement;</span><br><span class="line">&#125;;</span><br><span class="line">EventUtil.preventDefault = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(e.preventDefault)&#123;</span><br><span class="line">    e.preventDefault();</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    e.returnValue = <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">EventUtil.stopPropagation = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (e.stopPropagation)&#123;</span><br><span class="line">    e.stopPropagation();</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    e.cancelBubble = <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="js-实现发布订阅模式？"><a href="#js-实现发布订阅模式？" class="headerlink" title="js 实现发布订阅模式？"></a>js 实现发布订阅模式？</h2><h2 id="js-操作-Class"><a href="#js-操作-Class" class="headerlink" title="js 操作 Class?"></a>js 操作 Class?</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">  Element.classList 只读</span></span><br><span class="line"><span class="comment">  Element.className 可读可写，空格分割的字符串</span></span><br><span class="line"><span class="comment">  Element.setAttribute('class', elm.getAttribute('class'))</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addClass</span>(<span class="params">el, className</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">if</span>(!hasClass(el, className))&#123;</span><br><span class="line">     el.className += <span class="string">' '</span> + className;</span><br><span class="line">     <span class="built_in">console</span>.log(el.className);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">removeClass</span>(<span class="params">el, className</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">if</span> (hasClass(el, className))&#123;</span><br><span class="line">     <span class="keyword">var</span> arr = el.className.split(<span class="string">' '</span>);</span><br><span class="line">     <span class="keyword">var</span> index = arr.indexOf(className);</span><br><span class="line">     arr.splice(index, <span class="number">1</span>);</span><br><span class="line">     el.className = arr.join(<span class="string">' '</span>);</span><br><span class="line">     <span class="built_in">console</span>.log(el.className);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hasClass</span>(<span class="params">el, className</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> classarr = el.className.split(<span class="string">' '</span>);</span><br><span class="line">  <span class="keyword">return</span> classarr.indexOf(className) &lt; <span class="number">0</span> ? <span class="literal">false</span> : <span class="literal">true</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="用promise手写ajax？"><a href="#用promise手写ajax？" class="headerlink" title="用promise手写ajax？"></a>用promise手写ajax？</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myAjax</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">    xhr.open(<span class="string">'GET'</span>, url);</span><br><span class="line">    xhr.onload = <span class="function"><span class="params">()</span> =&gt;</span> resolve(xhr.responseText);</span><br><span class="line">    xhr.onerror = <span class="function"><span class="params">()</span> =&gt;</span> reject(xhr.statusText);</span><br><span class="line">    xhr.send();</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="手写-JSONP-实现"><a href="#手写-JSONP-实现" class="headerlink" title="手写 JSONP 实现"></a>手写 JSONP 实现</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">window, document</span>)</span>&#123;</span><br><span class="line"><span class="meta">  "use strict"</span>;</span><br><span class="line">  <span class="keyword">var</span> jsonp = <span class="function"><span class="keyword">function</span> (<span class="params">url ,data, callback</span>)</span>&#123;</span><br><span class="line">     <span class="comment">// 处理 data</span></span><br><span class="line">     <span class="keyword">var</span> dataString = url.indexOf(<span class="string">'?'</span>) === <span class="number">-1</span> ? <span class="string">'?'</span> : <span class="string">'&amp;'</span>;</span><br><span class="line">     <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> data )&#123;</span><br><span class="line">       <span class="keyword">if</span> (data.hasOwnProperty(key))&#123;</span><br><span class="line">         dataString += key + <span class="string">'='</span> + data[key] + <span class="string">'&amp;'</span>;</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="comment">// 生成 callbackFn123</span></span><br><span class="line">     <span class="keyword">var</span> callbackFnName = <span class="string">'my_jsonp_cb'</span> + <span class="built_in">Math</span>.random().toString().replace(<span class="string">'.'</span>,<span class="string">' '</span>);</span><br><span class="line">     dataString += <span class="string">'callback='</span> + callbackFnName;</span><br><span class="line">     <span class="comment">// 创建 script 标签</span></span><br><span class="line">     <span class="keyword">var</span> scriptEle = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</span><br><span class="line">     scriptEle.src = url + dataString;</span><br><span class="line">     <span class="comment">// 挂载回调函数</span></span><br><span class="line">     <span class="built_in">window</span>[callbackFnName] = <span class="function"><span class="keyword">function</span> (<span class="params">data</span>)</span>&#123;</span><br><span class="line">       callback(data);</span><br><span class="line">       <span class="comment">// 处理完回调函数的数据之后，删除jsonp的script标签</span></span><br><span class="line">       <span class="built_in">document</span>.body.removeChild(scriptEle);</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="comment">// append 到页面中</span></span><br><span class="line">     <span class="built_in">document</span>.body.appendChild(scriptEle);</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="built_in">window</span>.jsonp = jsonp;</span><br><span class="line">&#125;)(<span class="built_in">window</span>, <span class="built_in">document</span>);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://linghuam.github.io/2018/02/22/前端面试-写代码/" data-id="cje5jhh6000158tgw3dt3r7hr" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/写代码/">写代码</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+ <script src="/jquery/jquery.min.js"></script>
+  <div id="random_posts">
+    <h2>推荐文章</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =3
+          var site = {BASE_URI:'/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+    <a href="/2018/02/26/前端面试-美团/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          前端面试-美团
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/02/22/前端面试-算法/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">前端面试-算法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+       
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+       
+      
+      
+           <div id="gitment_comments"></div>
+    
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS-各种布局实现代码？"><span class="toc-number">1.</span> <span class="toc-text">CSS 各种布局实现代码？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#js-实现深拷贝与浅拷贝？"><span class="toc-number">2.</span> <span class="toc-text">js 实现深拷贝与浅拷贝？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#js-实现通用事件侦听函数？"><span class="toc-number">3.</span> <span class="toc-text">js 实现通用事件侦听函数？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#js-实现发布订阅模式？"><span class="toc-number">4.</span> <span class="toc-text">js 实现发布订阅模式？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#js-操作-Class"><span class="toc-number">5.</span> <span class="toc-text">js 操作 Class?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用promise手写ajax？"><span class="toc-number">6.</span> <span class="toc-text">用promise手写ajax？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#手写-JSONP-实现"><span class="toc-number">7.</span> <span class="toc-text">手写 JSONP 实现</span></a></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+    
+  
+    <!--微信公众号二维码-->
+
+
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2018 Linghuam&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;linghuam2016@gmail.com
+    </div>
+  </div>
+</footer>
+ <script src="/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="https://linghuam.github.io/project-gallery/dist/#/" class="mobile-nav-link">项目展示</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+  
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "e2fb4051c49842688ce669e634bc983f",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+    
+
+  
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script> 
+  <script>
+  var gitment = new Gitment({
+    // id: '页面 ID', // 可选。默认为 location.href
+    owner: 'linghuam',
+    repo: 'linghuam.github.io',
+    oauth: {
+    client_id: '17ad04af6a057fbb5072',
+    client_secret: '5bb953d9587f8f1bde7c956bda62db16779dab4c',
+    }
+  })
+  gitment.render(document.getElementById("gitment_comments"))
+</script>
+
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'] ],
+          displayMath: [ ["$$","$$"] ], //段内公式选择$$
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ <script src="/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/elevator.js"></script>
+  </div>
+</body>
+</html>
