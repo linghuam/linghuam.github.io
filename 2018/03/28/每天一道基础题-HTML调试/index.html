@@ -3,20 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>gitignore配置文件 | 华仔的博客</title>
+  <title>每天一道基础题-HTML调试 | 华仔的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="gitignore 文件是用来标记文件是否被纳入版本管理系统的配置文件，一般在 git 仓库的根目录下创建名为 .gitignore的文件。下面详细说明它的一些用法。">
-<meta name="keywords" content="git">
+  <meta name="description" content="每日的基础学习笔记，不求大而全，追求精致和短小，主要从底层技术基础开始，记录一些核心概念、实践应用和原理方法，帮助自己理解前端基础，建立前端知识体系。多问几个为什么、怎么做">
+<meta name="keywords" content="html">
 <meta property="og:type" content="article">
-<meta property="og:title" content="gitignore配置文件">
-<meta property="og:url" content="http://linghuam.github.io/2018/01/05/gitignore配置文件/index.html">
+<meta property="og:title" content="每天一道基础题-HTML调试">
+<meta property="og:url" content="http://linghuam.github.io/2018/03/28/每天一道基础题-HTML调试/index.html">
 <meta property="og:site_name" content="华仔的博客">
-<meta property="og:description" content="gitignore 文件是用来标记文件是否被纳入版本管理系统的配置文件，一般在 git 仓库的根目录下创建名为 .gitignore的文件。下面详细说明它的一些用法。">
+<meta property="og:description" content="每日的基础学习笔记，不求大而全，追求精致和短小，主要从底层技术基础开始，记录一些核心概念、实践应用和原理方法，帮助自己理解前端基础，建立前端知识体系。多问几个为什么、怎么做">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-12T05:12:22.951Z">
+<meta property="og:updated_time" content="2018-03-28T15:09:15.826Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="gitignore配置文件">
-<meta name="twitter:description" content="gitignore 文件是用来标记文件是否被纳入版本管理系统的配置文件，一般在 git 仓库的根目录下创建名为 .gitignore的文件。下面详细说明它的一些用法。">
+<meta name="twitter:title" content="每天一道基础题-HTML调试">
+<meta name="twitter:description" content="每日的基础学习笔记，不求大而全，追求精致和短小，主要从底层技术基础开始，记录一些核心概念、实践应用和原理方法，帮助自己理解前端基础，建立前端知识体系。多问几个为什么、怎么做">
   
     <link rel="alternate" href="/atom.xml" title="华仔的博客" type="application/atom+xml">
   
@@ -71,14 +71,14 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-gitignore配置文件" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-每天一道基础题-HTML调试" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/01/05/gitignore配置文件/" class="article-date">
-  <time datetime="2018-01-05T09:31:00.000Z" itemprop="datePublished">2018-01-05</time>
+    <a href="/2018/03/28/每天一道基础题-HTML调试/" class="article-date">
+  <time datetime="2018-03-28T14:55:05.000Z" itemprop="datePublished">2018-03-28</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/config/">config</a>
+    <a class="article-category-link" href="/categories/每天一道基础题/">每天一道基础题</a>
   </div>
 
   </div>
@@ -89,7 +89,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      gitignore配置文件
+      每天一道基础题-HTML调试
     </h1>
   
 
@@ -99,88 +99,23 @@
       
         <!-- Table of Contents -->
         
-        <p>gitignore 文件是用来标记文件是否被纳入版本管理系统的配置文件，一般在 git 仓库的根目录下创建名为 <code>.gitignore</code>的文件。下面详细说明它的一些用法。<br><a id="more"></a></p>
-<h2 id="规则设计"><a href="#规则设计" class="headerlink" title="规则设计"></a>规则设计</h2><ul>
-<li><p>gitignore文件中一行代表一个规则</p>
-</li>
-<li><p>空白行不匹配任何文件，可以用它来作为分隔行</p>
-</li>
-<li><p>结尾的空格将被忽略，除非它们通过“\”引用</p>
-</li>
-<li><p>以”#”号开头的行是注释行</p>
-</li>
-<li><p>以星号“*”通配多个字符</p>
-</li>
-<li><p>以问号“?”通配单个字符</p>
-</li>
-<li><p>以方括号“[]”包含单个字符的匹配列表，如 “test[abc]d.txt” 匹配 “testad.txt” “testbd.txt” “testcd.txt”</p>
-</li>
-<li><p>叹号“!”表示不忽略(跟踪)匹配到的文件或目录，如 “test[abc]d.txt !test[c]d.txt” 将不会忽略 “testcd.txt”文件</p>
-</li>
-<li><p>路径包含“/”</p>
-</li>
-</ul>
-<blockquote>
-<p>“foo/” 将全局匹配foo路径下的所有文件，如：“foo/a.txt”，“foo/a/b”, “a/foo/b”都将被匹配</p>
-<p>“foo/*” 或 “foo/*.html” 将只会匹配跟目录下的文件，如：“foo/*” 会匹配 “foo/a/b” 但不会匹配 “a/b/foo/c”</p>
-</blockquote>
-<ul>
-<li>路径不包含“/”</li>
-</ul>
-<blockquote>
-<p>“foo” 将全局匹配foo路径，效果同 “foo/”</p>
-</blockquote>
-<ul>
-<li><p>头部的“/”匹配根目录下的路径，如：”/*.c” matches “cat-file.c” but not “mozilla-sha1/sha1.c”</p>
-</li>
-<li><p>双星号(**)</p>
-<ul>
-<li><p>以 “**“ 开头的匹配所有路径。如：”**/foo” matches file or directory “foo” anywhere, the same as pattern “foo”. “**/foo/bar” matches file or directory “bar” anywhere that is directly under directory “foo”.</p>
-</li>
-<li><p>以 “/**“ 结尾的匹配路径下的所有文件。如：”abc/**“ matches all files inside directory “abc”</p>
-</li>
-<li><p>以 “/**/“ 中部的匹配零个或一个路径。如：”a/**/b” matches “a/b”, “a/x/b”, “a/x/y/b” and so on</p>
-</li>
-<li><p>其他的模式被认为是无效的</p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul>
-<li><p>gitignore只能将还未被纳入版本控制系统的文件排除出版本控制，如果想把一个已经进入版本控制的文件排除出去，使用如下命令(点号不能忽略)：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git rm -r --cached .</span><br><span class="line">git add .</span><br><span class="line">git commit -m &apos;update .gitignore&apos;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Windows下创建.gitignore文件的常用方法</p>
-<ul>
-<li><p>方法一（最直接）：</p>
-<p>在资源管理创建文件时，文件命名“.gitignore.”，注意结尾有个.号，回车确认时系统会自动存成.gitignore。</p>
-</li>
-<li><p>方法二：</p>
-<p>打开文本编辑器，保存时文件名输入“.gitignore”，保存类型选“所有文件”、</p>
-</li>
-<li><p>方法三：</p>
-<p>进入cmd命令行，执行 echo &gt; .gitignore 输入空内容并创建文件，<br>或执行 rename somefile .gitignore、copy somefile .gitignore 从已有文件复制、重命名。</p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul>
-<li><p><a href="https://git-scm.com/docs/gitignore" target="_blank" rel="noopener">官方解释</a></p>
-</li>
-<li><p><a href="https://github.com/github/gitignore" target="_blank" rel="noopener">gitignore文件模板</a></p>
-</li>
-<li><p><a href="https://www.gitignore.io/" target="_blank" rel="noopener">自动生成gitignore文件网站</a></p>
-</li>
-</ul>
+        <p>每日的基础学习笔记，不求大而全，追求精致和短小，主要从底层技术基础开始，记录一些核心概念、实践应用和原理方法，帮助自己理解前端基础，建立前端知识体系。多问几个<strong>为什么、怎么做</strong><br><a id="more"></a></p>
+<h3 id="HTML-错误概述？"><a href="#HTML-错误概述？" class="headerlink" title="HTML 错误概述？"></a>HTML 错误概述？</h3><p>错误一般分为：<strong>语法错误</strong> 和 <strong>逻辑错误</strong>。</p>
+<p>HTML本身不容易因语法错误出错，因为浏览器是以<strong>宽松模式</strong>来运行，这意味着即使出现语法错误浏览器依然会运行。浏览器通常都有自己的规则来解析语法错误的标记语言，所以程序仍然会运行，尽管可能不是你预期的样子。这样当然仍然会带来问题。</p>
+<h3 id="调试方法"><a href="#调试方法" class="headerlink" title="调试方法"></a>调试方法</h3><h4 id="利用浏览器开发者工具"><a href="#利用浏览器开发者工具" class="headerlink" title="利用浏览器开发者工具"></a>利用浏览器开发者工具</h4><p>对于少量代码，直接用开发者工具就能检查出错误</p>
+<h4 id="利用代码检查工具"><a href="#利用代码检查工具" class="headerlink" title="利用代码检查工具"></a>利用代码检查工具</h4><p>适用于大量代码，自动化，省去人工麻烦<br><a href="https://validator.w3.org/" target="_blank" rel="noopener">https://validator.w3.org/</a></p>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><ol>
+<li>实际项目的 HTML 都是动态构建的，如何检查错误？？</li>
+</ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linghuam.github.io/2018/01/05/gitignore配置文件/" data-id="cjfb8afr7001we0bx69hjnb8y" class="article-share-link">分享</a>
+      <a data-url="http://linghuam.github.io/2018/03/28/每天一道基础题-HTML调试/" data-id="cjfb8afqp000we0bx2potb615" class="article-share-link">分享</a>
       
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li></ul>
 
     </footer>
   </div>
@@ -230,19 +165,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/01/12/直线生成算法-直线的DDA算法/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">
-        
-          直线生成算法-直线的DDA算法
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/01/05/git常用命令/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/03/27/每天一道基础题-基本的网站结构/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">git常用命令</div>
+      <div class="article-nav-title">每天一道基础题-基本的网站结构</div>
     </a>
   
 </nav>
@@ -280,7 +206,7 @@
       
         <strong class="toc-title">文章目录</strong>
         <div class="toc-widget-list">
-              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#规则设计"><span class="toc-number">1.</span> <span class="toc-text">规则设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注意事项"><span class="toc-number">2.</span> <span class="toc-text">注意事项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文档"><span class="toc-number">3.</span> <span class="toc-text">参考文档</span></a></li></ol>
+              <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML-错误概述？"><span class="toc-number">1.</span> <span class="toc-text">HTML 错误概述？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#调试方法"><span class="toc-number">2.</span> <span class="toc-text">调试方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#利用浏览器开发者工具"><span class="toc-number">2.1.</span> <span class="toc-text">利用浏览器开发者工具</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#利用代码检查工具"><span class="toc-number">2.2.</span> <span class="toc-text">利用代码检查工具</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题"><span class="toc-number">3.</span> <span class="toc-text">问题</span></a></li></ol>
           </div>
       </div>
     </div>
