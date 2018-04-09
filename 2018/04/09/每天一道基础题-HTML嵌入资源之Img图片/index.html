@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>每天一道基础题-HTML调试 | 华仔的博客</title>
+  <title>每天一道基础题-HTML嵌入资源之Img图片 | 华仔的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="每日的基础学习笔记，不求大而全，追求精致和短小，主要从底层技术基础开始，记录一些核心概念、实践应用和原理方法，帮助自己理解前端基础，建立前端知识体系。多问几个为什么、怎么做">
 <meta name="keywords" content="html">
 <meta property="og:type" content="article">
-<meta property="og:title" content="每天一道基础题-HTML调试">
-<meta property="og:url" content="http://linghuam.github.io/2018/03/28/每天一道基础题-HTML调试/index.html">
+<meta property="og:title" content="每天一道基础题-HTML嵌入资源之Img图片">
+<meta property="og:url" content="http://linghuam.github.io/2018/04/09/每天一道基础题-HTML嵌入资源之Img图片/index.html">
 <meta property="og:site_name" content="华仔的博客">
 <meta property="og:description" content="每日的基础学习笔记，不求大而全，追求精致和短小，主要从底层技术基础开始，记录一些核心概念、实践应用和原理方法，帮助自己理解前端基础，建立前端知识体系。多问几个为什么、怎么做">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-06T14:43:51.090Z">
+<meta property="og:updated_time" content="2018-04-09T14:54:35.400Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="每天一道基础题-HTML调试">
+<meta name="twitter:title" content="每天一道基础题-HTML嵌入资源之Img图片">
 <meta name="twitter:description" content="每日的基础学习笔记，不求大而全，追求精致和短小，主要从底层技术基础开始，记录一些核心概念、实践应用和原理方法，帮助自己理解前端基础，建立前端知识体系。多问几个为什么、怎么做">
   
     <link rel="alternate" href="/atom.xml" title="华仔的博客" type="application/atom+xml">
@@ -71,10 +71,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-每天一道基础题-HTML调试" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-每天一道基础题-HTML嵌入资源之Img图片" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/03/28/每天一道基础题-HTML调试/" class="article-date">
-  <time datetime="2018-03-28T14:55:05.000Z" itemprop="datePublished">2018-03-28</time>
+    <a href="/2018/04/09/每天一道基础题-HTML嵌入资源之Img图片/" class="article-date">
+  <time datetime="2018-04-09T13:32:29.000Z" itemprop="datePublished">2018-04-09</time>
 </a>
     
   <div class="article-category">
@@ -89,7 +89,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      每天一道基础题-HTML调试
+      每天一道基础题-HTML嵌入资源之Img图片
     </h1>
   
 
@@ -100,19 +100,41 @@
         <!-- Table of Contents -->
         
         <p>每日的基础学习笔记，不求大而全，追求精致和短小，主要从底层技术基础开始，记录一些核心概念、实践应用和原理方法，帮助自己理解前端基础，建立前端知识体系。多问几个<strong>为什么、怎么做</strong><br><a id="more"></a></p>
-<h3 id="HTML-错误概述？"><a href="#HTML-错误概述？" class="headerlink" title="HTML 错误概述？"></a>HTML 错误概述？</h3><p>错误一般分为：<strong>语法错误</strong> 和 <strong>逻辑错误</strong>。</p>
-<p>HTML本身不容易因语法错误出错，因为浏览器是以<strong>宽松模式</strong>来运行，这意味着即使出现语法错误浏览器依然会运行。浏览器通常都有自己的规则来解析语法错误的标记语言，所以程序仍然会运行，尽管可能不是你预期的样子。这样当然仍然会带来问题。</p>
-<h3 id="调试方法"><a href="#调试方法" class="headerlink" title="调试方法"></a>调试方法</h3><h4 id="利用浏览器开发者工具"><a href="#利用浏览器开发者工具" class="headerlink" title="利用浏览器开发者工具"></a>利用浏览器开发者工具</h4><p>对于少量代码，直接用开发者工具就能检查出错误</p>
-<h4 id="利用代码检查工具"><a href="#利用代码检查工具" class="headerlink" title="利用代码检查工具"></a>利用代码检查工具</h4><p>适用于大量代码，自动化，省去人工麻烦</p>
-<p><a href="https://validator.w3.org/" target="_blank" rel="noopener">W3C HTML验证器</a></p>
-<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><ol>
-<li>实际项目的 HTML 都是动态构建的，如何检查错误？？</li>
+<h3 id="Img-语义化？"><a href="#Img-语义化？" class="headerlink" title="Img 语义化？"></a>Img 语义化？</h3><p>向网页中添加图片有三种方式：</p>
+<ol>
+<li>HTML 方式，通过 img 标签添加图片（更具语义化）</li>
+<li>CSS 方式，通过 background-image 设置背景图（只具有装饰意义）</li>
+<li>JS 方式，通过 js 操作 canvas 绘制图形 （灵活，适用于一些精细化操作）</li>
 </ol>
+<p>以下做法会使 img 标签更好的支持 SEO：</p>
+<ol>
+<li>给图片资源起一个更具语义化的名字</li>
+<li>src 属性的路径使用相对路径，一是提高效率，减少 DNS 查询；二是更好的 SEO</li>
+<li>alt 属性赋值，便于机器识别、关闭图片节省带宽、兼容性</li>
+</ol>
+<h3 id="为图片搭配说明文字？"><a href="#为图片搭配说明文字？" class="headerlink" title="为图片搭配说明文字？"></a>为图片搭配说明文字？</h3><p>传统做法：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"figure"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"images/dinosaur.jpg"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">alt</span>=<span class="string">"The head and torso of a dinosaur skeleton;</span></span></span><br><span class="line"><span class="tag"><span class="string">            it has a large head with long sharp teeth"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">width</span>=<span class="string">"400"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">height</span>=<span class="string">"341"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>A T-Rex on display in the Manchester University Museum.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>HTML5 做法：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">figure</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"images/dinosaur.jpg"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">alt</span>=<span class="string">"The head and torso of a dinosaur skeleton;</span></span></span><br><span class="line"><span class="tag"><span class="string">            it has a large head with long sharp teeth"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">width</span>=<span class="string">"400"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">height</span>=<span class="string">"341"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">figcaption</span>&gt;</span>A T-Rex on display in the Manchester University Museum.<span class="tag">&lt;/<span class="name">figcaption</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">figure</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>注意：figure 可以是几张图片、一段代码、音视频、方程、表格或别的。</p>
+<h3 id="创建响应式图片？"><a href="#创建响应式图片？" class="headerlink" title="创建响应式图片？"></a>创建响应式图片？</h3><ol>
+<li>通过 img 标签的 srcset 和 sizes 两个新属性</li>
+<li>使用 picture、source 标签</li>
+<li>使用 css 媒体查询</li>
+</ol>
+<p>经典好文：</p>
+<ol>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images" target="_blank" rel="noopener">响应式图片 MDN 文档</a></li>
+<li><a href="https://css-tricks.com/responsive-images-youre-just-changing-resolutions-use-srcset/" target="_blank" rel="noopener">Responsive Images: If you’re just changing resolutions, use srcset</a></li>
+<li><a href="https://cloudfour.com/thinks/responsive-images-101-definitions/#responsive-images-101-series" target="_blank" rel="noopener">Responsive Images 101</a></li>
+</ol>
+<h3 id="其他？"><a href="#其他？" class="headerlink" title="其他？"></a>其他？</h3><ul>
+<li><a href="http://www.cnblogs.com/mumuxinfei/p/5256209.html" target="_blank" rel="noopener">盗链与防盗链</a></li>
+<li><a href="http://developer.51cto.com/art/201105/263526.htm" target="_blank" rel="noopener">8种网站防止盗链的方法</a></li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linghuam.github.io/2018/03/28/每天一道基础题-HTML调试/" data-id="cjfscyvja001bkqbxoc49b448" class="article-share-link">分享</a>
+      <a data-url="http://linghuam.github.io/2018/04/09/每天一道基础题-HTML嵌入资源之Img图片/" data-id="cjfscyvj60016kqbxl5xltkcj" class="article-share-link">分享</a>
       
       
       
@@ -166,19 +188,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/04/09/每天一道基础题-HTML嵌入资源之Img图片/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">
-        
-          每天一道基础题-HTML嵌入资源之Img图片
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/03/27/每天一道基础题-基本的网站结构/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/03/28/每天一道基础题-HTML调试/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">每天一道基础题-基本的网站结构</div>
+      <div class="article-nav-title">每天一道基础题-HTML调试</div>
     </a>
   
 </nav>
@@ -216,7 +229,7 @@
       
         <strong class="toc-title">文章目录</strong>
         <div class="toc-widget-list">
-              <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML-错误概述？"><span class="toc-number">1.</span> <span class="toc-text">HTML 错误概述？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#调试方法"><span class="toc-number">2.</span> <span class="toc-text">调试方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#利用浏览器开发者工具"><span class="toc-number">2.1.</span> <span class="toc-text">利用浏览器开发者工具</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#利用代码检查工具"><span class="toc-number">2.2.</span> <span class="toc-text">利用代码检查工具</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题"><span class="toc-number">3.</span> <span class="toc-text">问题</span></a></li></ol>
+              <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Img-语义化？"><span class="toc-number">1.</span> <span class="toc-text">Img 语义化？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#为图片搭配说明文字？"><span class="toc-number">2.</span> <span class="toc-text">为图片搭配说明文字？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建响应式图片？"><span class="toc-number">3.</span> <span class="toc-text">创建响应式图片？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他？"><span class="toc-number">4.</span> <span class="toc-text">其他？</span></a></li></ol>
           </div>
       </div>
     </div>
