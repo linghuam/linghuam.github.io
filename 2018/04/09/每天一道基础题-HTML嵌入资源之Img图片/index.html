@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="华仔的博客">
 <meta property="og:description" content="每日的基础学习笔记，不求大而全，追求精致和短小，主要从底层技术基础开始，记录一些核心概念、实践应用和原理方法，帮助自己理解前端基础，建立前端知识体系。多问几个为什么、怎么做">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-09T14:54:35.400Z">
+<meta property="og:updated_time" content="2018-04-09T15:00:13.472Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="每天一道基础题-HTML嵌入资源之Img图片">
 <meta name="twitter:description" content="每日的基础学习笔记，不求大而全，追求精致和短小，主要从底层技术基础开始，记录一些核心概念、实践应用和原理方法，帮助自己理解前端基础，建立前端知识体系。多问几个为什么、怎么做">
@@ -100,13 +100,13 @@
         <!-- Table of Contents -->
         
         <p>每日的基础学习笔记，不求大而全，追求精致和短小，主要从底层技术基础开始，记录一些核心概念、实践应用和原理方法，帮助自己理解前端基础，建立前端知识体系。多问几个<strong>为什么、怎么做</strong><br><a id="more"></a></p>
-<h3 id="Img-语义化？"><a href="#Img-语义化？" class="headerlink" title="Img 语义化？"></a>Img 语义化？</h3><p>向网页中添加图片有三种方式：</p>
+<h3 id="Img-语义化？"><a href="#Img-语义化？" class="headerlink" title="Img 语义化？"></a>Img 语义化？</h3><p><strong>向网页中添加图片有三种方式：</strong></p>
 <ol>
 <li>HTML 方式，通过 img 标签添加图片（更具语义化）</li>
 <li>CSS 方式，通过 background-image 设置背景图（只具有装饰意义）</li>
 <li>JS 方式，通过 js 操作 canvas 绘制图形 （灵活，适用于一些精细化操作）</li>
 </ol>
-<p>以下做法会使 img 标签更好的支持 SEO：</p>
+<p><strong>以下做法会使 img 标签更好的支持 SEO：</strong></p>
 <ol>
 <li>给图片资源起一个更具语义化的名字</li>
 <li>src 属性的路径使用相对路径，一是提高效率，减少 DNS 查询；二是更好的 SEO</li>
@@ -114,7 +114,7 @@
 </ol>
 <h3 id="为图片搭配说明文字？"><a href="#为图片搭配说明文字？" class="headerlink" title="为图片搭配说明文字？"></a>为图片搭配说明文字？</h3><p>传统做法：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"figure"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"images/dinosaur.jpg"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">alt</span>=<span class="string">"The head and torso of a dinosaur skeleton;</span></span></span><br><span class="line"><span class="tag"><span class="string">            it has a large head with long sharp teeth"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">width</span>=<span class="string">"400"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">height</span>=<span class="string">"341"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>A T-Rex on display in the Manchester University Museum.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>HTML5 做法：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">figure</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"images/dinosaur.jpg"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">alt</span>=<span class="string">"The head and torso of a dinosaur skeleton;</span></span></span><br><span class="line"><span class="tag"><span class="string">            it has a large head with long sharp teeth"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">width</span>=<span class="string">"400"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">height</span>=<span class="string">"341"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">figcaption</span>&gt;</span>A T-Rex on display in the Manchester University Museum.<span class="tag">&lt;/<span class="name">figcaption</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">figure</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>注意：figure 可以是几张图片、一段代码、音视频、方程、表格或别的。</p>
+<p><strong>注意：</strong>figure 可以是几张图片、一段代码、音视频、方程、表格或别的。</p>
 <h3 id="创建响应式图片？"><a href="#创建响应式图片？" class="headerlink" title="创建响应式图片？"></a>创建响应式图片？</h3><ol>
 <li>通过 img 标签的 srcset 和 sizes 两个新属性</li>
 <li>使用 picture、source 标签</li>
