@@ -3,20 +3,22 @@
 <head>
   <meta charset="utf-8">
   
-  <title>git-将本地仓库上传到github | 华仔的博客</title>
+  <title>每天一道基础题-CSS是如何工作的 | 华仔的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在开发中，我们通过git init命令在本地创建了一个版本库，但是如何把它上传到 github 上共享呢。">
-<meta name="keywords" content="git">
+  <meta name="description" content="每日的基础学习笔记，不求大而全，追求精致和短小，主要从底层技术基础开始，记录一些核心概念、实践应用和原理方法，帮助自己理解前端基础，建立前端知识体系。多问几个为什么、怎么做">
+<meta name="keywords" content="css">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git-将本地仓库上传到github">
-<meta property="og:url" content="http://linghuam.github.io/2018/01/04/git-将本地仓库上传到github/index.html">
+<meta property="og:title" content="每天一道基础题-CSS是如何工作的">
+<meta property="og:url" content="http://linghuam.github.io/2018/04/10/每天一道基础题-CSS是如何工作的/index.html">
 <meta property="og:site_name" content="华仔的博客">
-<meta property="og:description" content="在开发中，我们通过git init命令在本地创建了一个版本库，但是如何把它上传到 github 上共享呢。">
+<meta property="og:description" content="每日的基础学习笔记，不求大而全，追求精致和短小，主要从底层技术基础开始，记录一些核心概念、实践应用和原理方法，帮助自己理解前端基础，建立前端知识体系。多问几个为什么、怎么做">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-04T13:49:04.991Z">
+<meta property="og:image" content="http://linghuam.github.io/2018/04/10/每天一道基础题-CSS是如何工作的/01.png">
+<meta property="og:updated_time" content="2018-04-10T14:17:42.979Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git-将本地仓库上传到github">
-<meta name="twitter:description" content="在开发中，我们通过git init命令在本地创建了一个版本库，但是如何把它上传到 github 上共享呢。">
+<meta name="twitter:title" content="每天一道基础题-CSS是如何工作的">
+<meta name="twitter:description" content="每日的基础学习笔记，不求大而全，追求精致和短小，主要从底层技术基础开始，记录一些核心概念、实践应用和原理方法，帮助自己理解前端基础，建立前端知识体系。多问几个为什么、怎么做">
+<meta name="twitter:image" content="http://linghuam.github.io/2018/04/10/每天一道基础题-CSS是如何工作的/01.png">
   
     <link rel="alternate" href="/atom.xml" title="华仔的博客" type="application/atom+xml">
   
@@ -71,14 +73,14 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-git-将本地仓库上传到github" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-每天一道基础题-CSS是如何工作的" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/01/04/git-将本地仓库上传到github/" class="article-date">
-  <time datetime="2018-01-04T06:29:17.000Z" itemprop="datePublished">2018-01-04</time>
+    <a href="/2018/04/10/每天一道基础题-CSS是如何工作的/" class="article-date">
+  <time datetime="2018-04-10T13:42:04.000Z" itemprop="datePublished">2018-04-10</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/git/">git</a>
+    <a class="article-category-link" href="/categories/每天一道基础题/">每天一道基础题</a>
   </div>
 
   </div>
@@ -89,7 +91,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      git-将本地仓库上传到github
+      每天一道基础题-CSS是如何工作的
     </h1>
   
 
@@ -99,36 +101,30 @@
       
         <!-- Table of Contents -->
         
-        <p>在开发中，我们通过<code>git init</code>命令在本地创建了一个版本库，但是如何把它上传到 github 上共享呢。</p>
-<a id="more"></a>
-<p>其实这个问题再延伸一下，就是如何关联远程仓库和本地仓库。分以下几种情况：</p>
-<ul>
-<li>github有，本地无</li>
-<li>github无，本地有</li>
-<li>github有，本地有</li>
+        <p>每日的基础学习笔记，不求大而全，追求精致和短小，主要从底层技术基础开始，记录一些核心概念、实践应用和原理方法，帮助自己理解前端基础，建立前端知识体系。多问几个<strong>为什么、怎么做</strong><br><a id="more"></a></p>
+<h3 id="CSS-工作原理？"><a href="#CSS-工作原理？" class="headerlink" title="CSS 工作原理？"></a>CSS 工作原理？</h3><ul>
+<li>首先下载和解析 html 并最终形成 DOM(Document Object Model)</li>
+<li>当 html 还在解析时，下载和解析 CSS 并最终形成 CSSOM(CSS Object Model)</li>
+<li>浏览器根据 DOM 和 CSSOM 绘制渲染最终页面<br><br><img src="/2018/04/10/每天一道基础题-CSS是如何工作的/01.png" title="CSS工作原理图">
+</li>
 </ul>
-<h2 id="github有，本地无"><a href="#github有，本地无" class="headerlink" title="github有，本地无"></a>github有，本地无</h2><p>即在github上已经创建了一个库A，但本地上没有与之关联的库。</p>
-<p>此时只需执行以下命令即可在本地创建一个与之关联的库。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> 远程库地址</span><br><span class="line">// 如： git <span class="built_in">clone</span> https://github.com/linghuam/weichat.git</span><br></pre></td></tr></table></figure></p>
-<h2 id="github无，本地有"><a href="#github无，本地有" class="headerlink" title="github无，本地有"></a>github无，本地有</h2><p>先需要再github上创建一个空的远程库，然后转到<a href="#t1">github有，本地有</a></p>
-<h2 id="github有，本地有"><a href="#github有，本地有" class="headerlink" title="github有，本地有  "></a>github有，本地有  <span id="t1"></span></h2><p><strong> 第一步：</strong><br>在本地的git bash 中运行命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin 远程库地址</span><br><span class="line"></span><br><span class="line">// 如 git remote add origin https://github.com/linghuam/weichat.git</span><br></pre></td></tr></table></figure>
-<p>这句话的意思是：为本地库添加关联的远程库，远程库的名字是<code>origin</code>。</p>
-<p><strong> 第二步：</strong><br>将本地内容推送至远程库</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 1.将本地修改提交到本地库 （若已提交，不必执行）</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">'注释内容'</span></span><br><span class="line"></span><br><span class="line">// 2.合并远程库内容到本地库 （若远程库为空，不必执行）</span><br><span class="line">// --rebase参数解决分支分叉问题：http://blog.csdn.net/hudashi/article/details/7664631</span><br><span class="line">git pull --rebase origin master</span><br><span class="line"></span><br><span class="line">// 3. 将本地库推送到远程库</span><br><span class="line">// 加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令(不加-u)。</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li>git官网：<a href="https://git-scm.com/docs" target="_blank" rel="noopener">https://git-scm.com/docs</a></li>
-<li>Pro Git（中文版）：<a href="http://git.oschina.net/progit/index.html" target="_blank" rel="noopener">http://git.oschina.net/progit/index.html</a></li>
-<li>廖雪峰Git教程：<a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000</a></li>
+<h3 id="CSS-作用于-HTML-的几种方式？"><a href="#CSS-作用于-HTML-的几种方式？" class="headerlink" title="CSS 作用于 HTML 的几种方式？"></a>CSS 作用于 HTML 的几种方式？</h3><ol>
+<li>通过 link 标签导入单独的 css 文件</li>
+<li>通过 style 标签插入 css 代码</li>
+<li>通过 element 的 style 属性写入样式</li>
+</ol>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a href="https://hackernoon.com/episode-32-how-css-works-and-what-we-aim-for-with-css-ecf2304904a9" target="_blank" rel="noopener">Episode 32: How CSS works and what we aim for with CSS</a></li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linghuam.github.io/2018/01/04/git-将本地仓库上传到github/" data-id="cjftr351t000crwbxwymmeoik" class="article-share-link">分享</a>
+      <a data-url="http://linghuam.github.io/2018/04/10/每天一道基础题-CSS是如何工作的/" data-id="cjftr35240010rwbxybmbjim5" class="article-share-link">分享</a>
       
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
 
     </footer>
   </div>
@@ -178,19 +174,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/01/04/微信小程序开发入门/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">
-        
-          微信小程序开发入门
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/01/03/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/04/09/每天一道基础题-HTML嵌入资源之Img图片/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">Hello World</div>
+      <div class="article-nav-title">每天一道基础题-HTML嵌入资源之Img图片</div>
     </a>
   
 </nav>
@@ -228,7 +215,7 @@
       
         <strong class="toc-title">文章目录</strong>
         <div class="toc-widget-list">
-              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#github有，本地无"><span class="toc-number">1.</span> <span class="toc-text">github有，本地无</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#github无，本地有"><span class="toc-number">2.</span> <span class="toc-text">github无，本地有</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#github有，本地有"><span class="toc-number">3.</span> <span class="toc-text">github有，本地有  </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-number">4.</span> <span class="toc-text">参考资料</span></a></li></ol>
+              <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS-工作原理？"><span class="toc-number">1.</span> <span class="toc-text">CSS 工作原理？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS-作用于-HTML-的几种方式？"><span class="toc-number">2.</span> <span class="toc-text">CSS 作用于 HTML 的几种方式？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考"><span class="toc-number">3.</span> <span class="toc-text">参考</span></a></li></ol>
           </div>
       </div>
     </div>
