@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>每天一道基础题-HTML调试 | 华仔的博客</title>
+  <title>每天一道基础题-CSS的@规则 | 华仔的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="每日的基础学习笔记，不求大而全，追求精致和短小，主要从底层技术基础开始，记录一些核心概念、实践应用和原理方法，帮助自己理解前端基础，建立前端知识体系。多问几个为什么、怎么做">
-<meta name="keywords" content="html">
+<meta name="keywords" content="css">
 <meta property="og:type" content="article">
-<meta property="og:title" content="每天一道基础题-HTML调试">
-<meta property="og:url" content="http://linghuam.github.io/2018/03/28/每天一道基础题-HTML调试/index.html">
+<meta property="og:title" content="每天一道基础题-CSS的@规则">
+<meta property="og:url" content="http://linghuam.github.io/2018/04/11/每天一道基础题-CSS的@规则/index.html">
 <meta property="og:site_name" content="华仔的博客">
 <meta property="og:description" content="每日的基础学习笔记，不求大而全，追求精致和短小，主要从底层技术基础开始，记录一些核心概念、实践应用和原理方法，帮助自己理解前端基础，建立前端知识体系。多问几个为什么、怎么做">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-06T14:43:51.090Z">
+<meta property="og:updated_time" content="2018-04-11T15:57:37.972Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="每天一道基础题-HTML调试">
+<meta name="twitter:title" content="每天一道基础题-CSS的@规则">
 <meta name="twitter:description" content="每日的基础学习笔记，不求大而全，追求精致和短小，主要从底层技术基础开始，记录一些核心概念、实践应用和原理方法，帮助自己理解前端基础，建立前端知识体系。多问几个为什么、怎么做">
   
     <link rel="alternate" href="/atom.xml" title="华仔的博客" type="application/atom+xml">
@@ -71,10 +71,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-每天一道基础题-HTML调试" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-每天一道基础题-CSS的@规则" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/03/28/每天一道基础题-HTML调试/" class="article-date">
-  <time datetime="2018-03-28T14:55:05.000Z" itemprop="datePublished">2018-03-28</time>
+    <a href="/2018/04/11/每天一道基础题-CSS的@规则/" class="article-date">
+  <time datetime="2018-04-11T15:07:20.000Z" itemprop="datePublished">2018-04-11</time>
 </a>
     
   <div class="article-category">
@@ -89,7 +89,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      每天一道基础题-HTML调试
+      每天一道基础题-CSS的@规则
     </h1>
   
 
@@ -100,23 +100,31 @@
         <!-- Table of Contents -->
         
         <p>每日的基础学习笔记，不求大而全，追求精致和短小，主要从底层技术基础开始，记录一些核心概念、实践应用和原理方法，帮助自己理解前端基础，建立前端知识体系。多问几个<strong>为什么、怎么做</strong><br><a id="more"></a></p>
-<h3 id="HTML-错误概述？"><a href="#HTML-错误概述？" class="headerlink" title="HTML 错误概述？"></a>HTML 错误概述？</h3><p>错误一般分为：<strong>语法错误</strong> 和 <strong>逻辑错误</strong>。</p>
-<p>HTML本身不容易因语法错误出错，因为浏览器是以<strong>宽松模式</strong>来运行，这意味着即使出现语法错误浏览器依然会运行。浏览器通常都有自己的规则来解析语法错误的标记语言，所以程序仍然会运行，尽管可能不是你预期的样子。这样当然仍然会带来问题。</p>
-<h3 id="调试方法"><a href="#调试方法" class="headerlink" title="调试方法"></a>调试方法</h3><h4 id="利用浏览器开发者工具"><a href="#利用浏览器开发者工具" class="headerlink" title="利用浏览器开发者工具"></a>利用浏览器开发者工具</h4><p>对于少量代码，直接用开发者工具就能检查出错误</p>
-<h4 id="利用代码检查工具"><a href="#利用代码检查工具" class="headerlink" title="利用代码检查工具"></a>利用代码检查工具</h4><p>适用于大量代码，自动化，省去人工麻烦</p>
-<p><a href="https://validator.w3.org/" target="_blank" rel="noopener">W3C HTML验证器</a></p>
-<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><ol>
-<li>实际项目的 HTML 都是动态构建的，如何检查错误？？</li>
-</ol>
+<h3 id="作用？"><a href="#作用？" class="headerlink" title="@ 作用？"></a>@ 作用？</h3><p>@ 用于传递<strong>元数据</strong>、<strong>条件信息</strong> 或其他 <strong>描述性信息</strong>的。</p>
+<h3 id="常规-规则？"><a href="#常规-规则？" class="headerlink" title="常规 @ 规则？"></a>常规 @ 规则？</h3><p>@ + 规则名称 + 规则内容 + 分号</p>
+<ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/@charset" target="_blank" rel="noopener">@charset</a><br>，定义样式表使用的字符集</li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/@import" target="_blank" rel="noopener">@import</a>，告诉 CSS 引擎引入一个外部样式表</li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/@namespace" target="_blank" rel="noopener">@namespace</a>，告诉 CSS 引擎必须考虑 XML 命名空间</li>
+</ul>
+<h3 id="嵌套-规则？"><a href="#嵌套-规则？" class="headerlink" title="嵌套 @ 规则？"></a>嵌套 @ 规则？</h3><p>@ + 规则名称 + 嵌套内容</p>
+<ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/@media" target="_blank" rel="noopener">@media</a>，条件规则，媒体查询</li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/@page" target="_blank" rel="noopener">@page</a>，描述打印文档时布局的变化</li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/@font-face" target="_blank" rel="noopener">@font-face</a>，描述下载的外部字体</li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/@keyframes" target="_blank" rel="noopener">@keyframes</a>，描述 CSS 动画关键帧</li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/@supports" target="_blank" rel="noopener">@supports</a>，如果满足给定条件则条件规则组里的规则生效</li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/@document" target="_blank" rel="noopener">@document</a>，如果文档样式表满足给定条件则条件规则组里的规则生效</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linghuam.github.io/2018/03/28/每天一道基础题-HTML调试/" data-id="cjfva3me6001nupbxewv0vaqn" class="article-share-link">分享</a>
+      <a data-url="http://linghuam.github.io/2018/04/11/每天一道基础题-CSS的@规则/" data-id="cjfva3mdv0011upbxjpkhzxxz" class="article-share-link">分享</a>
       
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
 
     </footer>
   </div>
@@ -166,19 +174,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/04/09/每天一道基础题-HTML嵌入资源之Img图片/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">
-        
-          每天一道基础题-HTML嵌入资源之Img图片
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/03/27/每天一道基础题-基本的网站结构/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/04/10/每天一道基础题-CSS是如何工作的/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">每天一道基础题-基本的网站结构</div>
+      <div class="article-nav-title">每天一道基础题-CSS是如何工作的</div>
     </a>
   
 </nav>
@@ -216,7 +215,7 @@
       
         <strong class="toc-title">文章目录</strong>
         <div class="toc-widget-list">
-              <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML-错误概述？"><span class="toc-number">1.</span> <span class="toc-text">HTML 错误概述？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#调试方法"><span class="toc-number">2.</span> <span class="toc-text">调试方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#利用浏览器开发者工具"><span class="toc-number">2.1.</span> <span class="toc-text">利用浏览器开发者工具</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#利用代码检查工具"><span class="toc-number">2.2.</span> <span class="toc-text">利用代码检查工具</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题"><span class="toc-number">3.</span> <span class="toc-text">问题</span></a></li></ol>
+              <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#作用？"><span class="toc-number">1.</span> <span class="toc-text">@ 作用？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常规-规则？"><span class="toc-number">2.</span> <span class="toc-text">常规 @ 规则？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#嵌套-规则？"><span class="toc-number">3.</span> <span class="toc-text">嵌套 @ 规则？</span></a></li></ol>
           </div>
       </div>
     </div>
