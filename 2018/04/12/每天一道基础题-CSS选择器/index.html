@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>每天一道基础题-HTML超链接标签 | 华仔的博客</title>
+  <title>每天一道基础题-CSS选择器 | 华仔的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="每日的基础学习笔记，不求大而全，追求精致和短小，主要从底层技术基础开始，记录一些核心概念、实践应用和原理方法，帮助自己理解前端基础，建立前端知识体系。多问几个为什么、怎么做">
-<meta name="keywords" content="html">
+<meta name="keywords" content="css">
 <meta property="og:type" content="article">
-<meta property="og:title" content="每天一道基础题-HTML超链接标签">
-<meta property="og:url" content="http://linghuam.github.io/2018/03/23/每天一道基础题-HTML超链接标签/index.html">
+<meta property="og:title" content="每天一道基础题-CSS选择器">
+<meta property="og:url" content="http://linghuam.github.io/2018/04/12/每天一道基础题-CSS选择器/index.html">
 <meta property="og:site_name" content="华仔的博客">
 <meta property="og:description" content="每日的基础学习笔记，不求大而全，追求精致和短小，主要从底层技术基础开始，记录一些核心概念、实践应用和原理方法，帮助自己理解前端基础，建立前端知识体系。多问几个为什么、怎么做">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-27T02:20:22.325Z">
+<meta property="og:updated_time" content="2018-04-14T15:49:26.330Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="每天一道基础题-HTML超链接标签">
+<meta name="twitter:title" content="每天一道基础题-CSS选择器">
 <meta name="twitter:description" content="每日的基础学习笔记，不求大而全，追求精致和短小，主要从底层技术基础开始，记录一些核心概念、实践应用和原理方法，帮助自己理解前端基础，建立前端知识体系。多问几个为什么、怎么做">
   
     <link rel="alternate" href="/atom.xml" title="华仔的博客" type="application/atom+xml">
@@ -71,10 +71,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-每天一道基础题-HTML超链接标签" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-每天一道基础题-CSS选择器" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/03/23/每天一道基础题-HTML超链接标签/" class="article-date">
-  <time datetime="2018-03-23T11:47:29.000Z" itemprop="datePublished">2018-03-23</time>
+    <a href="/2018/04/12/每天一道基础题-CSS选择器/" class="article-date">
+  <time datetime="2018-04-12T13:50:27.000Z" itemprop="datePublished">2018-04-12</time>
 </a>
     
   <div class="article-category">
@@ -89,7 +89,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      每天一道基础题-HTML超链接标签
+      每天一道基础题-CSS选择器
     </h1>
   
 
@@ -100,43 +100,49 @@
         <!-- Table of Contents -->
         
         <p>每日的基础学习笔记，不求大而全，追求精致和短小，主要从底层技术基础开始，记录一些核心概念、实践应用和原理方法，帮助自己理解前端基础，建立前端知识体系。多问几个<strong>为什么、怎么做</strong><br><a id="more"></a></p>
-<h3 id="什么是超链接"><a href="#什么是超链接" class="headerlink" title="什么是超链接?"></a>什么是超链接?</h3><p>通过它定位到互联网上的各个资源，如文本、文件、图像、声音等。</p>
-<h3 id="最佳实践？"><a href="#最佳实践？" class="headerlink" title="最佳实践？"></a>最佳实践？</h3><h4 id="用清晰的链接措辞"><a href="#用清晰的链接措辞" class="headerlink" title="用清晰的链接措辞"></a>用清晰的链接措辞</h4><ul>
-<li>使用屏幕阅读器的用户喜欢从页面上的一个链接跳到另一个链接，并且脱离上下文来阅读链接。</li>
-<li>搜索引擎使用链接文本为索引目标文件所以，在链接文本中包含关键词是一个很好的主意，以有效地描述与之相关的信息。</li>
-<li>读者往往会浏览页面而不是阅读每一个字，他们的眼睛会被页面的特征所吸引，比如链接。他们会找到描述性的链接。</li>
-<li>不要重复URL作为链接文本的一部分</li>
-<li>不要在链接文本中说“link”或“links to”——它只是噪音</li>
-<li>保持你的链接标签尽可能短</li>
+<h3 id="选择器原理？"><a href="#选择器原理？" class="headerlink" title="选择器原理？"></a>选择器原理？</h3><p>浏览器的样式系统是从最右边的选择符开始向左进行匹配的</p>
+<blockquote>
+<p>The style system matches a rule by starting with the rightmost selector and moving to the left through the rule’s selectors. As long as your little subtree continues to check out, the style system will continue moving to the left until it either matches the rule or bails out because of a mismatch.</p>
+</blockquote>
+<h3 id="选择器分类？"><a href="#选择器分类？" class="headerlink" title="选择器分类？"></a>选择器分类？</h3><ul>
+<li><strong>简单选择器(Simple selectors)：</strong> tagName、id、class、*</li>
+<li><strong>属性选择器(Attribute selectors)：</strong>属性/属性值，<a href="https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Introduction_to_CSS/Attribute_selectors" target="_blank" rel="noopener">了解更多…</a></li>
+<li><strong>伪类(Pseudo-classes)：</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes" target="_blank" rel="noopener">了解更多…</a></li>
+<li><strong>伪元素(Pseudo-elements)：</strong><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements" target="_blank" rel="noopener">了解更多…</a></li>
+<li><strong>组合器(Combinators)：</strong> <a href="https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Introduction_to_CSS/Combinators_and_multiple_selectors" target="_blank" rel="noopener">了解更多…</a></li>
+<li><strong>多用选择器(Mutiple selectors)：</strong>将以逗号分隔开的多个选择器放在一个CSS规则下面， 以将一组声明应用于由这些选择器选择的所有元素。</li>
 </ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"https://firefox.com/"</span>&gt;</span>Download Firefox<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="尽可能使用相对链接"><a href="#尽可能使用相对链接" class="headerlink" title="尽可能使用相对链接"></a>尽可能使用相对链接</h4><p>当链接到另一个网站时，需要使用绝对链接。</p>
-<p>当链接到同一网站的其他位置时，需要使用相对链接。</p>
-<p>理由是：</p>
-<ol>
-<li>检查代码容易，因为相对链接相对绝对链接路径要短，阅读容易</li>
-<li>提升效率。当使用绝对链接时，每点击一次要进行 DNS 查询服务器的真实位置，然后才转到服务<br>器并查找所请求的文件，而相对避免了 DNS 查询</li>
-</ol>
-<h4 id="链接到非html资源-——-留下清晰的指示"><a href="#链接到非html资源-——-留下清晰的指示" class="headerlink" title="链接到非html资源 —— 留下清晰的指示"></a>链接到非html资源 —— 留下清晰的指示</h4><p>当链接到一个需要下载的资源（如PDF或Word文档）或流媒体（如视频或音频）或有另一个潜在的意想不到的效果（打开一个弹出窗口，或加载Flash电影），你应该添加明确的措辞，以减少任何混乱。如下的例子会让人反感：</p>
+<h3 id="选择器优先级？"><a href="#选择器优先级？" class="headerlink" title="选择器优先级？"></a>选择器优先级？</h3><p>为了内容完整性添加此标题，此处不作详细介绍，将在 CSS 层叠规则处介绍</p>
+<h3 id="关于-CSS-选择器性能问题？"><a href="#关于-CSS-选择器性能问题？" class="headerlink" title="关于 CSS 选择器性能问题？"></a>关于 CSS 选择器性能问题？</h3><p>《高性能网站建设指南》的作者 <a href="http://stevesouders.com/" target="_blank" rel="noopener">Steve Souders</a> 结论：</p>
 <ul>
-<li>如果你是在低带宽连接，点击一个链接，然后就开始下载大文件。</li>
-<li>如果你没有安装Flash播放器，点击一个链接，然后突然被带到一个需要Flash的页面。</li>
+<li>对于绝大部分网站，优化 CSS 选择器对网站整体性能的影响很小，不值得这么做。</li>
+<li>更应该关注某些类型的 CSS 选择器以及与 JavaScript 交互的部分，这才是影响性能的关键。</li>
 </ul>
-<h4 id="在下载链接时使用下载属性"><a href="#在下载链接时使用下载属性" class="headerlink" title="在下载链接时使用下载属性"></a>在下载链接时使用下载属性</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"https://download.mozilla.org/?product=firefox-39.0-SSL&amp;os=win&amp;lang=en-US"</span></span></span><br><span class="line"><span class="tag">   <span class="attr">download</span>=<span class="string">"firefox-39-installer.exe"</span>&gt;</span></span><br><span class="line">  Download Firefox 39 for Windows</span><br><span class="line"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="无障碍建议"><a href="#无障碍建议" class="headerlink" title="无障碍建议"></a>无障碍建议</h4><p>锚点标签常常通过将 href 属性设置为 “#” 或 “javascript:void(0)” 来创造一个能阻止页面刷新的伪按钮的方式被滥用。 这些属性值会在拖动 / 复制链接时导致意外行为，在新窗口 / 新标签打开链接，加入书签以及 JavaScript 仍在下载时会出现错误或被禁用。这也会向辅助技术（如屏幕阅读器）传达不正确的语义。在这些情况下，推荐使用 button 来代替。通常情况下，您应该只将锚点用于正常的 URL 导航。</p>
+<p>作者从选择器的原理的角度进一步探索了哪些 CSS 选择器真正的影响性能，他的结论是：</p>
+<ul>
+<li>影响性能的决定因素是<strong>最右边的选择器</strong>选择的范围大小。</li>
+</ul>
+<p>并给出了一些例子：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">a</span><span class="selector-class">.class007</span> * &#123;&#125;  <span class="comment">/* 最右边的通配符会选择所有元素，对性能有较大影响*/</span></span><br><span class="line"><span class="selector-tag">a</span><span class="selector-class">.class007</span> <span class="selector-tag">div</span> &#123;&#125;</span><br><span class="line"><span class="selector-id">#id0007</span> &gt; <span class="selector-tag">a</span>&#123;&#125;</span><br><span class="line"><span class="selector-class">.class007</span> <span class="selector-attr">[href]</span>&#123;&#125;</span><br><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:first-child</span>&#123;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>下面摘自作者的原话：</p>
+<blockquote>
+<p>For most web sites, the possible performance gains from optimizing CSS selectors will be small, and are not worth the costs. There are some types of CSS rules and interactions with JavaScript that can make a page noticeably slower. This is where the focus should be.</p>
+<p> For 70% or more of today’s users, improving these CSS selectors would only make a 20 ms improvement.</p>
+<p>The key to optimizing CSS selectors is to focus on the rightmost selector.</p>
+<p>Not all CSS selectors hurt performance, even those that might look expensive. The key is focusing on CSS selectors with a wide-matching key selector.</p>
+</blockquote>
 <h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a" target="_blank" rel="noopener">链接标签参考</a></li>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Learn/HTML/Introduction_to_HTML/Creating_hyperlinks" target="_blank" rel="noopener">链接最佳实践</a></li>
+<li><a href="https://www.stevesouders.com/blog/2009/03/10/performance-impact-of-css-selectors/" target="_blank" rel="noopener">Performance Impact of CSS Selectors</a></li>
+<li><a href="https://www.stevesouders.com/blog/2009/06/18/simplifying-css-selectors/" target="_blank" rel="noopener">Simplifying CSS Selectors</a></li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linghuam.github.io/2018/03/23/每天一道基础题-HTML超链接标签/" data-id="cjfzjy7ss002b1bbxeyocsx0k" class="article-share-link">分享</a>
+      <a data-url="http://linghuam.github.io/2018/04/12/每天一道基础题-CSS选择器/" data-id="cjfzjy7sk001z1bbxpteveoc0" class="article-share-link">分享</a>
       
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
 
     </footer>
   </div>
@@ -186,19 +192,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/03/25/每天一道基础题-HTML头标签Head/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">
-        
-          每天一道基础题-HTML头标签Head
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/03/22/每天一道基础题-js数组indexOf方法/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/04/11/每天一道基础题-CSS的@规则/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">每天一道基础题-js数组indexOf方法</div>
+      <div class="article-nav-title">每天一道基础题-CSS的@规则</div>
     </a>
   
 </nav>
@@ -236,7 +233,7 @@
       
         <strong class="toc-title">文章目录</strong>
         <div class="toc-widget-list">
-              <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是超链接"><span class="toc-number">1.</span> <span class="toc-text">什么是超链接?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最佳实践？"><span class="toc-number">2.</span> <span class="toc-text">最佳实践？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#用清晰的链接措辞"><span class="toc-number">2.1.</span> <span class="toc-text">用清晰的链接措辞</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#尽可能使用相对链接"><span class="toc-number">2.2.</span> <span class="toc-text">尽可能使用相对链接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#链接到非html资源-——-留下清晰的指示"><span class="toc-number">2.3.</span> <span class="toc-text">链接到非html资源 —— 留下清晰的指示</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在下载链接时使用下载属性"><span class="toc-number">2.4.</span> <span class="toc-text">在下载链接时使用下载属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#无障碍建议"><span class="toc-number">2.5.</span> <span class="toc-text">无障碍建议</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考"><span class="toc-number">3.</span> <span class="toc-text">参考</span></a></li></ol>
+              <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#选择器原理？"><span class="toc-number">1.</span> <span class="toc-text">选择器原理？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#选择器分类？"><span class="toc-number">2.</span> <span class="toc-text">选择器分类？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#选择器优先级？"><span class="toc-number">3.</span> <span class="toc-text">选择器优先级？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关于-CSS-选择器性能问题？"><span class="toc-number">4.</span> <span class="toc-text">关于 CSS 选择器性能问题？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考"><span class="toc-number">5.</span> <span class="toc-text">参考</span></a></li></ol>
           </div>
       </div>
     </div>
