@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="华仔的博客">
 <meta property="og:description" content="git教程 廖雪峰-git教程 高级教程-Pro Git 官网-GitBook">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-05T08:33:32.833Z">
+<meta property="og:updated_time" content="2018-04-16T09:55:55.898Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git常用命令">
 <meta name="twitter:description" content="git教程 廖雪峰-git教程 高级教程-Pro Git 官网-GitBook">
@@ -155,6 +155,12 @@
 </li>
 <li><p>合并分支</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge origin/serverfix //将远程分支合并到本地分支</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在远程创建一个与本地 branch_name 同名的分支并跟踪</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push --set-upstream origin branch_name</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在本地创建一个与 branch_name 同名分支跟踪远程分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout --track origin/branch_name</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="获取第三方远程库更新"><a href="#获取第三方远程库更新" class="headerlink" title="获取第三方远程库更新"></a>获取第三方远程库更新</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git remote add upstream  https://github.com/vuejs/vue.git</span><br><span class="line">git remote -v</span><br><span class="line">git fetch upstream/master</span><br><span class="line">git merge upstream/master</span><br></pre></td></tr></table></figure>
