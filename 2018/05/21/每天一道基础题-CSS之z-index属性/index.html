@@ -14,7 +14,7 @@
 <meta property="og:description" content="最近在做 Vue 项目时，使用 ElementUI 做页面的 UI 框架，但是在写页面的过程中出现很多奇怪的现象，调试发现一个原因是 ElementUI 框架改变了很多默认的样式，第二个原因是自己页面的 z-index 和 position 使用不恰当，遂决定要彻底弄懂一些 CSS 方面的问题，毕竟前端 CSS 是重要的一环，不能似懂非懂。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://linghuam.github.io/2018/05/21/每天一道基础题-CSS之z-index属性/01.png">
-<meta property="og:updated_time" content="2018-05-21T16:58:12.066Z">
+<meta property="og:updated_time" content="2018-05-22T13:12:12.136Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="每天一道基础题-CSS之z-index属性">
 <meta name="twitter:description" content="最近在做 Vue 项目时，使用 ElementUI 做页面的 UI 框架，但是在写页面的过程中出现很多奇怪的现象，调试发现一个原因是 ElementUI 框架改变了很多默认的样式，第二个原因是自己页面的 z-index 和 position 使用不恰当，遂决定要彻底弄懂一些 CSS 方面的问题，毕竟前端 CSS 是重要的一环，不能似懂非懂。">
@@ -164,6 +164,7 @@
 <ol>
 <li>IE6/IE7浏览器有个bug，就是z-index:auto的定位元素也会创建层叠上下文</li>
 <li>在过去，position:fixed和relative/absolute在层叠上下文这一块是一路货色，都是需要z-index为数值才行。但是，不知道什么时候起，Chrome等webkit内核浏览器，position:fixed元素天然层叠上下文元素，无需z-index为数值。根据我的测试，目前，IE以及FireFox仍是老套路。</li>
+<li>在我看来，觉得多数常见，z-index根本就没有出现的必要。知道了内联元素的层叠水平比块状元素高，于是，某条线你想覆盖上去的时候，需要设置position:relative吗？不需要，inline-block化就可以</li>
 </ol>
 </blockquote>
 <h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="不改变-html-结构，不改变-z-index-属性，不改变-position-属性的情况下，将红色框置于最底层？"><a href="#不改变-html-结构，不改变-z-index-属性，不改变-position-属性的情况下，将红色框置于最底层？" class="headerlink" title="不改变 html 结构，不改变 z-index 属性，不改变 position 属性的情况下，将红色框置于最底层？"></a>不改变 html 结构，不改变 z-index 属性，不改变 position 属性的情况下，将红色框置于最底层？</h3><p></p><p data-height="265" data-theme-id="dark" data-slug-hash="WJPqmY" data-default-tab="css,result" data-user="linghuam" data-embed-version="2" data-pen-title="Stacking Order (problem)" class="codepen">See the Pen <a href="https://codepen.io/linghuam/pen/WJPqmY/" target="_blank" rel="noopener">Stacking Order (problem)</a> by linghuam (<a href="https://codepen.io/linghuam" target="_blank" rel="noopener">@linghuam</a>) on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.</p><p></p>
@@ -182,7 +183,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linghuam.github.io/2018/05/21/每天一道基础题-CSS之z-index属性/" data-id="cjhgcqohy001dy7bxcwfvytb7" class="article-share-link">分享</a>
+      <a data-url="http://linghuam.github.io/2018/05/21/每天一道基础题-CSS之z-index属性/" data-id="cjhhtg7lr001k7mbxsz31ww1d" class="article-share-link">分享</a>
       
       
       
@@ -235,6 +236,15 @@
 
     
 <nav id="article-nav">
+  
+    <a href="/2018/05/22/每天一道基础题-CSS3的flex布局/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          每天一道基础题-CSS3的flex布局
+        
+      </div>
+    </a>
   
   
     <a href="/2018/04/23/地图鹰眼的设计与实现/" id="article-nav-older" class="article-nav-link-wrap">
