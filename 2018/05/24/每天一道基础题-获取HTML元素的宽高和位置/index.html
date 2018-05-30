@@ -20,14 +20,15 @@
 <meta property="og:image" content="http://linghuam.github.io/2018/05/24/每天一道基础题-获取HTML元素的宽高和位置/document.png">
 <meta property="og:image" content="http://linghuam.github.io/2018/05/24/每天一道基础题-获取HTML元素的宽高和位置/element.png">
 <meta property="og:image" content="http://linghuam.github.io/2018/05/24/每天一道基础题-获取HTML元素的宽高和位置/element-chart.png">
-<meta property="og:image" content="http://linghuam.github.io/2018/05/24/每天一道基础题-获取HTML元素的宽高和位置/scrollheight.png">
+<meta property="og:image" content="http://linghuam.github.io/2018/05/24/每天一道基础题-获取HTML元素的宽高和位置/elementscroll.png">
 <meta property="og:image" content="http://linghuam.github.io/2018/05/24/每天一道基础题-获取HTML元素的宽高和位置/htmlelement.png">
 <meta property="og:image" content="http://linghuam.github.io/2018/05/24/每天一道基础题-获取HTML元素的宽高和位置/htmlelement-chart.png">
 <meta property="og:image" content="http://linghuam.github.io/2018/05/24/每天一道基础题-获取HTML元素的宽高和位置/htmlimgelement.png">
 <meta property="og:image" content="http://linghuam.github.io/2018/05/24/每天一道基础题-获取HTML元素的宽高和位置/rang.png">
+<meta property="og:image" content="http://linghuam.github.io/2018/05/24/每天一道基础题-获取HTML元素的宽高和位置/getboundingclientrect.png">
 <meta property="og:image" content="http://linghuam.github.io/2018/05/24/每天一道基础题-获取HTML元素的宽高和位置/mouseevent.png">
 <meta property="og:image" content="http://linghuam.github.io/2018/05/24/每天一道基础题-获取HTML元素的宽高和位置/mouseevent-chart.png">
-<meta property="og:updated_time" content="2018-05-30T14:29:11.032Z">
+<meta property="og:updated_time" content="2018-05-30T15:32:44.589Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="每天一道基础题-获取HTML元素的宽高和位置">
 <meta name="twitter:description" content="在做一些组件和交互时，常常需要动态获取鼠标点击位置、元素宽高和元素位置信息，网上有很多种方法，但自己没有总结过，不知道各种方法的优缺点和兼容性，在此专门的总结一下。">
@@ -125,11 +126,12 @@
 <h3 id="Extensions-to-the-Document-Interface"><a href="#Extensions-to-the-Document-Interface" class="headerlink" title="Extensions to the Document Interface"></a>Extensions to the <strong><a href="https://www.w3.org/TR/cssom-view-1/#extensions-to-the-document-interface" target="_blank" rel="noopener">Document</a></strong> Interface</h3><img src="/2018/05/24/每天一道基础题-获取HTML元素的宽高和位置/document.png">
 <h3 id="Extensions-to-the-Element-Interface"><a href="#Extensions-to-the-Element-Interface" class="headerlink" title="Extensions to the Element Interface"></a>Extensions to the <strong><a href="https://www.w3.org/TR/cssom-view-1/#extension-to-the-element-interface" target="_blank" rel="noopener">Element</a></strong> Interface</h3><img src="/2018/05/24/每天一道基础题-获取HTML元素的宽高和位置/element.png">
 <img src="/2018/05/24/每天一道基础题-获取HTML元素的宽高和位置/element-chart.png">
-<img src="/2018/05/24/每天一道基础题-获取HTML元素的宽高和位置/scrollheight.png">
+<img src="/2018/05/24/每天一道基础题-获取HTML元素的宽高和位置/elementscroll.png">
 <h3 id="Extensions-to-the-HTMLElement-Interface"><a href="#Extensions-to-the-HTMLElement-Interface" class="headerlink" title="Extensions to the HTMLElement Interface"></a>Extensions to the <strong><a href="https://www.w3.org/TR/cssom-view-1/#extensions-to-the-htmlelement-interface" target="_blank" rel="noopener">HTMLElement</a></strong> Interface</h3><img src="/2018/05/24/每天一道基础题-获取HTML元素的宽高和位置/htmlelement.png">
 <img src="/2018/05/24/每天一道基础题-获取HTML元素的宽高和位置/htmlelement-chart.png">
 <h3 id="Extensions-to-the-HTMLImageElement-Interface"><a href="#Extensions-to-the-HTMLImageElement-Interface" class="headerlink" title="Extensions to the HTMLImageElement Interface"></a>Extensions to the <strong><a href="https://www.w3.org/TR/cssom-view-1/#extensions-to-the-htmlimageelement-interface" target="_blank" rel="noopener">HTMLImageElement</a></strong> Interface</h3><img src="/2018/05/24/每天一道基础题-获取HTML元素的宽高和位置/htmlimgelement.png">
 <h3 id="Extensions-to-the-Range-Interface"><a href="#Extensions-to-the-Range-Interface" class="headerlink" title="Extensions to the Range Interface"></a>Extensions to the <strong><a href="https://www.w3.org/TR/cssom-view-1/#extensions-to-the-range-interface" target="_blank" rel="noopener">Range</a></strong> Interface</h3><img src="/2018/05/24/每天一道基础题-获取HTML元素的宽高和位置/rang.png">
+<img src="/2018/05/24/每天一道基础题-获取HTML元素的宽高和位置/getboundingclientrect.png">
 <h3 id="Extensions-to-the-MouseEvent-Interface"><a href="#Extensions-to-the-MouseEvent-Interface" class="headerlink" title="Extensions to the MouseEvent Interface"></a>Extensions to the <strong><a href="https://www.w3.org/TR/cssom-view-1/#extensions-to-the-mouseevent-interface" target="_blank" rel="noopener">MouseEvent</a></strong> Interface</h3><img src="/2018/05/24/每天一道基础题-获取HTML元素的宽高和位置/mouseevent.png">
 <img src="/2018/05/24/每天一道基础题-获取HTML元素的宽高和位置/mouseevent-chart.png">
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
