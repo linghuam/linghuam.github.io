@@ -19,10 +19,10 @@
     <link rel="alternate" href="/atom.xml" title="华仔的博客" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" href="/favicon.png">
   
   
-    
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
   <link rel="stylesheet" href="/css/style.css">
   
@@ -35,8 +35,21 @@
       <header id="header">
   <div id="banner"></div>
   <div id="header-outer" class="outer">
-    
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">华仔的博客</a>
+      </h1>
+      
+    </div>
     <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
       <nav id="sub-nav">
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
@@ -46,30 +59,388 @@
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://linghuam.github.io"></form>
       </div>
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">首页</a>
-        
-          <a class="main-nav-link" href="https://linghuam.github.io/project-gallery/dist/#/">项目展示</a>
-        
-          <a class="main-nav-link" href="/archives">归档</a>
-        
-          <a class="main-nav-link" href="/about">关于</a>
-        
-      </nav>
-      
-    </div>
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">华仔的博客</a>
-      </h1>
-      
     </div>
   </div>
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-每天一道基础题-CSS的background属性" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/25/每天一道基础题-CSS的background属性/" class="article-date">
+  <time datetime="2018-05-24T17:25:44.000Z" itemprop="datePublished">2018-05-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/每天一道基础题/">每天一道基础题</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/25/每天一道基础题-CSS的background属性/">每天一道基础题-CSS的background属性</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>每一个 HTML 元素都默认有一个透明（background:transparent）的背景层。background 属性指定元素的背景色和背景图片，以及它们的大小、位置、重复性等。</p>
+<p>background 属性是 <strong>非继承</strong> 属性。但是元素的背景默认穿透，因为 <code>background-color</code> 的默认值为 <code>transparent</code>。</p>
+        
+          <p class="article-more-link">
+            <a href="/2018/05/25/每天一道基础题-CSS的background属性/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://linghuam.github.io/2018/05/25/每天一道基础题-CSS的background属性/" data-id="ck4r00w6d00304ebx6uuq0529" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/每天一道基础题/">每天一道基础题</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-每天一道基础题-获取HTML元素的宽高和位置" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/24/每天一道基础题-获取HTML元素的宽高和位置/" class="article-date">
+  <time datetime="2018-05-24T11:53:16.000Z" itemprop="datePublished">2018-05-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/每天一道基础题/">每天一道基础题</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/24/每天一道基础题-获取HTML元素的宽高和位置/">每天一道基础题-获取HTML元素的宽高和位置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在做一些组件和交互时，常常需要动态获取鼠标点击位置、元素宽高和元素位置信息，网上有很多种方法，但自己没有总结过，不知道各种方法的优缺点和兼容性，在此专门的总结一下。<br>
+        
+          <p class="article-more-link">
+            <a href="/2018/05/24/每天一道基础题-获取HTML元素的宽高和位置/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://linghuam.github.io/2018/05/24/每天一道基础题-获取HTML元素的宽高和位置/" data-id="ck4r00w6t00454ebxmwck6f0o" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-每天一道基础题-CSS中vertical-align属性" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/23/每天一道基础题-CSS中vertical-align属性/" class="article-date">
+  <time datetime="2018-05-23T14:45:10.000Z" itemprop="datePublished">2018-05-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/每天一道基础题/">每天一道基础题</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/23/每天一道基础题-CSS中vertical-align属性/">每天一道基础题-CSS中vertical-align属性</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在刚刚接触 CSS 的同学中，经常使用到 vertical-align 来实现垂直对齐，但经常会困惑的是它并没有起到什么效果，下面就一起来探讨一下它到底是个什么鬼。<br>
+        
+          <p class="article-more-link">
+            <a href="/2018/05/23/每天一道基础题-CSS中vertical-align属性/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://linghuam.github.io/2018/05/23/每天一道基础题-CSS中vertical-align属性/" data-id="ck4r00w60002e4ebxly2vjq1m" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-每天一道基础题-CSS3的flex布局" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/22/每天一道基础题-CSS3的flex布局/" class="article-date">
+  <time datetime="2018-05-22T13:42:09.000Z" itemprop="datePublished">2018-05-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/每天一道基础题/">每天一道基础题</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/22/每天一道基础题-CSS3的flex布局/">每天一道基础题-CSS3的flex布局</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近做项目时，用了不少 CSS3 的 flex 布局，感觉非常棒，比老式布局方式(position+display+float)好用得多，所以打算写一篇文章总结一下。<br>
+        
+          <p class="article-more-link">
+            <a href="/2018/05/22/每天一道基础题-CSS3的flex布局/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://linghuam.github.io/2018/05/22/每天一道基础题-CSS3的flex布局/" data-id="ck4r00w5z002b4ebx353xucsa" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-每天一道基础题-CSS之z-index属性" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/21/每天一道基础题-CSS之z-index属性/" class="article-date">
+  <time datetime="2018-05-21T13:52:59.000Z" itemprop="datePublished">2018-05-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/每天一道基础题/">每天一道基础题</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/21/每天一道基础题-CSS之z-index属性/">每天一道基础题-CSS之z-index属性</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近在做 Vue 项目时，使用 ElementUI 做页面的 UI 框架，但是在写页面的过程中出现很多奇怪的现象，调试发现一个原因是 ElementUI 框架改变了很多默认的样式，第二个原因是自己页面的 z-index 和 position 使用不恰当，遂决定要彻底弄懂一些 CSS 方面的问题，毕竟前端 CSS 是重要的一环，不能似懂非懂。<br>
+        
+          <p class="article-more-link">
+            <a href="/2018/05/21/每天一道基础题-CSS之z-index属性/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://linghuam.github.io/2018/05/21/每天一道基础题-CSS之z-index属性/" data-id="ck4r00w66002m4ebxc2lxmtw0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-地图鹰眼的设计与实现" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/23/地图鹰眼的设计与实现/" class="article-date">
+  <time datetime="2018-04-23T14:51:44.000Z" itemprop="datePublished">2018-04-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/GIS/">GIS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/23/地图鹰眼的设计与实现/">地图鹰眼的设计与实现</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="地图鹰眼的设计与实现"><a href="#地图鹰眼的设计与实现" class="headerlink" title="地图鹰眼的设计与实现"></a>地图鹰眼的设计与实现</h2>
+        
+          <p class="article-more-link">
+            <a href="/2018/04/23/地图鹰眼的设计与实现/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://linghuam.github.io/2018/04/23/地图鹰眼的设计与实现/" data-id="ck4r00w5w00264ebxefr74th1" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GIS/">GIS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-每天一道基础题-CSS盒模型" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/22/每天一道基础题-CSS盒模型/" class="article-date">
+  <time datetime="2018-04-22T15:00:36.000Z" itemprop="datePublished">2018-04-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/每天一道基础题/">每天一道基础题</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/22/每天一道基础题-CSS盒模型/">每天一道基础题-CSS盒模型</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>每日的基础学习笔记，不求大而全，追求精致和短小，主要从底层技术基础开始，记录一些核心概念、实践应用和原理方法，帮助自己理解前端基础，建立前端知识体系。多问几个<strong>为什么、怎么做</strong><br>
+        
+          <p class="article-more-link">
+            <a href="/2018/04/22/每天一道基础题-CSS盒模型/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://linghuam.github.io/2018/04/22/每天一道基础题-CSS盒模型/" data-id="ck4r00w6e00324ebxkhhg3b20" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-每天一道基础题-CSS层叠与继承" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/18/每天一道基础题-CSS层叠与继承/" class="article-date">
+  <time datetime="2018-04-18T14:27:59.000Z" itemprop="datePublished">2018-04-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/每天一道基础题/">每天一道基础题</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/18/每天一道基础题-CSS层叠与继承/">每天一道基础题-CSS层叠与继承</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>每日的基础学习笔记，不求大而全，追求精致和短小，主要从底层技术基础开始，记录一些核心概念、实践应用和原理方法，帮助自己理解前端基础，建立前端知识体系。多问几个<strong>为什么、怎么做</strong><br>
+        
+          <p class="article-more-link">
+            <a href="/2018/04/18/每天一道基础题-CSS层叠与继承/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://linghuam.github.io/2018/04/18/每天一道基础题-CSS层叠与继承/" data-id="ck4r00w62002h4ebxu537qah4" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-前端大牛档案" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -100,14 +471,13 @@
         <h3 id="HTML-CSS-大牛"><a href="#HTML-CSS-大牛" class="headerlink" title="HTML/CSS 大牛"></a>HTML/CSS 大牛</h3>
         
           <p class="article-more-link">
-            <a href="/2018/04/17/前端大牛档案/#more">继续阅读全文 »</a>
+            <a href="/2018/04/17/前端大牛档案/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linghuam.github.io/2018/04/17/前端大牛档案/" data-id="cjhnoamg60010chbxlps3poey" class="article-share-link">分享</a>
-      
+      <a data-url="http://linghuam.github.io/2018/04/17/前端大牛档案/" data-id="ck4r00w5o001m4ebxtcifp1ha" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
@@ -116,7 +486,6 @@
   </div>
   
 </article>
- 
 
 
   
@@ -149,14 +518,13 @@
         <p>每日的基础学习笔记，不求大而全，追求精致和短小，主要从底层技术基础开始，记录一些核心概念、实践应用和原理方法，帮助自己理解前端基础，建立前端知识体系。多问几个<strong>为什么、怎么做</strong><br>
         
           <p class="article-more-link">
-            <a href="/2018/04/14/每天一道基础题-CSS数值与单位/#more">继续阅读全文 »</a>
+            <a href="/2018/04/14/每天一道基础题-CSS数值与单位/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linghuam.github.io/2018/04/14/每天一道基础题-CSS数值与单位/" data-id="cjhnoamgm001qchbxcsldosih" class="article-share-link">分享</a>
-      
+      <a data-url="http://linghuam.github.io/2018/04/14/每天一道基础题-CSS数值与单位/" data-id="ck4r00w68002o4ebxvy2tilif" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
@@ -165,445 +533,81 @@
   </div>
   
 </article>
- 
-
-
-  
-    <article id="post-每天一道基础题-CSS选择器" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/12/每天一道基础题-CSS选择器/" class="article-date">
-  <time datetime="2018-04-12T13:50:27.000Z" itemprop="datePublished">2018-04-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/每天一道基础题/">每天一道基础题</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/12/每天一道基础题-CSS选择器/">每天一道基础题-CSS选择器</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>每日的基础学习笔记，不求大而全，追求精致和短小，主要从底层技术基础开始，记录一些核心概念、实践应用和原理方法，帮助自己理解前端基础，建立前端知识体系。多问几个<strong>为什么、怎么做</strong><br>
-        
-          <p class="article-more-link">
-            <a href="/2018/04/12/每天一道基础题-CSS选择器/#more">继续阅读全文 »</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://linghuam.github.io/2018/04/12/每天一道基础题-CSS选择器/" data-id="cjhnoamgt0023chbxfdutfwyq" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-每天一道基础题-CSS的@规则" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/11/每天一道基础题-CSS的@规则/" class="article-date">
-  <time datetime="2018-04-11T15:07:20.000Z" itemprop="datePublished">2018-04-11</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/每天一道基础题/">每天一道基础题</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/11/每天一道基础题-CSS的@规则/">每天一道基础题-CSS的@规则</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>每日的基础学习笔记，不求大而全，追求精致和短小，主要从底层技术基础开始，记录一些核心概念、实践应用和原理方法，帮助自己理解前端基础，建立前端知识体系。多问几个<strong>为什么、怎么做</strong><br>
-        
-          <p class="article-more-link">
-            <a href="/2018/04/11/每天一道基础题-CSS的@规则/#more">继续阅读全文 »</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://linghuam.github.io/2018/04/11/每天一道基础题-CSS的@规则/" data-id="cjhnoamgp001wchbxc9rvilbv" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-每天一道基础题-CSS是如何工作的" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/10/每天一道基础题-CSS是如何工作的/" class="article-date">
-  <time datetime="2018-04-10T13:42:04.000Z" itemprop="datePublished">2018-04-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/每天一道基础题/">每天一道基础题</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/10/每天一道基础题-CSS是如何工作的/">每天一道基础题-CSS是如何工作的</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>每日的基础学习笔记，不求大而全，追求精致和短小，主要从底层技术基础开始，记录一些核心概念、实践应用和原理方法，帮助自己理解前端基础，建立前端知识体系。多问几个<strong>为什么、怎么做</strong><br>
-        
-          <p class="article-more-link">
-            <a href="/2018/04/10/每天一道基础题-CSS是如何工作的/#more">继续阅读全文 »</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://linghuam.github.io/2018/04/10/每天一道基础题-CSS是如何工作的/" data-id="cjhnoamgn001tchbxegbab85g" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-每天一道基础题-HTML嵌入资源之Img图片" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/09/每天一道基础题-HTML嵌入资源之Img图片/" class="article-date">
-  <time datetime="2018-04-09T13:32:29.000Z" itemprop="datePublished">2018-04-09</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/每天一道基础题/">每天一道基础题</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/09/每天一道基础题-HTML嵌入资源之Img图片/">每天一道基础题-HTML嵌入资源之Img图片</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>每日的基础学习笔记，不求大而全，追求精致和短小，主要从底层技术基础开始，记录一些核心概念、实践应用和原理方法，帮助自己理解前端基础，建立前端知识体系。多问几个<strong>为什么、怎么做</strong><br>
-        
-          <p class="article-more-link">
-            <a href="/2018/04/09/每天一道基础题-HTML嵌入资源之Img图片/#more">继续阅读全文 »</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://linghuam.github.io/2018/04/09/每天一道基础题-HTML嵌入资源之Img图片/" data-id="cjhnoamgz0029chbxd54iu4hh" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-每天一道基础题-HTML调试" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/28/每天一道基础题-HTML调试/" class="article-date">
-  <time datetime="2018-03-28T14:55:05.000Z" itemprop="datePublished">2018-03-28</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/每天一道基础题/">每天一道基础题</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/28/每天一道基础题-HTML调试/">每天一道基础题-HTML调试</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>每日的基础学习笔记，不求大而全，追求精致和短小，主要从底层技术基础开始，记录一些核心概念、实践应用和原理方法，帮助自己理解前端基础，建立前端知识体系。多问几个<strong>为什么、怎么做</strong><br>
-        
-          <p class="article-more-link">
-            <a href="/2018/03/28/每天一道基础题-HTML调试/#more">继续阅读全文 »</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://linghuam.github.io/2018/03/28/每天一道基础题-HTML调试/" data-id="cjhnoamh3002jchbxt46lhjm9" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-每天一道基础题-基本的网站结构" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/27/每天一道基础题-基本的网站结构/" class="article-date">
-  <time datetime="2018-03-27T02:12:27.000Z" itemprop="datePublished">2018-03-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/每天一道基础题/">每天一道基础题</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/27/每天一道基础题-基本的网站结构/">每天一道基础题-基本的网站结构</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>每日的基础学习笔记，不求大而全，追求精致和短小，主要从底层技术基础开始，记录一些核心概念、实践应用和原理方法，帮助自己理解前端基础，建立前端知识体系。多问几个<strong>为什么、怎么做</strong><br>
-        
-          <p class="article-more-link">
-            <a href="/2018/03/27/每天一道基础题-基本的网站结构/#more">继续阅读全文 »</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://linghuam.github.io/2018/03/27/每天一道基础题-基本的网站结构/" data-id="cjhnoamil004gchbxtywocmhq" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-每天一道基础题-HTML头标签Head" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/25/每天一道基础题-HTML头标签Head/" class="article-date">
-  <time datetime="2018-03-25T13:02:57.000Z" itemprop="datePublished">2018-03-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/每天一道基础题/">每天一道基础题</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/25/每天一道基础题-HTML头标签Head/">每天一道基础题-HTML头标签Head</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>每日的基础学习笔记，不求大而全，追求精致和短小，主要从底层技术基础开始，记录一些核心概念、实践应用和原理方法，帮助自己理解前端基础，建立前端知识体系。多问几个<strong>为什么、怎么做</strong><br>
-        
-          <p class="article-more-link">
-            <a href="/2018/03/25/每天一道基础题-HTML头标签Head/#more">继续阅读全文 »</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://linghuam.github.io/2018/03/25/每天一道基础题-HTML头标签Head/" data-id="cjhnoamgx0028chbxd7kcueik" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-每天一道基础题-HTML超链接标签" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/23/每天一道基础题-HTML超链接标签/" class="article-date">
-  <time datetime="2018-03-23T11:47:29.000Z" itemprop="datePublished">2018-03-23</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/每天一道基础题/">每天一道基础题</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/23/每天一道基础题-HTML超链接标签/">每天一道基础题-HTML超链接标签</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>每日的基础学习笔记，不求大而全，追求精致和短小，主要从底层技术基础开始，记录一些核心概念、实践应用和原理方法，帮助自己理解前端基础，建立前端知识体系。多问几个<strong>为什么、怎么做</strong><br>
-        
-          <p class="article-more-link">
-            <a href="/2018/03/23/每天一道基础题-HTML超链接标签/#more">继续阅读全文 »</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://linghuam.github.io/2018/03/23/每天一道基础题-HTML超链接标签/" data-id="cjhnoamh4002lchbxyglax3iw" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
 
 
   
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">下一页&raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">__('next') &raquo;</a>
   </nav>
 </section>
-           
-    <aside id="sidebar">
-  
-    
-
-  
-    
-  
-    
-
-  
-    
+        
+          <aside id="sidebar">
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title recent-posts">最新文章</h3>
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/GIS/">GIS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/config/">config</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mobile/">mobile</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tool/">tool</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/weichat/">weichat</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/一周拾遗/">一周拾遗</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端圈/">前端圈</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/可视化/">可视化</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/每天一道基础题/">每天一道基础题</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/解决方案/">解决方案</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/计划/">计划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算机图形学/">计算机图形学</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/GIS/">GIS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/config/">config</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/doc/">doc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobile/">mobile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sublime/">sublime</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/weichat/">weichat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/可视化/">可视化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/名词集锦/">名词集锦</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片/">图片</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/圆生成算法/">圆生成算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多边形填充区/">多边形填充区</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/性能/">性能</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/每天一道基础题/">每天一道基础题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/直线生成算法/">直线生成算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/翻译/">翻译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计划/">计划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/防抖与节流/">防抖与节流</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/GIS/" style="font-size: 10px;">GIS</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/config/" style="font-size: 10px;">config</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/doc/" style="font-size: 10px;">doc</a> <a href="/tags/git/" style="font-size: 14px;">git</a> <a href="/tags/html/" style="font-size: 18px;">html</a> <a href="/tags/javascript/" style="font-size: 16px;">javascript</a> <a href="/tags/mobile/" style="font-size: 10px;">mobile</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/weichat/" style="font-size: 10px;">weichat</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/可视化/" style="font-size: 10px;">可视化</a> <a href="/tags/名词集锦/" style="font-size: 10px;">名词集锦</a> <a href="/tags/图片/" style="font-size: 10px;">图片</a> <a href="/tags/圆生成算法/" style="font-size: 10px;">圆生成算法</a> <a href="/tags/多边形填充区/" style="font-size: 10px;">多边形填充区</a> <a href="/tags/性能/" style="font-size: 10px;">性能</a> <a href="/tags/每天一道基础题/" style="font-size: 10px;">每天一道基础题</a> <a href="/tags/直线生成算法/" style="font-size: 12px;">直线生成算法</a> <a href="/tags/翻译/" style="font-size: 10px;">翻译</a> <a href="/tags/计划/" style="font-size: 10px;">计划</a> <a href="/tags/防抖与节流/" style="font-size: 10px;">防抖与节流</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
         
           <li>
-            <a href="/2018/05/27/前端开发的图片处理方案/">前端开发的图片处理方案</a>
+            <a href="/2019/12/16/一周拾遗-第1期/">一周拾遗-第1期</a>
           </li>
         
           <li>
-            <a href="/2018/05/26/每天一道基础题-HTML的img标签/">每天一道基础题-HTML的img标签</a>
+            <a href="/2019/08/29/CSSOM介绍-译/">CSSOM介绍[译]</a>
           </li>
         
           <li>
-            <a href="/2018/05/25/每天一道基础题-CSS的background属性/">每天一道基础题-CSS的background属性</a>
+            <a href="/2019/08/12/高性能的web输入框/">高性能的web输入框</a>
           </li>
         
           <li>
-            <a href="/2018/05/24/每天一道基础题-获取HTML元素的宽高和位置/">每天一道基础题-获取HTML元素的宽高和位置</a>
+            <a href="/2018/11/14/可视化-热力图绘制原理/">可视化-热力图绘制原理</a>
           </li>
         
           <li>
-            <a href="/2018/05/23/每天一道基础题-CSS中vertical-align属性/">每天一道基础题-CSS中vertical-align属性</a>
+            <a href="/2018/11/05/js-Promise/">js-Promise</a>
           </li>
         
       </ul>
@@ -611,125 +615,29 @@
   </div>
 
   
-    
-
-  
-    
-  
-    <!--微信公众号二维码-->
-
-
-  
 </aside>
-
+        
       </div>
       <footer id="footer">
   
   <div class="outer">
-    <div id="footer-left">
-      &copy; 2014 - 2018 Linghuam&nbsp;|&nbsp;
-      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
-    </div>
-     <div id="footer-right">
-      联系方式&nbsp;|&nbsp;linghuam2016@gmail.com
+    <div id="footer-info" class="inner">
+      &copy; 2019 Linghuam<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
- <script src="/jquery/jquery.min.js"></script>
     </div>
     <nav id="mobile-nav">
   
-    <a href="/" class="mobile-nav-link">首页</a>
+    <a href="/" class="mobile-nav-link">Home</a>
   
-    <a href="https://linghuam.github.io/project-gallery/dist/#/" class="mobile-nav-link">项目展示</a>
-  
-    <a href="/archives" class="mobile-nav-link">归档</a>
-  
-    <a href="/about" class="mobile-nav-link">关于</a>
+    <a href="/archives" class="mobile-nav-link">Archives</a>
   
 </nav>
-    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
-<script>
-// Elevator script included on the page, already.
-window.onload = function() {
-  var elevator = new Elevator({
-    selector:'.back-to-top-btn',
-    element: document.querySelector('.back-to-top-btn'),
-    duration: 1000 // milliseconds
-  });
-}
-</script>
-      
-
-  
-    <script>
-      var cloudTieConfig = {
-        url: document.location.href, 
-        sourceId: "",
-        productKey: "e2fb4051c49842688ce669e634bc983f",
-        target: "cloud-tie-wrapper"
-      };
-    </script>
-    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
     
 
-  
-
-
-
-
-
-
-
-<!-- author:forvoid begin -->
-<!-- author:forvoid begin -->
-
-  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script> 
-  <script>
-  var gitment = new Gitment({
-    // id: '页面 ID', // 可选。默认为 location.href
-    owner: 'linghuam',
-    repo: 'linghuam.github.io',
-    oauth: {
-    client_id: '17ad04af6a057fbb5072',
-    client_secret: '5bb953d9587f8f1bde7c956bda62db16779dab4c',
-    }
-  })
-  gitment.render(document.getElementById("gitment_comments"))
-</script>
-
-
-<!-- author:forvoid end -->
-
-<!-- author:forvoid end -->
-
-
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'] ],
-          displayMath: [ ["$$","$$"] ], //段内公式选择$$
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      })
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      })
-    </script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-  
-
-
- <script src="/js/is.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
   <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
@@ -737,7 +645,7 @@ window.onload = function() {
 
 
 <script src="/js/script.js"></script>
-<script src="/js/elevator.js"></script>
+
   </div>
 </body>
 </html>

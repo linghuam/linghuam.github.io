@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>每天一道基础题-encodeURIComponent原理 | 华仔的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前端开发中，我们经常在请求路径中带各种参数，但细心的你会发现，在浏览器的路径栏看到的地址跟自己输入的参数不一样，浏览器将自己的输入转换成了一串字符。这其中涉及到 encodeURI、encodeURIComponent、decodeURI、decodeURIComponent(escape和unescape已被弃用)。">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="每天一道基础题-encodeURIComponent原理">
+<meta property="og:url" content="http://linghuam.github.io/2018/06/24/每天一道基础题-encodeURIComponent/index.html">
+<meta property="og:site_name" content="华仔的博客">
+<meta property="og:description" content="前端开发中，我们经常在请求路径中带各种参数，但细心的你会发现，在浏览器的路径栏看到的地址跟自己输入的参数不一样，浏览器将自己的输入转换成了一串字符。这其中涉及到 encodeURI、encodeURIComponent、decodeURI、decodeURIComponent(escape和unescape已被弃用)。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-07-08T10:37:46.443Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="每天一道基础题-encodeURIComponent原理">
+<meta name="twitter:description" content="前端开发中，我们经常在请求路径中带各种参数，但细心的你会发现，在浏览器的路径栏看到的地址跟自己输入的参数不一样，浏览器将自己的输入转换成了一串字符。这其中涉及到 encodeURI、encodeURIComponent、decodeURI、decodeURIComponent(escape和unescape已被弃用)。">
+  
+    <link rel="alternate" href="/atom.xml" title="华仔的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">华仔的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://linghuam.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-每天一道基础题-encodeURIComponent" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/24/每天一道基础题-encodeURIComponent/" class="article-date">
+  <time datetime="2018-06-24T13:55:36.000Z" itemprop="datePublished">2018-06-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/每天一道基础题/">每天一道基础题</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      每天一道基础题-encodeURIComponent原理
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前端开发中，我们经常在请求路径中带各种参数，但细心的你会发现，在浏览器的路径栏看到的地址跟自己输入的参数不一样，浏览器将自己的输入转换成了一串字符。<br>这其中涉及到 encodeURI、encodeURIComponent、decodeURI、decodeURIComponent(escape和unescape已被弃用)。<br><a id="more"></a></p>
+<h2 id="encodeURI-和-decodeURI"><a href="#encodeURI-和-decodeURI" class="headerlink" title="encodeURI 和 decodeURI"></a>encodeURI 和 decodeURI</h2><p>encodeURI(uri)</p>
+<ul>
+<li>参数：uri一个包含URI或其他待编码的文本的字符串</li>
+<li>返回：uri的一个副本，其中某些字符已被替换为十六进制转义序列。</li>
+</ul>
+<p>ASCII 字母和数字以及下面的ASCII标点字符将不会编码：-_.!~*’()  ;/?:@&amp;=+$,#</p>
+<p>uri中的其他字符将被转换为对应的 <strong>UTF-8</strong> 编码，并将结果的一、二或三个字节编码为一个 <code>%xx</code> 格式的十六进制转义序列。在这种编码机制中，ASCII字符将被替换为一个单独的<code>%xx</code> 转义序列，编码在 \uoo8o ~ \uo7ff 之间的字符将被替换为两个转义序列，其他所有的十六位的Unicode字符则将被替换为三个转义序列。</p>
+<p>使用这个方法来编码URI时，必须确保该URI的组件(如查询字符串)<strong>都不包含</strong>如“?”和“#”等的URI分隔字符。如果这些组件必须包含这类字符，则应该使用encodeURIComponent()来对每个组件进行 <strong>单独编码</strong> 。</p>
+<p>decodeURI()是这个方法的逆方法。</p>
+<h2 id="encodeURIComponent-和-decodeURIComponent"><a href="#encodeURIComponent-和-decodeURIComponent" class="headerlink" title="encodeURIComponent 和 decodeURIComponent"></a>encodeURIComponent 和 decodeURIComponent</h2><p>encodeURIComponent(s)</p>
+<ul>
+<li>参数s:一个包含URI一部分或其他待编码文本的字符串。</li>
+<li>返回：s的一个副本，某些字符已替换为十六进制转义序列。</li>
+</ul>
+<p>ASCII字母和数字以及下面这些ASCII标点字符将不会编码：-_.!~*’()，所有其他字符，包括“/”、“:”以及“#”等用于分隔URI的多个组件的标点字符，都将被替换为一个或多个十六进制的转义序列。</p>
+<h2 id="encodeURIComponent-和-encodeURI-之间的差别"><a href="#encodeURIComponent-和-encodeURI-之间的差别" class="headerlink" title="encodeURIComponent() 和 encodeURI() 之间的差别"></a>encodeURIComponent() 和 encodeURI() 之间的差别</h2><ul>
+<li>encodeURIComponent()假设它的参数是URI的一部分（如协议、主机名、路径或查询字符串）。因此，它将那些用于分隔URI不同部分的标点字符（/:#）也转义了。</li>
+<li>encodeURI方法 <strong>不会</strong> 对下列字符编码：ASCII字母、数字、~!@#$&amp;*()=:/,;?+’</li>
+<li>encodeURIComponent方法 <strong>不会</strong> 对下列字符编码：ASCII字母、数字、~!*()’</li>
+</ul>
+<h2 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h2><ul>
+<li>如果需要编码整个 URL，然后需要使用这个 URL，那么用 encodeURI()</li>
+<li>当你需要编码 URL 中的参数的时候，那么 encodeURIComponent() 是最佳的方法</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://zh.wikipedia.org/wiki/%E7%BB%9F%E4%B8%80%E8%B5%84%E6%BA%90%E6%A0%87%E5%BF%97%E7%AC%A6" target="_blank" rel="noopener">URI</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_in_a_URI" target="_blank" rel="noopener">Percent-encoding</a></li>
+<li><a href="http://www.w3school.com.cn/js/jsref_encodeURIComponent.asp" target="_blank" rel="noopener">w3school</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent" target="_blank" rel="noopener">MDN</a></li>
+<li><a href="https://www.zhihu.com/question/21861899" target="_blank" rel="noopener">ZhiHu</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://linghuam.github.io/2018/06/24/每天一道基础题-encodeURIComponent/" data-id="ck4r00w6p003s4ebxb0lp62y3" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/06/24/JS-节流与防抖/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          JS-节流与防抖
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/06/24/每天一道基础题-去除inline-block间距/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">每天一道基础题-去除inline-block间距</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/GIS/">GIS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/config/">config</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mobile/">mobile</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tool/">tool</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/weichat/">weichat</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/一周拾遗/">一周拾遗</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端圈/">前端圈</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/可视化/">可视化</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/每天一道基础题/">每天一道基础题</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/解决方案/">解决方案</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/计划/">计划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算机图形学/">计算机图形学</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/GIS/">GIS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/config/">config</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/doc/">doc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobile/">mobile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sublime/">sublime</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/weichat/">weichat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/可视化/">可视化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/名词集锦/">名词集锦</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片/">图片</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/圆生成算法/">圆生成算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多边形填充区/">多边形填充区</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/性能/">性能</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/每天一道基础题/">每天一道基础题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/直线生成算法/">直线生成算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/翻译/">翻译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计划/">计划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/防抖与节流/">防抖与节流</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/GIS/" style="font-size: 10px;">GIS</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/config/" style="font-size: 10px;">config</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/doc/" style="font-size: 10px;">doc</a> <a href="/tags/git/" style="font-size: 14px;">git</a> <a href="/tags/html/" style="font-size: 18px;">html</a> <a href="/tags/javascript/" style="font-size: 16px;">javascript</a> <a href="/tags/mobile/" style="font-size: 10px;">mobile</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/weichat/" style="font-size: 10px;">weichat</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/可视化/" style="font-size: 10px;">可视化</a> <a href="/tags/名词集锦/" style="font-size: 10px;">名词集锦</a> <a href="/tags/图片/" style="font-size: 10px;">图片</a> <a href="/tags/圆生成算法/" style="font-size: 10px;">圆生成算法</a> <a href="/tags/多边形填充区/" style="font-size: 10px;">多边形填充区</a> <a href="/tags/性能/" style="font-size: 10px;">性能</a> <a href="/tags/每天一道基础题/" style="font-size: 10px;">每天一道基础题</a> <a href="/tags/直线生成算法/" style="font-size: 12px;">直线生成算法</a> <a href="/tags/翻译/" style="font-size: 10px;">翻译</a> <a href="/tags/计划/" style="font-size: 10px;">计划</a> <a href="/tags/防抖与节流/" style="font-size: 10px;">防抖与节流</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/12/16/一周拾遗-第1期/">一周拾遗-第1期</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/29/CSSOM介绍-译/">CSSOM介绍[译]</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/12/高性能的web输入框/">高性能的web输入框</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/14/可视化-热力图绘制原理/">可视化-热力图绘制原理</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/05/js-Promise/">js-Promise</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Linghuam<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

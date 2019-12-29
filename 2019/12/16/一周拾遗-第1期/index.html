@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>一周拾遗-第1期 | 华仔的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本周内容：  如何获取浏览器帧率 不要将svg转成base64使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一周拾遗-第1期">
+<meta property="og:url" content="http://linghuam.github.io/2019/12/16/一周拾遗-第1期/index.html">
+<meta property="og:site_name" content="华仔的博客">
+<meta property="og:description" content="本周内容：  如何获取浏览器帧率 不要将svg转成base64使用">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://linghuam.github.io/2019/12/16/一周拾遗-第1期/1.jpg">
+<meta property="og:image" content="http://linghuam.github.io/2019/12/16/一周拾遗-第1期/2.jpg">
+<meta property="og:image" content="http://linghuam.github.io/2019/12/16/一周拾遗-第1期/3.jpg">
+<meta property="og:updated_time" content="2019-12-27T12:22:23.322Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一周拾遗-第1期">
+<meta name="twitter:description" content="本周内容：  如何获取浏览器帧率 不要将svg转成base64使用">
+<meta name="twitter:image" content="http://linghuam.github.io/2019/12/16/一周拾遗-第1期/1.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="华仔的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">华仔的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://linghuam.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-一周拾遗-第1期" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/12/16/一周拾遗-第1期/" class="article-date">
+  <time datetime="2019-12-16T12:16:22.000Z" itemprop="datePublished">2019-12-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/一周拾遗/">一周拾遗</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      一周拾遗-第1期
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本周内容：</p>
+<ul>
+<li><a href="#如何获取浏览器帧率">如何获取浏览器帧率</a></li>
+<li><a href="#不要将svg转成base64使用">不要将svg转成base64使用</a></li>
+</ul>
+<a id="more"></a>
+<h2 id="如何获取浏览器帧率"><a href="#如何获取浏览器帧率" class="headerlink" title="如何获取浏览器帧率"></a>如何获取浏览器帧率</h2><p><a href="https://fed.taobao.org/blog/taofed/do71ct/measuring-fps/?spm=taofed.homepage.header.7.7eab5ac8fnJXe3" target="_blank" rel="noopener">无线性能优化：FPS 测试</a></p>
+<p><a href="https://www.cnblogs.com/coco1s/p/8029582.html" target="_blank" rel="noopener">Web 动画帧率（FPS）计算</a></p>
+<p><code>帧率</code>即屏幕的刷新频率，大部分设备为 60次/秒，帧率越大动画越流畅。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">50~60 FPS：流畅舒适</span><br><span class="line">30~50 FPS：一般</span><br><span class="line">30 FPS 以下：卡顿</span><br></pre></td></tr></table></figure>
+<p>浏览器中一个 Tab 页对应一个进程，<code>进程 = 主线程(负责计算) + 合成线程(负责绘制)</code>。</p>
+<p>js 动画需要<code>主线程和合成线程</code>共同工作，css 动画只需要<code>合成线程</code>工作。</p>
+<h3 id="法一：Chrome-开发者工具"><a href="#法一：Chrome-开发者工具" class="headerlink" title="法一：Chrome 开发者工具"></a>法一：Chrome 开发者工具</h3><p>More tools -&gt; Rendering -&gt; FPS meter</p>
+<h3 id="法二：借助-requestAnimationFrame"><a href="#法二：借助-requestAnimationFrame" class="headerlink" title="法二：借助 requestAnimationFrame"></a>法二：借助 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/requestAnimationFrame" target="_blank" rel="noopener">requestAnimationFrame</a></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 监测浏览器帧率</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">在 canvas 上测试不准确？（ fps meter 的值远远小于 requestAnimationFrame 计算的值）。</span></span><br><span class="line"><span class="comment">原因：requestAnimationFrame 只计算主线程。</span></span><br><span class="line"><span class="comment"> * /</span></span><br><span class="line"><span class="comment">function fps() &#123;</span></span><br><span class="line"><span class="comment">  var lastTime = performance.now();</span></span><br><span class="line"><span class="comment">  var frame = 0;</span></span><br><span class="line"><span class="comment">  var lastFrameTime = performance.now();</span></span><br><span class="line"><span class="comment">  function loop() &#123;</span></span><br><span class="line"><span class="comment">    var now = performance.now();</span></span><br><span class="line"><span class="comment">    lastFrameTime = now;</span></span><br><span class="line"><span class="comment">    frame ++;</span></span><br><span class="line"><span class="comment">    if (now - lastTime &gt; 1000) &#123;</span></span><br><span class="line"><span class="comment">      var fps = Math.round( 1000 * frame / (now - lastTime) );</span></span><br><span class="line"><span class="comment">      console.log('fps:', fps, '\n');</span></span><br><span class="line"><span class="comment">      frame = 0;</span></span><br><span class="line"><span class="comment">      lastTime = now;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    requestAnimationFrame(loop);</span></span><br><span class="line"><span class="comment">  &#125;</span></span><br><span class="line"><span class="comment">  requestAnimationFrame(loop);</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">// 测试一：验证多个回调可能在一帧执行？</span></span><br><span class="line"><span class="comment">/* 回调函数会被传入DOMHighResTimeStamp 参数，DOMHighResTimeStamp 指示当前被 requestAnimationFrame() 排序的回调函数被触发的时间。在同一个帧中的多个回调函数，它们每一个都会接受到一个相同的时间戳，即使在计算上一个回调函数的工作负载期间已经消耗了一些时间。</span></span><br><span class="line"><span class="comment">输出：</span></span><br><span class="line"><span class="comment">t: 810632.687 i: 0 </span></span><br><span class="line"><span class="comment">t: 810632.687 i: 1 </span></span><br><span class="line"><span class="comment">t: 810632.687 i: 2 </span></span><br><span class="line"><span class="comment">输出的 t 相同，说明回调是在同一帧中执行的。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fps</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</span><br><span class="line">    requestAnimationFrame(<span class="function"><span class="params">t</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'t:'</span>, t, <span class="string">'i:'</span>, i, <span class="string">'\n'</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 测试二：验证是否会掉帧？</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">结论：不会掉帧，它只会影响帧率。所以要想获得流畅的动画体验，在两帧之间不要做耗时操作。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">var</span> frame = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">var</span> lastTime = performance.now();</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loop</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> now = performance.now();</span><br><span class="line">  <span class="keyword">var</span> fps = <span class="number">1000</span> / (now - lastTime);</span><br><span class="line">  lastTime = now;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'fps:'</span>, fps);</span><br><span class="line">  <span class="comment">// 在一帧中执行开销较大的操作</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10000</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">var</span> div = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>);</span><br><span class="line">    div.innerHTML = <span class="string">'div'</span>+i;</span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(div);</span><br><span class="line">    div.parentNode.removeChild(div);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'frame'</span>, frame);</span><br><span class="line">  frame --;</span><br><span class="line">  frame &amp;&amp; requestAnimationFrame(loop);</span><br><span class="line">&#125;</span><br><span class="line">requestAnimationFrame(loop);</span><br></pre></td></tr></table></figure>
+<h3 id="法三：借助-Frame-Timing-API"><a href="#法三：借助-Frame-Timing-API" class="headerlink" title="法三：借助 Frame Timing API"></a>法三：借助 Frame Timing API</h3><p><a href="https://wicg.github.io/frame-timing/" target="_blank" rel="noopener">w3c frame-timing</a></p>
+<p><a href="https://segmentfault.com/a/1190000004010453" target="_blank" rel="noopener">使用性能API快速分析web前端性能</a></p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><img src="/2019/12/16/一周拾遗-第1期/1.jpg" title="主线程和合成线程">
+<img src="/2019/12/16/一周拾遗-第1期/2.jpg" title="主线程和合成线程">
+<img src="/2019/12/16/一周拾遗-第1期/3.jpg" title="主线程和合成线程">
+<h2 id="不要将svg转成base64使用"><a href="#不要将svg转成base64使用" class="headerlink" title="不要将svg转成base64使用"></a>不要将svg转成base64使用</h2><p>缺点：</p>
+<ul>
+<li>svg 转成 base64 体积会变大</li>
+<li>浏览器解析 base64 也要消耗性能</li>
+<li>不方便改变颜色等 css 属性</li>
+</ul>
+<p><a href="https://css-tricks.com/probably-dont-base64-svg/" target="_blank" rel="noopener">Probably Don’t Base64 SVG</a></p>
+<p><a href="https://www.qianduan.net/dont-svg-base64/" target="_blank" rel="noopener">不要把 svg 转成 base64</a></p>
+<p><a href="https://github.com/svg/svgo" target="_blank" rel="noopener">svgo-svg压缩工具</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://linghuam.github.io/2019/12/16/一周拾遗-第1期/" data-id="ck4r00w5k001d4ebxndt7tee5" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/08/29/CSSOM介绍-译/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">CSSOM介绍[译]</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/GIS/">GIS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/config/">config</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mobile/">mobile</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tool/">tool</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/weichat/">weichat</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/一周拾遗/">一周拾遗</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端圈/">前端圈</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/可视化/">可视化</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/每天一道基础题/">每天一道基础题</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/解决方案/">解决方案</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/计划/">计划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算机图形学/">计算机图形学</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/GIS/">GIS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/config/">config</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/doc/">doc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobile/">mobile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sublime/">sublime</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/weichat/">weichat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/可视化/">可视化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/名词集锦/">名词集锦</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片/">图片</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/圆生成算法/">圆生成算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多边形填充区/">多边形填充区</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/性能/">性能</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/每天一道基础题/">每天一道基础题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/直线生成算法/">直线生成算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/翻译/">翻译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计划/">计划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/防抖与节流/">防抖与节流</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/GIS/" style="font-size: 10px;">GIS</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/config/" style="font-size: 10px;">config</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/doc/" style="font-size: 10px;">doc</a> <a href="/tags/git/" style="font-size: 14px;">git</a> <a href="/tags/html/" style="font-size: 18px;">html</a> <a href="/tags/javascript/" style="font-size: 16px;">javascript</a> <a href="/tags/mobile/" style="font-size: 10px;">mobile</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/weichat/" style="font-size: 10px;">weichat</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/可视化/" style="font-size: 10px;">可视化</a> <a href="/tags/名词集锦/" style="font-size: 10px;">名词集锦</a> <a href="/tags/图片/" style="font-size: 10px;">图片</a> <a href="/tags/圆生成算法/" style="font-size: 10px;">圆生成算法</a> <a href="/tags/多边形填充区/" style="font-size: 10px;">多边形填充区</a> <a href="/tags/性能/" style="font-size: 10px;">性能</a> <a href="/tags/每天一道基础题/" style="font-size: 10px;">每天一道基础题</a> <a href="/tags/直线生成算法/" style="font-size: 12px;">直线生成算法</a> <a href="/tags/翻译/" style="font-size: 10px;">翻译</a> <a href="/tags/计划/" style="font-size: 10px;">计划</a> <a href="/tags/防抖与节流/" style="font-size: 10px;">防抖与节流</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/12/16/一周拾遗-第1期/">一周拾遗-第1期</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/29/CSSOM介绍-译/">CSSOM介绍[译]</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/12/高性能的web输入框/">高性能的web输入框</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/14/可视化-热力图绘制原理/">可视化-热力图绘制原理</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/05/js-Promise/">js-Promise</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Linghuam<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

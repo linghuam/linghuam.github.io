@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>每天一道基础题-去除inline-block间距 | 华仔的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="面试时面试官问了我一个问题，就是做一个菜单的时候，菜单项中间空出的空白是怎么引起的，如何去除？自己一下就蒙了，没遇到过这种情况，后来上网搜了搜，发现确实有这个问题，于是总结了一番。">
+<meta name="keywords" content="css">
+<meta property="og:type" content="article">
+<meta property="og:title" content="每天一道基础题-去除inline-block间距">
+<meta property="og:url" content="http://linghuam.github.io/2018/06/24/每天一道基础题-去除inline-block间距/index.html">
+<meta property="og:site_name" content="华仔的博客">
+<meta property="og:description" content="面试时面试官问了我一个问题，就是做一个菜单的时候，菜单项中间空出的空白是怎么引起的，如何去除？自己一下就蒙了，没遇到过这种情况，后来上网搜了搜，发现确实有这个问题，于是总结了一番。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-07-07T10:42:15.424Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="每天一道基础题-去除inline-block间距">
+<meta name="twitter:description" content="面试时面试官问了我一个问题，就是做一个菜单的时候，菜单项中间空出的空白是怎么引起的，如何去除？自己一下就蒙了，没遇到过这种情况，后来上网搜了搜，发现确实有这个问题，于是总结了一番。">
+  
+    <link rel="alternate" href="/atom.xml" title="华仔的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">华仔的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://linghuam.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-每天一道基础题-去除inline-block间距" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/24/每天一道基础题-去除inline-block间距/" class="article-date">
+  <time datetime="2018-06-24T13:53:07.000Z" itemprop="datePublished">2018-06-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/每天一道基础题/">每天一道基础题</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      每天一道基础题-去除inline-block间距
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>面试时面试官问了我一个问题，就是做一个菜单的时候，菜单项中间空出的空白是怎么引起的，如何去除？自己一下就蒙了，没遇到过这种情况，后来上网搜了搜，发现确实有这个问题，于是总结了一番。<br><a id="more"></a></p>
+<p><a href="https://github.com/linghuam/test/tree/master/css/28.html" target="_blank" rel="noopener">demo</a></p>
+<p>下面是根据张鑫旭博客的整理</p>
+<h2 id="方法一-移除空格"><a href="#方法一-移除空格" class="headerlink" title="方法一: 移除空格"></a>方法一: 移除空格</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"menu"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span></span><br><span class="line">    menuitem1<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span></span><br><span class="line">    menuitem2<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span></span><br><span class="line">    menuitem3<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span></span><br><span class="line">    menuitem4<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>menuitem5<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>或<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"menu"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>menuitem1<span class="tag">&lt;/<span class="name">a</span></span></span><br><span class="line"><span class="tag">    &gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>menuitem2<span class="tag">&lt;/<span class="name">a</span></span></span><br><span class="line"><span class="tag">    &gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>menuitem3<span class="tag">&lt;/<span class="name">a</span></span></span><br><span class="line"><span class="tag">    &gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>menuitem4<span class="tag">&lt;/<span class="name">a</span></span></span><br><span class="line"><span class="tag">    &gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>menuitem5<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>或<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"menu"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>menuitem1<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">    --&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>menuitem2<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="comment">&lt;!--    </span></span><br><span class="line"><span class="comment">    --&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>menuitem3<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="comment">&lt;!--                </span></span><br><span class="line"><span class="comment">    --&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>menuitem4<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">    --&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>menuitem5<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="方法二：省略闭合标签或只写最后一个闭合标签"><a href="#方法二：省略闭合标签或只写最后一个闭合标签" class="headerlink" title="方法二：省略闭合标签或只写最后一个闭合标签"></a>方法二：省略闭合标签或只写最后一个闭合标签</h2><p>兼容性写法：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"menu"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>menuitem1</span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>menuitem2</span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>menuitem3</span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>menuitem4</span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>menuitem5<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>HTML5写法：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"menu"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>menuitem1</span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>menuitem2</span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>menuitem3</span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>menuitem4</span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>menuitem5</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="方法三：font-size-0"><a href="#方法三：font-size-0" class="headerlink" title="方法三：font-size:0"></a>方法三：font-size:0</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">    <span class="selector-class">.menu</span>&#123;</span></span><br><span class="line"><span class="undefined">        font-size: 0;</span></span><br><span class="line"><span class="css">        <span class="comment">/*兼容*/</span></span></span><br><span class="line"><span class="css">        <span class="selector-tag">-webkit-text-size-adjust</span><span class="selector-pseudo">:none</span>;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.menu</span> <span class="selector-tag">a</span> &#123;</span></span><br><span class="line"><span class="undefined">        font-size: 16px;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"menu"</span>&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>menuitem1<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>menuitem2<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>menuitem3<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>menuitem4<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>menuitem5<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="方法四：letter-spacing-或-word-spacing"><a href="#方法四：letter-spacing-或-word-spacing" class="headerlink" title="方法四：letter-spacing 或 word-spacing"></a>方法四：letter-spacing 或 word-spacing</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--display: inline-table or table;处理Chrome兼容性问题--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"menu"</span> <span class="attr">style</span>=<span class="string">"letter-spacing: -3px;display: inline-table;"</span>&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">style</span>=<span class="string">"letter-spacing: 0;"</span>&gt;</span>menuitem1<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">style</span>=<span class="string">"letter-spacing: 0;"</span>&gt;</span>menuitem2<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">style</span>=<span class="string">"letter-spacing: 0;"</span>&gt;</span>menuitem3<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">style</span>=<span class="string">"letter-spacing: 0;"</span>&gt;</span>menuitem4<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">style</span>=<span class="string">"letter-spacing: 0;"</span>&gt;</span>menuitem5<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--或--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"menu"</span> <span class="attr">style</span>=<span class="string">"word-spacing: -6px;display: inline-table;"</span>&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">style</span>=<span class="string">"word-spacing: 0;"</span>&gt;</span>menuitem1<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">style</span>=<span class="string">"word-spacing: 0;"</span>&gt;</span>menuitem2<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">style</span>=<span class="string">"word-spacing: 0;"</span>&gt;</span>menuitem3<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">style</span>=<span class="string">"word-spacing: 0;"</span>&gt;</span>menuitem4<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">style</span>=<span class="string">"word-spacing: 0;"</span>&gt;</span>menuitem5<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="其他方法"><a href="#其他方法" class="headerlink" title="其他方法"></a>其他方法</h2><p>1.使用浮动：不推荐，会造成一些奇怪<a href="https://codepen.io/chriscoyier/pen/blExo" target="_blank" rel="noopener">问题</a></p>
+<p>2.使用flex布局</p>
+<p>3.other</p>
+<p>YUI:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.yui3-g</span> &#123;</span><br><span class="line">    <span class="attribute">letter-spacing</span>: -<span class="number">0.31em</span>; <span class="comment">/* webkit */</span></span><br><span class="line">    *letter-spacing: normal; /* IE &lt; 8 重置 */</span><br><span class="line">    <span class="selector-tag">word-spacing</span>: <span class="selector-tag">-0</span><span class="selector-class">.43em</span>; <span class="comment">/* IE &lt; 8 &amp;&amp; gecko */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.yui3-u</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: inline-block;</span><br><span class="line">    zoom: 1; *display: inline; /* IE &lt; 8: 伪造 inline-block */</span><br><span class="line">    <span class="selector-tag">letter-spacing</span>: <span class="selector-tag">normal</span>;</span><br><span class="line">    <span class="selector-tag">word-spacing</span>: <span class="selector-tag">normal</span>;</span><br><span class="line">    <span class="selector-tag">vertical-align</span>: <span class="selector-tag">top</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>or </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">li</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>:inline-block;</span><br><span class="line">    <span class="attribute">background</span>: orange;</span><br><span class="line">    <span class="attribute">padding</span>:<span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">word-spacing</span>:<span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="selector-tag">ul</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>:<span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">display</span>:table;  <span class="comment">/* 调教webkit*/</span></span><br><span class="line">    <span class="attribute">word-spacing</span>:-<span class="number">1em</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.nav li &#123; *display:inline;&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>-<a href="https://www.zhangxinxu.com/wordpress/2012/04/inline-block-space-remove-%E5%8E%BB%E9%99%A4%E9%97%B4%E8%B7%9D/" target="_blank" rel="noopener">去除inline-block元素间间距的N种方法</a><br>-<a href="https://css-tricks.com/fighting-the-space-between-inline-block-elements/" target="_blank" rel="noopener">Fighting the Space Between Inline Block Elements</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://linghuam.github.io/2018/06/24/每天一道基础题-去除inline-block间距/" data-id="ck4r00w6r003z4ebxvwocz9qp" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/06/24/每天一道基础题-encodeURIComponent/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          每天一道基础题-encodeURIComponent原理
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/05/27/前端开发的图片处理方案/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">前端开发的图片处理方案</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/GIS/">GIS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/config/">config</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mobile/">mobile</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tool/">tool</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/weichat/">weichat</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/一周拾遗/">一周拾遗</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端圈/">前端圈</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/可视化/">可视化</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/每天一道基础题/">每天一道基础题</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/解决方案/">解决方案</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/计划/">计划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算机图形学/">计算机图形学</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/GIS/">GIS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/config/">config</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/doc/">doc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobile/">mobile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sublime/">sublime</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/weichat/">weichat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/可视化/">可视化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/名词集锦/">名词集锦</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片/">图片</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/圆生成算法/">圆生成算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多边形填充区/">多边形填充区</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/性能/">性能</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/每天一道基础题/">每天一道基础题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/直线生成算法/">直线生成算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/翻译/">翻译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计划/">计划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/防抖与节流/">防抖与节流</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/GIS/" style="font-size: 10px;">GIS</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/config/" style="font-size: 10px;">config</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/doc/" style="font-size: 10px;">doc</a> <a href="/tags/git/" style="font-size: 14px;">git</a> <a href="/tags/html/" style="font-size: 18px;">html</a> <a href="/tags/javascript/" style="font-size: 16px;">javascript</a> <a href="/tags/mobile/" style="font-size: 10px;">mobile</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/weichat/" style="font-size: 10px;">weichat</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/可视化/" style="font-size: 10px;">可视化</a> <a href="/tags/名词集锦/" style="font-size: 10px;">名词集锦</a> <a href="/tags/图片/" style="font-size: 10px;">图片</a> <a href="/tags/圆生成算法/" style="font-size: 10px;">圆生成算法</a> <a href="/tags/多边形填充区/" style="font-size: 10px;">多边形填充区</a> <a href="/tags/性能/" style="font-size: 10px;">性能</a> <a href="/tags/每天一道基础题/" style="font-size: 10px;">每天一道基础题</a> <a href="/tags/直线生成算法/" style="font-size: 12px;">直线生成算法</a> <a href="/tags/翻译/" style="font-size: 10px;">翻译</a> <a href="/tags/计划/" style="font-size: 10px;">计划</a> <a href="/tags/防抖与节流/" style="font-size: 10px;">防抖与节流</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/12/16/一周拾遗-第1期/">一周拾遗-第1期</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/29/CSSOM介绍-译/">CSSOM介绍[译]</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/12/高性能的web输入框/">高性能的web输入框</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/14/可视化-热力图绘制原理/">可视化-热力图绘制原理</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/05/js-Promise/">js-Promise</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Linghuam<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

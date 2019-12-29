@@ -21,10 +21,10 @@
     <link rel="alternate" href="/atom.xml" title="华仔的博客" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" href="/favicon.png">
   
   
-    
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
   <link rel="stylesheet" href="/css/style.css">
   
@@ -37,8 +37,21 @@
       <header id="header">
   <div id="banner"></div>
   <div id="header-outer" class="outer">
-    
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">华仔的博客</a>
+      </h1>
+      
+    </div>
     <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
       <nav id="sub-nav">
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
@@ -48,25 +61,6 @@
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://linghuam.github.io"></form>
       </div>
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">首页</a>
-        
-          <a class="main-nav-link" href="https://linghuam.github.io/project-gallery/dist/#/">项目展示</a>
-        
-          <a class="main-nav-link" href="/archives">归档</a>
-        
-          <a class="main-nav-link" href="/about">关于</a>
-        
-      </nav>
-      
-    </div>
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">华仔的博客</a>
-      </h1>
-      
     </div>
   </div>
 </header>
@@ -97,8 +91,6 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <!-- Table of Contents -->
-        
         <p>学习《计算机图形学（第三版）》书籍中的一些重点名词集锦</p>
 <a id="more"></a>
 <ul>
@@ -131,8 +123,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linghuam.github.io/2018/01/27/计算机图形学-名词集锦/" data-id="cjhnoamj2004schbxj9xaxzpa" class="article-share-link">分享</a>
-      
+      <a data-url="http://linghuam.github.io/2018/01/27/计算机图形学-名词集锦/" data-id="ck4r00w76004m4ebxl9cme3ls" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/名词集锦/">名词集锦</a></li></ul>
@@ -141,52 +132,10 @@
   </div>
   
     
- <script src="/jquery/jquery.min.js"></script>
-  <div id="random_posts">
-    <h2>推荐文章</h2>
-    <div class="random_posts_ul">
-      <script>
-          var random_count =3
-          var site = {BASE_URI:'/'};
-          function load_random_posts(obj) {
-              var arr=site.posts;
-              if (!obj) return;
-              // var count = $(obj).attr('data-count') || 6;
-              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
-              arr = arr.slice(0, random_count);
-              var html = '<ul>';
-            
-              for(var j=0;j<arr.length;j++){
-                var item=arr[j];
-                html += '<li><strong>' + 
-                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
-                (item.title || item.uri) + '</a></strong>';
-                if(item.excerpt){
-                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
-                }
-                html +='</li>';
-                
-              }
-              $(obj).html(html + '</ul>');
-          }
-          $('.random_posts_ul').each(function () {
-              var c = this;
-              if (!site.posts || !site.posts.length){
-                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
-              } 
-               else{
-                load_random_posts(c);
-              }
-          });
-      </script>
-    </div>
-  </div>
-
-    
 <nav id="article-nav">
   
     <a href="/2018/01/29/计算机图形学-多边形填充区/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
+      <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
           计算机图形学-多边形填充区
@@ -196,7 +145,7 @@
   
   
     <a href="/2018/01/27/计算机图形学-圆生成算法/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">计算机图形学-圆生成算法</div>
     </a>
   
@@ -204,61 +153,74 @@
 
   
 </article>
- 
-     
-  <div class="comments" id="comments">
-    
-     
-       
-      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
-    
-       
-      
-      
-           <div id="gitment_comments"></div>
-    
-  </div>
- 
-  
 
 </section>
-           
-    <aside id="sidebar">
-  
-    
-
-  
-    
-  
-    
-
-  
-    
+        
+          <aside id="sidebar">
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title recent-posts">最新文章</h3>
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/GIS/">GIS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/config/">config</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mobile/">mobile</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tool/">tool</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/weichat/">weichat</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/一周拾遗/">一周拾遗</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端圈/">前端圈</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/可视化/">可视化</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/每天一道基础题/">每天一道基础题</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/解决方案/">解决方案</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/计划/">计划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算机图形学/">计算机图形学</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/GIS/">GIS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/config/">config</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/doc/">doc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobile/">mobile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sublime/">sublime</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/weichat/">weichat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/可视化/">可视化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/名词集锦/">名词集锦</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片/">图片</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/圆生成算法/">圆生成算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多边形填充区/">多边形填充区</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/性能/">性能</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/每天一道基础题/">每天一道基础题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/直线生成算法/">直线生成算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/翻译/">翻译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计划/">计划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/防抖与节流/">防抖与节流</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/GIS/" style="font-size: 10px;">GIS</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/config/" style="font-size: 10px;">config</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/doc/" style="font-size: 10px;">doc</a> <a href="/tags/git/" style="font-size: 14px;">git</a> <a href="/tags/html/" style="font-size: 18px;">html</a> <a href="/tags/javascript/" style="font-size: 16px;">javascript</a> <a href="/tags/mobile/" style="font-size: 10px;">mobile</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/weichat/" style="font-size: 10px;">weichat</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/可视化/" style="font-size: 10px;">可视化</a> <a href="/tags/名词集锦/" style="font-size: 10px;">名词集锦</a> <a href="/tags/图片/" style="font-size: 10px;">图片</a> <a href="/tags/圆生成算法/" style="font-size: 10px;">圆生成算法</a> <a href="/tags/多边形填充区/" style="font-size: 10px;">多边形填充区</a> <a href="/tags/性能/" style="font-size: 10px;">性能</a> <a href="/tags/每天一道基础题/" style="font-size: 10px;">每天一道基础题</a> <a href="/tags/直线生成算法/" style="font-size: 12px;">直线生成算法</a> <a href="/tags/翻译/" style="font-size: 10px;">翻译</a> <a href="/tags/计划/" style="font-size: 10px;">计划</a> <a href="/tags/防抖与节流/" style="font-size: 10px;">防抖与节流</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
         
           <li>
-            <a href="/2018/05/27/前端开发的图片处理方案/">前端开发的图片处理方案</a>
+            <a href="/2019/12/16/一周拾遗-第1期/">一周拾遗-第1期</a>
           </li>
         
           <li>
-            <a href="/2018/05/26/每天一道基础题-HTML的img标签/">每天一道基础题-HTML的img标签</a>
+            <a href="/2019/08/29/CSSOM介绍-译/">CSSOM介绍[译]</a>
           </li>
         
           <li>
-            <a href="/2018/05/25/每天一道基础题-CSS的background属性/">每天一道基础题-CSS的background属性</a>
+            <a href="/2019/08/12/高性能的web输入框/">高性能的web输入框</a>
           </li>
         
           <li>
-            <a href="/2018/05/24/每天一道基础题-获取HTML元素的宽高和位置/">每天一道基础题-获取HTML元素的宽高和位置</a>
+            <a href="/2018/11/14/可视化-热力图绘制原理/">可视化-热力图绘制原理</a>
           </li>
         
           <li>
-            <a href="/2018/05/23/每天一道基础题-CSS中vertical-align属性/">每天一道基础题-CSS中vertical-align属性</a>
+            <a href="/2018/11/05/js-Promise/">js-Promise</a>
           </li>
         
       </ul>
@@ -266,125 +228,29 @@
   </div>
 
   
-    
-
-  
-    
-  
-    <!--微信公众号二维码-->
-
-
-  
 </aside>
-
+        
       </div>
       <footer id="footer">
   
   <div class="outer">
-    <div id="footer-left">
-      &copy; 2014 - 2018 Linghuam&nbsp;|&nbsp;
-      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
-    </div>
-     <div id="footer-right">
-      联系方式&nbsp;|&nbsp;linghuam2016@gmail.com
+    <div id="footer-info" class="inner">
+      &copy; 2019 Linghuam<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
- <script src="/jquery/jquery.min.js"></script>
     </div>
     <nav id="mobile-nav">
   
-    <a href="/" class="mobile-nav-link">首页</a>
+    <a href="/" class="mobile-nav-link">Home</a>
   
-    <a href="https://linghuam.github.io/project-gallery/dist/#/" class="mobile-nav-link">项目展示</a>
-  
-    <a href="/archives" class="mobile-nav-link">归档</a>
-  
-    <a href="/about" class="mobile-nav-link">关于</a>
+    <a href="/archives" class="mobile-nav-link">Archives</a>
   
 </nav>
-    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
-<script>
-// Elevator script included on the page, already.
-window.onload = function() {
-  var elevator = new Elevator({
-    selector:'.back-to-top-btn',
-    element: document.querySelector('.back-to-top-btn'),
-    duration: 1000 // milliseconds
-  });
-}
-</script>
-      
-
-  
-    <script>
-      var cloudTieConfig = {
-        url: document.location.href, 
-        sourceId: "",
-        productKey: "e2fb4051c49842688ce669e634bc983f",
-        target: "cloud-tie-wrapper"
-      };
-    </script>
-    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
     
 
-  
-
-
-
-
-
-
-
-<!-- author:forvoid begin -->
-<!-- author:forvoid begin -->
-
-  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script> 
-  <script>
-  var gitment = new Gitment({
-    // id: '页面 ID', // 可选。默认为 location.href
-    owner: 'linghuam',
-    repo: 'linghuam.github.io',
-    oauth: {
-    client_id: '17ad04af6a057fbb5072',
-    client_secret: '5bb953d9587f8f1bde7c956bda62db16779dab4c',
-    }
-  })
-  gitment.render(document.getElementById("gitment_comments"))
-</script>
-
-
-<!-- author:forvoid end -->
-
-<!-- author:forvoid end -->
-
-
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'] ],
-          displayMath: [ ["$$","$$"] ], //段内公式选择$$
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      })
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      })
-    </script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-  
-
-
- <script src="/js/is.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
   <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
@@ -392,7 +258,7 @@ window.onload = function() {
 
 
 <script src="/js/script.js"></script>
-<script src="/js/elevator.js"></script>
+
   </div>
 </body>
 </html>
