@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>一周拾遗-第2期 | 华仔的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="本期内容：  杂七杂八的Chrome分享 Mutation Observer API Vue原理 浏览器的回流与重绘 (Reflow &amp;amp; Repaint) 碰撞检测 如何编写低垃圾回收的实时JavaScript？ vega">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一周拾遗-第2期">
+<meta property="og:url" content="http://linghuam.github.io/2019/12/27/一周拾遗-第2期/index.html">
+<meta property="og:site_name" content="华仔的博客">
+<meta property="og:description" content="本期内容：  杂七杂八的Chrome分享 Mutation Observer API Vue原理 浏览器的回流与重绘 (Reflow &amp;amp; Repaint) 碰撞检测 如何编写低垃圾回收的实时JavaScript？ vega">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-01-12T14:01:47.514Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一周拾遗-第2期">
+<meta name="twitter:description" content="本期内容：  杂七杂八的Chrome分享 Mutation Observer API Vue原理 浏览器的回流与重绘 (Reflow &amp;amp; Repaint) 碰撞检测 如何编写低垃圾回收的实时JavaScript？ vega">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">华仔的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">https://github.com/linghuam</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://linghuam.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-一周拾遗-第2期" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/12/27/一周拾遗-第2期/" class="article-date">
+  <time class="dt-published" datetime="2019-12-27T12:22:56.000Z" itemprop="datePublished">2019-12-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/一周拾遗/">一周拾遗</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      一周拾遗-第2期
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>本期内容：</p>
+<ul>
+<li><a href="#杂七杂八的Chrome分享">杂七杂八的Chrome分享</a></li>
+<li><a href="#Mutation-Observer-API">Mutation Observer API</a></li>
+<li><a href="#Vue原理">Vue原理</a></li>
+<li><a href="#浏览器的回流与重绘">浏览器的回流与重绘 (Reflow &amp; Repaint)</a></li>
+<li><a href="#碰撞检测">碰撞检测</a></li>
+<li><a href="#如何编写低垃圾回收的实时JavaScript？">如何编写低垃圾回收的实时JavaScript？</a></li>
+<li><a href="#vega">vega</a></li>
+</ul>
+<a id="more"></a>
+<h2 id="杂七杂八的Chrome分享"><a href="#杂七杂八的Chrome分享" class="headerlink" title="杂七杂八的Chrome分享"></a>杂七杂八的Chrome分享</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1. `$_`是对上次执行的结果的引用。</span><br><span class="line">2. `$i(&apos;lodash&apos;)`，`Console Importer` 插件</span><br><span class="line">3. `copy()` 在 console 里 copy 任何你能拿到的资源，例如`copy($_)`或者`copy($0)`。</span><br><span class="line">4. 右击，并且选择 `Store as global variable` (保存为全局变量) 这个选项。</span><br><span class="line">5. `眼睛符号`，定义实时更新的js表达式。</span><br><span class="line">6. `Snippets`，自定义脚本；`ctrl+p, i`运行自定义脚本。</span><br><span class="line">7. `[Ctrl]+[Shift]+[P]`，Command (命令) 菜单。</span><br><span class="line">8. `Command，capture`，截屏。</span><br><span class="line">9. `Command，theme`，快速切换主题。</span><br><span class="line">10. `queryObjects`。</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.qdtalk.com/2019/10/24/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB%E7%9A%84chome%E5%88%86%E4%BA%AB/" target="_blank" rel="noopener">https://www.qdtalk.com/2019/10/24/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB%E7%9A%84chome%E5%88%86%E4%BA%AB/</a></p>
+<p><a id="Mutation-Observer-API"></a></p>
+<h2 id="Mutation-Observer-API"><a href="#Mutation-Observer-API" class="headerlink" title="Mutation Observer API"></a>Mutation Observer API</h2><p>Mutation Observer API 用来监视 DOM 变动。</p>
+<p><a href="https://wangdoc.com/javascript/dom/mutationobserver.html" target="_blank" rel="noopener">https://wangdoc.com/javascript/dom/mutationobserver.html</a></p>
+<h2 id="Vue原理"><a href="#Vue原理" class="headerlink" title="Vue原理"></a>Vue原理</h2><p><a href="https://juejin.im/post/5d9da45af265da5b8072de5d" target="_blank" rel="noopener">一张图理清 Vue 3.0 的响应式系统</a></p>
+<p><a href="https://nlrx-wjc.github.io/Learn-Vue-Source-Code/" target="_blank" rel="noopener">逐行剖析Vue.js源码</a></p>
+<p><a id="浏览器的回流与重绘"></a></p>
+<h2 id="浏览器的回流与重绘-Reflow-amp-Repaint"><a href="#浏览器的回流与重绘-Reflow-amp-Repaint" class="headerlink" title="浏览器的回流与重绘 (Reflow &amp; Repaint)"></a>浏览器的回流与重绘 (Reflow &amp; Repaint)</h2><p><a href="https://juejin.im/post/5a9923e9518825558251c96a" target="_blank" rel="noopener">浏览器的回流与重绘 (Reflow &amp; Repaint)</a></p>
+<p><a href="https://www.cnblogs.com/goloving/p/7545954.html" target="_blank" rel="noopener">高性能WEB开发：深入理解页面呈现、重绘、回流</a></p>
+<p><a href="https://juejin.im/entry/590801780ce46300617c89b8" target="_blank" rel="noopener">浏览器渲染详细过程：重绘、重排和 composite 只是冰山一角</a></p>
+<p><a href="https://www.zhangxinxu.com/wordpress/2010/01/%E5%9B%9E%E6%B5%81%E4%B8%8E%E9%87%8D%E7%BB%98%EF%BC%9Acss%E6%80%A7%E8%83%BD%E8%AE%A9javascript%E5%8F%98%E6%85%A2%EF%BC%9F/" target="_blank" rel="noopener">回流与重绘：CSS性能让JavaScript变慢？</a></p>
+<p><a href="https://gist.github.com/paulirish/5d52fb081b3570c81e3a" target="_blank" rel="noopener">What forces layout / reflow</a></p>
+<p><a href="https://github.com/wilsonpage/fastdom" target="_blank" rel="noopener">fastdom</a></p>
+<h2 id="碰撞检测"><a href="#碰撞检测" class="headerlink" title="碰撞检测"></a>碰撞检测</h2><p>《《HTML5 Canvas核心技术》 .图形、动画与游戏开发》 第八章。</p>
+<p><a href="https://gamedevelopment.tutsplus.com/tutorials/collision-detection-using-the-separating-axis-theorem--gamedev-169" target="_blank" rel="noopener">https://gamedevelopment.tutsplus.com/tutorials/collision-detection-using-the-separating-axis-theorem--gamedev-169</a><br><a href="http://www.mikechambers.com/blog/2011/03/21/javascript-quadtree-implementation/" target="_blank" rel="noopener">http://www.mikechambers.com/blog/2011/03/21/javascript-quadtree-implementation/</a></p>
+<h2 id="如何编写低垃圾回收的实时JavaScript？"><a href="#如何编写低垃圾回收的实时JavaScript？" class="headerlink" title="如何编写低垃圾回收的实时JavaScript？"></a>如何编写低垃圾回收的实时JavaScript？</h2><p>对于<strong>游戏开发</strong>比较重要。</p>
+<p><strong>低级篇：</strong></p>
+<ul>
+<li>用<code>{}、[]</code>代替<code>new</code>运算符。</li>
+<li>函数返回值不要返回对象，用外部变量代替。</li>
+<li><p>通过<code>cr.wipe(obj)</code>清空和重用对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cr.wipe = <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> o <span class="keyword">in</span> obj) &#123;</span><br><span class="line">    <span class="keyword">if</span> (obj.hasOwnProperty(o))&#123;</span><br><span class="line">      <span class="keyword">delete</span> obj[o];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过<code>arr.length=0</code>清空和重用数组。</p>
+</li>
+<li>用变量引用回调函数，尽量少动态创建匿名函数。</li>
+</ul>
+<p><strong>高级篇：</strong></p>
+<ul>
+<li>少用数组的<code>slice</code>方法和字符串的<code>substr</code>方法，他们都会创建新的临时对象。</li>
+<li>在对象数组的递归中，用索引号<code>topIndex</code>来代替<code>pop</code>和<code>push</code>操作。</li>
+<li>少用对象形式的矢量，如<code>getPosition()</code>改为<code>getX()</code>和<code>getY()</code>。</li>
+</ul>
+<p><a href="https://www.construct.net/en/blogs/construct-official-blog-1/write-low-garbage-real-time-761" target="_blank" rel="noopener">https://www.construct.net/en/blogs/construct-official-blog-1/write-low-garbage-real-time-761</a></p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Memory_Management" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Memory_Management</a></p>
+<h2 id="vega"><a href="#vega" class="headerlink" title="vega"></a>vega</h2><p>可视化语法</p>
+<p><a href="https://vega.github.io/vega/" target="_blank" rel="noopener">https://vega.github.io/vega/</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://linghuam.github.io/2019/12/27/一周拾遗-第2期/" data-id="ck5b39elw002uofbx9p4vd0ri" data-title="一周拾遗-第2期" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/12/16/一周拾遗-第1期/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">一周拾遗-第1期</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/GIS/">GIS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/config/">config</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mobile/">mobile</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tool/">tool</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/weichat/">weichat</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/一周拾遗/">一周拾遗</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端圈/">前端圈</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/可视化/">可视化</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/每天一道基础题/">每天一道基础题</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/解决方案/">解决方案</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/计划/">计划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算机图形学/">计算机图形学</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/GIS/">GIS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/config/">config</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/doc/">doc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobile/">mobile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sublime/">sublime</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/weichat/">weichat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/可视化/">可视化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/名词集锦/">名词集锦</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片/">图片</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/圆生成算法/">圆生成算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多边形填充区/">多边形填充区</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/性能/">性能</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/每天一道基础题/">每天一道基础题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/直线生成算法/">直线生成算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/翻译/">翻译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计划/">计划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/防抖与节流/">防抖与节流</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/12/27/一周拾遗-第2期/">一周拾遗-第2期</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/16/一周拾遗-第1期/">一周拾遗-第1期</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/29/CSSOM介绍-译/">CSSOM介绍[译]</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/12/高性能的web输入框/">高性能的web输入框</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/14/可视化-热力图绘制原理/">可视化-热力图绘制原理</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Linghuam<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
