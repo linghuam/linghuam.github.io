@@ -4,18 +4,19 @@
   <meta charset="utf-8">
   
   
-  <title>归档: 2018/11 | 华仔的博客</title>
+  <title>华仔的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="博客 前端 Web 互联网 地理信息 GIS 可视化">
+  <meta name="description" content="切图原理？http://www.cnblogs.com/naaoveGIS/p/3898607.htmlhttp://www.cnblogs.com/naaoveGIS/p/3899821.htmlhttp://blog.csdn.net/qingyafan/article/details/53367204 屏幕坐标和地图坐标转换原理？ 首先获取地图的中心点和比例尺级别，屏幕DPI 计算 Reso">
 <meta property="og:type" content="website">
 <meta property="og:title" content="华仔的博客">
-<meta property="og:url" content="http://linghuam.github.io/archives/2018/11/index.html">
+<meta property="og:url" content="http://linghuam.github.io/mydoc/IQ4-可视化.html">
 <meta property="og:site_name" content="华仔的博客">
-<meta property="og:description" content="博客 前端 Web 互联网 地理信息 GIS 可视化">
+<meta property="og:description" content="切图原理？http://www.cnblogs.com/naaoveGIS/p/3898607.htmlhttp://www.cnblogs.com/naaoveGIS/p/3899821.htmlhttp://blog.csdn.net/qingyafan/article/details/53367204 屏幕坐标和地图坐标转换原理？ 首先获取地图的中心点和比例尺级别，屏幕DPI 计算 Reso">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-01-12T15:17:12.007Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="华仔的博客">
-<meta name="twitter:description" content="博客 前端 Web 互联网 地理信息 GIS 可视化">
+<meta name="twitter:description" content="切图原理？http://www.cnblogs.com/naaoveGIS/p/3898607.htmlhttp://www.cnblogs.com/naaoveGIS/p/3899821.htmlhttp://blog.csdn.net/qingyafan/article/details/53367204 屏幕坐标和地图坐标转换原理？ 首先获取地图的中心点和比例尺级别，屏幕DPI 计算 Reso">
   
   
     <link rel="icon" href="/favicon.png">
@@ -67,58 +68,54 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/11/14/可视化-热力图绘制原理/" class="archive-article-date">
-  <time class="dt-published" datetime="2018-11-14T01:56:30.000Z" itemprop="datePublished">11月 14</time>
+        <section id="main"><article id="page-undefined" class="h-entry article article-type-page" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/mydoc/IQ4-可视化.html" class="article-date">
+  <time class="dt-published" datetime="2020-01-12T15:17:12.007Z" itemprop="datePublished">2020-01-12</time>
 </a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/14/可视化-热力图绘制原理/">可视化-热力图绘制原理</a>
-    </h1>
-  
-
-    </header>
+    
   </div>
-</article>
-  
+  <div class="article-inner">
     
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/11/05/js-Promise/" class="archive-article-date">
-  <time class="dt-published" datetime="2018-11-05T01:41:44.000Z" itemprop="datePublished">11月 5</time>
-</a>
+    <div class="e-content article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/05/js-Promise/">js-Promise</a>
-    </h1>
-  
+        <h2 id="切图原理？"><a href="#切图原理？" class="headerlink" title="切图原理？"></a>切图原理？</h2><p><a href="http://www.cnblogs.com/naaoveGIS/p/3898607.html" target="_blank" rel="noopener">http://www.cnblogs.com/naaoveGIS/p/3898607.html</a><br><a href="http://www.cnblogs.com/naaoveGIS/p/3899821.html" target="_blank" rel="noopener">http://www.cnblogs.com/naaoveGIS/p/3899821.html</a><br><a href="http://blog.csdn.net/qingyafan/article/details/53367204" target="_blank" rel="noopener">http://blog.csdn.net/qingyafan/article/details/53367204</a></p>
+<h2 id="屏幕坐标和地图坐标转换原理？"><a href="#屏幕坐标和地图坐标转换原理？" class="headerlink" title="屏幕坐标和地图坐标转换原理？"></a>屏幕坐标和地图坐标转换原理？</h2><ul>
+<li>首先获取地图的中心点和比例尺级别，屏幕DPI</li>
+<li>计算 Resolution，屏幕上一像素代表的实际距离。</li>
+<li><p>计算屏幕范围对应的地理范围，得到屏幕左上角坐标对应的地理坐标</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> topleftx = mapx - (containerWidth * resolution) / <span class="number">2</span>;</span><br><span class="line"><span class="keyword">var</span> toplefty = mapy - (containerHeight * resolution) / <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用户点击屏幕上的一个点 (x,y)计算地理坐标点</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mapx = topleftx + x * resolution;</span><br><span class="line"><span class="keyword">var</span> mapy = toplefty + y * resolution;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><a href="https://www.cnblogs.com/naaoveGIS/p/3930603.html" target="_blank" rel="noopener">https://www.cnblogs.com/naaoveGIS/p/3930603.html</a><br><a href="https://www.jianshu.com/p/b5dbdbd5cd8c" target="_blank" rel="noopener">https://www.jianshu.com/p/b5dbdbd5cd8c</a><br><a href="http://blog.csdn.net/yht_roy/article/details/39346235" target="_blank" rel="noopener">http://blog.csdn.net/yht_roy/article/details/39346235</a></p>
+<h2 id="插值算法实现原理？"><a href="#插值算法实现原理？" class="headerlink" title="插值算法实现原理？"></a>插值算法实现原理？</h2><ul>
+<li>已知条件：一系列离散点；要插的值序列，如：[3,5,7,9]</li>
+<li>网格化。采用 IDW 算法将离散点网格化。</li>
+<li>取一个待插值数 p0，将每个网格的顶点数值与之相减，结果大于零则标记为’+’，结果小于零则标记为’-‘</li>
+<li>这样就得到一个顶点要么是正，要么是负的网格。</li>
+<li>逐一的处理每个网格，取网格各个边的中点，然后找到将正负分开的连线将中点相连接</li>
+<li>重复上诉过程，插另一个值</li>
+</ul>
+<p><a href="http://blog.csdn.net/silangquan/article/details/47054309" target="_blank" rel="noopener">http://blog.csdn.net/silangquan/article/details/47054309</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Marching_squares" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Marching_squares</a></p>
 
-    </header>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://linghuam.github.io/mydoc/IQ4-可视化.html" data-id="ck5gp7cfd001crpbxdbspvyle" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
   </div>
+  
+    
+  
 </article>
-  
-  
-    </div></section>
-  
 
 
 </section>
