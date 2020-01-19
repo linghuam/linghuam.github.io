@@ -3,9 +3,8 @@
 <head>
   <meta charset="utf-8">
   
-  
   <title>华仔的博客</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="数分解成很多个质数相乘从一个无序，不相等的数组中，选取N个数，使其和为M实现算法？你对算法数据结构了解多少？链表和数组区别？ 数组：顺序存储，读取快速，插入和删除要移动大量元素，不方便。 链表：链式存储，读取要从头开始，麻烦，但插入和删除方便，只用修改指针即可。 数组静态分配内存，链表动态分配内存； 数组在内存中连续，链表不连续； 数组元素在栈区，链表元素在堆区； 数组利用下标定位，时间复杂度为O">
 <meta property="og:type" content="website">
 <meta property="og:title" content="华仔的博客">
@@ -18,16 +17,17 @@
 <meta name="twitter:title" content="华仔的博客">
 <meta name="twitter:description" content="数分解成很多个质数相乘从一个无序，不相等的数组中，选取N个数，使其和为M实现算法？你对算法数据结构了解多少？链表和数组区别？ 数组：顺序存储，读取快速，插入和删除要移动大量元素，不方便。 链表：链式存储，读取要从头开始，麻烦，但插入和删除方便，只用修改指针即可。 数组静态分配内存，链表动态分配内存； 数组在内存中连续，链表不连续； 数组元素在栈区，链表元素在堆区； 数组利用下标定位，时间复杂度为O">
   
+    <link rel="alternate" href="/atom.xml" title="华仔的博客" type="application/atom+xml">
   
-    <link rel="icon" href="/favicon.png">
+  
+    <link rel="icon" href="/favicon.ico">
   
   
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+    
   
   <link rel="stylesheet" href="/css/style.css">
   
-    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-  
+
 </head>
 
 <body>
@@ -36,6 +36,29 @@
       <header id="header">
   <div id="banner"></div>
   <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://linghuam.github.io"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      
+    </div>
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
         <a href="/" id="logo">华仔的博客</a>
@@ -46,40 +69,23 @@
         </h2>
       
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-          <a class="main-nav-link" href="/about">About</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://linghuam.github.io"></form>
-      </div>
-    </div>
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="page-undefined" class="h-entry article article-type-page" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="page-undefined" class="article article-type-page" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/mydoc/iQ3-数据结构与算法.html" class="article-date">
-  <time class="dt-published" datetime="2020-01-12T15:10:18.165Z" itemprop="datePublished">2020-01-12</time>
+  <time datetime="2020-01-12T15:10:18.165Z" itemprop="datePublished">2020-01-12</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
-    <div class="e-content article-entry" itemprop="articleBody">
+    <div class="article-entry" itemprop="articleBody">
       
+        <!-- Table of Contents -->
+        
         <h2 id="数分解成很多个质数相乘"><a href="#数分解成很多个质数相乘" class="headerlink" title="数分解成很多个质数相乘"></a>数分解成很多个质数相乘</h2><h2 id="从一个无序，不相等的数组中，选取N个数，使其和为M实现算法？"><a href="#从一个无序，不相等的数组中，选取N个数，使其和为M实现算法？" class="headerlink" title="从一个无序，不相等的数组中，选取N个数，使其和为M实现算法？"></a>从一个无序，不相等的数组中，选取N个数，使其和为M实现算法？</h2><h2 id="你对算法数据结构了解多少？链表和数组区别？"><a href="#你对算法数据结构了解多少？链表和数组区别？" class="headerlink" title="你对算法数据结构了解多少？链表和数组区别？"></a>你对算法数据结构了解多少？链表和数组区别？</h2><ul>
 <li>数组：顺序存储，读取快速，插入和删除要移动大量元素，不方便。</li>
 <li>链表：链式存储，读取要从头开始，麻烦，但插入和删除方便，只用修改指针即可。</li>
@@ -127,7 +133,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linghuam.github.io/mydoc/iQ3-数据结构与算法.html" data-id="ck5gp7cfe001grpbxon0qmjo1" data-title="" class="article-share-link">Share</a>
+      <a data-url="http://linghuam.github.io/mydoc/iQ3-数据结构与算法.html" data-id="ck5kmhw5v00095vbx6t6x256l" class="article-share-link">分享</a>
       
       
       
@@ -135,111 +141,211 @@
   </div>
   
     
+ <script src="/jquery/jquery.min.js"></script>
+  <div id="random_posts">
+    <h2>推荐文章</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =3
+          var site = {BASE_URI:'/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
   
 </article>
-
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+       
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+       
+      
+      
+           <div id="gitment_comments"></div>
+    
+  </div>
+ 
+  
 
 </section>
-        
-          <aside id="sidebar">
+           
+    <aside id="sidebar">
   
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/GIS/">GIS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/config/">config</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mobile/">mobile</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tool/">tool</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/weichat/">weichat</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/专题/">专题</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/专题/一周拾遗/">一周拾遗</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端圈/">前端圈</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/可视化/">可视化</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/每天一道基础题/">每天一道基础题</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/解决方案/">解决方案</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/计划/">计划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算机图形学/">计算机图形学</a></li></ul>
-    </div>
-  </div>
-
 
   
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/GIS/">GIS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/config/">config</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/doc/">doc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobile/">mobile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sublime/">sublime</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/weichat/">weichat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/可视化/">可视化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/名词集锦/">名词集锦</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片/">图片</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/圆生成算法/">圆生成算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多边形填充区/">多边形填充区</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/性能/">性能</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/每天一道基础题/">每天一道基础题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/直线生成算法/">直线生成算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/翻译/">翻译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计划/">计划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/防抖与节流/">防抖与节流</a></li></ul>
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#数分解成很多个质数相乘"><span class="toc-number">1.</span> <span class="toc-text">数分解成很多个质数相乘</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从一个无序，不相等的数组中，选取N个数，使其和为M实现算法？"><span class="toc-number">2.</span> <span class="toc-text">从一个无序，不相等的数组中，选取N个数，使其和为M实现算法？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#你对算法数据结构了解多少？链表和数组区别？"><span class="toc-number">3.</span> <span class="toc-text">你对算法数据结构了解多少？链表和数组区别？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二分查找？"><span class="toc-number">4.</span> <span class="toc-text">二分查找？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#排序算法知道多少种？适用场景是什么（有序性，数据规模，稳定性等）？冒泡什么时候复杂度最高？"><span class="toc-number">5.</span> <span class="toc-text">排序算法知道多少种？适用场景是什么（有序性，数据规模，稳定性等）？冒泡什么时候复杂度最高？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#前端都会用到什么算法？说到了虚拟-DOM-的-diff-算法，又问虚拟-DOM-和真实-DOM-哪个快？"><span class="toc-number">6.</span> <span class="toc-text">前端都会用到什么算法？说到了虚拟 DOM 的 diff 算法，又问虚拟 DOM 和真实 DOM 哪个快？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#树的广度和深度优先遍历"><span class="toc-number">7.</span> <span class="toc-text">树的广度和深度优先遍历?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#冒泡排序？"><span class="toc-number">7.1.</span> <span class="toc-text">冒泡排序？</span></a></li></ol></li></ol>
+          </div>
+      </div>
     </div>
-  </div>
-
 
   
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li></ul>
-    </div>
-  </div>
-
 
   
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2019/12/27/一周拾遗-第2期/">一周拾遗-第2期</a>
-          </li>
-        
-          <li>
-            <a href="/2019/12/16/一周拾遗-第1期/">一周拾遗-第1期</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/29/CSSOM介绍-译/">CSSOM介绍[译]</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/12/高性能的web输入框/">高性能的web输入框</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/14/可视化-热力图绘制原理/">可视化-热力图绘制原理</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
 
+  
+    
   
 </aside>
-        
+
       </div>
       <footer id="footer">
   
   <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2020 Linghuam<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    <div id="footer-left">
+      &copy; 2014 - 2020 Linghuam&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;1551827898@qq.com
     </div>
   </div>
 </footer>
-
+ <script src="/jquery/jquery.min.js"></script>
     </div>
     <nav id="mobile-nav">
   
-    <a href="/" class="mobile-nav-link">Home</a>
+    <a href="/" class="mobile-nav-link">首页</a>
   
-    <a href="/archives" class="mobile-nav-link">Archives</a>
+    <a href="/archives" class="mobile-nav-link">归档</a>
   
-    <a href="/about" class="mobile-nav-link">About</a>
+    <a href="/about" class="mobile-nav-link">关于</a>
   
 </nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+  
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "e2fb4051c49842688ce669e634bc983f",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
     
 
-<script src="/js/jquery-3.4.1.min.js"></script>
+  
 
 
-  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script> 
+  <script>
+  var gitment = new Gitment({
+    // id: '页面 ID', // 可选。默认为 location.href
+    owner: 'linghuam',
+    repo: 'linghuam.github.io',
+    oauth: {
+    client_id: '17ad04af6a057fbb5072',
+    client_secret: '5bb953d9587f8f1bde7c956bda62db16779dab4c',
+    }
+  })
+  gitment.render(document.getElementById("gitment_comments"))
+</script>
+
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'] ],
+          displayMath: [ ["$$","$$"] ], //段内公式选择$$
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ <script src="/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
 <script src="/js/script.js"></script>
-
-
-
-
+<script src="/js/elevator.js"></script>
   </div>
 </body>
 </html>

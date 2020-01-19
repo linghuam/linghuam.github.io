@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>浏览器沙箱模式探究 | 华仔的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="网页插件或嵌入自定义图表都要运行不安全的第三方代码，本文探究如何让第三方代码在 web 网页中高效且安全运行。">
+<meta name="keywords" content="iframe,shadowDom">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浏览器沙箱模式探究">
+<meta property="og:url" content="http://linghuam.github.io/2020/01/16/浏览器沙箱模式探究/index.html">
+<meta property="og:site_name" content="华仔的博客">
+<meta property="og:description" content="网页插件或嵌入自定义图表都要运行不安全的第三方代码，本文探究如何让第三方代码在 web 网页中高效且安全运行。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-01-16T12:17:14.866Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="浏览器沙箱模式探究">
+<meta name="twitter:description" content="网页插件或嵌入自定义图表都要运行不安全的第三方代码，本文探究如何让第三方代码在 web 网页中高效且安全运行。">
+  
+    <link rel="alternate" href="/atom.xml" title="华仔的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://linghuam.github.io"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">华仔的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">https://github.com/linghuam</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-浏览器沙箱模式探究" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/16/浏览器沙箱模式探究/" class="article-date">
+  <time datetime="2020-01-16T12:07:49.000Z" itemprop="datePublished">2020-01-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/专题/">专题</a>►<a class="article-category-link" href="/categories/专题/性能优化/">性能优化</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      浏览器沙箱模式探究
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>网页插件或嵌入自定义图表都要运行不安全的第三方代码，本文探究如何让第三方代码在 web 网页中高效且安全运行。<br><a id="more"></a></p>
+<h2 id="Iframe-介绍"><a href="#Iframe-介绍" class="headerlink" title="Iframe 介绍"></a><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe" target="_blank" rel="noopener">Iframe</a> 介绍</h2><p>iframe 元素表示嵌套的<a href="https://developer.mozilla.org/en-US/docs/Glossary/browsing_context" target="_blank" rel="noopener">浏览上下文</a>。每个嵌入式浏览上下文都有其自己的会话历史记录和文档。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span> === frame.contentWindow <span class="comment">// false</span></span><br><span class="line"><span class="built_in">window</span>.document === frame.contentDocument <span class="comment">// false</span></span><br><span class="line"><span class="built_in">window</span>.Array === frame.contentWindow.Array <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<p><strong>注：</strong> 由于每个浏览上下文都是完整的文档环境，页面中的每个<code>&lt;iframe&gt;</code>都需要增加内存和其他计算资源。从理论上讲，您可以根据需要使用任意多个<code>&lt;iframe&gt;</code>，但请检查性能问题。</p>
+<p><strong>iframe问题：</strong></p>
+<ul>
+<li><p><code>iframe 阻塞 onload 事件</code>：iframe会在主页面的onload之前加载。</p>
+</li>
+<li><p><code>占用连接池</code></p>
+</li>
+<li><p><code>耗性能</code>：iframe 数量过多页面性能明显下降。</p>
+</li>
+</ul>
+<h2 id="Shadow-DOM-隔离-CSS-和-DOM"><a href="#Shadow-DOM-隔离-CSS-和-DOM" class="headerlink" title="Shadow DOM 隔离 CSS 和 DOM"></a><a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM" target="_blank" rel="noopener">Shadow DOM</a> 隔离 CSS 和 DOM</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>shadowDom<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">  <span class="selector-class">.chart-title</span> &#123;</span></span><br><span class="line"><span class="undefined">    color: blue !important;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined">  </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"custom_chart"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> elementRef = <span class="built_in">document</span>.getElementById(<span class="string">"custom_chart"</span>);</span></span><br><span class="line"><span class="undefined">  </span></span><br><span class="line"><span class="javascript">  <span class="comment">// 1. 初始化一个 shadowDom</span></span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> shadow = elementRef.attachShadow(&#123; <span class="attr">mode</span>: <span class="string">'open'</span> &#125;); <span class="comment">// open | closed(elementRef.shadowRoot = null)</span></span></span><br><span class="line"><span class="undefined">  </span></span><br><span class="line"><span class="javascript">  <span class="comment">// 2. 创建影子DOM结构</span></span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> title = <span class="built_in">document</span>.createElement(<span class="string">'h2'</span>);</span></span><br><span class="line"><span class="javascript">  title.textContent = <span class="string">'我是影子DOM'</span>;</span></span><br><span class="line"><span class="javascript">  title.classList.add(<span class="string">'chart-title'</span>);</span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> content = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>);</span></span><br><span class="line"><span class="javascript">  content.classList.add(<span class="string">'chart-content'</span>);</span></span><br><span class="line"><span class="undefined">  </span></span><br><span class="line"><span class="javascript">  <span class="comment">// 3. 设置阴影DOM的样式</span></span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> style = <span class="built_in">document</span>.createElement(<span class="string">'style'</span>);</span></span><br><span class="line"><span class="undefined">  style.textContent = `</span></span><br><span class="line"><span class="undefined">    .chart-title &#123;</span></span><br><span class="line"><span class="undefined">      color: red;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    .chart-content &#123;</span></span><br><span class="line"><span class="undefined">      width: 200px;</span></span><br><span class="line"><span class="undefined">      height: 100px;</span></span><br><span class="line"><span class="undefined">      background: silver;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  `;</span></span><br><span class="line"><span class="undefined">  </span></span><br><span class="line"><span class="javascript">  <span class="comment">// 4. 设置 script 脚本</span></span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</span></span><br><span class="line"><span class="javascript">  <span class="comment">// script.src = 'https://cdnjs.cloudflare.com/ajax/libs/echarts/4.6.0/echarts.min.js';</span></span></span><br><span class="line"><span class="undefined">  script.textContent = `</span></span><br><span class="line"><span class="javascript">     <span class="keyword">var</span> chart = <span class="number">1</span>;</span></span><br><span class="line"><span class="javascript">     <span class="built_in">console</span>.log(<span class="built_in">window</span>);</span></span><br><span class="line"><span class="undefined">  `;</span></span><br><span class="line"><span class="undefined">  </span></span><br><span class="line"><span class="javascript">  <span class="comment">// 4.将影子DOM附加到影子根</span></span></span><br><span class="line"><span class="undefined">  shadow.appendChild(style);</span></span><br><span class="line"><span class="undefined">  shadow.appendChild(script);</span></span><br><span class="line"><span class="undefined">  shadow.appendChild(title);</span></span><br><span class="line"><span class="undefined">  shadow.appendChild(content);</span></span><br><span class="line"><span class="undefined">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  </span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>问题：</strong> shadowDom 并不隔离 js。</p>
+<h2 id="在主线程中如何隔离-js"><a href="#在主线程中如何隔离-js" class="headerlink" title="在主线程中如何隔离 js ?"></a>在主线程中如何隔离 js ?</h2><h3 id="eval-str-？"><a href="#eval-str-？" class="headerlink" title="eval(str) ？"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/eval" target="_blank" rel="noopener">eval(str)</a> ？</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span>(<span class="string">'1+1;'</span>);</span><br><span class="line"><span class="built_in">eval</span>(<span class="string">'function()&#123;return 123;&#125;'</span>);</span><br><span class="line"><span class="built_in">eval</span>(<span class="string">'window.document.write("&lt;script src=https://cdnjs.cloudflare.com/ajax/libs/echarts/4.6.0/echarts.min.js&gt;&lt;/script&gt;")'</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="如何隐藏全局变量——Realm"><a href="#如何隐藏全局变量——Realm" class="headerlink" title="如何隐藏全局变量——Realm"></a>如何隐藏全局变量——<a href="https://github.com/tc39/proposal-realms/#ecmascript-spec-proposal-for-realms-api" target="_blank" rel="noopener">Realm</a></h3><p>使用示例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> g = <span class="built_in">window</span>; <span class="comment">// outer global</span></span><br><span class="line"><span class="keyword">let</span> r = Realm.makeRootRealm(); <span class="comment">// realm object</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">let</span> f = r.evaluate(<span class="string">"(function() &#123; return 17 &#125;)"</span>);</span><br><span class="line"> </span><br><span class="line">f() === <span class="number">17</span> <span class="comment">// true</span></span><br><span class="line"> </span><br><span class="line"><span class="built_in">Reflect</span>.getPrototypeOf(f) === g.Function.prototype <span class="comment">// false</span></span><br><span class="line"><span class="built_in">Reflect</span>.getPrototypeOf(f) === r.global.Function.prototype <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>核心原理：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">simplifiedEval</span>(<span class="params">scopeProxy, userCode</span>) </span>&#123;</span><br><span class="line"><span class="meta">  'use strict'</span></span><br><span class="line">  <span class="keyword">with</span> (scopeProxy) &#123;</span><br><span class="line">    <span class="built_in">eval</span>(userCode)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/with" target="_blank" rel="noopener">with</a> 语句【限制作用域】</strong></p>
+<p>with 语句接收的对象会添加到作用域链的前端并在代码执行完之后移除。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// https://www.tuicool.com/articles/FjiMFrY</span></span><br><span class="line"><span class="comment">// example 1</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">name</span>: <span class="string">'xiaoming'</span> &#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> name = <span class="string">'xiaoqiang'</span>;</span><br><span class="line">  <span class="keyword">with</span>(obj) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(name);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(name);</span><br><span class="line">&#125;</span><br><span class="line">sayName();</span><br><span class="line"></span><br><span class="line"><span class="comment">// example2</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">name</span>: <span class="string">'xiaoming'</span> &#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> name = <span class="string">'xiaoqiang'</span>;</span><br><span class="line">  <span class="keyword">with</span>(obj) &#123;</span><br><span class="line">    name = <span class="string">'xiaohua'</span>;</span><br><span class="line">    age = <span class="number">30</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(name);</span><br><span class="line">  <span class="built_in">console</span>.log(age);</span><br><span class="line">&#125;</span><br><span class="line">sayName();</span><br><span class="line"><span class="built_in">console</span>.log(obj.name);</span><br><span class="line"><span class="built_in">console</span>.log(obj.age);</span><br></pre></td></tr></table></figure>
+<p><strong><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy" target="_blank" rel="noopener">Proxy</a> 对象【访问拦截】</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> scopeProxy = <span class="keyword">new</span> <span class="built_in">Proxy</span>(whitelist, &#123;</span><br><span class="line">  get(target, prop) &#123;</span><br><span class="line">    <span class="comment">// here, target === whitelist</span></span><br><span class="line">    <span class="keyword">if</span> (prop <span class="keyword">in</span> target) &#123;</span><br><span class="line">      <span class="keyword">return</span> target[prop];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">undefined</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="最终方案"><a href="#最终方案" class="headerlink" title="最终方案"></a>最终方案</h2><p><code>Real + shadowDom</code></p>
+<p><strong>优点：</strong></p>
+<ol>
+<li><code>n</code>个自定义图表，仅需<code>2</code>个 iframe 解决，大大减少了<code>iframe</code>数量。</li>
+<li>主线程中运行速度很快。</li>
+<li>共享公共资源，节省内存和网络请求开支。</li>
+<li>代码<code>安全性</code>比原来更高。</li>
+</ol>
+<p><strong>缺点和改进：</strong></p>
+<ol>
+<li>兼容性：<code>Proxy</code> IE11不支持，Edge支持，chrome 49以上支持。</li>
+<li>加载多个<code>第三方库冲突</code>问题。</li>
+<li>实践中的<code>安全性</code>和<code>性能</code>问题仍有待进一步验证。</li>
+</ol>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><p><a href="https://www.infoq.cn/article/LDV1D4ASVSpT8H7PVCvr" target="_blank" rel="noopener">如何安全的运行第三方 JavaScript 代码（上）？</a><br><a href="https://www.infoq.cn/article/5KosuiHOeBL4tbXk0HkH" target="_blank" rel="noopener">如何安全的运行第三方 JavaScript 代码（中）？</a><br><a href="https://www.infoq.cn/article/SaCHSl6KW7b7erkJHIiH" target="_blank" rel="noopener">如何安全的运行第三方 JavaScript 代码（下）？</a><br><a href="https://www.figma.com/blog/how-we-built-the-figma-plugin-system/" target="_blank" rel="noopener">原文-How to build a plugin system on the web and also sleep well at night</a><br><a href="https://chinese.freecodecamp.org/forum/t/topic/587" target="_blank" rel="noopener">JS中的沙箱个人见解</a><br><a href="https://www.open-open.com/solution/view/1319458447249" target="_blank" rel="noopener">iframe异步加载技术及性能</a><br><a href="https://github.com/tc39/proposal-realms/#ecmascript-spec-proposal-for-realms-api" target="_blank" rel="noopener">Realm-shim</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect" target="_blank" rel="noopener">Reflect</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://linghuam.github.io/2020/01/16/浏览器沙箱模式探究/" data-id="ck5kmhwa8005e5vbx7sxmlgqu" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iframe/">iframe</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shadowDom/">shadowDom</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+ <script src="/jquery/jquery.min.js"></script>
+  <div id="random_posts">
+    <h2>推荐文章</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =3
+          var site = {BASE_URI:'/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+    <a href="/2020/01/17/git如何安全回滚/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          git如何安全回滚
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/12/27/一周拾遗-第2期/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">一周拾遗-第2期</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+       
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+       
+      
+      
+           <div id="gitment_comments"></div>
+    
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Iframe-介绍"><span class="toc-number">1.</span> <span class="toc-text">Iframe 介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shadow-DOM-隔离-CSS-和-DOM"><span class="toc-number">2.</span> <span class="toc-text">Shadow DOM 隔离 CSS 和 DOM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在主线程中如何隔离-js"><span class="toc-number">3.</span> <span class="toc-text">在主线程中如何隔离 js ?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#eval-str-？"><span class="toc-number">3.1.</span> <span class="toc-text">eval(str) ？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何隐藏全局变量——Realm"><span class="toc-number">3.2.</span> <span class="toc-text">如何隐藏全局变量——Realm</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最终方案"><span class="toc-number">4.</span> <span class="toc-text">最终方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文档"><span class="toc-number">5.</span> <span class="toc-text">参考文档</span></a></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+
+  
+    
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2020 Linghuam&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;1551827898@qq.com
+    </div>
+  </div>
+</footer>
+ <script src="/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+  
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "e2fb4051c49842688ce669e634bc983f",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+    
+
+  
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script> 
+  <script>
+  var gitment = new Gitment({
+    // id: '页面 ID', // 可选。默认为 location.href
+    owner: 'linghuam',
+    repo: 'linghuam.github.io',
+    oauth: {
+    client_id: '17ad04af6a057fbb5072',
+    client_secret: '5bb953d9587f8f1bde7c956bda62db16779dab4c',
+    }
+  })
+  gitment.render(document.getElementById("gitment_comments"))
+</script>
+
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'] ],
+          displayMath: [ ["$$","$$"] ], //段内公式选择$$
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ <script src="/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/elevator.js"></script>
+  </div>
+</body>
+</html>
