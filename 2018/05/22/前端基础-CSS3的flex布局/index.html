@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>前端基础-CSS3的flex布局 | 华仔的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="最近做项目时，用了不少 CSS3 的 flex 布局，感觉非常棒，比老式布局方式(position+display+float)好用得多，所以打算写一篇文章总结一下。">
+<meta name="keywords" content="css3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端基础-CSS3的flex布局">
+<meta property="og:url" content="http://linghuam.github.io/2018/05/22/前端基础-CSS3的flex布局/index.html">
+<meta property="og:site_name" content="华仔的博客">
+<meta property="og:description" content="最近做项目时，用了不少 CSS3 的 flex 布局，感觉非常棒，比老式布局方式(position+display+float)好用得多，所以打算写一篇文章总结一下。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-02-03T12:08:02.136Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端基础-CSS3的flex布局">
+<meta name="twitter:description" content="最近做项目时，用了不少 CSS3 的 flex 布局，感觉非常棒，比老式布局方式(position+display+float)好用得多，所以打算写一篇文章总结一下。">
+  
+    <link rel="alternate" href="/atom.xml" title="华仔的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://linghuam.github.io"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">华仔的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">https://github.com/linghuam</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-前端基础-CSS3的flex布局" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/22/前端基础-CSS3的flex布局/" class="article-date">
+  <time datetime="2018-05-22T13:42:09.000Z" itemprop="datePublished">2018-05-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/前端基础/">前端基础</a>►<a class="article-category-link" href="/categories/前端基础/CSS/">CSS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      前端基础-CSS3的flex布局
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>最近做项目时，用了不少 CSS3 的 flex 布局，感觉非常棒，比老式布局方式(position+display+float)好用得多，所以打算写一篇文章总结一下。<br><a id="more"></a></p>
+<h2 id="flex-的基本概念"><a href="#flex-的基本概念" class="headerlink" title="flex 的基本概念"></a>flex 的基本概念</h2><p><strong>两个关键词：</strong></p>
+<ol>
+<li>flex 容器(flex container)</li>
+<li>flex 项目(flex items)</li>
+</ol>
+<p><strong>容器</strong><br></p>
+<h3 id="容器属性"><a href="#容器属性" class="headerlink" title="容器属性"></a>容器属性</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:center">取值</th>
+<th style="text-align:left">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>display</code></td>
+<td style="text-align:center"><code>flex or inline-flex</code></td>
+<td style="text-align:left">对应块级或行内元素</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>flex-direction</code></td>
+<td style="text-align:center"><code>row(default); row-reverse; column; column-reverse</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>flex-wrap</code></td>
+<td style="text-align:center"><code>nowrap(default); wrap; wrap-reverse</code></td>
+<td style="text-align:left">nowrap 一行显示，wrap 多行显示  </td>
+</tr>
+<tr>
+<td style="text-align:left"><code>flex-flow</code></td>
+<td style="text-align:center"><code>&lt;flex-direction&gt; &lt;flex-wrap&gt;</code></td>
+<td style="text-align:left">简写，默认是<code>row nowrap</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>justify-content</code></td>
+<td style="text-align:center"><code>flex-start; flex-end; center; space-between; space-around; space-evenly</code></td>
+<td style="text-align:left">项目沿主轴对齐方向，其实是规定如何分配空间 </td>
+</tr>
+<tr>
+<td style="text-align:left"><code>align-items</code></td>
+<td style="text-align:center"><code>flex-start; flex-end; center; baseline; stretch</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>align-content</code></td>
+<td style="text-align:center"><code>flex-start; flex-end; center; baseline; stretch</code></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="项目属性"><a href="#项目属性" class="headerlink" title="项目属性"></a>项目属性</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:center">取值</th>
+<th style="text-align:left">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>order</code></td>
+<td style="text-align:center"><code>&lt;integer&gt;默认为0</code></td>
+<td style="text-align:left">规定项目排列顺序，默认按照文档中出现的顺序排列</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>flex-grow</code></td>
+<td style="text-align:center"><code>&lt;number&gt;默认为0</code></td>
+<td style="text-align:left">规定有剩余空间时，项目如何放大。例如如果都设为1，则都等比例放大；如果一个设为2，其他设为1，则这一个放大倍数是其他的2倍，其他均分</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>flex-shrink</code></td>
+<td style="text-align:center"><code>&lt;number&gt;默认为1</code></td>
+<td style="text-align:left">负数无效；规定项目缩放比例</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>flex-basis</code></td>
+<td style="text-align:center"><code>&lt;length&gt;默认为auto</code></td>
+<td style="text-align:left">定义在分配剩余空间前元素的默认尺寸,默认值为auto，即项目的本来大小, 它可以设为跟width或height属性一样的值（比如350px），则项目将占据固定空间 </td>
+</tr>
+<tr>
+<td style="text-align:left"><code>flex</code></td>
+<td style="text-align:center"><code>none 或 [&lt;flex-grow&gt; &lt;flex-shrink&gt; &lt;flex-basis&gt;]</code></td>
+<td style="text-align:left">默认为<code>0 1 auto</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>align-self</code></td>
+<td style="text-align:center"><code>auto; flex-start; flex-end; center; baseline; stretch</code></td>
+<td style="text-align:left">覆盖<code>align-items</code>属性</td>
+</tr>
+</tbody>
+</table>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><blockquote>
+<ol>
+<li><strong>Note:</strong> Flexbox layout is most appropriate to the components of an application, and small-scale layouts, while the <code>Grid layout</code> is intended for larger scale layouts.</li>
+<li><strong>Note</strong> that <code>float</code>, <code>clear</code> and <code>vertical-align</code> have no effect on a flex item.</li>
+<li>all of the <code>column-*</code> properties have no effect on a flex container.</li>
+<li>the <code>::first-line</code> and <code>::first-letter</code> pseudo-elements do not apply to flex containers.</li>
+</ol>
+</blockquote>
+<h2 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h2><ul>
+<li>目前各主流浏览器已基本完全支持 flex 布局方式</li>
+<li>移动端和各种屏幕适配的场景适合使用 flex 布局</li>
+<li>flex 是一维的布局方案，grid 是二维布局方案；grid 适合于大型布局，但目前兼容性不太好</li>
+<li>flex 的子元素设置 z-index 会创建新的层叠上下文</li>
+</ul>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 居中</span><br><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">300px</span>; <span class="comment">/* Or whatever */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.child</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;  <span class="comment">/* Or whatever */</span></span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100px</span>; <span class="comment">/* Or whatever */</span></span><br><span class="line">  <span class="attribute">margin</span>: auto;  <span class="comment">/*  margin set to `auto` in a flex container absorb extra space! */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>更多示例请访问大牛们的总结:</p>
+<ul>
+<li><a href="http://www.ruanyifeng.com/blog/2015/07/flex-examples.html" target="_blank" rel="noopener">ruanyifeng</a></li>
+<li><a href="https://www.tuicool.com/articles/3ArmieN" target="_blank" rel="noopener">5 种常用布局的 flex 实现</a></li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank" rel="noopener">A Complete Guide to Flexbox</a></li>
+<li><a href="https://css-tricks.com/old-flexbox-and-new-flexbox/" target="_blank" rel="noopener">old-flexbox-and-new-flexbox</a></li>
+<li><a href="https://drafts.csswg.org/css-flexbox-1/" target="_blank" rel="noopener">w3c</a></li>
+<li><a href="https://scotch.io/tutorials/a-visual-guide-to-css3-flexbox-properties" target="_blank" rel="noopener">A Visual Guide to CSS3 Flexbox Properties</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html" target="_blank" rel="noopener">Flex 布局教程 阮一峰</a></li>
+<li><a href="http://www.w3cplus.com/css3/css-grid-flexbox-solving-real-world-problems.html" target="_blank" rel="noopener">CSS Grid和Flexbox解决实际的布局问题</a></li>
+<li><a href="https://hopefuture.gitbooks.io/h5-learning/content/css3/flex/compatibility.html" target="_blank" rel="noopener">关于flex兼容性的文章</a></li>
+<li><a href="https://github.com/iuap-design/blog/issues/190" target="_blank" rel="noopener">flex 布局在移动端的兼容性问题 </a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://linghuam.github.io/2018/05/22/前端基础-CSS3的flex布局/" data-id="ck678t7jl001b41bxfzlzbus3" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css3/">css3</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+ <script src="/jquery/jquery.min.js"></script>
+  <div id="random_posts">
+    <h2>推荐文章</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =3
+          var site = {BASE_URI:'/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+    <a href="/2018/05/23/前端基础-CSS中vertical-align属性/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          前端基础-CSS中vertical-align属性
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/05/21/前端基础-CSS之z-index属性/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">前端基础-CSS之z-index属性</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+       
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+       
+      
+      
+           <div id="gitment_comments"></div>
+    
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#flex-的基本概念"><span class="toc-number">1.</span> <span class="toc-text">flex 的基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#容器属性"><span class="toc-number">1.1.</span> <span class="toc-text">容器属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#项目属性"><span class="toc-number">1.2.</span> <span class="toc-text">项目属性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引用"><span class="toc-number">2.</span> <span class="toc-text">引用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最佳实践"><span class="toc-number">3.</span> <span class="toc-text">最佳实践</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#示例"><span class="toc-number">4.</span> <span class="toc-text">示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">5.</span> <span class="toc-text">参考</span></a></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+
+  
+    
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2020 Linghuam&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;1551827898@qq.com
+    </div>
+  </div>
+</footer>
+ <script src="/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+  
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "e2fb4051c49842688ce669e634bc983f",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+    
+
+  
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script> 
+  <script>
+  var gitment = new Gitment({
+    // id: '页面 ID', // 可选。默认为 location.href
+    owner: 'linghuam',
+    repo: 'linghuam.github.io',
+    oauth: {
+    client_id: '17ad04af6a057fbb5072',
+    client_secret: '5bb953d9587f8f1bde7c956bda62db16779dab4c',
+    }
+  })
+  gitment.render(document.getElementById("gitment_comments"))
+</script>
+
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'] ],
+          displayMath: [ ["$$","$$"] ], //段内公式选择$$
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ <script src="/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/elevator.js"></script>
+  </div>
+</body>
+</html>

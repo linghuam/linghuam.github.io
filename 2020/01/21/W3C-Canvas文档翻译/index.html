@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>W3C-Canvas文档翻译 | 华仔的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="翻译了 W3C-Canvas 文档，加深对 canvas 基础的理解和掌握。">
+<meta name="keywords" content="翻译,canvas">
+<meta property="og:type" content="article">
+<meta property="og:title" content="W3C-Canvas文档翻译">
+<meta property="og:url" content="http://linghuam.github.io/2020/01/21/W3C-Canvas文档翻译/index.html">
+<meta property="og:site_name" content="华仔的博客">
+<meta property="og:description" content="翻译了 W3C-Canvas 文档，加深对 canvas 基础的理解和掌握。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-02-03T12:42:10.590Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="W3C-Canvas文档翻译">
+<meta name="twitter:description" content="翻译了 W3C-Canvas 文档，加深对 canvas 基础的理解和掌握。">
+  
+    <link rel="alternate" href="/atom.xml" title="华仔的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://linghuam.github.io"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">华仔的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">https://github.com/linghuam</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-W3C-Canvas文档翻译" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/21/W3C-Canvas文档翻译/" class="article-date">
+  <time datetime="2020-01-21T09:03:54.000Z" itemprop="datePublished">2020-01-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/可视化/">可视化</a>►<a class="article-category-link" href="/categories/可视化/2D/">2D</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      W3C-Canvas文档翻译
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>翻译了 W3C-Canvas 文档，加深对 canvas 基础的理解和掌握。</p>
+<a id="more"></a>
+<h1 id="HTML-Canvas-2D-Context"><a href="#HTML-Canvas-2D-Context" class="headerlink" title="HTML Canvas 2D Context"></a>HTML Canvas 2D Context</h1><p><a href="https://www.w3.org/TR/2dcontext/#pixel-manipulation" target="_blank" rel="noopener">英文原版地址</a></p>
+<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>该规范定义了 HTML canvas 元素的 2D 上下文。2D 上下文提供对象，方法和属性，以在画布绘图表面上绘制和操纵图形。</p>
+<h2 id="本文件的状态"><a href="#本文件的状态" class="headerlink" title="本文件的状态"></a>本文件的状态</h2><p>略…</p>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ol>
+<li><a href="#符合标准">符合标准</a></li>
+<li><a href="#canvas状态">canvas状态</a></li>
+<li><a href="#线样式">线样式</a></li>
+<li><a href="#文本样式">文本样式</a></li>
+<li><a href="#建立路径">建立路径</a></li>
+<li><a href="#变换">变换</a></li>
+<li><a href="#t2D渲染上下文的图像源">2D渲染上下文的图像源</a></li>
+<li><a href="#填充和描边样式">填充和描边样式</a></li>
+<li><a href="#在画布上绘制矩形">在画布上绘制矩形</a></li>
+<li><a href="#在画布上绘制文字">在画布上绘制文字</a></li>
+<li><a href="#在画布上绘制路径">在画布上绘制路径</a></li>
+<li><a href="#在画布上绘制图像">在画布上绘制图像</a></li>
+<li><a href="#热区">热区</a></li>
+<li><a href="#像素操作">像素操作</a></li>
+<li><a href="#合成">合成</a></li>
+<li><a href="#阴影">阴影</a></li>
+<li><a href="#绘制模式">绘制模式</a></li>
+<li><a href="#最佳实践">最佳实践</a></li>
+<li><a href="#例子">例子</a></li>
+</ol>
+<h2 id="符合标准"><a href="#符合标准" class="headerlink" title="符合标准"></a>符合标准</h2><p>该规范是 HTML 规范。 HTML5 核心规范中描述的所有一致性要求，一致性类，定义，依赖项，术语和印刷约定均适用于此规范。</p>
+<p>接口是根据<a href="https://www.w3.org/TR/WebIDL-1/" target="_blank" rel="noopener">Web IDL</a>定义的。</p>
+<p>该规范定义了 2d 上下文类型，其 2D API 使用<a href="https://www.w3.org/TR/2dcontext/#canvasrenderingcontext2d" target="_blank" rel="noopener">CanvasRenderingContext2D</a>接口实现。</p>
+<p>当 <a href="https://html.spec.whatwg.org/multipage/canvas.html#the-canvas-element" target="_blank" rel="noopener">canvas</a> 元素的 <a href="https://html.spec.whatwg.org/multipage/canvas.html#dom-canvas-getcontext" target="_blank" rel="noopener">getContext()</a> 方法返回 contextId 2d 的新对象时，用户代理必须返回一个新的 CanvasRenderingContext2D 对象。任何其他参数都将被忽略。</p>
+<p>2D 上下文采用笛卡尔坐标系，其原点（0,0）位于左上角，坐标空间的 x 值在向右时增加，而 y 值在向下时增加。</p>
+<p>IDL定义：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br></pre></td><td class="code"><pre><span class="line">typedef (HTMLImageElement or</span><br><span class="line">         HTMLVideoElement or</span><br><span class="line">         HTMLCanvasElement) CanvasImageSource;</span><br><span class="line"></span><br><span class="line">interface CanvasRenderingContext2D &#123;</span><br><span class="line"></span><br><span class="line">  // back-reference to the canvas</span><br><span class="line">  readonly attribute HTMLCanvasElement canvas;</span><br><span class="line"></span><br><span class="line">  // state</span><br><span class="line">  void save(); // push state on state stack</span><br><span class="line">  void restore(); // pop state stack and restore state</span><br><span class="line"></span><br><span class="line">  // transformations (default: transform is the identity matrix)</span><br><span class="line">  void scale(unrestricted double x, unrestricted double y);</span><br><span class="line">  void rotate(unrestricted double angle);</span><br><span class="line">  void translate(unrestricted double x, unrestricted double y);</span><br><span class="line">  void transform(unrestricted double a, unrestricted double b, unrestricted double c, unrestricted double d, unrestricted double e, unrestricted double f);</span><br><span class="line">  void setTransform(unrestricted double a, unrestricted double b, unrestricted double c, unrestricted double d, unrestricted double e, unrestricted double f);</span><br><span class="line"></span><br><span class="line">  // compositing</span><br><span class="line">           attribute unrestricted double globalAlpha; // (default: 1.0)</span><br><span class="line">           attribute DOMString globalCompositeOperation; // (default: &quot;source-over&quot;)</span><br><span class="line"></span><br><span class="line">  // colors and styles (see also the CanvasDrawingStyles interface)</span><br><span class="line">           attribute (DOMString or CanvasGradient or CanvasPattern) strokeStyle; // (default: &quot;black&quot;)</span><br><span class="line">           attribute (DOMString or CanvasGradient or CanvasPattern) fillStyle; // (default: &quot;black&quot;)</span><br><span class="line">  CanvasGradient createLinearGradient(double x0, double y0, double x1, double y1);</span><br><span class="line">  CanvasGradient createRadialGradient(double x0, double y0, double r0, double x1, double y1, double r1);</span><br><span class="line">  CanvasPattern createPattern(CanvasImageSource image, [TreatNullAs=EmptyString] DOMString repetition);</span><br><span class="line"></span><br><span class="line">  // shadows</span><br><span class="line">           attribute unrestricted double shadowOffsetX; // (default: 0)</span><br><span class="line">           attribute unrestricted double shadowOffsetY; // (default: 0)</span><br><span class="line">           attribute unrestricted double shadowBlur; // (default: 0)</span><br><span class="line">           attribute DOMString shadowColor; // (default: &quot;transparent black&quot;)</span><br><span class="line"></span><br><span class="line">  // rects</span><br><span class="line">  void clearRect(unrestricted double x, unrestricted double y, unrestricted double w, unrestricted double h);</span><br><span class="line">  void fillRect(unrestricted double x, unrestricted double y, unrestricted double w, unrestricted double h);</span><br><span class="line">  void strokeRect(unrestricted double x, unrestricted double y, unrestricted double w, unrestricted double h);</span><br><span class="line"></span><br><span class="line">  // path API (see also CanvasPathMethods)</span><br><span class="line">  void beginPath();</span><br><span class="line">  void fill();</span><br><span class="line">  void stroke();</span><br><span class="line">  void drawFocusIfNeeded(Element element);</span><br><span class="line">  void clip();</span><br><span class="line">  boolean isPointInPath(unrestricted double x, unrestricted double y);</span><br><span class="line"></span><br><span class="line">  // text (see also the CanvasDrawingStyles interface)</span><br><span class="line">  void fillText(DOMString text, unrestricted double x, unrestricted double y, optional unrestricted double maxWidth);</span><br><span class="line">  void strokeText(DOMString text, unrestricted double x, unrestricted double y, optional unrestricted double maxWidth);</span><br><span class="line">  TextMetrics measureText(DOMString text);</span><br><span class="line"></span><br><span class="line">  // drawing images</span><br><span class="line">  void drawImage(CanvasImageSource image, unrestricted double dx, unrestricted double dy);</span><br><span class="line">  void drawImage(CanvasImageSource image, unrestricted double dx, unrestricted double dy, unrestricted double dw, unrestricted double dh);</span><br><span class="line">  void drawImage(CanvasImageSource image, unrestricted double sx, unrestricted double sy, unrestricted double sw, unrestricted double sh, unrestricted double dx, unrestricted double dy, unrestricted double dw, unrestricted double dh);</span><br><span class="line"></span><br><span class="line">  // hit regions</span><br><span class="line">  void addHitRegion(HitRegionOptions options);</span><br><span class="line">  void removeHitRegion(DOMString id);</span><br><span class="line">  void clearHitRegions();</span><br><span class="line"></span><br><span class="line">  // pixel manipulation</span><br><span class="line">  ImageData createImageData(unrestricted double sw, unrestricted double sh);</span><br><span class="line">  ImageData createImageData(ImageData imagedata);</span><br><span class="line">  ImageData getImageData(double sx, double sy, double sw, double sh);</span><br><span class="line">  void putImageData(ImageData imagedata, double dx, double dy);</span><br><span class="line">  void putImageData(ImageData imagedata, double dx, double dy, double dirtyX, double dirtyY, double dirtyWidth, double dirtyHeight);</span><br><span class="line">&#125;;</span><br><span class="line">CanvasRenderingContext2D implements CanvasDrawingStyles;</span><br><span class="line">CanvasRenderingContext2D implements CanvasPathMethods;</span><br><span class="line"></span><br><span class="line">[NoInterfaceObject]</span><br><span class="line">interface CanvasDrawingStyles &#123;</span><br><span class="line">  // line caps/joins</span><br><span class="line">           attribute unrestricted double lineWidth; // (default: 1)</span><br><span class="line">           attribute DOMString lineCap; // &quot;butt&quot;, &quot;round&quot;, &quot;square&quot; (default: &quot;butt&quot;)</span><br><span class="line">           attribute DOMString lineJoin; // &quot;round&quot;, &quot;bevel&quot;, &quot;miter&quot; (default: &quot;miter&quot;)</span><br><span class="line">           attribute unrestricted double miterLimit; // (default: 10)</span><br><span class="line"></span><br><span class="line">  // dashed lines</span><br><span class="line">  void setLineDash(sequence&lt;unrestricted double&gt; segments); // (default: empty)</span><br><span class="line">  sequence&lt;unrestricted double&gt; getLineDash();</span><br><span class="line">           attribute unrestricted double lineDashOffset;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  // text</span><br><span class="line">           attribute DOMString font; // (default: &quot;10px sans-serif&quot;)</span><br><span class="line">           attribute DOMString textAlign; // &quot;start&quot;, &quot;end&quot;, &quot;left&quot;, &quot;right&quot;, &quot;center&quot; (default: &quot;start&quot;)</span><br><span class="line">           attribute DOMString textBaseline; // &quot;top&quot;, &quot;hanging&quot;, &quot;middle&quot;, &quot;alphabetic&quot;, &quot;ideographic&quot;, &quot;bottom&quot; (default: &quot;alphabetic&quot;)</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">[NoInterfaceObject]</span><br><span class="line">interface CanvasPathMethods &#123;</span><br><span class="line">  // shared path API methods</span><br><span class="line">  void closePath();</span><br><span class="line">  void moveTo(unrestricted double x, unrestricted double y);</span><br><span class="line">  void lineTo(unrestricted double x, unrestricted double y);</span><br><span class="line">  void quadraticCurveTo(unrestricted double cpx, unrestricted double cpy, unrestricted double x, unrestricted double y);</span><br><span class="line">  void bezierCurveTo(unrestricted double cp1x, unrestricted double cp1y, unrestricted double cp2x, unrestricted double cp2y, unrestricted double x, unrestricted double y);</span><br><span class="line">  void arcTo(unrestricted double x1, unrestricted double y1, unrestricted double x2, unrestricted double y2, unrestricted double radius); </span><br><span class="line">  void rect(unrestricted double x, unrestricted double y, unrestricted double w, unrestricted double h);</span><br><span class="line">  void arc(unrestricted double x, unrestricted double y, unrestricted double radius, unrestricted double startAngle, unrestricted double endAngle, optional boolean counterclockwise = false); </span><br><span class="line"></span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">interface CanvasGradient &#123;</span><br><span class="line">  // opaque object</span><br><span class="line">  void addColorStop(double offset, DOMString color);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">interface CanvasPattern &#123;</span><br><span class="line">  // opaque object</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">interface TextMetrics &#123;</span><br><span class="line">  readonly attribute double width;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">dictionary HitRegionOptions &#123;</span><br><span class="line">  // dictionary to allow expansion on Hit Regions in Canvas Context 2D Level 2</span><br><span class="line">  DOMString id = &quot;&quot;;</span><br><span class="line">  // for control-backed regions:</span><br><span class="line">  Element? control = null;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">interface ImageData &#123;</span><br><span class="line">  readonly attribute unsigned long width;</span><br><span class="line">  readonly attribute unsigned long height;</span><br><span class="line">  readonly attribute Uint8ClampedArray data;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><code>context.canvas</code> 属性必须返回在当前上下文上绘制的 canvas 元素。</p>
+<p>除非另有说明，否则对于 2D 上下文接口，任何带有数值参数（其值为无穷大或 NaN 值）的方法调用都必须被忽略。</p>
+<p>每当在此 API 中将 CSS 值 <a href="https://www.zhangxinxu.com/wordpress/2014/10/currentcolor-css3-powerful-css-keyword/" target="_blank" rel="noopener">currentColor</a> 用作颜色时，currentColor 是该元素的 color 计算值，如果在特定情况下 color 属性的计算值未定义，currentColor 关键字是完全不透明的黑色。</p>
+<p>如果是 CanvasGradient 上的 addColorStop() 方法，用于确定 currentColor 关键字的计算值的“’color’属性的计算值”始终是完全不透明的黑色（因为没有相关的元素）。</p>
+<blockquote>
+<p>NOTE: 这是因为 CanvasGradient 对象与画布无关,由一个画布创建的 CanvasGradient 对象可以被另一个画布使用，因此，在指定颜色时无法知道哪个是“相关元素”。</p>
+<p>NOTE: 与字体相关的属性也存在类似的问题。这些规则将在下面的相关部分中详细介绍。</p>
+</blockquote>
+<h2 id="canvas状态"><a href="#canvas状态" class="headerlink" title="canvas状态"></a>canvas状态</h2><p><strong>The canvas state</strong></p>
+<p>每个上下文维护一堆绘图状态。绘图状态（Drawing states）包括：</p>
+<ul>
+<li>当前的<a href="https://www.w3.org/TR/2dcontext/#transformations" target="_blank" rel="noopener">变换矩阵</a>。</li>
+<li>当前的<a href="https://www.w3.org/TR/2dcontext/#clipping-region" target="_blank" rel="noopener">裁剪区域</a>。</li>
+<li>以下属性的当前值：<code>strokeStyle</code>，<code>fillStyle</code>，<code>globalAlpha</code>，<code>lineWidth</code>，<code>lineCap</code>，<code>lineJoin</code>，<code>miterLimit</code>，<code>shadowOffsetX</code>，<code>shadowOffsetY</code>，<code>shadowBlur</code>，<code>shadowColor</code>，<code>globalCompositeOperation</code>，<code>font</code>，<code>textAlign</code>，<code>textBaseline</code>。</li>
+</ul>
+<blockquote>
+<p>NOTE: 当前路径和当前位图不属于绘图状态。当前路径是持久路径，只能使用 beginPath() 方法进行重置。当前位图是画布的属性，而不是上下文。</p>
+<p>NOTE:<br>context.save() 将当前状态压入堆栈。<br>context.restore() 在栈顶弹出状态，将上下文恢复到该状态。</p>
+</blockquote>
+<p><code>save()</code>方法必须将当前图形状态的副本推入图形状态堆栈。<br><code>restore()</code>方法必须在绘图状态堆栈中弹出顶部条目，并重置其描述的绘图状态。如果没有保存状态，则该方法将不执行任何操作。</p>
+<h2 id="线样式"><a href="#线样式" class="headerlink" title="线样式"></a>线样式</h2><p><strong>Line styles</strong></p>
+<blockquote>
+<p>NOTE</p>
+<p>context.<a href="#lineWith">lineWith</a>[ = value ]<br>返回当前线宽。<br>lineWidth 属性以坐标空间单位给出线的宽度。获取时，它必须返回当前值。零，负，无限和NaN值将被忽略。<br>默认值是<code>1.0</code>。</p>
+<p>context.<a href="#lineCap">lineCap</a>[ = value ]<br>返回当前的线帽样式。<br>可能的值为 “butt”，“round” 和 “square”。其他值将被忽略。<br>默认值是<code>butt</code>。</p>
+<p>context.<a href="#lineJoin">lineJoin</a>[ = value ]<br>返回当前的线连接样式。<br>可能的线连接样式为 “bevel”，“round” 和 “miter”。其他值将被忽略。<br>默认值是<code>miter</code>。</p>
+<p>context.<a href="#miterLimit">miterLimit</a>[ = value ]<br>返回当前的斜接极限比率。<br>可以设置，以更改斜接极限比。零，负，无限和NaN值必须忽略。<br>当<code>lineJoin</code>属性的值为 “miter” 时，描边将使用斜接限制比率来决定如何渲染连接。可以使用<code>miterLimit</code>属性显式设置斜接极限比率。<br>默认值是<code>10.0</code>。</p>
+<p>context.<a href="#setLineDash">setLineDash</a>(segments)<br>设置当前线的虚线图案（在描边时使用）。<br>该参数是距离的数组，距离要交替显示。</p>
+<p>segments = context.<a href="#getLineDash">getLineDash</a>()<br>返回当前线交替类型的副本。<br>返回的数组将始终具有偶数个条目（即模式已规范化）。</p>
+<p>context.<a href="#lineDashOffset">lineDashOffset</a>[ = value ]<br>返回相位偏移（以与 line dash pattern 相同的单位）。<br>可以设置，以更改相位偏移。不是有限值的值将被忽略。<br>默认值是<code>0.0</code>。</p>
+</blockquote>
+<p>实现 <a href="https://www.w3.org/TR/2dcontext/#canvasdrawingstyles" target="_blank" rel="noopener">CanvasDrawingStyles</a> 接口的对象具有控制对象如何处理线的属性和方法。</p>
+<p><strong>lineCap:</strong><br></p>
+<p><strong>lineJoin:</strong><br></p>
+<p>每个 CanvasDrawingStyles 对象都有一个 <strong>dash list</strong> 列表，该 <strong>dash list</strong> 可以为空或由偶数个非负数组成。<strong>dash list</strong> 初始值为空数组。</p>
+<p>调用<code>setLineDash()</code>方法时，它必须运行以下步骤：</p>
+<ol>
+<li>令<code>a</code>为作为提供的参数数组的副本。</li>
+<li>如果数组中包含 Infinity、NaN、负数，则终止此步骤（不会抛出异常；用户代理可能会在开发人员控制台上显示一条消息，因为这将有助于调试）。</li>
+<li>如果<code>a</code>中元素的数量为奇数，则令<code>a</code>为<code>a</code>的两个副本的串联。</li>
+<li>设置 <strong>dash list</strong> 为<code>a</code>。</li>
+</ol>
+<p>代码描述：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> dataList;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setLineDash</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> isErrorValue = a.some(<span class="function"><span class="params">value</span> =&gt;</span> value === <span class="literal">Infinity</span> || value !== value || value &lt; <span class="number">0</span>);</span><br><span class="line">  <span class="keyword">if</span> (isErrorValue) &#123;</span><br><span class="line">    <span class="built_in">console</span>.warn(<span class="string">'数据不合法！'</span>);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (a.length % <span class="number">2</span> !== <span class="number">0</span>) &#123;</span><br><span class="line">    a = a.concat(a);</span><br><span class="line">  &#125;</span><br><span class="line">  dataList = a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>当调用<code>getLineDash()</code>方法时，它必须以相同的顺序返回一个新创建的 <strong>dash list</strong> 数组。</p>
+<p>有时更改虚线图案的“phase（相位）”很有用。例如实现“行军蚁”的效果。可以使用<code>lineDashOffset</code>属性设置相位。</p>
+<p>当用户代理要跟踪实现<code>CanvasDrawingStyles</code>接口的路径时，它必须运行以下算法。该算法返回新路径。</p>
+<ol>
+<li>令<code>path</code>为要跟踪的路径的副本。</li>
+<li>干掉路径中所有<code>长度为零</code>的线段。</li>
+<li>从路径中删除任何不包含线的子路径（即只有一个点的子路径）。</li>
+<li>Replace each point in each subpath of path other than the first point and the last point of each subpath by a join that joins the line leading to that point to the line leading out of that point, such that the subpaths all consist of two points (a starting point with a line leading out of it, and an ending point with a line leading into it), one or more lines (connecting the points and the joins), and zero or more joins (each connecting one line to another), connected together such that each subpath is a series of one or more lines with a join between each one and a point on each end.</li>
+<li>向连接该子路径的最后一点和第一个点的路径中的每个闭合子路径添加一条直线闭合线；将最后一点更改为联接(从先前的最后一条线到新添加的闭合线)，并将第一个点更改为联接（从新添加的闭合线到第一条线）。</li>
+<li>如果 <strong>dash list</strong> 为空，请跳至标有“转换”的步骤。</li>
+<li>设<code>pattern width</code>为<code>dash list</code>列表中所有条目的串联，以坐标空间单位表示。</li>
+<li>对于路径中的每个子路径，运行以下子步骤。这些子步骤会改变路径中的子路径。<ol>
+<li>设子路径宽度为子路径所有线的长度，以坐标空间单位为单位。 </li>
+<li>设<code>offset</code>为样式<code>lineDashOffset</code>的值，以坐标空间单位为单位。</li>
+<li>当偏移量<code>offset</code>大于<code>pattern width</code>时，将其按<code>pattern width</code>减小。</li>
+<li>将<code>L</code>定义为沿子路径中所有线定义的线性坐标线，这样子路径中第一条线的开始被定义为坐标0，子路径中最后一条线的结束被定义为坐标子路径宽度。</li>
+<li>设置<code>position = 0 - offset</code>。</li>
+<li>设置<code>index = 0</code>。</li>
+<li>让当前状态<code>current state</code>为关闭（其他状态为打开且为零打开）。</li>
+<li><strong>Dash on</strong>：使段长度<code>segment length</code>为样式划线列表<code>styles dash list</code>的第<code>index</code>个条目的值。</li>
+<li>按段长度<code>segment length</code>递增位置<code>position</code>。</li>
+<li>如果位置<code>position</code>大于子路径宽度<code>subpath width</code>，然后结束此子路径的这些子步骤，并为下一个子路径再次启动它们；如果没有更多子路径，然后跳到标有“转换”的步骤。</li>
+<li>如果段长度<code>segment length</code>不为零，则打开当前状态<code>current state</code>。</li>
+<li><code>index++</code>。</li>
+<li><strong>Dash off</strong>：使段长度<code>segment length</code>为样式划线列表<code>styles dash list</code>的第<code>index</code>个条目的值。</li>
+<li>令<code>start</code>为<code>L</code>上的偏移位置<code>position</code>。</li>
+<li>按段长度<code>segment length</code>递增位置<code>position</code>。</li>
+<li>如果位置<code>position</code>小于零，则跳至标记为后切的步骤。</li>
+<li>如果<code>start</code>小于零，则将<code>start</code>设为零。</li>
+<li>如果<code>position</code>大于子路径宽度<code>subpath width</code>，则使<code>end</code>为<code>L</code>上的偏移子路径宽度<code>subpath width</code>。否则，使<code>end</code>为<code>L</code>上的偏移位置<code>position</code>。</li>
+<li>根据需要运行以下子步骤之一：<ul>
+<li><strong>如果段长度<code>segment length</code>为零且当前状态<code>current state</code>为关闭<code>off</code></strong><br>什么也不做，只要继续下一步即可。</li>
+<li><strong>如果当前状态<code>current state</code>为关闭<code>off</code></strong><br>Cut the line on which end finds itself short at end and place a point there, cutting its containing subpath in two; remove all line segments, joins, points, and subpaths that are between start and end; and finally place a single point at start with no lines connecting to it.<br>The point has a directionality for the purposes of drawing line caps (see below). The directionality is the direction that the original line had at that point (i.e. when L was defined above).</li>
+<li><strong>除此以外</strong><br>Cut the line on which start finds itself into two at start and place a point there, cutting the subpath that it was in in two, and similarly cut the line on which end finds itself short at end and place a point there, cutting the subpath that it was in in two, and then remove all line segments, joins, points, and subpaths that are between start and end.<br>If start and end are the same point, then this results in just the line being cut in two and two points being inserted there, with nothing being removed, unless a join also happens to be at that point, in which case the join must be removed.</li>
+</ul>
+</li>
+<li>剪切后<code>Post-cut:</code>：如果位置<code>position</code>大于子路径宽度<code>subpath width</code>，则跳至标有“转换”的步骤。</li>
+<li>如果线段长度<code>segment length</code>大于零，则使“在虚线处定位”<code>positioned-at-on-dash</code>为假。</li>
+<li><code>index++</code>。如果它等于样式<code>dash list</code>列表中的条目数，则使<code>index</code>为<code>0</code>。</li>
+<li>跳到第<code>8</code>步，<code>Dash on</code>。</li>
+</ol>
+</li>
+<li><p>转换<code>Convert</code>：这是将路径转换为代表其笔划<code>stroke</code>的新路径的步骤。<br>创建一条描述区域边缘的新路径，区域将被覆盖，如果一条直线的长度等于<code>lineWidth</code>，且沿路径中的每个路径扫过，同时保持一定角度，以使直线与扫掠路径正交，将每个点替换为满足样式<code>lineCap</code>属性所必需的端盖，如前所述并在下面进行详细说明，并用满足样式<code>lineJoin</code>类型所需的联接替换每个联接，定义如下。</p>
+<p> <strong>Caps</strong>：每个点都有一个垂直于从其中出来的线的方向的平坦边缘。根据样式<code>lineCap</code>的值对它们进行扩充。“<code>butt</code>”值表示未添加任何额外的线宽。“<code>round</code>”值意味着必须将直径等于样式<code>lineWidth</code>宽度的半圆附加放置在从每个点出来的线上。“<code>square</code>”值表示矩形，其长度为样式<code>lineWidth</code>宽度，宽度为样式<code>lineWidth</code>的一半，垂直于从点出线的方向垂直于边缘放置，必须在每个点添加。</p>
+<p> 没有线的点必须背对背放置两个顶盖，就好像两个点实际上是沿点的方向性（如上定义）通过一条无限短的直线相互连接。</p>
+<p> <strong>Joins</strong>：除了连接发生的点外，每个联接都有两个额外的要点，一个针对每条线：发现两个角距连接点的线宽的一半；一个垂直于每条线，每条线都离另一条线最远。</p>
+<p> 必须在所有联接处添加一个实心三角形，将这两个相对的角用一条直线连接，并将三角形的第三点作为联接点。 <code>lineJoin</code>属性控制是否呈现任何其他内容。 上述三个值的含义如下：</p>
+<p> “<code>bevel</code>”值表示这是在联接时渲染的所有内容。<br> “<code>round</code>”值表示必须添加一个连接圆弧的两个圆角，该圆弧邻接（但不重叠）上述    三角形，并且直径等于线宽和连接点的原点 在加入。<br> “<code>miter</code>”值表示必须在连接处添加第二个填充的三角形（如果可以给出斜接长度）    ，其中一条线是上述两个角之间的线，邻接第一个三角形，另外两个是连续的 只要在    不超过斜接长度的情况下相交即可，只要两条连接线的外边缘的长度相等即可。</p>
+<p> 斜接长度是从连接发生点到连接外部线边缘的交点的距离。 斜接极限比是斜接长度与    线宽一半的最大允许比率。 如果斜接长度会导致超出斜接限制比率（由样式    <code>miterLimit</code>属性设置），则不得添加第二个三角形。</p>
+<p> 无论路径在路径中的方向如何，新创建的路径中的子路径都必须顺时针缠绕。</p>
+</li>
+<li><p>返回新创建的路径。</p>
+</li>
+</ol>
+<h2 id="文本样式"><a href="#文本样式" class="headerlink" title="文本样式"></a>文本样式</h2><p><strong>Text styles</strong></p>
+<blockquote>
+<p>NOTE</p>
+<p>context.<a href="#font">font</a> [ = value ]<br>返回当前字体设置。<br>可以设置更改字体。语法与 CSS <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/font" target="_blank" rel="noopener">font</a> 属性的语法相同。无法解析为 CSS 字体值的值将被忽略。<br>相对关键字和长度值是相对于 canvas 元素的字体计算的。<br>默认值<code>10px sans-serif</code>。</p>
+<p>context.<a href="#textAlign">textAlign</a> [ = value ]<br>返回当前的文本对齐设置。<br>可以设置，更改对齐方式。可能的值为“<code>start</code>”，“<code>end</code>”，“<code>left</code>”，“<code>right</code>”和“<code>center</code>”。其他值将被忽略。默认值为“<code>start</code>”。</p>
+<p>context.<a href="#textBaseline">textBaseline</a> [ = value ]<br>返回当前基线对齐设置。<br>可以设置，以更改基线对齐方式。可能的值 “<code>top</code>“, “<code>hanging</code>“, “<code>middle</code>“, “<code>alphabetic</code>“, “<code>ideographic</code>“, or “<code>bottom</code>“,。其他值将被忽略。默认为“<code>alphabetic</code>”。</p>
+</blockquote>
+<p>设置<code>font</code>时，必须以与CSS的’font’属性相同的方式解析字体（但不支持与属性无关的样式表语法，例如’inherit’），并且必须将生成的字体分配给上下文， ‘<code>line-height</code>‘组件被强制为’<code>normal</code>‘，’<code>font-size</code>‘组件被转换为CSS像素，并且系统字体被计算为显式值。 如果新值在语法上不正确（包括使用与属性无关的样式表语法，如“inherit”或“initial”），则必须忽略它，而无需分配新的字体值。</p>
+<p>使用字体时，必须在字体样式源节点<code>font style source node&#39;s</code>的样式表的上下文中解释字体名称；因此，一旦加载，使用<code>@font-face</code>嵌入的，对该元素可见的任何字体都必须可用。</p>
+<p>用户代理只能使用矢量字体；如果用户代理使用位图字体，则转换可能会使字体看起来非常难看。</p>
+<p>获取时，<code>font</code>属性必须返回上下文当前字体的序列化形式（不包含“line-height”组件）。</p>
+<p><code>textBaseline</code>属性的允许关键字对应于字体中的对齐点：</p>
+
+<h2 id="建立路径"><a href="#建立路径" class="headerlink" title="建立路径"></a>建立路径</h2><p><strong>Building paths</strong></p>
+<p>每个实现 <a href="https://www.w3.org/TR/2dcontext/#canvaspathmethods" target="_blank" rel="noopener">CanvasPathMethods</a> 接口的对象都有一个路径。路径具有零个或多个子路径的集合。每个子路径包含一个或多个点的集合，这些点由直线或曲线连接，并有指示子路径是否闭合的标志。闭合子路径是通过直线将子路径的最后一点连接到子路径的第一点的路径。绘制路径时，少于两个点的子路径将被忽略。</p>
+<p>创建实现 CanvasPathMethods 接口的对象时，其路径必须初始化为零个子路径。</p>
+<blockquote>
+<p>NOTE</p>
+<p>context.<a href="#moveTo">moveTo</a>(x, y)<br>  用给定的点创建一个新的子路径。</p>
+<p>context.<a href="#closePath">closePath</a>()<br>  将当前子路径标记为已关闭，并以与新关闭的子路径的起点和终点相同的点开始一个新的子路径。</p>
+<p>context.<a href="#lineTo">lineTo</a>(x, y)<br>  将给定点添加到当前子路径，该子路径通过一条直线连接到前一个子路径。</p>
+<p>context.<a href="#quadraticCurveTo">quadraticCurveTo</a>(cpx, cpy, x, y)<br>  将给定点添加到当前子路径，该子路径通过具有给定控制点的二次Bézier曲线与上一个子路径连接。</p>
+<p>context.<a href="#bezierCurveTo">bezierCurveTo</a>(cp1x, cp1y, cp2x, cp2y, x, y)<br>  将给定点添加到当前子路径，该子路径通过带有给定控制点的三次贝塞尔曲线与前一条路径连接。</p>
+<p>context.<a href="#arcTo">arcTo</a>(x1, y1, x2, y2, radius)<br>  将具有给定控制点和半径的圆弧添加到当前子路径，并通过一条直线连接到上一个点<br>  如果给定的半径为负数，则抛出<code>IndexSizeError</code>异常。</p>
+<p>context.<a href="#arc">arc</a>(x, y, radius, startAngle, endAngle [, counterclockwise(逆时针) ])<br>  将点添加到子路径，以便将由自变量描述的圆的圆周描述的弧从给定的起始角度开始，以给定的终止角度终止，并沿给定方向（默认为顺时针）添加到 通过一条直线连接到上一点的路径。<br>  从正x轴顺时针以弧度为单位，对应此圆的圆周的<code>startAngle</code>和<code>endAngle</code>的点。<br>  如果给定的半径为负数，则抛出<code>IndexSizeError</code>异常。</p>
+<p>context.<a href="#rect">rect</a>(x, y, w, h)<br>  向该路径添加一个新的闭合子路径，代表给定的矩形。</p>
+</blockquote>
+
+<h2 id="变换"><a href="#变换" class="headerlink" title="变换"></a>变换</h2><p><strong>Transformations</strong></p>
+<p>每个<code>CanvasRenderingContext2D</code>对象都有一个当前的转换矩阵，以及操作方法（在本节中介绍）。创建<code>CanvasRenderingContext2D</code>对象时，必须将其变换矩阵初始化为恒等变换。</p>
+<p>当创建当前路径时，转换矩阵将应用于坐标，以及在<code>CanvasRenderingContext2D</code>对象上绘制文本，形状和路径时。</p>
+<p>转换必须以相反的顺序执行。</p>
+<blockquote>
+<p>NOTE：<br>context.<a href="#scale">scale</a>(x, y)<br>更改变换矩阵以应用具有给定特征的缩放变换。<br>context.<a href="#rotate">rotate</a>(angle)<br>更改变换矩阵以应用具有给定特征的旋转变换。角度以弧度为单位，顺时针方向。<br>context.<a href="#translate">translate</a>(x, y)<br>更改变换矩阵以应用具有给定特征的平移变换。<br>context.<a href="#transform">transform</a>(a, b, c, d, e, f)<br>如下所述，更改变换矩阵以应用由参数指定的矩阵。<br>用将当前变换矩阵与以下描述的矩阵相乘的结果来替换当前变换矩阵：<br>context.<a href="#setTransform">setTransform</a>(a, b, c, d, e, f)<br>如下所述将转换矩阵更改为参数指定的矩阵。<br>将当前变换重置为单位矩阵，然后使用相同的参数调用<code>transform（a，b，c，d，e，f）</code>方法。</p>
+</blockquote>
+
+<p><a id="t2D渲染上下文的图像源"></a></p>
+<h2 id="2D渲染上下文的图像源"><a href="#2D渲染上下文的图像源" class="headerlink" title="2D渲染上下文的图像源"></a>2D渲染上下文的图像源</h2><p>此联合类型允许实现以下任何接口的对象用作图像源：</p>
+<ul>
+<li><p><a href="https://html.spec.whatwg.org/multipage/embedded-content.html#htmlimageelement" target="_blank" rel="noopener">HTMLImageElement</a>(<a href="https://html.spec.whatwg.org/multipage/embedded-content.html#the-img-element" target="_blank" rel="noopener">img</a> elements)</p>
+</li>
+<li><p><a href="https://html.spec.whatwg.org/multipage/embedded-content.html#htmlvideoelement" target="_blank" rel="noopener">HTMLVideoElement</a>(<a href="https://html.spec.whatwg.org/multipage/embedded-content.html#the-video-element" target="_blank" rel="noopener">video</a> elements)</p>
+</li>
+<li><p><a href="https://html.spec.whatwg.org/multipage/embedded-content.html#htmlcanvaselement" target="_blank" rel="noopener">HTMLCanvasElement</a>(<a href="https://html.spec.whatwg.org/multipage/embedded-content.html#the-canvas-element" target="_blank" rel="noopener">canvas</a> elements)</p>
+</li>
+</ul>
+<p>当需要用户代理检查 image 参数的可用性时，其中 image 是 <a href="https://www.w3.org/TR/2dcontext/#canvasimagesource" target="_blank" rel="noopener">CanvasImageSource</a> 对象，则用户代理必须运行以下步骤，这些步骤返回好，坏或中止：</p>
+<ol>
+<li><p>如果 _image_ 参数是处于断开 <a href="https://html.spec.whatwg.org/multipage/images.html#img-error" target="_blank" rel="noopener">broken</a> 状态的<code>HTMLImageElement</code>对象，则引发 <a href="https://www.w3.org/TR/WebIDL-1/#invalidstateerror" target="_blank" rel="noopener">InvalidStateError</a> 异常，返回 _aborted_，然后终止这些步骤。</p>
+</li>
+<li><p>如果 _image_ 参数是无法完全解码 <a href="https://html.spec.whatwg.org/multipage/images.html#img-good" target="_blank" rel="noopener">fully decodable</a> 的<code>HTMLImageElement</code>对象，或者，如果 _image_ 参数是一个 <a href="https://html.spec.whatwg.org/multipage/media.html#dom-media-readystate" target="_blank" rel="noopener">readyState</a> 属性为<code>HAVE_NOTHING</code>或<code>HAVE_METADATA</code>的<code>HTMLVideoElement</code>对象，则返回 _bad_ 并中止这些步骤。</p>
+</li>
+<li><p>如果 _image_ 参数是一个<code>HTMLImageElement</code>对象，其固有宽度或固有高度（或两者）等于零，然后返回 _bad_ 并中止这些步骤。</p>
+</li>
+<li><p>如果 _image_ 参数是一个<code>HTMLCanvasElement</code>对象，其水平尺寸或垂直尺寸等于零，然后返回 _bad_ 并中止这些步骤。</p>
+</li>
+<li><p>返回 _good_。</p>
+</li>
+</ol>
+<p>当<code>CanvasImageSource</code>对象表示<code>HTMLImageElement</code>时，必须将元素的图像用作源图像。</p>
+<p>具体来说，当<code>CanvasImageSource</code>对象表示<code>HTMLImageElement</code>中的动画图像时，用户代理必须使用动画的默认图像（当不支持或禁用动画时，将使用格式定义的图像），如果没有此类图像，则为<code>CanvasRenderingContext2D API</code>渲染图像时的第一帧。</p>
+<p>当<code>CanvasImageSource</code>对象表示<code>HTMLVideoElement</code>时，为<code>CanvasRenderingContext2D API</code>渲染图像时，在调用带有参数的方法时，当前回放位置处的帧必须用作源图像。并且源图像的尺寸必须是媒体资源的固有宽度和固有高度（即在应用任何长宽比校正之后）。</p>
+<p>当<code>CanvasImageSource</code>对象表示<code>HTMLCanvasElement</code>时，必须将元素的位图用作源图像。</p>
+<p><strong>The image argument is not origin-clean</strong> 如果它是一个<code>HTMLImageElement</code>或<code>HTMLVideoElement</code>，其起源 <a href="https://html.spec.whatwg.org/multipage/browsers.html#origin-0" target="_blank" rel="noopener">origin</a> 与输入设置对象 <a href="https://html.spec.whatwg.org/multipage/webappapis.html#entry-settings-object" target="_blank" rel="noopener">entry settings object</a> 指定的起源不同，或者它是一个<code>HTMLCanvasElement</code>，其位图的<code>origin-clean</code>标志为<code>false</code>，或者它是一个<code>CanvasRenderingContext2D</code>对象，其位图的<code>origin-clean</code>标志为<code>false</code>。</p>
+<h2 id="填充和描边样式"><a href="#填充和描边样式" class="headerlink" title="填充和描边样式"></a>填充和描边样式</h2><p><strong>Fill and stroke styles</strong></p>
+<blockquote>
+<p>NOTE：</p>
+<p>context.<a href="#fillStyle">fillStyle</a> [ = value ]<br>返回用于填充形状的当前样式。<br>可以设置，更改填充样式。<br>样式可以是包含 CSS 颜色的字符串，也可以是 <a href="https://www.w3.org/TR/2dcontext/#canvasgradient" target="_blank" rel="noopener">CanvasGradient</a> 或<a href="https://www.w3.org/TR/2dcontext/#canvaspattern" target="_blank" rel="noopener">CanvasPattern</a> 对象。无效的值将被忽略。</p>
+<p>context.<a href="#strokeStyle">strokeStyle</a> [ = value ]<br>返回用于描边形状的当前样式。<br>可以设置，以更改描边样式。<br>样式可以是包含 CSS 颜色的字符串，也可以是 <a href="https://www.w3.org/TR/2dcontext/#canvasgradient" target="_blank" rel="noopener">CanvasGradient</a> 或<a href="https://www.w3.org/TR/2dcontext/#canvaspattern" target="_blank" rel="noopener">CanvasPattern</a> 对象。无效的值将被忽略。</p>
+</blockquote>
+<p>如果该值是一个字符串但不能解析为<code>CSS &lt;color&gt;</code>值，或者既不是字符串，也不是<code>CanvasGradient</code>或<code>CanvasPattern</code>，则必须将其忽略，并且该属性必须保留其先前的值。如果新值是标记为 <a href="https://www.w3.org/TR/2dcontext/#concept-canvas-pattern-not-origin-clean" target="_blank" rel="noopener">not origin-clean</a> 的<code>CanvasPattern</code>对象，则位图的<code>origin-clean</code>标志必须设置为<code>false</code>。</p>
+<p>如果将其设置为<code>CanvasPattern</code>或<code>CanvasGradient</code>对象，则该赋值是动态的的，这意味着赋值后对该对象所做的更改确实会影响后续的描边或填充形状。</p>
+<p>当创建上下文时， <code>fillStyle</code>和<code>strokeStyle</code>属性初始化为字符串<code>＃000000</code>。</p>
+<p>当值是颜色时，在画布上绘制时，它一定不受变换矩阵的影响。</p>
+<hr>
+<p>有两种类型的渐变，<code>线性渐变</code>和<code>径向渐变</code>，均由 <a href="https://www.w3.org/TR/2dcontext/#canvasgradient" target="_blank" rel="noopener">CanvasGradient</a> 接口实现。</p>
+<p>创建渐变后（请参见下文），<code>stop</code>将沿着它去定义颜色如何沿渐变分布。每个停靠点的渐变颜色是为此停靠点指定的颜色。在每个这样的 stop 之间，必须在 RGBA 空间上线性内插颜色和 alpha 分量，而无需预先乘以 alpha 值即可找到要在该偏移量处使用的颜色。在第一个 stop 之前，颜色必须是第一个 stop 的颜色。最后一站之后，颜色必须是最后一站的颜色。没有停靠点时，渐变为透明黑色。</p>
+<blockquote>
+<p>CanvasGradient：</p>
+<p>gradient.<a href="#addColorStop">addColorStop</a>(offset, color)<br>将具有给定颜色的色标添加到给定偏移处的渐变中。0.0是渐变一端的偏移，1.0是另一端的偏移。<br>如果偏移量超出范围，则抛出<code>IndexSizeError</code>异常。如果无法解析颜色，则引发<code>SyntaxError</code>异常。</p>
+<p>gradient = context.<a href="#createLinearGradient">createLinearGradient</a>(x0, y0, x1, y1)<br>返回一个<code>CanvasGradient</code>对象，该对象表示一个线性渐变，该渐变沿着参数所表示的坐标所给出的线进行绘制。</p>
+<p>gradient = context.<a href="#createRadialGradient">createRadialGradient</a>(x0, y0, r0, x1, y1, r1)<br>返回一个<code>CanvasGradient</code>对象，该对象表示一个径向渐变，该渐变沿自变量表示的圆所给定的圆锥形绘制。<br>如果两个半径之一为负，则抛出<code>IndexSizeError</code>异常。</p>
+</blockquote>
+<p><code>createRadialGradient（x0，y0，r0，x1，y1，r1）</code>方法采用六个参数，前三个代表圆心为（x0，y0）和半径为 r0 的起始圆，最后三个代表圆心为（x1，y1）和半径r1 的终点圆。这些值以坐标空间单位为单位。如果 r0 或 r1 均为负，则必须抛出<code>IndexSizeError</code>异常。否则，该方法必须返回以两个指定的圆初始化的径向<code>CanvasGradient</code>。</p>
+<p>必须按照以下步骤绘制径向渐变：</p>
+<ol>
+<li>如果<code>x0 = x1</code>且<code>y0 = y1</code>且<code>r0 = r1</code>，则径向渐变不得绘制任何内容。终止这些步骤。</li>
+<li>令<code>x(ω) = (x1 - x0)ω + x0</code><br>令<code>y(ω) = (y1 - y0)ω + y0</code><br>令<code>r(ω) = (r1 - r0)ω + r0</code><br>令 ω 处的颜色为渐变上该位置处的颜色（颜色来自上述内插和外推）。</li>
+<li>对于所有 ω 值，其中<code>r(ω）&gt; 0</code>，从最接近正无穷大的 ω 值开始，到最接近负无穷大的 ω 值结束，在位置<code>(x(w)，y(w))</code>绘制半径为<code>r(ω)</code>的圆的圆周的颜色为 ω，但只能在此步骤中用于此渐变渲染的画布上尚未被较早的圆圈绘制的部分上绘制。</li>
+</ol>
+<p>然后，在渲染时，必须按照当前变换矩阵的描述对所得的径向渐变进行变换。</p>
+<p>仅在相关的描边或填充效果要求绘制渐变时，才必须绘制渐变。</p>
+<hr>
+<p>模式<code>Patterns</code>由实现不透明 <a href="https://www.w3.org/TR/2dcontext/#canvaspattern" target="_blank" rel="noopener">CanvasPattern</a> 接口的对象表示。</p>
+<blockquote>
+<p>NOTE：<br>pattern = context.<a href="#createPattern">createPattern</a>(image, repetition)<br>返回一个 <a href="https://www.w3.org/TR/2dcontext/#canvaspattern" target="_blank" rel="noopener">CanvasPattern</a> 对象，该对象使用给定的图像并在重复参数<code>repetition</code>给出的方向上重复。<br>允许的重复值是<code>repeat</code>（两个方向），<code>repeat-x</code>（仅水平），<code>repeat-y</code>（仅垂直）和<code>no-repeat</code>（都不是）。如果重复参数为空，则使用重复值。<br>如果图像没有图像数据，则抛出<code>InvalidStateError</code>异常。如果第二个参数不是允许的值之一，则抛出<code>SyntaxError</code>异常。如果图像尚未完全解码，则该方法返回<code>null</code>。</p>
+</blockquote>
+<h2 id="在画布上绘制矩形"><a href="#在画布上绘制矩形" class="headerlink" title="在画布上绘制矩形"></a>在画布上绘制矩形</h2><p>有三种方法可以立即将矩形绘制到位图中。他们每个都有四个参数；前两个给出矩形左上角的x和y坐标，后两个分别给出矩形的宽度w和高度h。</p>
+<p><a href="https://www.w3.org/TR/2dcontext/#transformations" target="_blank" rel="noopener">当前转换矩阵</a> 必须应用于以下四个坐标，这四个坐标形成了矩形的闭合路径：（x，y），（x + w，y），（x + w，y + h ），（x，y + h）。</p>
+<p>绘制形状时不会影响当前的默认路径，并受剪裁区域的影响，除clearRect（）外，还包括阴影效果，全局alpha和全局合成运算符。</p>
+<blockquote>
+<p>NOTE<br>context.<a href="#clearRect">clearRect</a>(x, y, w, h)<br>将给定矩形中画布上的所有像素清除为透明黑色。<br>context.<a href="#fillRect">fillRect</a>(x, y, w, h)<br>使用当前的填充样式将给定的矩形绘制到画布上。<br>context.<a href="#strokeRect">strokeRect</a>(x, y, w, h)<br>使用当前的描边样式在画布上绘制将给定矩形的框。</p>
+</blockquote>
+<h2 id="在画布上绘制文字"><a href="#在画布上绘制文字" class="headerlink" title="在画布上绘制文字"></a>在画布上绘制文字</h2><blockquote>
+<p>NOTE<br>context.<a href="#fillText">fillText</a>(text, x, y [, maxWidth ])<br>context.<a href="#strokeText">strokeText</a>(text, x, y [, maxWidth ])<br>在给定位置分别填充或描边给定文本。如果提供了最大宽度，将缩放文本以适合该宽度。<br>metrics = context.<a href="#measureText">measureText</a>(text)<br>返回一个 <a href="https://www.w3.org/TR/2dcontext/#textmetrics" target="_blank" rel="noopener">TextMetrics</a> 对象，其中包含当前字体中给定文本的度量。<br>metrics.<a href="#width">width</a><br>返回传递给<code>measureText()</code>方法的文本的宽度。</p>
+</blockquote>
+<h2 id="在画布上绘制路径"><a href="#在画布上绘制路径" class="headerlink" title="在画布上绘制路径"></a>在画布上绘制路径</h2><p>上下文始终具有<strong>当前的默认路径</strong>。有且仅有一条当前路径，它不是绘图状态的一部分。如上所述，当前路径是路径。</p>
+<blockquote>
+<p>NOTE:<br>context.<a href="#beginPath">beginPath</a>()<br>重置当前路径。<br>context.<a href="#fill">fill</a>()<br>使用当前的填充样式填充当前路径或给定路径的子路径。<br>context.<a href="#stroke">stroke</a>()<br>使用当前笔触样式描边当前路径或给定路径的子路径。<br>context.<a href="#drawFocusIfNeeded">drawFocusIfNeeded</a>(element)<br>根据当前路径通知用户后备元素的画布位置。如果给定元素具有焦点，则按照平台或用户代理约定为用户轮廓定义的焦点轮廓，在当前路径周围绘制焦点轮廓。<br>context.<a href="#clip">clip</a><br>进一步将裁剪区域限制到当前路径。<br>context.<a href="#isPointInPath">isPointInPath</a>(x, y)<br>如果给定点在当前路径中，则返回true。</p>
+</blockquote>
+<p><code>beginPath()</code>方法必须清空上下文当前路径中的子路径列表，以便其再次具有零个子路径。<br><code>clip()</code>方法使用非零缠绕规则，通过计算当前剪切区域与路径描述的面积的交集来创建新的剪切区域。计算裁剪区域时，必须隐式关闭打开的子路径，而不会影响实际的子路径。新的裁剪区域将替换当前的裁剪区域。<br>初始化上下文时，必须将裁剪区域设置为左上角为（0,0）且坐标空间的宽度和高度为矩形。</p>
+<p>如果将传递给该方法的 x 和 y 坐标给定的点作为画布坐标空间中不受当前转换影响的坐标，且该点位于非零环绕规则的路径内，则<code>isPointInPath()</code>方法必须返回<code>true</code>，；否则必须返回<code>false</code>。路径本身上的点必须视为在路径内部。如果两个参数中的任何一个为<code>infinite</code>或<code>NaN</code>，则该方法必须返回<code>false</code>。</p>
+<h2 id="在画布上绘制图像"><a href="#在画布上绘制图像" class="headerlink" title="在画布上绘制图像"></a>在画布上绘制图像</h2><p>要将图像绘制到画布上，可以使用<code>drawImage</code>方法。</p>
+<p>可以使用三组不同的参数来调用此方法：</p>
+<ul>
+<li><code>drawImage(image, dx, dy)</code></li>
+<li><code>drawImage(image, dx, dy, dw, dh)</code></li>
+<li><code>drawImage(image, sx, sy, sw, sh, dx, dy, dw, dh)</code></li>
+</ul>
+<p>这三个参数中的每个参数都可以采用<code>HTMLImageElement</code>，<code>HTMLCanvasElement</code>或<code>HTMLVideoElement</code>作为图像参数。</p>
+
+<h2 id="热区"><a href="#热区" class="headerlink" title="热区"></a>热区</h2><p><strong>Hit regions</strong></p>
+<p>每个画布元素必须具有与其位图关联的命中区域列表(<code>hit region list</code>)。</p>
+<p>每个<strong>命中区域(hit regions)</strong>包含以下信息：</p>
+<ul>
+<li>画布元素的位图上此区域负责的<strong>路径(Path)</strong>。</li>
+<li>画布元素的位图上的<strong>边界周长(bounding circumference)</strong>，围绕点击区域创建时所处位置的路径。</li>
+<li>可选地，一个非空字符串，表示用于将区域与其他区域区分开的<strong>ID</strong>。</li>
+<li>可选地，<strong>控件(control)</strong>。</li>
+</ul>
+<p>控件是对<code>Element</code>节点的引用，在某些情况下，用户代理将事件路由到该节点，并且出于可访问性工具的目的，用户代理将从中确定命中区域的状态。（如果该控件不是canvas元素的后代，则将其忽略。）</p>
+<blockquote>
+<p>NOTE:</p>
+<p>context.<a href="#addHitRegion">addHitRegion</a>(options)<br>根据当前默认路径将命中区域添加到画布位图。该参数是具有以下成员的对象：<br><strong>id(默认空字符串)</strong><br>该区域要使用的ID。在画布（event.region）上的MouseEvent事件中使用此方法，并将其作为在以后对addHitRegion（）的调用中引用此区域的方式。<br><strong>control (default null)</strong><br>事件将被路由到的元素（即画布的后代），并且将使用可访问性工具作为代理来描述此区域并与该区域进行交互。<br>Hit regions 可用于多种用途：</p>
+<ul>
+<li>使用ID，通过让用户代理检查鼠标悬停在哪个区域并将ID包含在鼠标事件中，它们可以使命中检测更加容易。</li>
+<li>通过控件，他们可以自动将事件路由到DOM元素，例如单击画布以通过按钮元素自动提交表单。<br>尽管ID和控件都是可选的，但在调用addHitRegion时，至少需要存在两者之一才能创建匹配区域。</li>
+</ul>
+<p>context.<a href="#removeHitRegion">removeHitRegion</a>(id)<br>从画布位图中删除命中区域。 参数是使用addHitRegion（）添加的区域的ID。<br>该操作有效清除了该区域所覆盖的路径，从而使这些区域不交互。特别是，在添加删除的区域之前占据相同路径的区域不会恢复其先前的角色。</p>
+<p>context.<a href="#clearHitRegions">clearHitRegions</a>()<br>从画布位图中删除所有命中区域。<br>通过此操作可以有效清除这些区域所覆盖的路径，从而使所有区域都不交互。</p>
+</blockquote>
+<h2 id="像素操作"><a href="#像素操作" class="headerlink" title="像素操作"></a>像素操作</h2><p><strong>Pixel manipulation</strong></p>
+<blockquote>
+<p>NOTE:<br>imagedata = context.<a href="#createImageData">createImageData</a>(sw, sh)<br>返回具有给定尺寸（以CSS像素为单位）的 ImageData 对象（该像素可能映射到对象本身公开的不同数量的实际设备像素）。返回的对象中的所有像素均为透明黑色。<br>imagedata = context.<a href="#createImageData">createImageData</a>(imagedata)<br>返回具有与参数相同尺寸的 ImageData 对象。返回的对象中的所有像素均为透明黑色。<br>imagedata = context.<a href="#getImageData">getImageData</a>(sx, sy, sw, sh)<br>返回一个ImageData对象，该对象包含画布的给定矩形的图像数据。<br>如果width或height参数之一为零，则抛出IndexSizeError异常。<br>对于画布上的每个坐标空间单元，将使用一个图像数据像素返回该数据（忽略变换）。<br>imagedata.<a href="">width</a><br>imagedata.<a href="">height</a><br>以设备像素为单位返回ImageData对象中数据的实际尺寸。<br>imagedata.<a href="">data</a><br>以RGBA顺序返回包含数据的一维数组，为0到255之间的整数。<br>context.<a href="">putImageData</a>(imagedata, dx, dy [, dirtyX, dirtyY, dirtyWidth, dirtyHeight ])<br>将给定ImageData对象中的数据绘制到画布上。如果提供了脏矩形，则仅绘制该矩形中的像素。<br>出于此方法调用的目的，将忽略globalAlpha和globalCompositeOperation属性以及shadow属性。画布中的像素全部被替换，没有构图，alpha混合，没有阴影等。<br>如果任何参数不是有限的，则抛出NotSupportedError异常。</p>
+</blockquote>
+<h2 id="合成"><a href="#合成" class="headerlink" title="合成"></a>合成</h2><p><strong>Compositing</strong></p>
+<blockquote>
+<p>NOTE:<br>context.<a href="">globalAlpha</a>[ = value ]<br>返回应用于渲染操作的当前Alpha值。<br>可以设置，以更改Alpha值。超出0.0 .. 1.0范围的值将被忽略。<br>默认值：1.0。<br>context.<a href="">globalCompositeOperation</a>[ = value ]<br>从下面的列表中返回当前的合成操作。<br>可以设置，改变构图操作。未知值将被忽略。</p>
+</blockquote>
+<p>所有绘图操作均受全局合成属性<code>globalAlpha</code>和<code>globalCompositeOperation</code>的影响。</p>
+<p>globalCompositeOperation 属性设置在形状和图像应用了globalAlpha和当前转换矩阵后，如何将它们绘制到现有位图上。必须将其设置为以下列表中的值。在下面的描述中，源图像A是要渲染的形状或图像，目标图像B是位图的当前状态。</p>
+<ul>
+<li>source-atop<br>A在B之上</li>
+<li>source-in<br>A在B里面。在源图像和目标图像都不透明的任何地方显示源图像。在其他地方显示透明度。</li>
+<li>source-out<br>A在B外面。</li>
+<li>source-over (default)<br>A优先于B.</li>
+<li>destination-atop</li>
+<li>destination-in</li>
+<li>destination-out</li>
+<li>destination-over</li>
+<li>lighter<br>A加B。显示源图像和目标图像的总和，颜色值限制为255（100％）。</li>
+<li>copy<br>A（忽略B）。显示源图像而不是目标图像。</li>
+<li>xor<br>A xor B。源图像和目标图像的异或。</li>
+<li>vendorName-operationName<br>组合运算符列表的特定于供应商的扩展应使用此语法。</li>
+</ul>
+<h2 id="阴影"><a href="#阴影" class="headerlink" title="阴影"></a>阴影</h2><p><strong>Shadows</strong></p>
+<p>所有绘图操作均受四个全局阴影属性影响。</p>
+<blockquote>
+<p>NOTE:<br>context.<a href="">shadowColor</a>[ =value ]<br>返回当前阴影颜色。 可以设置，更改阴影颜色。无法解析为CSS颜色的值将被忽略。<br>context.<a href="">shadowOffsetX</a>[ =value ]<br>context.<a href="">shadowOffsetY</a>[ =value ]<br>返回当前阴影偏移量。 可以设置，以更改阴影偏移。不是有限数字的值将被忽略。<br>context.<a href="">shadowBlur</a>[ =value ]<br>返回应用于阴影的当前模糊级别。 可以设置，以更改模糊级别。不是大于或等于零的有限数字的值将被忽略。</p>
+</blockquote>
+<h2 id="绘制模式"><a href="#绘制模式" class="headerlink" title="绘制模式"></a>绘制模式</h2><p><strong>Drawing model</strong></p>
+<p>绘制形状或图像时，用户代理必须按照给定的顺序执行以下步骤：</p>
+<ul>
+<li>如前几节所述，将形状或图像渲染到无限透明的黑色位图上，创建图像<strong>A</strong>，对于形状，必须遵守当前的填充，描边和线条样式，并且描边本身也必须服从当前的变换矩阵。</li>
+<li>绘制阴影时，使用当前阴影样式渲染图像<strong>A</strong>的阴影，创建图像<strong>B</strong>。</li>
+<li>绘制阴影时，将<strong>B</strong>中每个像素的 alpha 分量乘以 globalAlpha。</li>
+<li>使用当前合成运算符在当前画布位图上的裁剪区域内合成<strong>B</strong>。</li>
+<li>将<strong>A</strong>中每个像素的 alpha 分量乘以 globalAlpha。</li>
+<li>使用当前合成运算符，在当前画布位图上的裁剪区域内的合成<strong>A</strong>。</li>
+</ul>
+<h2 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h2><p><strong>Best practices</strong></p>
+<p>当画布是交互式的时，作者应在元素的后备内容中包括与画布的每个可聚焦部分相对应的可聚焦元素。</p>
+<p>为了指示画布上当前可聚焦的部分，作者应该使用<code>drawFocusIfNeeded()</code>方法，并向其传递为其绘制轮廓的元素。 此方法仅在元素已聚焦时绘制焦点轮廓，以便在绘制元素时可以简单地调用它，而无需先检查元素是否聚焦。</p>
+<p>作者应避免使用 canvas 元素实现<code>文本编辑控件</code>。这样做有很多<strong>缺点</strong>：</p>
+<ul>
+<li>插入符的鼠标位置必须重新实现。</li>
+<li>插入符号的键盘移动必须重新实现（对于多行文本输入，可能跨行）。</li>
+<li>必须实现文本字段的滚动（水平方向用于长行，垂直方向用于多行输入）。</li>
+<li>复制和粘贴等本机功能必须重新实现。</li>
+<li>必须重新实现本机功能，例如拼写检查。</li>
+<li>诸如拖放之类的本机功能必须重新实现。</li>
+<li>诸如页面范围的文本搜索之类的本机功能必须重新实现。</li>
+<li>须重新实现特定于用户的本机功能，例如自定义文本服务。这几乎是不可能的，因为每个用户可能安装了不同的服务，并且有无限可能的服务集。</li>
+<li>双向文本编辑必须重新实现。</li>
+<li>对于多行文本编辑，必须为所有相关语言实现换行。</li>
+<li>文本选择必须重新实现。</li>
+<li>双向文本选择的拖动必须重新实现。</li>
+<li>必须重新实现平台本机的键盘快捷键。</li>
+<li>必须重新实现平台本机的输入法编辑器（IME）。</li>
+<li>撤消和重做功能必须重新实现。</li>
+<li>插入符号或选择后的放大等可访问性功能必须重新实现。</li>
+</ul>
+<p>这是一项艰巨的工作，强烈建议作者使用input，textarea 元素或 contenteditable 属性来执行操作。</p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p>略……</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.canvasapi.cn/" target="_blank" rel="noopener">canvasapi</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://linghuam.github.io/2020/01/21/W3C-Canvas文档翻译/" data-id="ck678t7io000f41bx7kwvv7ck" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/canvas/">canvas</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+ <script src="/jquery/jquery.min.js"></script>
+  <div id="random_posts">
+    <h2>推荐文章</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =3
+          var site = {BASE_URI:'/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/01/17/git如何安全回滚/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">git如何安全回滚</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+       
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+       
+      
+      
+           <div id="gitment_comments"></div>
+    
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HTML-Canvas-2D-Context"><span class="toc-number">1.</span> <span class="toc-text">HTML Canvas 2D Context</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-number">1.1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#本文件的状态"><span class="toc-number">1.2.</span> <span class="toc-text">本文件的状态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#目录"><span class="toc-number">1.3.</span> <span class="toc-text">目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#符合标准"><span class="toc-number">1.4.</span> <span class="toc-text">符合标准</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#canvas状态"><span class="toc-number">1.5.</span> <span class="toc-text">canvas状态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线样式"><span class="toc-number">1.6.</span> <span class="toc-text">线样式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文本样式"><span class="toc-number">1.7.</span> <span class="toc-text">文本样式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#建立路径"><span class="toc-number">1.8.</span> <span class="toc-text">建立路径</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#变换"><span class="toc-number">1.9.</span> <span class="toc-text">变换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2D渲染上下文的图像源"><span class="toc-number">1.10.</span> <span class="toc-text">2D渲染上下文的图像源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#填充和描边样式"><span class="toc-number">1.11.</span> <span class="toc-text">填充和描边样式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在画布上绘制矩形"><span class="toc-number">1.12.</span> <span class="toc-text">在画布上绘制矩形</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在画布上绘制文字"><span class="toc-number">1.13.</span> <span class="toc-text">在画布上绘制文字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在画布上绘制路径"><span class="toc-number">1.14.</span> <span class="toc-text">在画布上绘制路径</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在画布上绘制图像"><span class="toc-number">1.15.</span> <span class="toc-text">在画布上绘制图像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#热区"><span class="toc-number">1.16.</span> <span class="toc-text">热区</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#像素操作"><span class="toc-number">1.17.</span> <span class="toc-text">像素操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#合成"><span class="toc-number">1.18.</span> <span class="toc-text">合成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#阴影"><span class="toc-number">1.19.</span> <span class="toc-text">阴影</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#绘制模式"><span class="toc-number">1.20.</span> <span class="toc-text">绘制模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最佳实践"><span class="toc-number">1.21.</span> <span class="toc-text">最佳实践</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#例子"><span class="toc-number">1.22.</span> <span class="toc-text">例子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.23.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+
+  
+    
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2020 Linghuam&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;1551827898@qq.com
+    </div>
+  </div>
+</footer>
+ <script src="/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+  
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "e2fb4051c49842688ce669e634bc983f",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+    
+
+  
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script> 
+  <script>
+  var gitment = new Gitment({
+    // id: '页面 ID', // 可选。默认为 location.href
+    owner: 'linghuam',
+    repo: 'linghuam.github.io',
+    oauth: {
+    client_id: '17ad04af6a057fbb5072',
+    client_secret: '5bb953d9587f8f1bde7c956bda62db16779dab4c',
+    }
+  })
+  gitment.render(document.getElementById("gitment_comments"))
+</script>
+
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'] ],
+          displayMath: [ ["$$","$$"] ], //段内公式选择$$
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ <script src="/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/elevator.js"></script>
+  </div>
+</body>
+</html>

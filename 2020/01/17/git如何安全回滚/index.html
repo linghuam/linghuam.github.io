@@ -12,13 +12,10 @@
 <meta property="og:site_name" content="华仔的博客">
 <meta property="og:description" content="项目开发中，如果要上线的代码出现问题，如何快速安全的回滚？本文将介绍 git 的回滚机制。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://linghuam.github.io/2020/01/17/git如何安全回滚/reset-vs-revert.png">
-<meta property="og:image" content="http://linghuam.github.io/2020/01/17/git如何安全回滚/reset-vs-checkout.png">
-<meta property="og:updated_time" content="2020-01-19T05:37:44.429Z">
+<meta property="og:updated_time" content="2020-02-03T12:26:19.397Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git如何安全回滚">
 <meta name="twitter:description" content="项目开发中，如果要上线的代码出现问题，如何快速安全的回滚？本文将介绍 git 的回滚机制。">
-<meta name="twitter:image" content="http://linghuam.github.io/2020/01/17/git如何安全回滚/reset-vs-revert.png">
   
     <link rel="alternate" href="/atom.xml" title="华仔的博客" type="application/atom+xml">
   
@@ -82,7 +79,7 @@
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/开发工具/">开发工具</a>►<a class="article-category-link" href="/categories/开发工具/GIT/">GIT</a>
+    <a class="article-category-link" href="/categories/开发工具/">开发工具</a>►<a class="article-category-link" href="/categories/开发工具/git/">git</a>
   </div>
 
   </div>
@@ -123,14 +120,14 @@
 <p><strong>实现上和 reset 是完全不同的：</strong> reset 是直接从历史中移除某个提交，而 revert 是生成一个新提交。<code>git revert</code>可以将提交历史中的任何一个提交撤销，而<code>git reset</code>会把历史上某个提交及之后所有的提交都移除掉。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git revert &lt;commit&gt;</span><br></pre></td></tr></table></figure>
 <p>使用<code>revert</code>要解决代码冲突。</p>
-<img src="/2020/01/17/git如何安全回滚/reset-vs-revert.png" title="reset和revert区别">
+
 <p><strong>方法三：</strong> <code>git checkout</code></p>
 <p><strong>不带路径</strong> </p>
 <p><code>git checkout [branch]</code> 类似于 <code>git reset --hard [branch]</code>。<br>或 <code>git checkout [commit]</code>。</p>
 <blockquote>
 <p>NOTE：两者区别<br>首先不同于<code>reset --hard</code>，<code>checkout</code>对工作目录是安全的，它会通过检查来确保将   已更改的文件弄丢。 其实它还更聪明一些。它会在工作目录中先试着简单合并一下样所有 _   还未修改过的_ 文件都会被更新。 而<code>reset --hard</code>则会不做检查就全替换所有东西。<br>第二个重要的区别是如何更新<code>HEAD</code>。<code>reset</code>会移动<code>HEAD</code>指向的分支的指向，不动    <code>HEAD</code>，而<code>checkout</code>只会移动<code>HEAD</code>自身来指向另一个分支。</p>
 </blockquote>
-<img src="/2020/01/17/git如何安全回滚/reset-vs-checkout.png" title="reset和checkout区别">
+
 <p><strong>带路径</strong></p>
 <p><code>git checkout file</code> 撤销对工作区中该文件的所有修改，它也不会移动 HEAD。</p>
 <h2 id="远程回滚"><a href="#远程回滚" class="headerlink" title="远程回滚"></a>远程回滚</h2><p><strong>方法一：</strong> 可以在本地回滚后，用 <code>git push -f origin branch</code>强制回滚远程仓库，但不安全。</p>
@@ -160,7 +157,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linghuam.github.io/2020/01/17/git如何安全回滚/" data-id="ck5nc2f1k001qggbxc78fx0kg" class="article-share-link">分享</a>
+      <a data-url="http://linghuam.github.io/2020/01/17/git如何安全回滚/" data-id="ck678t7j3000p41bxwe8ricri" class="article-share-link">分享</a>
       
       
       
@@ -211,6 +208,15 @@
 
     
 <nav id="article-nav">
+  
+    <a href="/2020/01/21/W3C-Canvas文档翻译/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          W3C-Canvas文档翻译
+        
+      </div>
+    </a>
   
   
     <a href="/2020/01/17/一周拾遗-第3期/" id="article-nav-older" class="article-nav-link-wrap">

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>前端基础-js数组indexOf方法 | 华仔的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="每日的基础学习笔记，不求大而全，追求精致和短小，主要从底层技术基础开始，记录一些核心概念、实践应用和原理方法，帮助自己理解前端基础，建立前端知识体系。多问几个为什么、怎么做">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端基础-js数组indexOf方法">
+<meta property="og:url" content="http://linghuam.github.io/2018/03/22/前端基础-js数组indexOf方法/index.html">
+<meta property="og:site_name" content="华仔的博客">
+<meta property="og:description" content="每日的基础学习笔记，不求大而全，追求精致和短小，主要从底层技术基础开始，记录一些核心概念、实践应用和原理方法，帮助自己理解前端基础，建立前端知识体系。多问几个为什么、怎么做">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-02-03T12:18:28.864Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端基础-js数组indexOf方法">
+<meta name="twitter:description" content="每日的基础学习笔记，不求大而全，追求精致和短小，主要从底层技术基础开始，记录一些核心概念、实践应用和原理方法，帮助自己理解前端基础，建立前端知识体系。多问几个为什么、怎么做">
+  
+    <link rel="alternate" href="/atom.xml" title="华仔的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://linghuam.github.io"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">华仔的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">https://github.com/linghuam</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-前端基础-js数组indexOf方法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/22/前端基础-js数组indexOf方法/" class="article-date">
+  <time datetime="2018-03-22T07:14:26.000Z" itemprop="datePublished">2018-03-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/前端基础/">前端基础</a>►<a class="article-category-link" href="/categories/前端基础/JavaScript/">JavaScript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      前端基础-js数组indexOf方法
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>每日的基础学习笔记，不求大而全，追求精致和短小，主要从底层技术基础开始，记录一些核心概念、实践应用和原理方法，帮助自己理解前端基础，建立前端知识体系。多问几个<strong>为什么、怎么做</strong><br><a id="more"></a></p>
+<h3 id="数组-indexOf-方法？"><a href="#数组-indexOf-方法？" class="headerlink" title="数组 indexOf 方法？"></a>数组 indexOf 方法？</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.indexOf(searchElement,[fromIndex]);</span><br></pre></td></tr></table></figure>
+<h4 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h4><ul>
+<li>searchElement：被搜索的对象，执行严格比较<code>===</code></li>
+<li>fromIndex：开始搜索的索引<ul>
+<li>如果没指定，索引为0</li>
+<li>如果大于或等于数组长度，直接返回 -1</li>
+<li>如果小于0，则从数组尾部开始的第 N 个位置开始索引，但搜索顺序仍然从左至右</li>
+</ul>
+</li>
+</ul>
+<h4 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h4><p>返回找到的第一个元素的索引，若未找到则返回-1</p>
+<h3 id="polyfill"><a href="#polyfill" class="headerlink" title="polyfill"></a>polyfill</h3><p>版本1：自己实现</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(!<span class="built_in">Array</span>.prototype.indexOf)&#123;</span><br><span class="line">  <span class="built_in">Array</span>.prototype.indexOf = <span class="function"><span class="keyword">function</span> (<span class="params">searchElement, fromIndex</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span> == <span class="literal">null</span>)&#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'"this" is null or not defined'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> index = fromIndex,</span><br><span class="line">        len = <span class="keyword">this</span>.length,</span><br><span class="line">        i;</span><br><span class="line">    <span class="keyword">if</span> (fromIndex === <span class="literal">undefined</span>) index = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (fromIndex &gt;= len) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">if</span> (fromIndex &lt; <span class="number">0</span>) index = <span class="built_in">Math</span>.max(len + fromIndex, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span> ( i = index; i &lt; len; i++)&#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">this</span>[i] === searchElement) <span class="keyword">return</span> i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>版本2：MDN</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(!<span class="built_in">Array</span>.prototype.indexOf)&#123;</span><br><span class="line">  <span class="built_in">Array</span>.prototype.indexOf = <span class="function"><span class="keyword">function</span> (<span class="params">searchElement, fromIndex</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 严格模式和非严格模式下this指向不同，严格模式 this 没定义时报错，非严格模式 this 没定义时指向 window 对象</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span> == <span class="literal">null</span>)&#123;</span><br><span class="line">       <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">"Array.prototype.indexOf() - can't convert `"</span> + <span class="keyword">this</span> + <span class="string">"` to object"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> index = <span class="built_in">isFinite</span>(fromIndex) ? <span class="built_in">Math</span>.floor(fromIndex) : <span class="number">0</span>,</span><br><span class="line">        that = <span class="keyword">this</span> instanceOf <span class="built_in">Object</span> ? <span class="keyword">this</span> : <span class="keyword">new</span> <span class="built_in">Object</span>(<span class="keyword">this</span>),</span><br><span class="line">        len = <span class="built_in">isFinite</span>(that.length) ? <span class="built_in">Math</span>.floor(that.length) : <span class="number">0</span>;</span><br><span class="line">     <span class="keyword">if</span> (index &gt;= len) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">     <span class="keyword">if</span> (index &lt; <span class="number">0</span> ) index = <span class="built_in">Math</span>.max(len + index, <span class="number">0</span>);</span><br><span class="line">     <span class="comment">// 区分 index 不存在时 或 index 存在但值为 undefined 时，that[index] 取值都为 undefined 情况</span></span><br><span class="line">     <span class="keyword">if</span> (searchElement === <span class="literal">undefined</span>)&#123;</span><br><span class="line">        <span class="keyword">do</span>&#123;</span><br><span class="line">          <span class="keyword">if</span> (index <span class="keyword">in</span> that &amp;&amp; that[index] === <span class="literal">undefined</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> index;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;<span class="keyword">while</span>(++index &lt; len);</span><br><span class="line">     &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">       <span class="keyword">do</span>&#123;</span><br><span class="line">         <span class="keyword">if</span> (that[index] === searchElement)&#123;</span><br><span class="line">           <span class="keyword">return</span> index;</span><br><span class="line">         &#125;</span><br><span class="line">       &#125; <span class="keyword">while</span>(++index &lt; len);</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>版本3：MDN</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Production steps of ECMA-262, Edition 5, 15.4.4.14</span></span><br><span class="line"><span class="comment">// Reference: http://es5.github.io/#x15.4.4.14</span></span><br><span class="line"><span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype.indexOf) &#123;</span><br><span class="line">  <span class="built_in">Array</span>.prototype.indexOf = <span class="function"><span class="keyword">function</span>(<span class="params">searchElement, fromIndex</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> k;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 1. Let o be the result of calling ToObject passing</span></span><br><span class="line">    <span class="comment">//    the this value as the argument.</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span> == <span class="literal">null</span>) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'"this" is null or not defined'</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> o = <span class="built_in">Object</span>(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2. Let lenValue be the result of calling the Get</span></span><br><span class="line">    <span class="comment">//    internal method of o with the argument "length".</span></span><br><span class="line">    <span class="comment">// 3. Let len be ToUint32(lenValue).</span></span><br><span class="line">    <span class="keyword">var</span> len = o.length &gt;&gt;&gt; <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 4. If len is 0, return -1.</span></span><br><span class="line">    <span class="keyword">if</span> (len === <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 5. If argument fromIndex was passed let n be</span></span><br><span class="line">    <span class="comment">//    ToInteger(fromIndex); else let n be 0.</span></span><br><span class="line">    <span class="keyword">var</span> n = fromIndex | <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 6. If n &gt;= len, return -1.</span></span><br><span class="line">    <span class="keyword">if</span> (n &gt;= len) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 7. If n &gt;= 0, then Let k be n.</span></span><br><span class="line">    <span class="comment">// 8. Else, n&lt;0, Let k be len - abs(n).</span></span><br><span class="line">    <span class="comment">//    If k is less than 0, then let k be 0.</span></span><br><span class="line">    k = <span class="built_in">Math</span>.max(n &gt;= <span class="number">0</span> ? n : len - <span class="built_in">Math</span>.abs(n), <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 9. Repeat, while k &lt; len</span></span><br><span class="line">    <span class="keyword">while</span> (k &lt; len) &#123;</span><br><span class="line">      <span class="comment">// a. Let Pk be ToString(k).</span></span><br><span class="line">      <span class="comment">//   This is implicit for LHS operands of the in operator</span></span><br><span class="line">      <span class="comment">// b. Let kPresent be the result of calling the</span></span><br><span class="line">      <span class="comment">//    HasProperty internal method of o with argument Pk.</span></span><br><span class="line">      <span class="comment">//   This step can be combined with c</span></span><br><span class="line">      <span class="comment">// c. If kPresent is true, then</span></span><br><span class="line">      <span class="comment">//    i.  Let elementK be the result of calling the Get</span></span><br><span class="line">      <span class="comment">//        internal method of o with the argument ToString(k).</span></span><br><span class="line">      <span class="comment">//   ii.  Let same be the result of applying the</span></span><br><span class="line">      <span class="comment">//        Strict Equality Comparison Algorithm to</span></span><br><span class="line">      <span class="comment">//        searchElement and elementK.</span></span><br><span class="line">      <span class="comment">//  iii.  If same is true, return k.</span></span><br><span class="line">      <span class="keyword">if</span> (k <span class="keyword">in</span> o &amp;&amp; o[k] === searchElement) &#123;</span><br><span class="line">        <span class="keyword">return</span> k;</span><br><span class="line">      &#125;</span><br><span class="line">      k++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://linghuam.github.io/2018/03/22/前端基础-js数组indexOf方法/" data-id="ck678t7ke002b41bxbfw4ruty" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+ <script src="/jquery/jquery.min.js"></script>
+  <div id="random_posts">
+    <h2>推荐文章</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =3
+          var site = {BASE_URI:'/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+    <a href="/2018/03/23/前端基础-HTML超链接标签/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          前端基础-HTML超链接标签
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/03/21/前端基础-HTML概述/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">前端基础-HTML概述</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+       
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+       
+      
+      
+           <div id="gitment_comments"></div>
+    
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#数组-indexOf-方法？"><span class="toc-number">1.</span> <span class="toc-text">数组 indexOf 方法？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#定义"><span class="toc-number">1.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#参数"><span class="toc-number">1.2.</span> <span class="toc-text">参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#返回值"><span class="toc-number">1.3.</span> <span class="toc-text">返回值</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#polyfill"><span class="toc-number">2.</span> <span class="toc-text">polyfill</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考文档"><span class="toc-number">3.</span> <span class="toc-text">参考文档</span></a></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+
+  
+    
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2020 Linghuam&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;1551827898@qq.com
+    </div>
+  </div>
+</footer>
+ <script src="/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+  
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "e2fb4051c49842688ce669e634bc983f",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+    
+
+  
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script> 
+  <script>
+  var gitment = new Gitment({
+    // id: '页面 ID', // 可选。默认为 location.href
+    owner: 'linghuam',
+    repo: 'linghuam.github.io',
+    oauth: {
+    client_id: '17ad04af6a057fbb5072',
+    client_secret: '5bb953d9587f8f1bde7c956bda62db16779dab4c',
+    }
+  })
+  gitment.render(document.getElementById("gitment_comments"))
+</script>
+
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'] ],
+          displayMath: [ ["$$","$$"] ], //段内公式选择$$
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ <script src="/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/elevator.js"></script>
+  </div>
+</body>
+</html>

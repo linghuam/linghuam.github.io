@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>计算机图形学-直线的Bresenham算法 | 华仔的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本算法是bresenham在1965年提出的。它是从计算机硬件的角度和图像的光栅化过程来生成直线的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机图形学-直线的Bresenham算法">
+<meta property="og:url" content="http://linghuam.github.io/2018/01/12/计算机图形学-直线的Bresenham算法/index.html">
+<meta property="og:site_name" content="华仔的博客">
+<meta property="og:description" content="本算法是bresenham在1965年提出的。它是从计算机硬件的角度和图像的光栅化过程来生成直线的。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-02-03T12:23:03.047Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机图形学-直线的Bresenham算法">
+<meta name="twitter:description" content="本算法是bresenham在1965年提出的。它是从计算机硬件的角度和图像的光栅化过程来生成直线的。">
+  
+    <link rel="alternate" href="/atom.xml" title="华仔的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://linghuam.github.io"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">华仔的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">https://github.com/linghuam</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-计算机图形学-直线的Bresenham算法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/12/计算机图形学-直线的Bresenham算法/" class="article-date">
+  <time datetime="2018-01-12T05:15:08.000Z" itemprop="datePublished">2018-01-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/可视化/">可视化</a>►<a class="article-category-link" href="/categories/可视化/计算机图形学/">计算机图形学</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      计算机图形学-直线的Bresenham算法
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>本算法是bresenham在1965年提出的。它是从计算机硬件的角度和图像的光栅化过程来生成直线的。<br><a id="more"></a></p>
+<h2 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h2><p>设直线的起点为（x1, y1），终点为（x2, y2），则直线可以表示为：$ y = m * x + b $</p>
+<p>先假设直线在第一象限，每次光栅化时：$ x_{i+1} = x_i + 1 $</p>
+<p>根据图像光栅化过程：$ y_{i+1} = y_i $，</p>
+<p>或者 $ y_{i+1} = y_i+1 $</p>
+<p>而根据直线方程：$ y = m * (x_i + 1) + b $</p>
+<p>这样就能得到理论值与光栅后的值的误差：</p>
+<p>$$ d1 = y - y_i $$</p>
+<p>$$ d2 = (y_i + 1) - y $$</p>
+<p>如果 $ d1 - d2 &gt; 0 $，则 $ y_{i+1} = y_i + 1 $ ，</p>
+<p>否则 $ y_{i+1} = y_i $</p>
+<p>因此算法的关键在于确定 $ d1 - d2 $ 的符号。</p>
+<h2 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bresenham_line</span>(<span class="params">ctx, x1, y1, x2, y2</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> dx, dy, x, y, p, const1, const2, inc, tmp;</span><br><span class="line">  dx = x2 - x1;</span><br><span class="line">  dy = y2 - y1;</span><br><span class="line">  <span class="keyword">if</span> (dx * dy &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">    inc = <span class="number">1</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    inc = <span class="number">-1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">Math</span>.abs(dx) &gt; <span class="built_in">Math</span>.abs(dy)) &#123;</span><br><span class="line">    <span class="keyword">if</span> (dx &lt; <span class="number">0</span>) &#123;</span><br><span class="line">      tmp = x1;</span><br><span class="line">      x1 = x2;</span><br><span class="line">      x2 = tmp;</span><br><span class="line">      tmp = y1;</span><br><span class="line">      y1 = y2;</span><br><span class="line">      y2 = tmp;</span><br><span class="line">      dx = -dx;</span><br><span class="line">      dy = -dy;</span><br><span class="line">    &#125;</span><br><span class="line">    p = <span class="number">2</span> * dy - dx;</span><br><span class="line">    const1 = <span class="number">2</span> * dy;</span><br><span class="line">    const2 = <span class="number">2</span> * (dy - dx);</span><br><span class="line">    x = x1;</span><br><span class="line">    y = y1;</span><br><span class="line">    selectGrid(ctx, x, y);</span><br><span class="line">    <span class="keyword">while</span> (x &lt; x2) &#123;</span><br><span class="line">      x++;</span><br><span class="line">      <span class="keyword">if</span> (p &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        p += const1;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        y += inc;</span><br><span class="line">        p += const2;</span><br><span class="line">      &#125;</span><br><span class="line">      selectGrid(ctx, x, y);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (dy &lt; <span class="number">0</span>) &#123;</span><br><span class="line">      tmp = x1;</span><br><span class="line">      x1 = x2;</span><br><span class="line">      x2 = tmp;</span><br><span class="line">      tmp = y1;</span><br><span class="line">      y1 = y2;</span><br><span class="line">      y2 = tmp;</span><br><span class="line">      dx = -dx;</span><br><span class="line">      dy = -dy;</span><br><span class="line">    &#125;</span><br><span class="line">    p = <span class="number">2</span> * dx - dy;</span><br><span class="line">    const1 = <span class="number">2</span> * dx;</span><br><span class="line">    const2 = <span class="number">2</span> * (dx - dy);</span><br><span class="line">    x = x1;</span><br><span class="line">    y = y1;</span><br><span class="line">    selectGrid(ctx, x, y);</span><br><span class="line">    <span class="keyword">while</span> (y &lt; y2) &#123;</span><br><span class="line">      y++;</span><br><span class="line">      <span class="keyword">if</span> (p &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        p += const1;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        x += inc;</span><br><span class="line">        p += const2;</span><br><span class="line">      &#125;</span><br><span class="line">      selectGrid(ctx, x, y);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="用canvas模拟算法实现效果图"><a href="#用canvas模拟算法实现效果图" class="headerlink" title="用canvas模拟算法实现效果图"></a>用canvas模拟算法实现效果图</h2>
+<h2 id="算法优缺点"><a href="#算法优缺点" class="headerlink" title="算法优缺点"></a>算法优缺点</h2><p><strong>优点：</strong></p>
+<ul>
+<li>不必计算直线的斜率，因此不做除法</li>
+<li>不用浮点数，只用整数</li>
+<li>速度快，适用于硬件实现</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://linghuam.github.io/2018/01/12/计算机图形学-直线的Bresenham算法/" data-id="ck678t7l3003441bxa08yjh7o" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+ <script src="/jquery/jquery.min.js"></script>
+  <div id="random_posts">
+    <h2>推荐文章</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =3
+          var site = {BASE_URI:'/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+    <a href="/2018/01/27/计算机图形学-圆生成算法/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          计算机图形学-圆生成算法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/01/12/计算机图形学-直线的DDA算法/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">计算机图形学-直线的DDA算法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+       
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+       
+      
+      
+           <div id="gitment_comments"></div>
+    
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#算法思想"><span class="toc-number">1.</span> <span class="toc-text">算法思想</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法实现"><span class="toc-number">2.</span> <span class="toc-text">算法实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用canvas模拟算法实现效果图"><span class="toc-number">3.</span> <span class="toc-text">用canvas模拟算法实现效果图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法优缺点"><span class="toc-number">4.</span> <span class="toc-text">算法优缺点</span></a></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+
+  
+    
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2020 Linghuam&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;1551827898@qq.com
+    </div>
+  </div>
+</footer>
+ <script src="/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+  
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "e2fb4051c49842688ce669e634bc983f",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+    
+
+  
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script> 
+  <script>
+  var gitment = new Gitment({
+    // id: '页面 ID', // 可选。默认为 location.href
+    owner: 'linghuam',
+    repo: 'linghuam.github.io',
+    oauth: {
+    client_id: '17ad04af6a057fbb5072',
+    client_secret: '5bb953d9587f8f1bde7c956bda62db16779dab4c',
+    }
+  })
+  gitment.render(document.getElementById("gitment_comments"))
+</script>
+
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'] ],
+          displayMath: [ ["$$","$$"] ], //段内公式选择$$
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ <script src="/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/elevator.js"></script>
+  </div>
+</body>
+</html>

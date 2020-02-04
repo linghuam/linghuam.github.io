@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>前端基础-CSS之z-index属性 | 华仔的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="最近在做 Vue 项目时，使用 ElementUI 做页面的 UI 框架，但是在写页面的过程中出现很多奇怪的现象，调试发现一个原因是 ElementUI 框架改变了很多默认的样式，第二个原因是自己页面的 z-index 和 position 使用不恰当，遂决定要彻底弄懂一些 CSS 方面的问题，毕竟前端 CSS 是重要的一环，不能似懂非懂。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端基础-CSS之z-index属性">
+<meta property="og:url" content="http://linghuam.github.io/2018/05/21/前端基础-CSS之z-index属性/index.html">
+<meta property="og:site_name" content="华仔的博客">
+<meta property="og:description" content="最近在做 Vue 项目时，使用 ElementUI 做页面的 UI 框架，但是在写页面的过程中出现很多奇怪的现象，调试发现一个原因是 ElementUI 框架改变了很多默认的样式，第二个原因是自己页面的 z-index 和 position 使用不恰当，遂决定要彻底弄懂一些 CSS 方面的问题，毕竟前端 CSS 是重要的一环，不能似懂非懂。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-02-03T12:12:07.255Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端基础-CSS之z-index属性">
+<meta name="twitter:description" content="最近在做 Vue 项目时，使用 ElementUI 做页面的 UI 框架，但是在写页面的过程中出现很多奇怪的现象，调试发现一个原因是 ElementUI 框架改变了很多默认的样式，第二个原因是自己页面的 z-index 和 position 使用不恰当，遂决定要彻底弄懂一些 CSS 方面的问题，毕竟前端 CSS 是重要的一环，不能似懂非懂。">
+  
+    <link rel="alternate" href="/atom.xml" title="华仔的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://linghuam.github.io"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">华仔的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">https://github.com/linghuam</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-前端基础-CSS之z-index属性" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/21/前端基础-CSS之z-index属性/" class="article-date">
+  <time datetime="2018-05-21T13:52:59.000Z" itemprop="datePublished">2018-05-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/前端基础/">前端基础</a>►<a class="article-category-link" href="/categories/前端基础/CSS/">CSS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      前端基础-CSS之z-index属性
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>最近在做 Vue 项目时，使用 ElementUI 做页面的 UI 框架，但是在写页面的过程中出现很多奇怪的现象，调试发现一个原因是 ElementUI 框架改变了很多默认的样式，第二个原因是自己页面的 z-index 和 position 使用不恰当，遂决定要彻底弄懂一些 CSS 方面的问题，毕竟前端 CSS 是重要的一环，不能似懂非懂。<br><a id="more"></a></p>
+<h2 id="我遇到的问题"><a href="#我遇到的问题" class="headerlink" title="我遇到的问题?"></a>我遇到的问题?</h2><ol>
+<li><p>当  #home 的 <code>position:fixed</code> 时<br></p><p data-height="265" data-theme-id="dark" data-slug-hash="xjMNBB" data-default-tab="css,result" data-user="linghuam" data-embed-version="2" data-pen-title="z-index2" class="codepen">See the Pen <a href="https://codepen.io/linghuam/pen/xjMNBB/" target="_blank" rel="noopener">z-index2</a> by linghuam (<a href="https://codepen.io/linghuam" target="_blank" rel="noopener">@linghuam</a>) on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.</p><p></p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+</li>
+<li><p>当 #home 的 <code>position:static/absolute/relative</code> 时<br></p><p data-height="265" data-theme-id="dark" data-slug-hash="xjMNra" data-default-tab="css,result" data-user="linghuam" data-embed-version="2" data-pen-title="z-index" class="codepen">See the Pen <a href="https://codepen.io/linghuam/pen/xjMNra/" target="_blank" rel="noopener">z-index</a> by linghuam (<a href="https://codepen.io/linghuam" target="_blank" rel="noopener">@linghuam</a>) on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.</p><p></p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+</li>
+</ol>
+<h2 id="问题？"><a href="#问题？" class="headerlink" title="问题？"></a>问题？</h2><ul>
+<li>z-index 值越大的元素一定越靠上吗？</li>
+<li>为什么不同的 position 值会影响层叠顺序？</li>
+</ul>
+<h2 id="开始找资料了解-z-index-属性，下面是对一些官方文档和技术大牛博客的总结"><a href="#开始找资料了解-z-index-属性，下面是对一些官方文档和技术大牛博客的总结" class="headerlink" title="开始找资料了解 z-index 属性，下面是对一些官方文档和技术大牛博客的总结"></a>开始找资料了解 z-index 属性，下面是对一些官方文档和技术大牛博客的总结</h2><p><code>z-index属性</code>指定两件事：</p>
+<ol>
+<li>规定<strong>层叠顺序</strong></li>
+<li>创建<strong>层叠上下文</strong></li>
+</ol>
+<p><strong>注：</strong>z-index 只在定位元素（position 不为 static 默认值）上起作用</p>
+<p><code>z-index</code>取值：</p>
+<ol>
+<li>auto (默认值，不会创建层叠上下文，层叠顺序与父元素一致)</li>
+<li>负数、零、正数（整数）</li>
+<li>inherit （全局）</li>
+<li>initial （全局）</li>
+<li>unset （全局）</li>
+</ol>
+<h3 id="层叠顺序（Stacking-Order）"><a href="#层叠顺序（Stacking-Order）" class="headerlink" title="层叠顺序（Stacking Order）"></a>层叠顺序（Stacking Order）</h3>
+<h3 id="层叠上下文（Stacking-Contexts）"><a href="#层叠上下文（Stacking-Contexts）" class="headerlink" title="层叠上下文（Stacking Contexts）"></a>层叠上下文（Stacking Contexts）</h3><ul>
+<li>每个层叠上下文对应一个根级元素，html 元素是根级层叠上下文</li>
+<li>层叠上下文的<strong>创建</strong>有三种方式<ol>
+<li>文档的根元素（如 html 元素）</li>
+<li>元素的 position 属性值不为 static <strong>且</strong> z-index 值不为 auto （position:relative; z-index:auto;不会创建）</li>
+<li>元素的 opacity 值小于 1</li>
+<li>position 值为 fixed 的元素 （<strong>我遇到的问题的答案</strong>）</li>
+</ol>
+</li>
+<li>一些其他的 CSS 属性也会创建层叠上下文，如 <strong>transforms</strong>,<strong>filters</strong>,<strong>css-regions</strong>,<strong>paged media</strong>等等。</li>
+<li>一个通用的规则是：<strong>需要脱离画面外渲染的元素都会创建层叠上下文</strong></li>
+</ul>
+<h3 id="同一个层叠上下文元素的层叠顺序（从后往前，从底往上）"><a href="#同一个层叠上下文元素的层叠顺序（从后往前，从底往上）" class="headerlink" title="同一个层叠上下文元素的层叠顺序（从后往前，从底往上）"></a>同一个层叠上下文元素的层叠顺序（从后往前，从底往上）</h3><ul>
+<li>根元素</li>
+<li>z-index 为负值的定位元素</li>
+<li>非定位元素（根据在 HTML 中的出现顺序排列）</li>
+<li>z-index 为 auto 的 定位元素</li>
+<li>z-index 为 正值的 定位元素</li>
+</ul>
+<h3 id="原话引用"><a href="#原话引用" class="headerlink" title="原话引用"></a>原话引用</h3><blockquote>
+<ol>
+<li>z-index only works on positioned(fixed/relative/absolute but not static) elements</li>
+<li>z-index values can create stacking contexts</li>
+<li>Every stacking context has a single HTML element as its root element</li>
+</ol>
+</blockquote>
+<h2 id="z-index-最佳实践"><a href="#z-index-最佳实践" class="headerlink" title="z-index 最佳实践"></a>z-index 最佳实践</h2><ol>
+<li><strong>谁大谁上：</strong> 同一层叠上下文中，z-index 大者居上</li>
+<li><strong>后来居上：</strong> 层叠水平一致、层叠顺序相同的时候，在DOM流中处于后面的元素会覆盖前面的元素</li>
+</ol>
+<blockquote>
+<ol>
+<li>IE6/IE7浏览器有个bug，就是z-index:auto的定位元素也会创建层叠上下文</li>
+<li>在过去，position:fixed和relative/absolute在层叠上下文这一块是一路货色，都是需要z-index为数值才行。但是，不知道什么时候起，Chrome等webkit内核浏览器，position:fixed元素天然层叠上下文元素，无需z-index为数值。根据我的测试，目前，IE以及FireFox仍是老套路。</li>
+<li>在我看来，觉得多数常见，z-index根本就没有出现的必要。知道了内联元素的层叠水平比块状元素高，于是，某条线你想覆盖上去的时候，需要设置position:relative吗？不需要，inline-block化就可以</li>
+</ol>
+</blockquote>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="不改变-html-结构，不改变-z-index-属性，不改变-position-属性的情况下，将红色框置于最底层？"><a href="#不改变-html-结构，不改变-z-index-属性，不改变-position-属性的情况下，将红色框置于最底层？" class="headerlink" title="不改变 html 结构，不改变 z-index 属性，不改变 position 属性的情况下，将红色框置于最底层？"></a>不改变 html 结构，不改变 z-index 属性，不改变 position 属性的情况下，将红色框置于最底层？</h3><p></p><p data-height="265" data-theme-id="dark" data-slug-hash="WJPqmY" data-default-tab="css,result" data-user="linghuam" data-embed-version="2" data-pen-title="Stacking Order (problem)" class="codepen">See the Pen <a href="https://codepen.io/linghuam/pen/WJPqmY/" target="_blank" rel="noopener">Stacking Order (problem)</a> by linghuam (<a href="https://codepen.io/linghuam" target="_blank" rel="noopener">@linghuam</a>) on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.</p><p></p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+<p>答案，添加:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* opacity 小于1 */</span></span><br><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:first-child</span>&#123;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">0.99</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><ul>
+<li><a href="http://www.zhangxinxu.com/wordpress/2016/01/understand-css-stacking-context-order-z-index/" target="_blank" rel="noopener">深入理解CSS中的层叠上下文和层叠顺序</a></li>
+<li><a href="https://webdesign.tutsplus.com/articles/what-you-may-not-know-about-the-z-index-property--webdesign-16892?ec_unit=translation-info-language" target="_blank" rel="noopener">What You May Not Know About the Z-Index Property</a></li>
+<li><a href="https://webdesign.tutsplus.com/zh-hans/articles/what-you-may-not-know-about-the-z-index-property--webdesign-16892" target="_blank" rel="noopener">上篇中文版</a></li>
+<li><a href="https://philipwalton.com/articles/what-no-one-told-you-about-z-index/" target="_blank" rel="noopener">What No One Told You About Z-Index</a></li>
+<li><a href="https://css-tricks.com/almanac/properties/z/z-index/" target="_blank" rel="noopener">css-tricks z-index</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://linghuam.github.io/2018/05/21/前端基础-CSS之z-index属性/" data-id="ck678t7jm001c41bx1xt48u43" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+ <script src="/jquery/jquery.min.js"></script>
+  <div id="random_posts">
+    <h2>推荐文章</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =3
+          var site = {BASE_URI:'/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+    <a href="/2018/05/22/前端基础-CSS3的flex布局/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          前端基础-CSS3的flex布局
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/04/23/macos使用技巧/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">macos使用技巧</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+       
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+       
+      
+      
+           <div id="gitment_comments"></div>
+    
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#我遇到的问题"><span class="toc-number">1.</span> <span class="toc-text">我遇到的问题?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题？"><span class="toc-number">2.</span> <span class="toc-text">问题？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开始找资料了解-z-index-属性，下面是对一些官方文档和技术大牛博客的总结"><span class="toc-number">3.</span> <span class="toc-text">开始找资料了解 z-index 属性，下面是对一些官方文档和技术大牛博客的总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#层叠顺序（Stacking-Order）"><span class="toc-number">3.1.</span> <span class="toc-text">层叠顺序（Stacking Order）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#层叠上下文（Stacking-Contexts）"><span class="toc-number">3.2.</span> <span class="toc-text">层叠上下文（Stacking Contexts）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#同一个层叠上下文元素的层叠顺序（从后往前，从底往上）"><span class="toc-number">3.3.</span> <span class="toc-text">同一个层叠上下文元素的层叠顺序（从后往前，从底往上）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原话引用"><span class="toc-number">3.4.</span> <span class="toc-text">原话引用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#z-index-最佳实践"><span class="toc-number">4.</span> <span class="toc-text">z-index 最佳实践</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#例子"><span class="toc-number">5.</span> <span class="toc-text">例子</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#不改变-html-结构，不改变-z-index-属性，不改变-position-属性的情况下，将红色框置于最底层？"><span class="toc-number">5.1.</span> <span class="toc-text">不改变 html 结构，不改变 z-index 属性，不改变 position 属性的情况下，将红色框置于最底层？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文章"><span class="toc-number">6.</span> <span class="toc-text">参考文章</span></a></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+
+  
+    
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2020 Linghuam&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;1551827898@qq.com
+    </div>
+  </div>
+</footer>
+ <script src="/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+  
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "e2fb4051c49842688ce669e634bc983f",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+    
+
+  
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script> 
+  <script>
+  var gitment = new Gitment({
+    // id: '页面 ID', // 可选。默认为 location.href
+    owner: 'linghuam',
+    repo: 'linghuam.github.io',
+    oauth: {
+    client_id: '17ad04af6a057fbb5072',
+    client_secret: '5bb953d9587f8f1bde7c956bda62db16779dab4c',
+    }
+  })
+  gitment.render(document.getElementById("gitment_comments"))
+</script>
+
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'] ],
+          displayMath: [ ["$$","$$"] ], //段内公式选择$$
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ <script src="/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/elevator.js"></script>
+  </div>
+</body>
+</html>
