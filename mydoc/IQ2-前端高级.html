@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8">
   
+  
   <title>华仔的博客</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="前端如何管理10万行代码？防抖（debounce）&amp;amp; 节流（throttle）？并说明在什么场景下使用？requestAnimationFrame原理？执行复杂计算会不会掉帧? polyfill？地图放大、缩小、平移动画实现原理？图片懒加载？node事件循环，settimeout,promise，process.nexttick？websocket如何保持长连接，还有其他方式吗？浏览器渲染">
 <meta property="og:type" content="website">
 <meta property="og:title" content="华仔的博客">
@@ -17,17 +18,16 @@
 <meta name="twitter:title" content="华仔的博客">
 <meta name="twitter:description" content="前端如何管理10万行代码？防抖（debounce）&amp;amp; 节流（throttle）？并说明在什么场景下使用？requestAnimationFrame原理？执行复杂计算会不会掉帧? polyfill？地图放大、缩小、平移动画实现原理？图片懒加载？node事件循环，settimeout,promise，process.nexttick？websocket如何保持长连接，还有其他方式吗？浏览器渲染">
   
-    <link rel="alternate" href="/atom.xml" title="华仔的博客" type="application/atom+xml">
+  
+    <link rel="icon" href="/favicon.png">
   
   
-    <link rel="icon" href="/favicon.ico">
-  
-  
-    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
   
   <link rel="stylesheet" href="/css/style.css">
   
-
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
 </head>
 
 <body>
@@ -36,29 +36,6 @@
       <header id="header">
   <div id="banner"></div>
   <div id="header-outer" class="outer">
-    
-    <div id="header-inner" class="inner">
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://linghuam.github.io"></form>
-      </div>
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">首页</a>
-        
-          <a class="main-nav-link" href="/archives">归档</a>
-        
-          <a class="main-nav-link" href="/about">关于</a>
-        
-      </nav>
-      
-    </div>
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
         <a href="/" id="logo">华仔的博客</a>
@@ -69,23 +46,40 @@
         </h2>
       
     </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://linghuam.github.io"></form>
+      </div>
+    </div>
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="page-undefined" class="article article-type-page" itemscope itemprop="blogPost">
+        <section id="main"><article id="page-undefined" class="h-entry article article-type-page" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/mydoc/IQ2-前端高级.html" class="article-date">
-  <time datetime="2020-01-12T15:17:07.904Z" itemprop="datePublished">2020-01-12</time>
+  <time class="dt-published" datetime="2020-01-12T15:17:07.904Z" itemprop="datePublished">2020-01-12</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
-    <div class="article-entry" itemprop="articleBody">
+    <div class="e-content article-entry" itemprop="articleBody">
       
-        <!-- Table of Contents -->
-        
         <h2 id="前端如何管理10万行代码？"><a href="#前端如何管理10万行代码？" class="headerlink" title="前端如何管理10万行代码？"></a>前端如何管理10万行代码？</h2><h2 id="防抖（debounce）-amp-节流（throttle）？并说明在什么场景下使用？"><a href="#防抖（debounce）-amp-节流（throttle）？并说明在什么场景下使用？" class="headerlink" title="防抖（debounce）&amp; 节流（throttle）？并说明在什么场景下使用？"></a>防抖（debounce）&amp; 节流（throttle）？并说明在什么场景下使用？</h2><h2 id="requestAnimationFrame原理？执行复杂计算会不会掉帧-polyfill？"><a href="#requestAnimationFrame原理？执行复杂计算会不会掉帧-polyfill？" class="headerlink" title="requestAnimationFrame原理？执行复杂计算会不会掉帧? polyfill？"></a><code>requestAnimationFrame</code>原理？执行复杂计算会不会掉帧? polyfill？</h2><h2 id="地图放大、缩小、平移动画实现原理？"><a href="#地图放大、缩小、平移动画实现原理？" class="headerlink" title="地图放大、缩小、平移动画实现原理？"></a>地图放大、缩小、平移动画实现原理？</h2><h2 id="图片懒加载？"><a href="#图片懒加载？" class="headerlink" title="图片懒加载？"></a>图片懒加载？</h2><h2 id="node事件循环，settimeout-promise，process-nexttick？"><a href="#node事件循环，settimeout-promise，process-nexttick？" class="headerlink" title="node事件循环，settimeout,promise，process.nexttick？"></a>node事件循环，settimeout,promise，process.nexttick？</h2><h2 id="websocket如何保持长连接，还有其他方式吗？"><a href="#websocket如何保持长连接，还有其他方式吗？" class="headerlink" title="websocket如何保持长连接，还有其他方式吗？"></a>websocket如何保持长连接，还有其他方式吗？</h2><h2 id="浏览器渲染原理"><a href="#浏览器渲染原理" class="headerlink" title="浏览器渲染原理?"></a>浏览器渲染原理?</h2><p><strong>过程：</strong>解析 HTML 构建 DOM 树、解析 CSS 构建 Render 树 -&gt; Layout -&gt; Paint -&gt; Composite。</p>
 <p>期间可引起重绘和重排。</p>
 <p><strong>减少重绘和重排方法：</strong></p>
@@ -272,7 +266,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linghuam.github.io/mydoc/IQ2-前端高级.html" data-id="ck678t7it000i41bx3p5zt6e1" class="article-share-link">分享</a>
+      <a data-url="http://linghuam.github.io/mydoc/IQ2-前端高级.html" data-id="ck67b5zti0008f1bx7l8z3gna" data-title="" class="article-share-link">Share</a>
       
       
       
@@ -280,211 +274,111 @@
   </div>
   
     
- <script src="/jquery/jquery.min.js"></script>
-  <div id="random_posts">
-    <h2>推荐文章</h2>
-    <div class="random_posts_ul">
-      <script>
-          var random_count =3
-          var site = {BASE_URI:'/'};
-          function load_random_posts(obj) {
-              var arr=site.posts;
-              if (!obj) return;
-              // var count = $(obj).attr('data-count') || 6;
-              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
-              arr = arr.slice(0, random_count);
-              var html = '<ul>';
-            
-              for(var j=0;j<arr.length;j++){
-                var item=arr[j];
-                html += '<li><strong>' + 
-                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
-                (item.title || item.uri) + '</a></strong>';
-                if(item.excerpt){
-                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
-                }
-                html +='</li>';
-                
-              }
-              $(obj).html(html + '</ul>');
-          }
-          $('.random_posts_ul').each(function () {
-              var c = this;
-              if (!site.posts || !site.posts.length){
-                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
-              } 
-               else{
-                load_random_posts(c);
-              }
-          });
-      </script>
-    </div>
-  </div>
-
-    
   
 </article>
- 
-     
-  <div class="comments" id="comments">
-    
-     
-       
-      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
-    
-       
-      
-      
-           <div id="gitment_comments"></div>
-    
-  </div>
- 
-  
+
 
 </section>
-           
-    <aside id="sidebar">
+        
+          <aside id="sidebar">
   
     
-
-  
-    
-    <div class="widget-wrap">
-    
-      <div class="widget" id="toc-widget-fixed">
-      
-        <strong class="toc-title">文章目录</strong>
-        <div class="toc-widget-list">
-              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前端如何管理10万行代码？"><span class="toc-number">1.</span> <span class="toc-text">前端如何管理10万行代码？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#防抖（debounce）-amp-节流（throttle）？并说明在什么场景下使用？"><span class="toc-number">2.</span> <span class="toc-text">防抖（debounce）&amp; 节流（throttle）？并说明在什么场景下使用？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#requestAnimationFrame原理？执行复杂计算会不会掉帧-polyfill？"><span class="toc-number">3.</span> <span class="toc-text">requestAnimationFrame原理？执行复杂计算会不会掉帧? polyfill？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#地图放大、缩小、平移动画实现原理？"><span class="toc-number">4.</span> <span class="toc-text">地图放大、缩小、平移动画实现原理？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图片懒加载？"><span class="toc-number">5.</span> <span class="toc-text">图片懒加载？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#node事件循环，settimeout-promise，process-nexttick？"><span class="toc-number">6.</span> <span class="toc-text">node事件循环，settimeout,promise，process.nexttick？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#websocket如何保持长连接，还有其他方式吗？"><span class="toc-number">7.</span> <span class="toc-text">websocket如何保持长连接，还有其他方式吗？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#浏览器渲染原理"><span class="toc-number">8.</span> <span class="toc-text">浏览器渲染原理?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML页面加载和解析流程"><span class="toc-number">9.</span> <span class="toc-text">HTML页面加载和解析流程?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从输入网址到看到页面的过程？"><span class="toc-number">10.</span> <span class="toc-text">从输入网址到看到页面的过程？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#浏览器主要渲染过程？"><span class="toc-number">11.</span> <span class="toc-text">浏览器主要渲染过程？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#前端优化一般都做哪些？"><span class="toc-number">12.</span> <span class="toc-text">前端优化一般都做哪些？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何提高数据传输性能？"><span class="toc-number">13.</span> <span class="toc-text">如何提高数据传输性能？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue-双向数据绑定原理"><span class="toc-number">14.</span> <span class="toc-text">Vue 双向数据绑定原理?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vuex-状态机更新机制"><span class="toc-number">15.</span> <span class="toc-text">Vuex 状态机更新机制?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#轮播组件怎么无限滚动的？"><span class="toc-number">16.</span> <span class="toc-text">轮播组件怎么无限滚动的？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#让你做一个日历组件的思路，你觉得里面用到了哪些算法知识，核心功能是什么。在项目中用其他组件或者库用的多吗？"><span class="toc-number">17.</span> <span class="toc-text">让你做一个日历组件的思路，你觉得里面用到了哪些算法知识，核心功能是什么。在项目中用其他组件或者库用的多吗？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#移动端适配怎么做？"><span class="toc-number">18.</span> <span class="toc-text">移动端适配怎么做？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#node的-EventEmitter-用js实现出来？"><span class="toc-number">19.</span> <span class="toc-text">node的 EventEmitter 用js实现出来？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#路由的实现原理？"><span class="toc-number">20.</span> <span class="toc-text">路由的实现原理？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#canvas-与-svg-区别？"><span class="toc-number">21.</span> <span class="toc-text">canvas 与 svg 区别？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#屏幕坐标与世界坐标相互转化？"><span class="toc-number">22.</span> <span class="toc-text">屏幕坐标与世界坐标相互转化？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#屏幕坐标转化为canvas坐标？"><span class="toc-number">23.</span> <span class="toc-text">屏幕坐标转化为canvas坐标？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#canvas-如何做性能优化？"><span class="toc-number">24.</span> <span class="toc-text">canvas 如何做性能优化？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#echarts-开源库实现原理？"><span class="toc-number">25.</span> <span class="toc-text">echarts 开源库实现原理？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#zrender开源库实现原理"><span class="toc-number">26.</span> <span class="toc-text">zrender开源库实现原理?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#echarts-图形库与-antv-图形库的设计方法以及区别？"><span class="toc-number">27.</span> <span class="toc-text">echarts 图形库与 antv 图形库的设计方法以及区别？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#echarts-4-的新特性？"><span class="toc-number">28.</span> <span class="toc-text">echarts 4 的新特性？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何用-canvas-实现跳动的心动画？"><span class="toc-number">29.</span> <span class="toc-text">如何用 canvas 实现跳动的心动画？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#给一张图片，如何用-canvas-将颜色相近的提取归类？"><span class="toc-number">30.</span> <span class="toc-text">给一张图片，如何用 canvas 将颜色相近的提取归类？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#js-实现深拷贝与浅拷贝？"><span class="toc-number">31.</span> <span class="toc-text">js 实现深拷贝与浅拷贝？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vue-响应式原理。"><span class="toc-number">32.</span> <span class="toc-text">vue 响应式原理。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vue数据绑定原理？-详情"><span class="toc-number">33.</span> <span class="toc-text">vue数据绑定原理？ 详情</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue生命周期？"><span class="toc-number">34.</span> <span class="toc-text">Vue生命周期？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue组件数据通信？vue如何实现父子组件通信，以及非父子组件通信？"><span class="toc-number">35.</span> <span class="toc-text">Vue组件数据通信？vue如何实现父子组件通信，以及非父子组件通信？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue是如何实现虚拟-DOM-的？"><span class="toc-number">36.</span> <span class="toc-text">Vue是如何实现虚拟 DOM 的？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vuex原理？"><span class="toc-number">37.</span> <span class="toc-text">vuex原理？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue脏检查？"><span class="toc-number">38.</span> <span class="toc-text">Vue脏检查？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MVC、MVVM了解么，数据双向绑定和单向绑定实现方式？"><span class="toc-number">39.</span> <span class="toc-text">MVC、MVVM了解么，数据双向绑定和单向绑定实现方式？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#前端路由原理？"><span class="toc-number">40.</span> <span class="toc-text">前端路由原理？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vue-router实现原理？"><span class="toc-number">41.</span> <span class="toc-text">vue-router实现原理？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#说一下Vue实现双向数据绑定的原理，以及vue-js和react-js异同点，如果让你选框架，你怎么怎么权衡这两个框架，分析一下？"><span class="toc-number">42.</span> <span class="toc-text">说一下Vue实现双向数据绑定的原理，以及vue.js和react.js异同点，如果让你选框架，你怎么怎么权衡这两个框架，分析一下？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#比如Vue，问问数据绑定怎么做的，如何解决getter-setter不能监听数组变异方法，监听的回调和事件怎么解耦的，watcher去重怎么做的，DOM批更新怎么做的？"><span class="toc-number">43.</span> <span class="toc-text">比如Vue，问问数据绑定怎么做的，如何解决getter/setter不能监听数组变异方法，监听的回调和事件怎么解耦的，watcher去重怎么做的，DOM批更新怎么做的？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么要选vue？与其它框架对比的优势和劣势？"><span class="toc-number">44.</span> <span class="toc-text">为什么要选vue？与其它框架对比的优势和劣势？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#js-设计模式"><span class="toc-number">45.</span> <span class="toc-text">js 设计模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#requireJS的基本原理？"><span class="toc-number">46.</span> <span class="toc-text">requireJS的基本原理？</span></a></li></ol>
-          </div>
-      </div>
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/专题/">专题</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/专题/一周拾遗/">一周拾遗</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/专题/性能优化/">性能优化</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/专题/解决方案/">解决方案</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他/">其他</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端基础/">前端基础</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/前端基础/BOM/">BOM</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端基础/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端基础/CSSOM/">CSSOM</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端基础/HTML/">HTML</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端基础/JavaScript/">JavaScript</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端高级/">前端高级</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/可视化/">可视化</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/可视化/2D/">2D</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/可视化/GIS/">GIS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/可视化/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/可视化/计算机图形学/">计算机图形学</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发工具/">开发工具</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/开发工具/VSCode/">VSCode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发工具/git/">git</a></li></ul></li></ul>
     </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/canvas/">canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/沙箱模式/">沙箱模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/01/21/W3C-Canvas文档翻译/">W3C-Canvas文档翻译</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/17/git如何安全回滚/">git如何安全回滚</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/17/一周拾遗-第3期/">一周拾遗-第3期</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/16/浏览器沙箱模式探究/">浏览器沙箱模式探究</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/27/一周拾遗-第2期/">一周拾遗-第2期</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
   
 </aside>
-
+        
       </div>
       <footer id="footer">
   
   <div class="outer">
-    <div id="footer-left">
-      &copy; 2014 - 2020 Linghuam&nbsp;|&nbsp;
-      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
-    </div>
-     <div id="footer-right">
-      联系方式&nbsp;|&nbsp;1551827898@qq.com
+    <div id="footer-info" class="inner">
+      &copy; 2020 Linghuam<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
- <script src="/jquery/jquery.min.js"></script>
+
     </div>
     <nav id="mobile-nav">
   
-    <a href="/" class="mobile-nav-link">首页</a>
+    <a href="/" class="mobile-nav-link">Home</a>
   
-    <a href="/archives" class="mobile-nav-link">归档</a>
+    <a href="/archives" class="mobile-nav-link">Archives</a>
   
-    <a href="/about" class="mobile-nav-link">关于</a>
+    <a href="/about" class="mobile-nav-link">About</a>
   
 </nav>
-    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
-<script>
-// Elevator script included on the page, already.
-window.onload = function() {
-  var elevator = new Elevator({
-    selector:'.back-to-top-btn',
-    element: document.querySelector('.back-to-top-btn'),
-    duration: 1000 // milliseconds
-  });
-}
-</script>
-      
-
-  
-    <script>
-      var cloudTieConfig = {
-        url: document.location.href, 
-        sourceId: "",
-        productKey: "e2fb4051c49842688ce669e634bc983f",
-        target: "cloud-tie-wrapper"
-      };
-    </script>
-    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
     
 
-  
+<script src="/js/jquery-3.4.1.min.js"></script>
 
 
-
-
-
-
-
-<!-- author:forvoid begin -->
-<!-- author:forvoid begin -->
-
-  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script> 
-  <script>
-  var gitment = new Gitment({
-    // id: '页面 ID', // 可选。默认为 location.href
-    owner: 'linghuam',
-    repo: 'linghuam.github.io',
-    oauth: {
-    client_id: '17ad04af6a057fbb5072',
-    client_secret: '5bb953d9587f8f1bde7c956bda62db16779dab4c',
-    }
-  })
-  gitment.render(document.getElementById("gitment_comments"))
-</script>
-
-
-<!-- author:forvoid end -->
-
-<!-- author:forvoid end -->
-
-
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'] ],
-          displayMath: [ ["$$","$$"] ], //段内公式选择$$
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      })
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      })
-    </script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-  
-
-
- <script src="/js/is.js"></script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
 
 
 <script src="/js/script.js"></script>
-<script src="/js/elevator.js"></script>
+
+
+
+
   </div>
 </body>
 </html>
