@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="华仔的博客">
 <meta property="og:description" content="收集 mac 使用技巧">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-02-03T12:55:02.493Z">
+<meta property="og:updated_time" content="2020-03-17T02:27:32.716Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="macos使用技巧">
 <meta name="twitter:description" content="收集 mac 使用技巧">
@@ -133,6 +133,21 @@
 <li>光标调到末尾位置：Ctrl + E</li>
 <li>搜索命令：Ctrl + R</li>
 </ul>
+<h2 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h2><ol>
+<li><p>/etc/profile （建议不修改这个文件 ）<br>全局（公有）配置，不管是哪个用户，登录时都会读取该文件。</p>
+</li>
+<li><p>/etc/bashrc （一般在这个文件中添加系统级环境变量）<br>全局（公有）配置，bash shell执行时，不管是何种方式，都会读取此文件。</p>
+</li>
+<li><p>~/.bash_profile （一般在这个文件中添加用户级环境变量）<br>每个用户都可使用该文件输入专用于自己使用的shell信息,当用户登录时,该文件仅仅执行一次!<br>但是有时在.bash_profile 文件中的环境变量并没有起到作用<br>这时可以查看使用的Mac OS X是什么样的Shell</p>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ <span class="built_in">echo</span> <span class="variable">$SHELL</span></span><br><span class="line">/bin/zsh</span><br></pre></td></tr></table></figure>
+<ol>
+<li>当mac上安装了zsh后，修改环境变量就需要在~/.zshrc中修改，比如加入代理：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> http_prox=http://10.199.75.12:8080</span><br><span class="line"><span class="built_in">export</span> https_proxy=http://10.199.75.12:8080</span><br></pre></td></tr></table></figure>
+<p>如果想要修改立即生效，需要执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
 <li><a href="https://www.youtube.com/watch?v=pMmuk9bthUE" target="_blank" rel="noopener">MAC OS 小白入门视频</a></li>
 </ul>
@@ -140,7 +155,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linghuam.github.io/2018/04/23/macos使用技巧/" data-id="ck67b5ztr000if1bxvug59an6" data-title="macos使用技巧" class="article-share-link">Share</a>
+      <a data-url="http://linghuam.github.io/2018/04/23/macos使用技巧/" data-id="ck7vtyiww000iyqbx62zshqrr" data-title="macos使用技巧" class="article-share-link">Share</a>
       
       
       
@@ -189,7 +204,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/canvas/">canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/沙箱模式/">沙箱模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/canvas/">canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/沙箱模式/">沙箱模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
     </div>
   </div>
 
@@ -199,7 +214,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li></ul>
     </div>
   </div>
 
@@ -210,6 +225,10 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/03/16/一周拾遗-第4期/">一周拾遗-第4期</a>
+          </li>
         
           <li>
             <a href="/2020/01/21/W3C-Canvas文档翻译/">W3C-Canvas文档翻译</a>
@@ -225,10 +244,6 @@
         
           <li>
             <a href="/2020/01/16/浏览器沙箱模式探究/">浏览器沙箱模式探究</a>
-          </li>
-        
-          <li>
-            <a href="/2019/12/27/一周拾遗-第2期/">一周拾遗-第2期</a>
           </li>
         
       </ul>
