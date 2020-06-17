@@ -14,10 +14,18 @@
 <meta property="og:site_name" content="华仔的博客">
 <meta property="og:description" content="最近做项目时，用了不少 CSS3 的 flex 布局，感觉非常棒，比老式布局方式(position+display+float)好用得多，所以打算写一篇文章总结一下。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://linghuam.github.io/2018/05/22/前端基础-CSS3的flex布局/1.png">
+<meta property="og:image" content="http://linghuam.github.io/2018/05/22/前端基础-CSS3的flex布局/flex-direction.png">
+<meta property="og:image" content="http://linghuam.github.io/2018/05/22/前端基础-CSS3的flex布局/flex-wrap.png">
+<meta property="og:image" content="http://linghuam.github.io/2018/05/22/前端基础-CSS3的flex布局/justify-content.png">
+<meta property="og:image" content="http://linghuam.github.io/2018/05/22/前端基础-CSS3的flex布局/align-items.png">
+<meta property="og:image" content="http://linghuam.github.io/2018/05/22/前端基础-CSS3的flex布局/align-content.png">
+<meta property="og:image" content="http://linghuam.github.io/2018/05/22/前端基础-CSS3的flex布局/flex-basis.png">
 <meta property="og:updated_time" content="2020-02-03T12:08:02.136Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端基础-CSS3的flex布局">
 <meta name="twitter:description" content="最近做项目时，用了不少 CSS3 的 flex 布局，感觉非常棒，比老式布局方式(position+display+float)好用得多，所以打算写一篇文章总结一下。">
+<meta name="twitter:image" content="http://linghuam.github.io/2018/05/22/前端基础-CSS3的flex布局/1.png">
   
   
     <link rel="icon" href="/favicon.png">
@@ -101,7 +109,7 @@
 <li>flex 容器(flex container)</li>
 <li>flex 项目(flex items)</li>
 </ol>
-<p><strong>容器</strong><br></p>
+<p><strong>容器</strong><br><img src="/2018/05/22/前端基础-CSS3的flex布局/1.png"></p>
 <h3 id="容器属性"><a href="#容器属性" class="headerlink" title="容器属性"></a>容器属性</h3><table>
 <thead>
 <tr>
@@ -119,12 +127,12 @@
 <tr>
 <td style="text-align:left"><code>flex-direction</code></td>
 <td style="text-align:center"><code>row(default); row-reverse; column; column-reverse</code></td>
-<td style="text-align:left"></td>
+<td style="text-align:left"><img src="/2018/05/22/前端基础-CSS3的flex布局/flex-direction.png"></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>flex-wrap</code></td>
 <td style="text-align:center"><code>nowrap(default); wrap; wrap-reverse</code></td>
-<td style="text-align:left">nowrap 一行显示，wrap 多行显示  </td>
+<td style="text-align:left">nowrap 一行显示，wrap 多行显示  <img src="/2018/05/22/前端基础-CSS3的flex布局/flex-wrap.png"></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>flex-flow</code></td>
@@ -134,17 +142,17 @@
 <tr>
 <td style="text-align:left"><code>justify-content</code></td>
 <td style="text-align:center"><code>flex-start; flex-end; center; space-between; space-around; space-evenly</code></td>
-<td style="text-align:left">项目沿主轴对齐方向，其实是规定如何分配空间 </td>
+<td style="text-align:left">项目沿主轴对齐方向，其实是规定如何分配空间 <img src="/2018/05/22/前端基础-CSS3的flex布局/justify-content.png"></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>align-items</code></td>
 <td style="text-align:center"><code>flex-start; flex-end; center; baseline; stretch</code></td>
-<td style="text-align:left"></td>
+<td style="text-align:left"><img src="/2018/05/22/前端基础-CSS3的flex布局/align-items.png"></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>align-content</code></td>
 <td style="text-align:center"><code>flex-start; flex-end; center; baseline; stretch</code></td>
-<td style="text-align:left"></td>
+<td style="text-align:left"><img src="/2018/05/22/前端基础-CSS3的flex布局/align-content.png"></td>
 </tr>
 </tbody>
 </table>
@@ -175,7 +183,7 @@
 <tr>
 <td style="text-align:left"><code>flex-basis</code></td>
 <td style="text-align:center"><code>&lt;length&gt;默认为auto</code></td>
-<td style="text-align:left">定义在分配剩余空间前元素的默认尺寸,默认值为auto，即项目的本来大小, 它可以设为跟width或height属性一样的值（比如350px），则项目将占据固定空间 </td>
+<td style="text-align:left">定义在分配剩余空间前元素的默认尺寸,默认值为auto，即项目的本来大小, 它可以设为跟width或height属性一样的值（比如350px），则项目将占据固定空间 <img src="/2018/05/22/前端基础-CSS3的flex布局/flex-basis.png"></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>flex</code></td>
@@ -223,7 +231,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linghuam.github.io/2018/05/22/前端基础-CSS3的flex布局/" data-id="ck7vtyix9000zyqbxdym6qf29" data-title="前端基础-CSS3的flex布局" class="article-share-link">Share</a>
+      <a data-url="http://linghuam.github.io/2018/05/22/前端基础-CSS3的flex布局/" data-id="ckbj67eye00181jbx7y71yzwp" data-title="前端基础-CSS3的flex布局" class="article-share-link">Share</a>
       
       
       
@@ -309,11 +317,11 @@
           </li>
         
           <li>
-            <a href="/2020/01/17/一周拾遗-第3期/">一周拾遗-第3期</a>
+            <a href="/2020/01/17/使用Chrome开发工具优化网站速度/">使用Chrome开发工具优化网站速度</a>
           </li>
         
           <li>
-            <a href="/2020/01/16/浏览器沙箱模式探究/">浏览器沙箱模式探究</a>
+            <a href="/2020/01/17/一周拾遗-第3期/">一周拾遗-第3期</a>
           </li>
         
       </ul>

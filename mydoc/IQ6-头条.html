@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>华仔的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="描述一下JS的new操作符具体做了什么?（1）创建一个空对象，并且 this 变量引用该对象，同时还继承了该函数的原型。（2）属性和方法被加入到 this 引用的对象中。（3）新创建的对象由 this 所引用，并且最后隐式的返回 this 。 1234var obj = &amp;#123;&amp;#125;;this = obj;obj.__proto__ = fn.prototype;return obj;">
+<meta property="og:type" content="website">
+<meta property="og:title" content="华仔的博客">
+<meta property="og:url" content="http://linghuam.github.io/mydoc/IQ6-头条.html">
+<meta property="og:site_name" content="华仔的博客">
+<meta property="og:description" content="描述一下JS的new操作符具体做了什么?（1）创建一个空对象，并且 this 变量引用该对象，同时还继承了该函数的原型。（2）属性和方法被加入到 this 引用的对象中。（3）新创建的对象由 this 所引用，并且最后隐式的返回 this 。 1234var obj = &amp;#123;&amp;#125;;this = obj;obj.__proto__ = fn.prototype;return obj;">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-03-26T13:51:50.782Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="华仔的博客">
+<meta name="twitter:description" content="描述一下JS的new操作符具体做了什么?（1）创建一个空对象，并且 this 变量引用该对象，同时还继承了该函数的原型。（2）属性和方法被加入到 this 引用的对象中。（3）新创建的对象由 this 所引用，并且最后隐式的返回 this 。 1234var obj = &amp;#123;&amp;#125;;this = obj;obj.__proto__ = fn.prototype;return obj;">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">华仔的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">https://github.com/linghuam</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://linghuam.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="page-undefined" class="h-entry article article-type-page" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/mydoc/IQ6-头条.html" class="article-date">
+  <time class="dt-published" datetime="2020-03-26T13:51:50.782Z" itemprop="datePublished">2020-03-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="描述一下JS的new操作符具体做了什么"><a href="#描述一下JS的new操作符具体做了什么" class="headerlink" title="描述一下JS的new操作符具体做了什么?"></a>描述一下JS的<code>new</code>操作符具体做了什么?</h3><p>（1）创建一个空对象，并且 this 变量引用该对象，同时还继承了该函数的原型。<br>（2）属性和方法被加入到 this 引用的对象中。<br>（3）新创建的对象由 this 所引用，并且最后隐式的返回 this 。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line"><span class="keyword">this</span> = obj;</span><br><span class="line">obj.__proto__ = fn.prototype;</span><br><span class="line"><span class="keyword">return</span> obj;</span><br></pre></td></tr></table></figure>
+<h3 id="JS编程实现简单模板引擎变量替换？"><a href="#JS编程实现简单模板引擎变量替换？" class="headerlink" title="JS编程实现简单模板引擎变量替换？"></a>JS编程实现简单模板引擎变量替换？</h3><h3 id="封装一个ajax请求库实现get和post方法？"><a href="#封装一个ajax请求库实现get和post方法？" class="headerlink" title="封装一个ajax请求库实现get和post方法？"></a>封装一个ajax请求库实现get和post方法？</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// https://developer.mozilla.org/en-US/docs/Web/Guide/AJAX/Getting_Started</span></span><br><span class="line"><span class="comment">// https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest</span></span><br><span class="line"><span class="keyword">var</span> ajax = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">getQueryString</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Object</span>.keys(data).map(<span class="function"><span class="params">key</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;key&#125;</span>=<span class="subst">$&#123;<span class="built_in">encodeURIComponent</span>(data[key])&#125;</span>`</span>;</span><br><span class="line">    &#125;).join(<span class="string">'&amp;'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">const</span> objAssign = <span class="built_in">Object</span>.assign ? <span class="built_in">Object</span>.assign : <span class="function"><span class="keyword">function</span> <span class="title">objAssign</span>(<span class="params">target, args</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (target == <span class="literal">null</span>) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'Cannot convert undefined or null to object!'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; <span class="built_in">arguments</span>.length; i++) &#123;</span><br><span class="line">      <span class="keyword">let</span> nextSource = <span class="built_in">arguments</span>[i];</span><br><span class="line">      <span class="keyword">if</span> (nextSource != <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> nextKey <span class="keyword">in</span> nextSource) &#123;</span><br><span class="line">          <span class="keyword">if</span> (<span class="built_in">Object</span>.prototype.hasOwnProperty.call(nextSource, nextKey)) &#123;</span><br><span class="line">            target[nextKey] = nextSource[nextKey];</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> target;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">ajax</span>(<span class="params">options</span>) </span>&#123;</span><br><span class="line">    options = objAssign(&#123;&#125;, options, &#123;</span><br><span class="line">      dataType: <span class="string">"json"</span></span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">const</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">    xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 请求是否完成</span></span><br><span class="line">      <span class="keyword">if</span> (xhr.readyState === XMLHttpRequest.DONE) &#123;</span><br><span class="line">        <span class="comment">// 请求返回的状态码，200表示成功</span></span><br><span class="line">        <span class="keyword">if</span> (xhr.status === <span class="number">200</span>) &#123;</span><br><span class="line">          <span class="comment">/*获取数据</span></span><br><span class="line"><span class="comment">          1. xhr.responseText - 以文本字符串形式返回服务器响应</span></span><br><span class="line"><span class="comment">          2. xhr.responseXML - 以 XMLDocument 对象形式返回</span></span><br><span class="line"><span class="comment">          */</span></span><br><span class="line">          <span class="keyword">let</span> res = xhr.responseText;</span><br><span class="line">          <span class="keyword">if</span> (options.dataType === <span class="string">'json'</span>) &#123;</span><br><span class="line">            res = <span class="built_in">JSON</span>.parse(res);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">if</span> (<span class="keyword">typeof</span> options.success === <span class="string">'function'</span>) &#123;</span><br><span class="line">            options.success.call(<span class="literal">null</span>, res);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="keyword">if</span> (<span class="keyword">typeof</span> options.fail === <span class="string">'function'</span>) &#123;</span><br><span class="line">            options.fail.call(<span class="literal">null</span>, xhr.status);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">let</span> url = options.url;</span><br><span class="line">    <span class="keyword">if</span> (options.type === <span class="string">'GET'</span>) &#123;</span><br><span class="line">      url += <span class="string">'?'</span> + getQueryString(options.data);</span><br><span class="line">      xhr.open(<span class="string">'GET'</span>, url);</span><br><span class="line">      xhr.send();</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (options.type === <span class="string">'POST'</span>) &#123;</span><br><span class="line">      xhr.open(<span class="string">'POST'</span>, url);</span><br><span class="line">      xhr.setRequestHeader(<span class="string">'Content-Type'</span>, <span class="string">'application/x-www-form-urlencoded'</span>);</span><br><span class="line">      <span class="keyword">const</span> formdata = getQueryString(options.data);</span><br><span class="line">      xhr.send(formdata);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> ajax;</span><br><span class="line">&#125;());</span><br></pre></td></tr></table></figure>
+<h3 id="节流-trottle-与防抖-debounce-？"><a href="#节流-trottle-与防抖-debounce-？" class="headerlink" title="节流(trottle)与防抖(debounce)？"></a>节流(trottle)与防抖(debounce)？</h3><h3 id="求二叉树是否存在和值为N的路径？"><a href="#求二叉树是否存在和值为N的路径？" class="headerlink" title="求二叉树是否存在和值为N的路径？"></a>求二叉树是否存在和值为N的路径？</h3><h3 id="100-100-的-Canvas-占内存多大？"><a href="#100-100-的-Canvas-占内存多大？" class="headerlink" title="100 * 100 的 Canvas 占内存多大？"></a>100 * 100 的 Canvas 占内存多大？</h3><p><a href="https://juejin.im/post/5bdeb357e51d4536140fc7df" target="_blank" rel="noopener">https://juejin.im/post/5bdeb357e51d4536140fc7df</a></p>
+<h3 id="算法能力如何？-给一个数组如：-“a”-”b”-”c”-“d”-”e”-…-得到-ad-ae-bd-be-cd-ce-，手写实现的方法？（要求js实现）"><a href="#算法能力如何？-给一个数组如：-“a”-”b”-”c”-“d”-”e”-…-得到-ad-ae-bd-be-cd-ce-，手写实现的方法？（要求js实现）" class="headerlink" title="算法能力如何？ 给一个数组如：[[“a”,”b”,”c”],[“d”,”e”],…..]得到[ad,ae,bd,be,cd,ce]，手写实现的方法？（要求js实现）"></a>算法能力如何？ 给一个数组如：[[“a”,”b”,”c”],[“d”,”e”],…..]得到[ad,ae,bd,be,cd,ce]，手写实现的方法？（要求js实现）</h3><h3 id="如何将上面的改成函数式编程风格？"><a href="#如何将上面的改成函数式编程风格？" class="headerlink" title="如何将上面的改成函数式编程风格？"></a>如何将上面的改成函数式编程风格？</h3><h3 id="如果数组中出现-“a”-”b”-”c”-“a”-”d”-要求去掉”aa”这种情况（即两组所取的元素不能有相同的）？不能用filter…"><a href="#如果数组中出现-“a”-”b”-”c”-“a”-”d”-要求去掉”aa”这种情况（即两组所取的元素不能有相同的）？不能用filter…" class="headerlink" title="如果数组中出现[[“a”,”b”,”c”],[“a”,”d”]]要求去掉”aa”这种情况（即两组所取的元素不能有相同的）？不能用filter…"></a>如果数组中出现[[“a”,”b”,”c”],[“a”,”d”]]要求去掉”aa”这种情况（即两组所取的元素不能有相同的）？不能用filter…</h3><h3 id="跳台阶问题？m阶楼梯，一次最多可跳4次，有多少种可能？（本来问n次，然后直接举例说4次）手写实现代码？"><a href="#跳台阶问题？m阶楼梯，一次最多可跳4次，有多少种可能？（本来问n次，然后直接举例说4次）手写实现代码？" class="headerlink" title="跳台阶问题？m阶楼梯，一次最多可跳4次，有多少种可能？（本来问n次，然后直接举例说4次）手写实现代码？"></a>跳台阶问题？m阶楼梯，一次最多可跳4次，有多少种可能？（本来问n次，然后直接举例说4次）手写实现代码？</h3><h3 id="死锁的条件是什么？"><a href="#死锁的条件是什么？" class="headerlink" title="死锁的条件是什么？"></a>死锁的条件是什么？</h3><h3 id="js单线程？setTimeout-100-是否会100ms后执行，原因是？EventLoop？"><a href="#js单线程？setTimeout-100-是否会100ms后执行，原因是？EventLoop？" class="headerlink" title="js单线程？setTimeout(,100)是否会100ms后执行，原因是？EventLoop？"></a>js单线程？setTimeout(,100)是否会100ms后执行，原因是？EventLoop？</h3><h3 id="谈谈你对reactjs的理解？为什么项目中选用reactjs？与其他框架的区别？双向绑定是ng1还是ng2？vuejs1还是vuejs2？"><a href="#谈谈你对reactjs的理解？为什么项目中选用reactjs？与其他框架的区别？双向绑定是ng1还是ng2？vuejs1还是vuejs2？" class="headerlink" title="谈谈你对reactjs的理解？为什么项目中选用reactjs？与其他框架的区别？双向绑定是ng1还是ng2？vuejs1还是vuejs2？"></a>谈谈你对reactjs的理解？为什么项目中选用reactjs？与其他框架的区别？双向绑定是ng1还是ng2？vuejs1还是vuejs2？</h3><h3 id="项目中有使用flux或者redux等么？"><a href="#项目中有使用flux或者redux等么？" class="headerlink" title="项目中有使用flux或者redux等么？"></a>项目中有使用flux或者redux等么？</h3><h3 id="reactjs中虚拟dom要这样实现的原因是什么？（不是问如何实现的-）"><a href="#reactjs中虚拟dom要这样实现的原因是什么？（不是问如何实现的-）" class="headerlink" title="reactjs中虚拟dom要这样实现的原因是什么？（不是问如何实现的=_=）"></a>reactjs中虚拟dom要这样实现的原因是什么？（不是问如何实现的=_=）</h3><p><a href="https://blog.csdn.net/tzcccy/article/details/79246811" target="_blank" rel="noopener">https://blog.csdn.net/tzcccy/article/details/79246811</a><br>（1）、请简述一下DNS。<br>（2）、有听过HTTPDNS吗？<br>（3）、有哪些方法能加快网络连接速度<br>（4）、如何维持长链接<br>（5）、如何发送心跳包<br>（6）、自动布局（设置约束）和手动布局（设置frame）的优缺点，哪个效率高，为什么？<br>（7）、一道简单dp题，求两个字符串最长连续公共序列</p>
+<p> (1）、用户产生一个下拉刷新动作，请详细描述网络如何传输<br>（2）、简述tcp连接时的握手过程，不要第三次握手行不行？<br>（3）、讲讲拥塞避免算法<br>（4）、GCD同步与异步<br>（5）、GCD的使用场景<br>（6）、NSArray、NSSet、NSDictionary的效率<br>（7）、只用栈实现一个队列<br>（8）、内存中堆与栈的区别<br>（9）、什么时候在栈中什么时候在堆中<br>（10）、为什么OC不能像下面这样实例一个对象<br>class A;<br>A a;<br>（11）、请简述操作系统内存管理<br>（12）、一个iOS app，在内存中除了会使用到堆区和栈区，还会使用到什么区<br>（13）、一个算法题，给定一个字符串（只有小写字母）和m步操作，每一步操作可以把相邻<br>两个字符交换位置，问最多执行m步操作后，字符串中最长连续相同字符的长度是多少</p>
+<p>（1）、算法题，给一组数字，这些数字里面每一个都重复出现了三次，只有一个数字只出现了一个，要求在时间O（n）空间O（1）内解出来。<br>（2）、说说你做项目过程中印象深刻的地方或者技术难点<br>（3）、使用自动布局，把三个view横向等宽等间距（与父view边距也相等）排列。</p>
+<h3 id="https-www-imooc-com-article-274197"><a href="#https-www-imooc-com-article-274197" class="headerlink" title="https://www.imooc.com/article/274197"></a><a href="https://www.imooc.com/article/274197" target="_blank" rel="noopener">https://www.imooc.com/article/274197</a></h3><h3 id="https-www-imooc-com-article-33783"><a href="#https-www-imooc-com-article-33783" class="headerlink" title="https://www.imooc.com/article/33783"></a><a href="https://www.imooc.com/article/33783" target="_blank" rel="noopener">https://www.imooc.com/article/33783</a></h3><h3 id="https-q-shanyue-tech-interviews-2018-html-E8-83-8C-E6-99-AF"><a href="#https-q-shanyue-tech-interviews-2018-html-E8-83-8C-E6-99-AF" class="headerlink" title="https://q.shanyue.tech/interviews/2018.html#%E8%83%8C%E6%99%AF"></a><a href="https://q.shanyue.tech/interviews/2018.html#%E8%83%8C%E6%99%AF" target="_blank" rel="noopener">https://q.shanyue.tech/interviews/2018.html#%E8%83%8C%E6%99%AF</a></h3><h3 id="https-ssrshare-github-io-2019-04-15-html-css-js"><a href="#https-ssrshare-github-io-2019-04-15-html-css-js" class="headerlink" title="https://ssrshare.github.io/2019/04/15/html-css-js/"></a><a href="https://ssrshare.github.io/2019/04/15/html-css-js/" target="_blank" rel="noopener">https://ssrshare.github.io/2019/04/15/html-css-js/</a></h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://linghuam.github.io/mydoc/IQ6-头条.html" data-id="ckbj67evx00081jbxb4i0pwme" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/专题/">专题</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/专题/一周拾遗/">一周拾遗</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/专题/性能优化/">性能优化</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/专题/解决方案/">解决方案</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他/">其他</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端基础/">前端基础</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/前端基础/BOM/">BOM</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端基础/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端基础/CSSOM/">CSSOM</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端基础/HTML/">HTML</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端基础/JavaScript/">JavaScript</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端高级/">前端高级</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/可视化/">可视化</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/可视化/2D/">2D</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/可视化/GIS/">GIS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/可视化/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/可视化/计算机图形学/">计算机图形学</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发工具/">开发工具</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/开发工具/VSCode/">VSCode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发工具/git/">git</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/canvas/">canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/沙箱模式/">沙箱模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/03/16/一周拾遗-第4期/">一周拾遗-第4期</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/21/W3C-Canvas文档翻译/">W3C-Canvas文档翻译</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/17/git如何安全回滚/">git如何安全回滚</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/17/使用Chrome开发工具优化网站速度/">使用Chrome开发工具优化网站速度</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/17/一周拾遗-第3期/">一周拾遗-第3期</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Linghuam<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

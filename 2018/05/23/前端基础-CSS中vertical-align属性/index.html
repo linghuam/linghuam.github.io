@@ -13,10 +13,13 @@
 <meta property="og:site_name" content="华仔的博客">
 <meta property="og:description" content="在刚刚接触 CSS 的同学中，经常使用到 vertical-align 来实现垂直对齐，但经常会困惑的是它并没有起到什么效果，下面就一起来探讨一下它到底是个什么鬼。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://linghuam.github.io/2018/05/23/前端基础-CSS中vertical-align属性/1.png">
+<meta property="og:image" content="http://linghuam.github.io/2018/05/23/前端基础-CSS中vertical-align属性/2.png">
 <meta property="og:updated_time" content="2020-02-03T12:12:40.829Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端基础-CSS中vertical-align属性">
 <meta name="twitter:description" content="在刚刚接触 CSS 的同学中，经常使用到 vertical-align 来实现垂直对齐，但经常会困惑的是它并没有起到什么效果，下面就一起来探讨一下它到底是个什么鬼。">
+<meta name="twitter:image" content="http://linghuam.github.io/2018/05/23/前端基础-CSS中vertical-align属性/1.png">
   
   
     <link rel="icon" href="/favicon.png">
@@ -96,7 +99,7 @@
       
         <p>在刚刚接触 CSS 的同学中，经常使用到 vertical-align 来实现垂直对齐，但经常会困惑的是它并没有起到什么效果，下面就一起来探讨一下它到底是个什么鬼。<br><a id="more"></a></p>
 <h2 id="我遇到的问题"><a href="#我遇到的问题" class="headerlink" title="我遇到的问题"></a>我遇到的问题</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>vertical-align<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"input1"</span> <span class="attr">type</span>=<span class="string">"checkbox"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"input1"</span>&gt;</span></span><br><span class="line">            选项一</span><br><span class="line">        <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"input2"</span> <span class="attr">type</span>=<span class="string">"checkbox"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"input2"</span>&gt;</span></span><br><span class="line">            选项二</span><br><span class="line">        <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"input3"</span> <span class="attr">type</span>=<span class="string">"checkbox"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"input3"</span>&gt;</span></span><br><span class="line">            选项三</span><br><span class="line">        <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
+<img src="/2018/05/23/前端基础-CSS中vertical-align属性/1.png">
 <p>我们要将复选框跟文字垂直居中对齐，这时要用到 vertical-align<br>方法：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">label</span>&#123;</span><br><span class="line">    <span class="attribute">vertical-align</span>: middle;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><ul>
 <li>该属性定义行内元素的基线相对于该元素所在行的基线的垂直对齐</li>
@@ -104,7 +107,7 @@
 <li>可取值： baseline | sub | super | text-top | text-bottom | middle | top | bottom | <percentage> | <length></length></percentage></li>
 <li>适用元素：inline、inline-block、table-cell、::first-letter、::first-line</li>
 <li>继承性：无</li>
-<li>百分比值：参照元素自身的 line-height 值
+<li>百分比值：参照元素自身的 line-height 值<img src="/2018/05/23/前端基础-CSS中vertical-align属性/2.png">
 </li>
 </ul>
 <h2 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h2><blockquote>
@@ -128,7 +131,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linghuam.github.io/2018/05/23/前端基础-CSS中vertical-align属性/" data-id="ck7vtyix7000xyqbxag5v5dgg" data-title="前端基础-CSS中vertical-align属性" class="article-share-link">Share</a>
+      <a data-url="http://linghuam.github.io/2018/05/23/前端基础-CSS中vertical-align属性/" data-id="ckbj67eyt001b1jbxqcf3o7da" data-title="前端基础-CSS中vertical-align属性" class="article-share-link">Share</a>
       
       
       
@@ -212,11 +215,11 @@
           </li>
         
           <li>
-            <a href="/2020/01/17/一周拾遗-第3期/">一周拾遗-第3期</a>
+            <a href="/2020/01/17/使用Chrome开发工具优化网站速度/">使用Chrome开发工具优化网站速度</a>
           </li>
         
           <li>
-            <a href="/2020/01/16/浏览器沙箱模式探究/">浏览器沙箱模式探究</a>
+            <a href="/2020/01/17/一周拾遗-第3期/">一周拾遗-第3期</a>
           </li>
         
       </ul>

@@ -14,10 +14,17 @@
 <meta property="og:site_name" content="华仔的博客">
 <meta property="og:description" content="翻译了 W3C-Canvas 文档，加深对 canvas 基础的理解和掌握。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://linghuam.github.io/2020/01/21/W3C-Canvas文档翻译/lineCap.jpg">
+<meta property="og:image" content="http://linghuam.github.io/2020/01/21/W3C-Canvas文档翻译/lineJoin.jpg">
+<meta property="og:image" content="http://linghuam.github.io/2020/01/21/W3C-Canvas文档翻译/baselines.png">
+<meta property="og:image" content="http://linghuam.github.io/2020/01/21/W3C-Canvas文档翻译/arc1.png">
+<meta property="og:image" content="http://linghuam.github.io/2020/01/21/W3C-Canvas文档翻译/transform.png">
+<meta property="og:image" content="http://linghuam.github.io/2020/01/21/W3C-Canvas文档翻译/drawImage.png">
 <meta property="og:updated_time" content="2020-03-04T11:57:47.161Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="W3C-Canvas文档翻译">
 <meta name="twitter:description" content="翻译了 W3C-Canvas 文档，加深对 canvas 基础的理解和掌握。">
+<meta name="twitter:image" content="http://linghuam.github.io/2020/01/21/W3C-Canvas文档翻译/lineCap.jpg">
   
   
     <link rel="icon" href="/favicon.png">
@@ -160,8 +167,8 @@
 <p>context.<a href="#lineDashOffset">lineDashOffset</a>[ = value ]<br>返回相位偏移（以与 line dash pattern 相同的单位）。<br>可以设置，以更改相位偏移。不是有限值的值将被忽略。<br>默认值是<code>0.0</code>。</p>
 </blockquote>
 <p>实现 <a href="https://www.w3.org/TR/2dcontext/#canvasdrawingstyles" target="_blank" rel="noopener">CanvasDrawingStyles</a> 接口的对象具有控制对象如何处理线的属性和方法。</p>
-<p><strong>lineCap:</strong><br></p>
-<p><strong>lineJoin:</strong><br></p>
+<p><strong>lineCap:</strong><br><img src="/2020/01/21/W3C-Canvas文档翻译/lineCap.jpg"></p>
+<p><strong>lineJoin:</strong><br><img src="/2020/01/21/W3C-Canvas文档翻译/lineJoin.jpg"></p>
 <p>每个 CanvasDrawingStyles 对象都有一个 <strong>dash list</strong> 列表，该 <strong>dash list</strong> 可以为空或由偶数个非负数组成。<strong>dash list</strong> 初始值为空数组。</p>
 <p>调用<code>setLineDash()</code>方法时，它必须运行以下步骤：</p>
 <ol>
@@ -237,7 +244,7 @@
 <p>用户代理只能使用矢量字体；如果用户代理使用位图字体，则转换可能会使字体看起来非常难看。</p>
 <p>获取时，<code>font</code>属性必须返回上下文当前字体的序列化形式（不包含“line-height”组件）。</p>
 <p><code>textBaseline</code>属性的允许关键字对应于字体中的对齐点：</p>
-
+<img src="/2020/01/21/W3C-Canvas文档翻译/baselines.png">
 <h2 id="建立路径"><a href="#建立路径" class="headerlink" title="建立路径"></a>建立路径</h2><p><strong>Building paths</strong></p>
 <p>每个实现 <a href="https://www.w3.org/TR/2dcontext/#canvaspathmethods" target="_blank" rel="noopener">CanvasPathMethods</a> 接口的对象都有一个路径。路径具有零个或多个子路径的集合。每个子路径包含一个或多个点的集合，这些点由直线或曲线连接，并有指示子路径是否闭合的标志。闭合子路径是通过直线将子路径的最后一点连接到子路径的第一点的路径。绘制路径时，少于两个点的子路径将被忽略。</p>
 <p>创建实现 CanvasPathMethods 接口的对象时，其路径必须初始化为零个子路径。</p>
@@ -252,7 +259,7 @@
 <p>context.<a href="#arc">arc</a>(x, y, radius, startAngle, endAngle [, counterclockwise(逆时针) ])<br>  将点添加到子路径，以便将由自变量描述的圆的圆周描述的弧从给定的起始角度开始，以给定的终止角度终止，并沿给定方向（默认为顺时针）添加到 通过一条直线连接到上一点的路径。<br>  从正x轴顺时针以弧度为单位，对应此圆的圆周的<code>startAngle</code>和<code>endAngle</code>的点。<br>  如果给定的半径为负数，则抛出<code>IndexSizeError</code>异常。</p>
 <p>context.<a href="#rect">rect</a>(x, y, w, h)<br>  向该路径添加一个新的闭合子路径，代表给定的矩形。</p>
 </blockquote>
-
+<img src="/2020/01/21/W3C-Canvas文档翻译/arc1.png">
 <h2 id="变换"><a href="#变换" class="headerlink" title="变换"></a>变换</h2><p><strong>Transformations</strong></p>
 <p>每个<code>CanvasRenderingContext2D</code>对象都有一个当前的转换矩阵，以及操作方法（在本节中介绍）。创建<code>CanvasRenderingContext2D</code>对象时，必须将其变换矩阵初始化为恒等变换。</p>
 <p>当创建当前路径时，转换矩阵将应用于坐标，以及在<code>CanvasRenderingContext2D</code>对象上绘制文本，形状和路径时。</p>
@@ -260,7 +267,7 @@
 <blockquote>
 <p>NOTE：<br>context.<a href="#scale">scale</a>(x, y)<br>更改变换矩阵以应用具有给定特征的缩放变换。<br>context.<a href="#rotate">rotate</a>(angle)<br>更改变换矩阵以应用具有给定特征的旋转变换。角度以弧度为单位，顺时针方向。<br>context.<a href="#translate">translate</a>(x, y)<br>更改变换矩阵以应用具有给定特征的平移变换。<br>context.<a href="#transform">transform</a>(a, b, c, d, e, f)<br>如下所述，更改变换矩阵以应用由参数指定的矩阵。<br>用将当前变换矩阵与以下描述的矩阵相乘的结果来替换当前变换矩阵：<br>context.<a href="#setTransform">setTransform</a>(a, b, c, d, e, f)<br>如下所述将转换矩阵更改为参数指定的矩阵。<br>将当前变换重置为单位矩阵，然后使用相同的参数调用<code>transform（a，b，c，d，e，f）</code>方法。</p>
 </blockquote>
-
+<img src="/2020/01/21/W3C-Canvas文档翻译/transform.png">
 <p><a id="t2D渲染上下文的图像源"></a></p>
 <h2 id="2D渲染上下文的图像源"><a href="#2D渲染上下文的图像源" class="headerlink" title="2D渲染上下文的图像源"></a>2D渲染上下文的图像源</h2><p>此联合类型允许实现以下任何接口的对象用作图像源：</p>
 <ul>
@@ -345,7 +352,7 @@
 <li><code>drawImage(image, sx, sy, sw, sh, dx, dy, dw, dh)</code></li>
 </ul>
 <p>这三个参数中的每个参数都可以采用<code>HTMLImageElement</code>，<code>HTMLCanvasElement</code>或<code>HTMLVideoElement</code>作为图像参数。</p>
-
+<img src="/2020/01/21/W3C-Canvas文档翻译/drawImage.png">
 <h2 id="热区"><a href="#热区" class="headerlink" title="热区"></a>热区</h2><p><strong>Hit regions</strong></p>
 <p>每个画布元素必须具有与其位图关联的命中区域列表(<code>hit region list</code>)。</p>
 <p>每个<strong>命中区域(hit regions)</strong>包含以下信息：</p>
@@ -434,7 +441,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linghuam.github.io/2020/01/21/W3C-Canvas文档翻译/" data-id="ck7vtyiwq000cyqbxf2qsvuug" data-title="W3C-Canvas文档翻译" class="article-share-link">Share</a>
+      <a data-url="http://linghuam.github.io/2020/01/21/W3C-Canvas文档翻译/" data-id="ckbj67ewf000o1jbxw5lu68zm" data-title="W3C-Canvas文档翻译" class="article-share-link">Share</a>
       
       
       
@@ -520,11 +527,11 @@
           </li>
         
           <li>
-            <a href="/2020/01/17/一周拾遗-第3期/">一周拾遗-第3期</a>
+            <a href="/2020/01/17/使用Chrome开发工具优化网站速度/">使用Chrome开发工具优化网站速度</a>
           </li>
         
           <li>
-            <a href="/2020/01/16/浏览器沙箱模式探究/">浏览器沙箱模式探究</a>
+            <a href="/2020/01/17/一周拾遗-第3期/">一周拾遗-第3期</a>
           </li>
         
       </ul>

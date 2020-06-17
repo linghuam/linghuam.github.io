@@ -13,10 +13,12 @@
 <meta property="og:site_name" content="华仔的博客">
 <meta property="og:description" content="本算法是bresenham在1965年提出的。它是从计算机硬件的角度和图像的光栅化过程来生成直线的。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://linghuam.github.io/2018/01/12/计算机图形学-直线的Bresenham算法/WX20180113-001931@2x.png">
 <meta property="og:updated_time" content="2020-02-03T12:23:03.047Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机图形学-直线的Bresenham算法">
 <meta name="twitter:description" content="本算法是bresenham在1965年提出的。它是从计算机硬件的角度和图像的光栅化过程来生成直线的。">
+<meta name="twitter:image" content="http://linghuam.github.io/2018/01/12/计算机图形学-直线的Bresenham算法/WX20180113-001931@2x.png">
   
   
     <link rel="icon" href="/favicon.png">
@@ -107,7 +109,7 @@
 <p>否则 $ y_{i+1} = y_i $</p>
 <p>因此算法的关键在于确定 $ d1 - d2 $ 的符号。</p>
 <h2 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bresenham_line</span>(<span class="params">ctx, x1, y1, x2, y2</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> dx, dy, x, y, p, const1, const2, inc, tmp;</span><br><span class="line">  dx = x2 - x1;</span><br><span class="line">  dy = y2 - y1;</span><br><span class="line">  <span class="keyword">if</span> (dx * dy &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">    inc = <span class="number">1</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    inc = <span class="number">-1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">Math</span>.abs(dx) &gt; <span class="built_in">Math</span>.abs(dy)) &#123;</span><br><span class="line">    <span class="keyword">if</span> (dx &lt; <span class="number">0</span>) &#123;</span><br><span class="line">      tmp = x1;</span><br><span class="line">      x1 = x2;</span><br><span class="line">      x2 = tmp;</span><br><span class="line">      tmp = y1;</span><br><span class="line">      y1 = y2;</span><br><span class="line">      y2 = tmp;</span><br><span class="line">      dx = -dx;</span><br><span class="line">      dy = -dy;</span><br><span class="line">    &#125;</span><br><span class="line">    p = <span class="number">2</span> * dy - dx;</span><br><span class="line">    const1 = <span class="number">2</span> * dy;</span><br><span class="line">    const2 = <span class="number">2</span> * (dy - dx);</span><br><span class="line">    x = x1;</span><br><span class="line">    y = y1;</span><br><span class="line">    selectGrid(ctx, x, y);</span><br><span class="line">    <span class="keyword">while</span> (x &lt; x2) &#123;</span><br><span class="line">      x++;</span><br><span class="line">      <span class="keyword">if</span> (p &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        p += const1;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        y += inc;</span><br><span class="line">        p += const2;</span><br><span class="line">      &#125;</span><br><span class="line">      selectGrid(ctx, x, y);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (dy &lt; <span class="number">0</span>) &#123;</span><br><span class="line">      tmp = x1;</span><br><span class="line">      x1 = x2;</span><br><span class="line">      x2 = tmp;</span><br><span class="line">      tmp = y1;</span><br><span class="line">      y1 = y2;</span><br><span class="line">      y2 = tmp;</span><br><span class="line">      dx = -dx;</span><br><span class="line">      dy = -dy;</span><br><span class="line">    &#125;</span><br><span class="line">    p = <span class="number">2</span> * dx - dy;</span><br><span class="line">    const1 = <span class="number">2</span> * dx;</span><br><span class="line">    const2 = <span class="number">2</span> * (dx - dy);</span><br><span class="line">    x = x1;</span><br><span class="line">    y = y1;</span><br><span class="line">    selectGrid(ctx, x, y);</span><br><span class="line">    <span class="keyword">while</span> (y &lt; y2) &#123;</span><br><span class="line">      y++;</span><br><span class="line">      <span class="keyword">if</span> (p &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        p += const1;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        x += inc;</span><br><span class="line">        p += const2;</span><br><span class="line">      &#125;</span><br><span class="line">      selectGrid(ctx, x, y);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="用canvas模拟算法实现效果图"><a href="#用canvas模拟算法实现效果图" class="headerlink" title="用canvas模拟算法实现效果图"></a>用canvas模拟算法实现效果图</h2>
+<h2 id="用canvas模拟算法实现效果图"><a href="#用canvas模拟算法实现效果图" class="headerlink" title="用canvas模拟算法实现效果图"></a>用canvas模拟算法实现效果图</h2><img src="/2018/01/12/计算机图形学-直线的Bresenham算法/WX20180113-001931@2x.png" title="用canvas模拟算法实现效果图">
 <h2 id="算法优缺点"><a href="#算法优缺点" class="headerlink" title="算法优缺点"></a>算法优缺点</h2><p><strong>优点：</strong></p>
 <ul>
 <li>不必计算直线的斜率，因此不做除法</li>
@@ -118,7 +120,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linghuam.github.io/2018/01/12/计算机图形学-直线的Bresenham算法/" data-id="ck7vtyiyr002uyqbxqvvvi5la" data-title="计算机图形学-直线的Bresenham算法" class="article-share-link">Share</a>
+      <a data-url="http://linghuam.github.io/2018/01/12/计算机图形学-直线的Bresenham算法/" data-id="ckbj67f0600321jbxqkw3gc8c" data-title="计算机图形学-直线的Bresenham算法" class="article-share-link">Share</a>
       
       
       
@@ -202,11 +204,11 @@
           </li>
         
           <li>
-            <a href="/2020/01/17/一周拾遗-第3期/">一周拾遗-第3期</a>
+            <a href="/2020/01/17/使用Chrome开发工具优化网站速度/">使用Chrome开发工具优化网站速度</a>
           </li>
         
           <li>
-            <a href="/2020/01/16/浏览器沙箱模式探究/">浏览器沙箱模式探究</a>
+            <a href="/2020/01/17/一周拾遗-第3期/">一周拾遗-第3期</a>
           </li>
         
       </ul>

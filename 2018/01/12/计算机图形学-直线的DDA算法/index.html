@@ -13,10 +13,12 @@
 <meta property="og:site_name" content="华仔的博客">
 <meta property="og:description" content="DDA 是数字微分分析式（digital differential analyzer）的缩写。DDA算法是一种基于直线的微分方程来生成直线的方法。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://linghuam.github.io/2018/01/12/计算机图形学-直线的DDA算法/WX20180112-150520@2x.png">
 <meta property="og:updated_time" content="2020-02-03T12:23:36.635Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机图形学-直线的DDA算法">
 <meta name="twitter:description" content="DDA 是数字微分分析式（digital differential analyzer）的缩写。DDA算法是一种基于直线的微分方程来生成直线的方法。">
+<meta name="twitter:image" content="http://linghuam.github.io/2018/01/12/计算机图形学-直线的DDA算法/WX20180112-150520@2x.png">
   
   
     <link rel="icon" href="/favicon.png">
@@ -112,7 +114,7 @@
 </li>
 </ol>
 <h2 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">dda_line</span>(<span class="params">ctx, xa, ya, xb, yb</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> dx, dy, steps, k;</span><br><span class="line">  <span class="keyword">var</span> delta_x, delta_y, x, y;</span><br><span class="line"></span><br><span class="line">  dx = xb - xa;</span><br><span class="line">  dy = yb - ya;</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">Math</span>.abs(dx) &gt; <span class="built_in">Math</span>.abs(dy)) &#123;</span><br><span class="line">    steps = <span class="built_in">Math</span>.abs(dx);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    steps = <span class="built_in">Math</span>.abs(dy);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// delta_x, delta_y都有可能是小数，但计算机的像素单位只能是整数，计算机是如何处理这种情况的？</span></span><br><span class="line">  <span class="comment">// 四舍五入</span></span><br><span class="line">  delta_x = dx / steps;</span><br><span class="line">  delta_y = dy / steps;</span><br><span class="line">  x = xa;</span><br><span class="line">  y = ya;</span><br><span class="line">  selectGrid(ctx, x, y);</span><br><span class="line">  <span class="keyword">for</span> (k = <span class="number">1</span>; k &lt;= steps; k++) &#123;</span><br><span class="line">    x += delta_x;</span><br><span class="line">    y += delta_y;</span><br><span class="line">    <span class="comment">// selectGrid(ctx, x, y);</span></span><br><span class="line">    selectGrid(ctx, <span class="built_in">Math</span>.round(x), <span class="built_in">Math</span>.round(y));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="用canvas模拟算法实现效果图"><a href="#用canvas模拟算法实现效果图" class="headerlink" title="用canvas模拟算法实现效果图"></a>用canvas模拟算法实现效果图</h2>
+<h2 id="用canvas模拟算法实现效果图"><a href="#用canvas模拟算法实现效果图" class="headerlink" title="用canvas模拟算法实现效果图"></a>用canvas模拟算法实现效果图</h2><img src="/2018/01/12/计算机图形学-直线的DDA算法/WX20180112-150520@2x.png" title="用canvas模拟算法实现效果图">
 <h2 id="算法优缺点"><a href="#算法优缺点" class="headerlink" title="算法优缺点"></a>算法优缺点</h2><p><strong>优点：</strong></p>
 <ul>
 <li>易理解</li>
@@ -126,7 +128,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linghuam.github.io/2018/01/12/计算机图形学-直线的DDA算法/" data-id="ck7vtyiyt002xyqbxmpc4dxy7" data-title="计算机图形学-直线的DDA算法" class="article-share-link">Share</a>
+      <a data-url="http://linghuam.github.io/2018/01/12/计算机图形学-直线的DDA算法/" data-id="ckbj67f0800371jbxq2ubzrh6" data-title="计算机图形学-直线的DDA算法" class="article-share-link">Share</a>
       
       
       
@@ -210,11 +212,11 @@
           </li>
         
           <li>
-            <a href="/2020/01/17/一周拾遗-第3期/">一周拾遗-第3期</a>
+            <a href="/2020/01/17/使用Chrome开发工具优化网站速度/">使用Chrome开发工具优化网站速度</a>
           </li>
         
           <li>
-            <a href="/2020/01/16/浏览器沙箱模式探究/">浏览器沙箱模式探究</a>
+            <a href="/2020/01/17/一周拾遗-第3期/">一周拾遗-第3期</a>
           </li>
         
       </ul>

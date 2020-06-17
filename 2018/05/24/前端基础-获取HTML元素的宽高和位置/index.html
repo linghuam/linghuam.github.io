@@ -13,10 +13,26 @@
 <meta property="og:site_name" content="华仔的博客">
 <meta property="og:description" content="在做一些组件和交互时，常常需要动态获取鼠标点击位置、元素宽高和元素位置信息，网上有很多种方法，但自己没有总结过，不知道各种方法的优缺点和兼容性，在此专门的总结一下。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://linghuam.github.io/2018/05/24/前端基础-获取HTML元素的宽高和位置/window.png">
+<meta property="og:image" content="http://linghuam.github.io/2018/05/24/前端基础-获取HTML元素的宽高和位置/window-chart2.png">
+<meta property="og:image" content="http://linghuam.github.io/2018/05/24/前端基础-获取HTML元素的宽高和位置/screen.png">
+<meta property="og:image" content="http://linghuam.github.io/2018/05/24/前端基础-获取HTML元素的宽高和位置/screen-chart.png">
+<meta property="og:image" content="http://linghuam.github.io/2018/05/24/前端基础-获取HTML元素的宽高和位置/document.png">
+<meta property="og:image" content="http://linghuam.github.io/2018/05/24/前端基础-获取HTML元素的宽高和位置/element.png">
+<meta property="og:image" content="http://linghuam.github.io/2018/05/24/前端基础-获取HTML元素的宽高和位置/element-chart.png">
+<meta property="og:image" content="http://linghuam.github.io/2018/05/24/前端基础-获取HTML元素的宽高和位置/elementscroll.png">
+<meta property="og:image" content="http://linghuam.github.io/2018/05/24/前端基础-获取HTML元素的宽高和位置/htmlelement.png">
+<meta property="og:image" content="http://linghuam.github.io/2018/05/24/前端基础-获取HTML元素的宽高和位置/htmlelement-chart.png">
+<meta property="og:image" content="http://linghuam.github.io/2018/05/24/前端基础-获取HTML元素的宽高和位置/htmlimgelement.png">
+<meta property="og:image" content="http://linghuam.github.io/2018/05/24/前端基础-获取HTML元素的宽高和位置/rang.png">
+<meta property="og:image" content="http://linghuam.github.io/2018/05/24/前端基础-获取HTML元素的宽高和位置/getboundingclientrect.png">
+<meta property="og:image" content="http://linghuam.github.io/2018/05/24/前端基础-获取HTML元素的宽高和位置/mouseevent.png">
+<meta property="og:image" content="http://linghuam.github.io/2018/05/24/前端基础-获取HTML元素的宽高和位置/mouseevent-chart.png">
 <meta property="og:updated_time" content="2020-02-03T12:05:37.813Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端基础-获取HTML元素的宽高和位置">
 <meta name="twitter:description" content="在做一些组件和交互时，常常需要动态获取鼠标点击位置、元素宽高和元素位置信息，网上有很多种方法，但自己没有总结过，不知道各种方法的优缺点和兼容性，在此专门的总结一下。">
+<meta name="twitter:image" content="http://linghuam.github.io/2018/05/24/前端基础-获取HTML元素的宽高和位置/window.png">
   
   
     <link rel="icon" href="/favicon.png">
@@ -96,23 +112,23 @@
       
         <p>在做一些组件和交互时，常常需要动态获取鼠标点击位置、元素宽高和元素位置信息，网上有很多种方法，但自己没有总结过，不知道各种方法的优缺点和兼容性，在此专门的总结一下。<br><a id="more"></a></p>
 <p><strong>Note：</strong> 这些关于视觉的内容都被总结在了 W3C 的 <a href="https://www.w3.org/TR/cssom-view-1/" target="_blank" rel="noopener">CSSOM View Module</a> 模块中，里面有详细的接口定义和说明，建议好好研读。</p>
-<h2 id="阅读-W3C-规范的总结"><a href="#阅读-W3C-规范的总结" class="headerlink" title="阅读 W3C 规范的总结"></a>阅读 W3C 规范的总结</h2><h3 id="Extensions-to-the-Window-Interface"><a href="#Extensions-to-the-Window-Interface" class="headerlink" title="Extensions to the Window Interface"></a>Extensions to the <strong><a href="https://www.w3.org/TR/cssom-view-1/#extensions-to-the-window-interface" target="_blank" rel="noopener">Window</a></strong> Interface</h3>
+<h2 id="阅读-W3C-规范的总结"><a href="#阅读-W3C-规范的总结" class="headerlink" title="阅读 W3C 规范的总结"></a>阅读 W3C 规范的总结</h2><h3 id="Extensions-to-the-Window-Interface"><a href="#Extensions-to-the-Window-Interface" class="headerlink" title="Extensions to the Window Interface"></a>Extensions to the <strong><a href="https://www.w3.org/TR/cssom-view-1/#extensions-to-the-window-interface" target="_blank" rel="noopener">Window</a></strong> Interface</h3><img src="/2018/05/24/前端基础-获取HTML元素的宽高和位置/window.png">
 <p><strong>图片纠错：</strong> scrollX = pageXOffset：表示滚动条在X轴方向上滚动的距离；scrollY = pageYOffset：表示滚动条在Y轴方向上滚动的距离</p>
-
+<img src="/2018/05/24/前端基础-获取HTML元素的宽高和位置/window-chart2.png">
 <p>The <em>Screen</em> Interface</p>
-
-
-<h3 id="Extensions-to-the-Document-Interface"><a href="#Extensions-to-the-Document-Interface" class="headerlink" title="Extensions to the Document Interface"></a>Extensions to the <strong><a href="https://www.w3.org/TR/cssom-view-1/#extensions-to-the-document-interface" target="_blank" rel="noopener">Document</a></strong> Interface</h3>
-<h3 id="Extensions-to-the-Element-Interface"><a href="#Extensions-to-the-Element-Interface" class="headerlink" title="Extensions to the Element Interface"></a>Extensions to the <strong><a href="https://www.w3.org/TR/cssom-view-1/#extension-to-the-element-interface" target="_blank" rel="noopener">Element</a></strong> Interface</h3>
-
-
-<h3 id="Extensions-to-the-HTMLElement-Interface"><a href="#Extensions-to-the-HTMLElement-Interface" class="headerlink" title="Extensions to the HTMLElement Interface"></a>Extensions to the <strong><a href="https://www.w3.org/TR/cssom-view-1/#extensions-to-the-htmlelement-interface" target="_blank" rel="noopener">HTMLElement</a></strong> Interface</h3>
-
-<h3 id="Extensions-to-the-HTMLImageElement-Interface"><a href="#Extensions-to-the-HTMLImageElement-Interface" class="headerlink" title="Extensions to the HTMLImageElement Interface"></a>Extensions to the <strong><a href="https://www.w3.org/TR/cssom-view-1/#extensions-to-the-htmlimageelement-interface" target="_blank" rel="noopener">HTMLImageElement</a></strong> Interface</h3>
-<h3 id="Extensions-to-the-Range-Interface"><a href="#Extensions-to-the-Range-Interface" class="headerlink" title="Extensions to the Range Interface"></a>Extensions to the <strong><a href="https://www.w3.org/TR/cssom-view-1/#extensions-to-the-range-interface" target="_blank" rel="noopener">Range</a></strong> Interface</h3>
-
-<h3 id="Extensions-to-the-MouseEvent-Interface"><a href="#Extensions-to-the-MouseEvent-Interface" class="headerlink" title="Extensions to the MouseEvent Interface"></a>Extensions to the <strong><a href="https://www.w3.org/TR/cssom-view-1/#extensions-to-the-mouseevent-interface" target="_blank" rel="noopener">MouseEvent</a></strong> Interface</h3>
-
+<img src="/2018/05/24/前端基础-获取HTML元素的宽高和位置/screen.png">
+<img src="/2018/05/24/前端基础-获取HTML元素的宽高和位置/screen-chart.png">
+<h3 id="Extensions-to-the-Document-Interface"><a href="#Extensions-to-the-Document-Interface" class="headerlink" title="Extensions to the Document Interface"></a>Extensions to the <strong><a href="https://www.w3.org/TR/cssom-view-1/#extensions-to-the-document-interface" target="_blank" rel="noopener">Document</a></strong> Interface</h3><img src="/2018/05/24/前端基础-获取HTML元素的宽高和位置/document.png">
+<h3 id="Extensions-to-the-Element-Interface"><a href="#Extensions-to-the-Element-Interface" class="headerlink" title="Extensions to the Element Interface"></a>Extensions to the <strong><a href="https://www.w3.org/TR/cssom-view-1/#extension-to-the-element-interface" target="_blank" rel="noopener">Element</a></strong> Interface</h3><img src="/2018/05/24/前端基础-获取HTML元素的宽高和位置/element.png">
+<img src="/2018/05/24/前端基础-获取HTML元素的宽高和位置/element-chart.png">
+<img src="/2018/05/24/前端基础-获取HTML元素的宽高和位置/elementscroll.png">
+<h3 id="Extensions-to-the-HTMLElement-Interface"><a href="#Extensions-to-the-HTMLElement-Interface" class="headerlink" title="Extensions to the HTMLElement Interface"></a>Extensions to the <strong><a href="https://www.w3.org/TR/cssom-view-1/#extensions-to-the-htmlelement-interface" target="_blank" rel="noopener">HTMLElement</a></strong> Interface</h3><img src="/2018/05/24/前端基础-获取HTML元素的宽高和位置/htmlelement.png">
+<img src="/2018/05/24/前端基础-获取HTML元素的宽高和位置/htmlelement-chart.png">
+<h3 id="Extensions-to-the-HTMLImageElement-Interface"><a href="#Extensions-to-the-HTMLImageElement-Interface" class="headerlink" title="Extensions to the HTMLImageElement Interface"></a>Extensions to the <strong><a href="https://www.w3.org/TR/cssom-view-1/#extensions-to-the-htmlimageelement-interface" target="_blank" rel="noopener">HTMLImageElement</a></strong> Interface</h3><img src="/2018/05/24/前端基础-获取HTML元素的宽高和位置/htmlimgelement.png">
+<h3 id="Extensions-to-the-Range-Interface"><a href="#Extensions-to-the-Range-Interface" class="headerlink" title="Extensions to the Range Interface"></a>Extensions to the <strong><a href="https://www.w3.org/TR/cssom-view-1/#extensions-to-the-range-interface" target="_blank" rel="noopener">Range</a></strong> Interface</h3><img src="/2018/05/24/前端基础-获取HTML元素的宽高和位置/rang.png">
+<img src="/2018/05/24/前端基础-获取HTML元素的宽高和位置/getboundingclientrect.png">
+<h3 id="Extensions-to-the-MouseEvent-Interface"><a href="#Extensions-to-the-MouseEvent-Interface" class="headerlink" title="Extensions to the MouseEvent Interface"></a>Extensions to the <strong><a href="https://www.w3.org/TR/cssom-view-1/#extensions-to-the-mouseevent-interface" target="_blank" rel="noopener">MouseEvent</a></strong> Interface</h3><img src="/2018/05/24/前端基础-获取HTML元素的宽高和位置/mouseevent.png">
+<img src="/2018/05/24/前端基础-获取HTML元素的宽高和位置/mouseevent-chart.png">
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
 <li><a href="https://www.w3.org/TR/cssom-view-1/" target="_blank" rel="noopener">CSSOM View Module</a></li>
 <li><a href="http://www.zhangxinxu.com/wordpress/2011/09/cssom%E8%A7%86%E5%9B%BE%E6%A8%A1%E5%BC%8Fcssom-view-module%E7%9B%B8%E5%85%B3%E6%95%B4%E7%90%86%E4%B8%8E%E4%BB%8B%E7%BB%8D/" target="_blank" rel="noopener">CSSOM视图模式(CSSOM View Module)相关整理</a></li>
@@ -127,7 +143,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linghuam.github.io/2018/05/24/前端基础-获取HTML元素的宽高和位置/" data-id="ck7vtyiyc0021yqbx94n8mrnt" data-title="前端基础-获取HTML元素的宽高和位置" class="article-share-link">Share</a>
+      <a data-url="http://linghuam.github.io/2018/05/24/前端基础-获取HTML元素的宽高和位置/" data-id="ckbj67ezy002h1jbx9abfu815" data-title="前端基础-获取HTML元素的宽高和位置" class="article-share-link">Share</a>
       
       
       
@@ -211,11 +227,11 @@
           </li>
         
           <li>
-            <a href="/2020/01/17/一周拾遗-第3期/">一周拾遗-第3期</a>
+            <a href="/2020/01/17/使用Chrome开发工具优化网站速度/">使用Chrome开发工具优化网站速度</a>
           </li>
         
           <li>
-            <a href="/2020/01/16/浏览器沙箱模式探究/">浏览器沙箱模式探究</a>
+            <a href="/2020/01/17/一周拾遗-第3期/">一周拾遗-第3期</a>
           </li>
         
       </ul>
